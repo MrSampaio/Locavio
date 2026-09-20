@@ -14,9 +14,20 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Imóveis", systemImage: "house")
                 }
-             // adiciona depois as outras views aqui
+            DashboardView()
+                .tabItem{
+                    Label("Relatório", systemImage: "chart.bar")
+                }
             
+            CalendarView()
+                .tabItem{
+                    Label("Calendário", systemImage: "calendar")
+                }
             
+            TicketsView()
+                .tabItem{
+                    Label("Chamados", systemImage: "exclamationmark.bubble")
+                }
         }
     }
 }
