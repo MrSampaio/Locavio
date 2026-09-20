@@ -6,11 +6,14 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct PropertiesView: View {
     
     @State private var propertiesViewModel = PropertiesViewModel()
     @Environment(AppleAuthManager.self) var authManager
+    
+    @Environment(\.modelContext) private var context
     
     var body: some View {
         
@@ -18,13 +21,10 @@ struct PropertiesView: View {
             
             VStack{
                 Text("aopa, \(propertiesViewModel.userName)!")
-                Text("Fé que agora foi T-T")
+                Text("Email: \(propertiesViewModel.userEmail)")
             }
             .font(.title)
             .bold()
-            
-            
-            Text("O email que veio foi esse aqui: \(propertiesViewModel.userEmail)")
             
             
             
@@ -43,6 +43,11 @@ struct PropertiesView: View {
             .tint(.red)
             .padding(.horizontal, 26)
             .padding(.bottom, 40)
+        }
+        
+        // função para carregar as infos do usuário no momento em que a página é aberta
+        .onAppear {
+            propertiesViewModel.fetchUserData(context: context)
         }
     }
 }
