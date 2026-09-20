@@ -5,4 +5,36 @@
 //  Created by Julio Sampaio on 19/09/26.
 //
 
-import Foundation
+import SwiftUI
+import AuthenticationServices
+
+struct LoginView: View {
+    
+    @State private var appleAuthManager = AppleAuthManager()
+
+    var body: some View {
+        SignInWithAppleButton(.continue){
+            request in
+            
+            request.requestedScopes = [.fullName, .email]
+        } onCompletion: { result in
+            switch result {
+            case .success(let authorization):
+                appleAuthManager.handleAuthorization(authorization)
+                print("User logged successfully!")
+                
+            case .failure(let error):
+                print("Error when trying to sign in: \(error.localizedDescription)")
+            }
+            
+
+        }
+        .padding(.horizontal, 26)
+        .frame(height: 50)
+    }
+}
+
+
+#Preview {
+    LoginView()
+}
