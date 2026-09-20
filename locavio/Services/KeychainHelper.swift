@@ -54,9 +54,7 @@ final class KeychainHelper: Sendable{
             } else if(updateStatus != errSecSuccess){
                 print("Error when trying to update data into keychain: \(addStatus)")
             }
-
         }
-
     }
     
     // função para ler o valores do keychain

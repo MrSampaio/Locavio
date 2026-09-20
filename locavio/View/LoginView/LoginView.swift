@@ -27,8 +27,6 @@ struct LoginView: View {
                 case .failure(let error):
                     print("Error when trying to sign in: \(error.localizedDescription)")
                 }
-                
-
             }
             .signInWithAppleButtonStyle(.black)
             .padding(.horizontal, 26)
