@@ -29,13 +29,10 @@ struct locavioApp: App {
     var body: some Scene {
         WindowGroup {
             LoginView()
-            
-                // depois ajusta esse onReceive com o KeychainHelper configurado
                 .onReceive(NotificationCenter.default.publisher(for: ASAuthorizationAppleIDProvider.credentialRevokedNotification)){
                     _ in
                     print("Credential revoked.")
-                    
-                    UserDefaults.standard.removeObject(forKey: "appleUserID")
+                    appleAuthManager.logout()
                 }
                 .task{
                     appleAuthManager.checkCredentialStatus()
