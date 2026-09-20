@@ -14,17 +14,17 @@ struct MainTabView: View {
                 .tabItem {
                     Label("Imóveis", systemImage: "house")
                 }
-            DashboardView()
+            DashboardCoordinatorView()
                 .tabItem{
                     Label("Relatório", systemImage: "chart.bar")
                 }
             
-            CalendarView()
+            CalendarCoordinatorView()
                 .tabItem{
                     Label("Calendário", systemImage: "calendar")
                 }
             
-            TicketsView()
+            TicketsCoordinatorView()
                 .tabItem{
                     Label("Chamados", systemImage: "exclamationmark.bubble")
                 }
