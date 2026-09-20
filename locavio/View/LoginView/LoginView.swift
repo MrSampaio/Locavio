@@ -9,20 +9,19 @@ import SwiftUI
 import AuthenticationServices
 
 struct LoginView: View {
-    
-    @State private var appleAuthManager = AppleAuthManager()
+    @Environment(AppleAuthManager.self) var appleAuthManager
 
     var body: some View {
         VStack{
             SignInWithAppleButton(.continue){
                 request in
-                
                 request.requestedScopes = [.fullName, .email]
             } onCompletion: { result in
                 switch result {
                 case .success(let authorization):
+                    
+                    // atualiza a variável isAuthenticated do App
                     appleAuthManager.handleAuthorization(authorization)
-                    print("User logged successfully!")
                     
                 case .failure(let error):
                     print("Error when trying to sign in: \(error.localizedDescription)")

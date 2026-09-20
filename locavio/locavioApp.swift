@@ -28,15 +28,23 @@ struct locavioApp: App {
 
     var body: some Scene {
         WindowGroup {
-            LoginView()
-                .onReceive(NotificationCenter.default.publisher(for: ASAuthorizationAppleIDProvider.credentialRevokedNotification)){
-                    _ in
-                    print("Credential revoked.")
-                    appleAuthManager.logout()
+            Group{
+                if appleAuthManager.isAuthenticated {
+                    HomeView()
+                } else{
+                    LoginView()
                 }
-                .task{
-                    appleAuthManager.checkCredentialStatus()
-                }
+            }
+            
+            .environment(appleAuthManager)
+            .onReceive(NotificationCenter.default.publisher(for: ASAuthorizationAppleIDProvider.credentialRevokedNotification)){ _ in
+                            print("Credential revoked em tempo real.")
+                            appleAuthManager.logout() //vai alterar o isAuthenticated para false e a tela muda
+                        }
+                        .task {
+                            appleAuthManager.checkCredentialStatus() // checa o status toda vez que o app abre
+                        }
+
         }
         
         .modelContainer(sharedModelContainer)

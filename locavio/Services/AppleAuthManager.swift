@@ -67,6 +67,11 @@ final class AppleAuthManager{
             print("Error when trying to access codeData")
             return
         }
+        
+        // caso tudo tenha dado certo, seta o controle de autenticação para true
+        DispatchQueue.main.async {
+            self.isAuthenticated = true
+        }
     }
     
     func checkCredentialStatus(){
@@ -96,7 +101,7 @@ final class AppleAuthManager{
                     
                 case.transferred:
                     print("Credential transfered.")
-                    self.isAuthenticated = true
+                    self.logout()
                     
                 @unknown default:
                     break
