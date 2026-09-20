@@ -7,6 +7,7 @@
 
 import SwiftUI
 import AuthenticationServices
+import Security
 
 @Observable
 class AppleAuthManager{
@@ -24,7 +25,7 @@ class AppleAuthManager{
         let userID = credential.user
         
         // guard let para receber o tokenData. será utilizado nas validações
-        // esse é o JWT que pode ser usado para validar a identidade do usuário
+        // esse é o JWT que pod ser usado para validar a identidade do usuário
         guard let tokenData = credential.identityToken, let token = String(data: tokenData, encoding: .utf8) else {
             print("Error when trying to access tokenData")
             return
@@ -37,9 +38,35 @@ class AppleAuthManager{
             return
         }
         
+//        =========================================================================
+        
+        // IMPORTANTE DE NÃO ESQUECER: o apple login só retorna nome e email uma vez.
+        // caso esses dados não sejam salvos de primeira, o usuário precisa reinstalar o app para conseguir logar devidamente
+        
+        // ou seja, NÃO ESQUECE DE SALVAR AS COISAS
+        
+//        ===========================================================
         
         
+        // tenta pegar o nome completo do usuário
         
+        if let fullName = credential.fullName {
+            let givenName = fullName.givenName ?? ""
+            let familyName = fullName.familyName ?? ""
+            // depois faz a lógica aqui pra salvar o nome do usuário
+        }
+        
+        // tenta pegar o email do usuário
+        if let userEmail = credential.email {
+            // depois faz a lógica aqui pra salvar o email do usuário
+        }
+        
+        // REMOVE ISSO DEPOIS QUE CRIAR O KEYCHAINHELPER!!!!!!!!!!!!!!!!!!!!!!!!!!
+        UserDefaults.standard.set(userID, forKey: "appleUserID")
+        
+        // salva a identificação do usuário no Keychain do dispositivo
+        // melhor salvar lá do que no userdefaults por questão de segurança
+        //KeychainHelper.shared.saveUserIdentifier(userID)
         
     }
 }
