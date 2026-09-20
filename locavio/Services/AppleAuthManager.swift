@@ -22,7 +22,7 @@ class AppleAuthManager{
         }
         
         // o userID vai ser a chave de identificação do usuário no sistema
-        let userID = credential.user
+        @KeychainStorage("appleUserID") var userID = credential.user
         
         // guard let para receber o tokenData. será utilizado nas validações
         // esse é o JWT que pod ser usado para validar a identidade do usuário
@@ -60,14 +60,6 @@ class AppleAuthManager{
         if let userEmail = credential.email {
             // depois faz a lógica aqui pra salvar o email do usuário
         }
-        
-        // REMOVE ISSO DEPOIS QUE CRIAR O KEYCHAINHELPER!!!!!!!!!!!!!!!!!!!!!!!!!!
-        UserDefaults.standard.set(userID, forKey: "appleUserID")
-        
-        // salva a identificação do usuário no Keychain do dispositivo
-        // melhor salvar lá do que no userdefaults por questão de segurança
-        //KeychainHelper.shared.saveUserIdentifier(userID)
-        
     }
     
     func checkCredentialStatus(){

@@ -26,13 +26,12 @@ final class KeychainHelper: Sendable{
 //        guard let data = identifier.data(using: .utf8) else { return }
 
         // query padrão do Keychain com a sinc do icloud
+        
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
-            kSecAttrAccount as String: account,
-            // o que permite sincronizar com iCloud (kCFBooleanTrue)
+            kSecAttrAccount as String: key,
             kSecAttrSynchronizable as String: kCFBooleanTrue!
-
         ]
 
         let attributesToUpdate: [String: Any] = [
@@ -59,13 +58,16 @@ final class KeychainHelper: Sendable{
     
     // função para ler o valores do keychain
     func read(for key: String) -> Data? {
+        
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
             kSecAttrAccount as String: key,
+            kSecAttrSynchronizable as String: kCFBooleanTrue!,
             kSecReturnData as String: true,
             kSecMatchLimit as String: kSecMatchLimitOne
         ]
+        
         var result: AnyObject?
         let status = SecItemCopyMatching(query as CFDictionary, &result)
         
@@ -78,7 +80,8 @@ final class KeychainHelper: Sendable{
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
-            kSecAttrAccount as String: key
+            kSecAttrAccount as String: key,
+            kSecAttrSynchronizable as String: kCFBooleanTrue!
         ]
         
         let status = SecItemDelete(query as CFDictionary)
