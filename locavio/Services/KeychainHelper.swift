@@ -20,9 +20,6 @@ final class KeychainHelper: Sendable{
     
     // função de salvar
     func save(_ data: Data, for key: String) {
-
-        // query padrão do Keychain com a sinc do icloud
-        
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
@@ -34,21 +31,18 @@ final class KeychainHelper: Sendable{
             kSecValueData as String: data
         ]
 
-        // atualiza o item caso ele já exista
         let updateStatus = SecItemUpdate(query as CFDictionary, attributesToUpdate as CFDictionary)
 
-        // caso o item não seja encontrado, cria um novo
         if updateStatus == errSecItemNotFound {
             var newItem = query
             newItem[kSecValueData as String] = data
 
             let addStatus = SecItemAdd(newItem as CFDictionary, nil)
-
             if addStatus != errSecSuccess {
                 print("Error when trying to add into keychain: \(addStatus)")
-            } else if(updateStatus != errSecSuccess){
-                print("Error when trying to update data into keychain: \(addStatus)")
             }
+        } else if updateStatus != errSecSuccess {
+            print("Error when trying to update data into keychain: \(updateStatus)")
         }
     }
     

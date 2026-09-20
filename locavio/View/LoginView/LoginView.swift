@@ -13,6 +13,10 @@ struct LoginView: View {
 
     var body: some View {
         VStack{
+            
+            Text("Essa vai ser a tela de login, fé que agora vai")
+                .bold()
+            
             SignInWithAppleButton(.continue){
                 request in
                 request.requestedScopes = [.fullName, .email]
@@ -27,7 +31,7 @@ struct LoginView: View {
                     print("Error when trying to sign in: \(error.localizedDescription)")
                 }
             }
-            .signInWithAppleButtonStyle(.black)
+            .signInWithAppleButtonStyle(.white)
             .padding(.horizontal, 26)
             .frame(height: 50)
         }
@@ -43,4 +47,5 @@ struct LoginView: View {
 
 #Preview {
     LoginView()
+        .environment(AppleAuthManager())
 }
