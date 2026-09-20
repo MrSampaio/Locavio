@@ -69,4 +69,43 @@ class AppleAuthManager{
         //KeychainHelper.shared.saveUserIdentifier(userID)
         
     }
+    
+    func checkCredentialStatus(){
+        
+        // muda a requisição do ID pelo userdefaults para o keychain depois que fizer o KeychainHelper
+        guard let userID = UserDefaults.standard.string(forKey: "appleUserID") else{
+            print("Error when trying to access appleUserID from UserDefaults")
+            return
+        }
+        
+        let provider = ASAuthorizationAppleIDProvider()
+        
+        provider.getCredentialState(forUserID: userID){
+            status, error in
+            
+            DispatchQueue.main.async{
+                switch status{
+                case.authorized:
+                    print("User is authorized!")
+                    //HomeView()
+                    
+                case.revoked:
+                    print("User revoked access")
+                    UserDefaults.standard.removeObject(forKey: "appleUserID")
+                    
+                case.notFound:
+                    print("User never logged with Apple Sign In in this device.")
+                    
+                case.transferred:
+                    print("Credential transfered.")
+                    
+                @unknown default:
+                    break
+                }
+                
+                
+                
+            }
+        }
+    }
 }

@@ -7,9 +7,12 @@
 
 import SwiftUI
 import SwiftData
+import AuthenticationServices
 
 @main
 struct locavioApp: App {
+    @State private var appleAuthManager = AppleAuthManager()
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -25,8 +28,20 @@ struct locavioApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LoginView()
+            
+                // depois ajusta esse onReceive com o KeychainHelper configurado
+                .onReceive(NotificationCenter.default.publisher(for: ASAuthorizationAppleIDProvider.credentialRevokedNotification)){
+                    _ in
+                    print("Credential revoked.")
+                    
+                    UserDefaults.standard.removeObject(forKey: "appleUserID")
+                }
+                .task{
+                    appleAuthManager.checkCredentialStatus()
+                }
         }
+        
         .modelContainer(sharedModelContainer)
     }
 }
