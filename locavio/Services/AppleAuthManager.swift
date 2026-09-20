@@ -11,10 +11,13 @@ import Security
 
 @Observable
 class AppleAuthManager{
+    
+    let keychainHelper = KeychainHelper.shared
+    
     func handleAuthorization(_ authorization: ASAuthorization){
         
         // puxa o KeychainHelper pra simplificar a escrita
-        let keychainHelper = KeychainHelper.shared
+        
         
         // guard let para converter a credencial para o tipo AppleIDCredential
         // essa credential vai ser a chave de identificação do usuário no sistema
@@ -78,9 +81,9 @@ class AppleAuthManager{
     
     func checkCredentialStatus(){
         
-        // muda a requisição do ID pelo userdefaults para o keychain depois que fizer o KeychainHelper
-        guard let userID = UserDefaults.standard.string(forKey: "appleUserID") else{
-            print("Error when trying to access appleUserID from UserDefaults")
+        // pega o ID do usuário salvo no Userdefaults
+        guard let userID = keychainHelper.readString(for: "appleUserID") else {
+            print("There is no user logged in Keychain storage.")
             return
         }
         
@@ -95,9 +98,12 @@ class AppleAuthManager{
                     print("User is authorized!")
                     //HomeView()
                     
+                // importante: as infos precisam ser apagadas do Keychain caso o usuário tenha revogado o acesso do app aos seus dados
                 case.revoked:
                     print("User revoked access")
-                    UserDefaults.standard.removeObject(forKey: "appleUserID")
+                    self.keychainHelper.delete(for: "appleUserID")
+                    self.keychainHelper.delete(for: "appleUserFullName")
+                    self.keychainHelper.delete(for: "appleUserEmail")
                     
                 case.notFound:
                     print("User never logged with Apple Sign In in this device.")
