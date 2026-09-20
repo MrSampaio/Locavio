@@ -30,7 +30,7 @@ struct locavioApp: App {
         WindowGroup {
             Group{
                 if appleAuthManager.isAuthenticated {
-                    HomeView()
+                    MainTabView()
                 } else{
                     LoginView()
                 }

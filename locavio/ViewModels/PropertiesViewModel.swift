@@ -8,7 +8,9 @@
 import SwiftUI
 
 @Observable
-final class HomeViewModel{
+final class PropertiesViewModel{
+    
+    private let propertiesCoordinator = PropertiesCoordinator()
     
     var userName: String = ""
     var userEmail: String = ""
@@ -30,6 +32,10 @@ final class HomeViewModel{
         } else{
             self.userEmail = "There is no user email."
         }
+    }
+    
+    func addNewPropertyTapped() {
+        propertiesCoordinator.pushToNewProperty()
     }
 }
 

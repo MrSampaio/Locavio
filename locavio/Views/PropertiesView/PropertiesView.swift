@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-struct HomeView: View {
+struct PropertiesView: View {
     
-    @State private var homeViewModel = HomeViewModel()
+    @State private var propertiesViewModel = PropertiesViewModel()
     @Environment(AppleAuthManager.self) var authManager
     
     var body: some View {
@@ -17,14 +17,14 @@ struct HomeView: View {
         VStack{
             
             VStack{
-                Text("aopa, \(homeViewModel.userName)!")
+                Text("aopa, \(propertiesViewModel.userName)!")
                 Text("Fé que agora foi T-T")
             }
             .font(.title)
             .bold()
             
             
-            Text("O email que veio foi esse aqui: \(homeViewModel.userEmail)")
+            Text("O email que veio foi esse aqui: \(propertiesViewModel.userEmail)")
             
             
             
@@ -48,6 +48,6 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    PropertiesView()
         .environment(AppleAuthManager())
 }
