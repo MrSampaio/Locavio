@@ -13,6 +13,9 @@ import Security
 class AppleAuthManager{
     func handleAuthorization(_ authorization: ASAuthorization){
         
+        // puxa o KeychainHelper pra simplificar a escrita
+        let keychainHelper = KeychainHelper.shared
+        
         // guard let para converter a credencial para o tipo AppleIDCredential
         // essa credential vai ser a chave de identificação do usuário no sistema
         guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential
@@ -22,7 +25,10 @@ class AppleAuthManager{
         }
         
         // o userID vai ser a chave de identificação do usuário no sistema
-        @KeychainStorage("appleUserID") var userID = credential.user
+        let userID = credential.user
+        
+        // salva o userID no keychain pra maior segurançå
+        keychainHelper.save(userID, for: "appleUserID")
         
         // guard let para receber o tokenData. será utilizado nas validações
         // esse é o JWT que pod ser usado para validar a identidade do usuário
@@ -53,12 +59,20 @@ class AppleAuthManager{
         if let fullName = credential.fullName {
             let givenName = fullName.givenName ?? ""
             let familyName = fullName.familyName ?? ""
+            
+            // limpa o nome recebido
+            let completeName = "\(givenName) \(familyName)".trimmingCharacters(in: .whitespaces)
+                
+            // salva o nome no Keychain para maior segurança
+            if !completeName.isEmpty {
+                keychainHelper.save(completeName, for: "appleUserFullName")
+            }
             // depois faz a lógica aqui pra salvar o nome do usuário
         }
         
         // tenta pegar o email do usuário
         if let userEmail = credential.email {
-            // depois faz a lógica aqui pra salvar o email do usuário
+            keychainHelper.save(userEmail, for: "appleUserEmail")
         }
     }
     

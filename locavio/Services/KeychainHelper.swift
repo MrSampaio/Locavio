@@ -17,13 +17,9 @@ final class KeychainHelper: Sendable{
 
     // bundle identifier pra evitar conflitos
     private let service = Bundle.main.bundleIdentifier ?? "com.locavio.login"
-    private let account = "appleUserIdentifier"
-    
     
     // função de salvar
     func save(_ data: Data, for key: String) {
-
-//        guard let data = identifier.data(using: .utf8) else { return }
 
         // query padrão do Keychain com a sinc do icloud
         
