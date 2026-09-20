@@ -17,57 +17,47 @@ final class KeychainHelper: Sendable{
 
     // bundle identifier pra evitar conflitos
     private let service = Bundle.main.bundleIdentifier ?? "com.locavio.login"
-    private let account = "appleUserIdentifier"
-    
     
     // função de salvar
     func save(_ data: Data, for key: String) {
-
-//        guard let data = identifier.data(using: .utf8) else { return }
-
-        // query padrão do Keychain com a sinc do icloud
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
-            kSecAttrAccount as String: account,
-            // o que permite sincronizar com iCloud (kCFBooleanTrue)
+            kSecAttrAccount as String: key,
             kSecAttrSynchronizable as String: kCFBooleanTrue!
-
         ]
 
         let attributesToUpdate: [String: Any] = [
             kSecValueData as String: data
         ]
 
-        // atualiza o item caso ele já exista
         let updateStatus = SecItemUpdate(query as CFDictionary, attributesToUpdate as CFDictionary)
 
-        // caso o item não seja encontrado, cria um novo
         if updateStatus == errSecItemNotFound {
             var newItem = query
             newItem[kSecValueData as String] = data
 
             let addStatus = SecItemAdd(newItem as CFDictionary, nil)
-
             if addStatus != errSecSuccess {
                 print("Error when trying to add into keychain: \(addStatus)")
-            } else if(updateStatus != errSecSuccess){
-                print("Error when trying to update data into keychain: \(addStatus)")
             }
-
+        } else if updateStatus != errSecSuccess {
+            print("Error when trying to update data into keychain: \(updateStatus)")
         }
-
     }
     
     // função para ler o valores do keychain
     func read(for key: String) -> Data? {
+        
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
             kSecAttrAccount as String: key,
+            kSecAttrSynchronizable as String: kCFBooleanTrue!,
             kSecReturnData as String: true,
             kSecMatchLimit as String: kSecMatchLimitOne
         ]
+        
         var result: AnyObject?
         let status = SecItemCopyMatching(query as CFDictionary, &result)
         
@@ -80,7 +70,8 @@ final class KeychainHelper: Sendable{
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: service,
-            kSecAttrAccount as String: key
+            kSecAttrAccount as String: key,
+            kSecAttrSynchronizable as String: kCFBooleanTrue!
         ]
         
         let status = SecItemDelete(query as CFDictionary)

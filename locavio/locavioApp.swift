@@ -28,18 +28,23 @@ struct locavioApp: App {
 
     var body: some Scene {
         WindowGroup {
-            LoginView()
+            Group{
+                if appleAuthManager.isAuthenticated {
+                    HomeView()
+                } else{
+                    LoginView()
+                }
+            }
             
-                // depois ajusta esse onReceive com o KeychainHelper configurado
-                .onReceive(NotificationCenter.default.publisher(for: ASAuthorizationAppleIDProvider.credentialRevokedNotification)){
-                    _ in
-                    print("Credential revoked.")
-                    
-                    UserDefaults.standard.removeObject(forKey: "appleUserID")
-                }
-                .task{
-                    appleAuthManager.checkCredentialStatus()
-                }
+            .environment(appleAuthManager)
+            .onReceive(NotificationCenter.default.publisher(for: ASAuthorizationAppleIDProvider.credentialRevokedNotification)){ _ in
+                            print("Credential revoked em tempo real.")
+                            appleAuthManager.logout() //vai alterar o isAuthenticated para false e a tela muda
+                        }
+                        .task {
+                            appleAuthManager.checkCredentialStatus() // checa o status toda vez que o app abre
+                        }
+
         }
         
         .modelContainer(sharedModelContainer)
