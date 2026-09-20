@@ -6,10 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 import AuthenticationServices
 
 struct LoginView: View {
     @Environment(AppleAuthManager.self) var appleAuthManager
+    
+    // contexto do swift data
+    @Environment(\.modelContext) private var context
+        
+    // instância da viewmodel de login
+    @State private var loginViewModel = LoginViewModel()
 
     var body: some View {
         VStack{
@@ -26,6 +33,10 @@ struct LoginView: View {
                     
                     // atualiza a variável isAuthenticated do App
                     appleAuthManager.handleAuthorization(authorization)
+                                        
+                    // sincroniza com o SwiftData para subir pro iCloud
+                    // passa o contexto como parâmetro pq o swift data só pode ser usado em structs
+                    loginViewModel.syncUserToSwiftData(context: context)
                     
                 case .failure(let error):
                     print("Error when trying to sign in: \(error.localizedDescription)")
