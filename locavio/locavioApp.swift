@@ -38,7 +38,7 @@ struct locavioApp: App {
             
             .environment(appleAuthManager)
             .onReceive(NotificationCenter.default.publisher(for: ASAuthorizationAppleIDProvider.credentialRevokedNotification)){ _ in
-                            print("Credential revoked em tempo real.")
+                            print("Credential revoked in real time.")
                             appleAuthManager.logout() //vai alterar o isAuthenticated para false e a tela muda
                         }
                         .task {
