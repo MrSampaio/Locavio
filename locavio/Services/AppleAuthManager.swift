@@ -18,6 +18,7 @@ final class AppleAuthManager{
     // puxa o KeychainHelper pra simplificar a escrita
     let keychainHelper = KeychainHelper.shared
     
+    
     func handleAuthorization(_ authorization: ASAuthorization){
         
         // guard let para converter a credencial para o tipo AppleIDCredential
