@@ -136,7 +136,7 @@
 				CODE_SIGN_ENTITLEMENTS = locavio/locavio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YDGZTDXJVC;
+				DEVELOPMENT_TEAM = 4WGP579GLY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = locavio/Info.plist;
@@ -154,7 +154,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ada.locavio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sampaio.Locavio.Locavio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
@@ -174,7 +174,7 @@
 				CODE_SIGN_ENTITLEMENTS = locavio/locavio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = YDGZTDXJVC;
+				DEVELOPMENT_TEAM = 4WGP579GLY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = locavio/Info.plist;
@@ -192,7 +192,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ada.locavio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sampaio.Locavio.Locavio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
