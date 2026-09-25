@@ -16,12 +16,12 @@ final class TextsOnboardingViewModel {
     
     let allScreen = 3
     
-    let screenOnboardings: [TextsOnboardingModel] = [
-        TextsOnboardingModel(titleOnboarding: "Gerencie seus imóveis", subtitleOnboarding: "Cadastre seus imóveis e tenha tudo organizado em um só lugar."),
+    let screenOnboardings: [OnboardingModel] = [
+        OnboardingModel(titleOnboarding: "Gerencie\nseus imóveis", subtitleOnboarding: "Cadastre seus imóveis e tenha tudo\norganizado em um só lugar.", image: "OnboardingScreen1"),
         
-        TextsOnboardingModel(titleOnboarding: "Acompanhe cada Solicitação", subtitleOnboarding: "Registre manutenções e acompanhe o andamento de tudo."),
+        OnboardingModel(titleOnboarding: "Acompanhe\ncada Solicitação", subtitleOnboarding: "Registre manutenções e acompanhe o\nandamento de tudo.", image: "OnboardingScreen2"),
         
-        TextsOnboardingModel(titleOnboarding: "Tenha uma visão do seu negócio", subtitleOnboarding: "Acompanhe aluguéis, lucros e despesas em um único dashboard.")
+        OnboardingModel(titleOnboarding: "Tenha uma\n visão do seu negócio", subtitleOnboarding: "Acompanhe aluguéis, lucros e despesas\nem um único dashboard.", image: "OnboardingScreen3")
     ]
     
 
