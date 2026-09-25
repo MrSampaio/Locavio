@@ -40,4 +40,9 @@ final class TextsOnboardingViewModel {
         
         currentScreen -= 1
     }
+    
+    // não é push ou pop, ele troca a raiz do app inteiro
+    func finishOnboarding() {
+        UserDefaults.standard.set(true, forKey: "onboardingConcluido")
+    }
 }
