@@ -10,23 +10,27 @@ import SwiftUI
 
 struct ComponentTextOnboarding: View {
     @Bindable var viewModel: TextsOnboardingViewModel
-    
-    private var texts: TextsOnboardingModel {
-        viewModel.screenOnboardings[0]
+    let screen: Int
+    private var texts: OnboardingModel {
+        viewModel.screenOnboardings[screen]
     }
     var body: some View {
-        VStack{
+        VStack(alignment: .leading, spacing: 16){
             Text(texts.titleOnboarding)
                 .font(.largeTitle)
-                .fontWeight(.semibold)
+                .fontWeight(.bold)
                 .foregroundStyle(Color.colorOnboarding)
-            
+                
+                
             Text(texts.subtitleOnboarding)
                 .font(.callout)
+                .multilineTextAlignment(.leading)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal,16)
     }
 }
 
 #Preview {
-    ComponentTextOnboarding(viewModel: TextsOnboardingViewModel())
+    ComponentTextOnboarding(viewModel: TextsOnboardingViewModel(), screen: 0)
 }

@@ -15,7 +15,9 @@ struct ComponentButton: View {
     var body: some View {
         Button(action: action) {
             Text(textButton)
-                .font(.callout)
+                .font(.headline)
+                .fontWeight(.medium)
+                .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
                 .frame(height: 44)
                 .background(Color.accent)
@@ -23,6 +25,7 @@ struct ComponentButton: View {
                     RoundedRectangle(cornerRadius: 20)
                 )
         }
+        .glassEffect()
         .buttonStyle(.plain)
     }
 }
