@@ -30,7 +30,7 @@ struct DocumentTypePicker: View {
                         Text(type.rawValue).tag(type)
                     }
                 }
-                .tint(.accentColor)
+                .tint(.secondary)
             }
             .frame(width: .infinity)
             
