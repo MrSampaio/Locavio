@@ -19,7 +19,7 @@ struct StageBall: View {
                 
                 Circle()
                     .fill(
-                        index == currentPage - 1
+                        index == currentPage 
                         ? (Color.primary)
                         : Color.gray.opacity(0.5)
                     )
