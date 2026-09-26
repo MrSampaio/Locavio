@@ -14,43 +14,92 @@ struct LoginView: View {
     
     // contexto do swift data
     @Environment(\.modelContext) private var context
-        
+    
     // instância da viewmodel de login
     @State private var loginViewModel = LoginViewModel()
-
+    
+    let gradientStops: [Gradient.Stop] = [
+        Gradient.Stop(color: .loginGradient3, location: 0.0),
+        Gradient.Stop(color: .loginGradient2, location: 0.3),
+        Gradient.Stop(color: .loginGradient1, location: 1.0)
+    ]
+    
     var body: some View {
-        VStack{
+        ZStack {
             
-            Text("Essa vai ser a tela de login, fé que agora vai")
-                .bold()
+            Rectangle()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .foregroundStyle(
+                    LinearGradient(
+                        gradient: Gradient(stops: gradientStops),
+                        startPoint: .top,
+                        endPoint: .bottom)
+                )
+                .ignoresSafeArea()
             
-            SignInWithAppleButton(.continue){
-                request in
-                request.requestedScopes = [.fullName, .email]
-            } onCompletion: { result in
-                switch result {
-                case .success(let authorization):
+            
+            VStack {
+                
+                Spacer()
+                
+                Image("LocavioLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxWidth: 280)
+                
+                Spacer()
+                Spacer()
+                
+                VStack(alignment: .leading, spacing: 12) {
                     
-                    // atualiza a variável isAuthenticated do App
-                    appleAuthManager.handleAuthorization(authorization)
-                                        
-                    // sincroniza com o SwiftData para subir pro iCloud
-                    // passa o contexto como parâmetro pq o swift data só pode ser usado em structs
-                    loginViewModel.syncUserToSwiftData(context: context)
+                    Text("Boas-Vindas!")
+                        .font(.title.bold())
+                        .frame(maxWidth: .infinity)
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom, 14)
                     
-                case .failure(let error):
-                    print("Error when trying to sign in: \(error.localizedDescription)")
+                    Image("termsIcon")
+                    
+                    
+                    Text("O Locavio é um app para fazer a gestão de seus imóveis. Para uma melhor experiência, coletamos a numeração do seu documento, seu nome e email, os quais serão utilizados exclusivamente para a validação da sua identidade e não serão compartilhados com outros usuários.")
+                        .font(.caption)
+                        .foregroundStyle(.primary)
+                    
+                    Text("Veja como seus dados são gerenciados...")
+                        .font(.caption.bold())
+                        .foregroundStyle(.darkerPalette)
+                    
+                    SignInWithAppleButton(.continue) {
+                        request in
+                        request.requestedScopes = [.fullName, .email]
+                    } onCompletion: { result in
+                        switch result {
+                        case .success(let authorization):
+                            
+                            // atualiza a variável isAuthenticated do App
+                            appleAuthManager.handleAuthorization(authorization)
+                            
+                            // sincroniza com o SwiftData para subir pro iCloud
+                            // passa o contexto como parâmetro pq o swift data só pode ser usado em structs
+                            loginViewModel.syncUserToSwiftData(context: context)
+                            
+                        case .failure(let error):
+                            print("Error when trying to sign in: \(error.localizedDescription)")
+                        }
+                    }
+                    //            .signInWithAppleButtonStyle(.whiteOutline)
+                    .frame(height: 50)
+                    .clipShape(RoundedRectangle(cornerRadius: 100))
                 }
+                .padding(30)
+                .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 38))
+                .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 38))
             }
-            .signInWithAppleButtonStyle(.white)
-            .padding(.horizontal, 26)
-            .frame(height: 50)
+            .padding()
         }
-        
-        .padding()
-//        .task{
-//            appleAuthManager.checkCredentialStatus()
-//        }
+        //        .task{
+        //            appleAuthManager.checkCredentialStatus()
+        //        }
         
     }
 }
