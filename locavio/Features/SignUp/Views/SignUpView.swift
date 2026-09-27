@@ -65,6 +65,11 @@ struct SignUpView: View {
                 }
             }
             
+            .onChange(of: signUpViewModel.selectedDocumentType) { oldValue, newValue in
+                
+                signUpViewModel.documentNumber = ""
+            }
+            
             if let errorText = signUpViewModel.errorMessage {
                 ErrorMessage(text: errorText)
             }
