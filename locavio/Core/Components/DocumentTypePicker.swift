@@ -46,7 +46,7 @@ struct DocumentTypePicker: View {
                 }
                 .tint(.secondary)
             }
-            .frame(width: .infinity)
+            .frame(maxWidth: .infinity)
             
             
         }

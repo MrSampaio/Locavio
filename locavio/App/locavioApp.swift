@@ -32,7 +32,8 @@ struct locavioApp: App {
                 if appleAuthManager.isAuthenticated {
                     MainTabView()
                 } else{
-                    LoginView()
+//                    LoginView()
+                    SignUpView()
                 }
             }
             

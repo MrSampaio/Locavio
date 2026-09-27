@@ -14,10 +14,17 @@ struct SignUpView: View {
     @State private var signUpViewModel = SignUpViewModel()
     
     var body: some View {
-        VStack(alignment: .center){
-            titleSection
-            documentSection
+        ZStack{
+            Color(UIColor.background)
+                .ignoresSafeArea()
+            
+            VStack(alignment: .center, spacing: 24){
+                titleSection
+                documentSection
+            }
+            .background(Color(.background))
         }
+        
         
     }
     
@@ -40,15 +47,23 @@ struct SignUpView: View {
                 
                 DocumentTextField(text: $signUpViewModel.documentNumber, documentType: signUpViewModel.selectedDocumentType)
             }
-            .padding(16)
             
+
+            .padding(16)
+//            .background(Color(.))
             .background(Color(.secondarySystemBackground))
             .cornerRadius(34)
-            
+            .padding(.horizontal, 24)
         }
-        .background(Color(.red))
+
         .padding(.vertical, 24)
-        .padding(.horizontal, 24)
+        
+        // se descomentar, vai travar
+//        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 38))
+        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 38))
+        .padding(.horizontal, 16)
+        
+        
     }
 }
 
