@@ -47,23 +47,27 @@ struct SignUpView: View {
                 
                 DocumentTextField(text: $signUpViewModel.documentNumber, documentType: signUpViewModel.selectedDocumentType)
             }
-            
-
             .padding(16)
-//            .background(Color(.))
             .background(Color(.secondarySystemBackground))
             .cornerRadius(34)
             .padding(.horizontal, 24)
+            
+            VStack(){
+                TipsText(text: "Utilizamos seu documento exclusivamente para sua identificação e não será compartilhado com outros usuários.")
+                
+                ComponentButton(textButton: "Começar", action: {})
+                    .padding(.horizontal, 65)
+            }
+            .padding(.horizontal, 16)
+            
+            
         }
-
         .padding(.vertical, 24)
         
         // se descomentar, vai travar
 //        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 38))
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 38))
         .padding(.horizontal, 16)
-        
-        
     }
 }
 
