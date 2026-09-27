@@ -51,6 +51,15 @@ struct SignUpView: View {
             .background(Color(.secondarySystemBackground))
             .cornerRadius(34)
             .padding(.horizontal, 24)
+            .onChange(of: signUpViewModel.documentNumber) { oldValue, newValue in
+                // define o limite baseado no tipo (14 para CPF com máscara, 18 para CNPJ)
+                let limit = signUpViewModel.selectedDocumentType == .pf ? 14 : 18
+                
+                if newValue.count > limit {
+                    // corta a string se passar do limite
+                    signUpViewModel.documentNumber = String(newValue.prefix(limit))
+                }
+            }
             
             VStack(){
                 TipsText(text: "Utilizamos seu documento exclusivamente para sua identificação e ele não será compartilhado com outros usuários.")
