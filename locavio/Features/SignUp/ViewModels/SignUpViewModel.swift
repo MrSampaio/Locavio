@@ -18,8 +18,7 @@ final class SignUpViewModel {
         if selectedDocumentType == .pf {
             return documentNumber.isValidCPF
         } else {
-            let justNumbers = documentNumber.filter { $0.isNumber }
-            return justNumbers.count == 14 // && documentNumber.isValidCNPJ
+            return documentNumber.isValidCNPJ
         }
     }
     

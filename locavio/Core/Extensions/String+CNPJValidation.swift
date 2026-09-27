@@ -9,6 +9,7 @@ import Foundation
 
 extension String{
     
+    /// Retorna verdadeiro se a string for um CNPJ matematicamente válido.
     var isValidCNPJ: Bool {
         // remove pontuações
         let numbers = self.filter { $0.isNumber }
