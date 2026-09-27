@@ -47,29 +47,37 @@ struct SignUpView: View {
                 
                 DocumentTextField(text: $signUpViewModel.documentNumber, documentType: signUpViewModel.selectedDocumentType)
             }
+
             .padding(16)
             .background(Color(.secondarySystemBackground))
+            .overlay(
+                RoundedRectangle(cornerRadius: 34)
+                    .stroke(signUpViewModel.errorMessage != nil ? .red : .clear, lineWidth: 1.5)
+            )
             .cornerRadius(34)
             .padding(.horizontal, 24)
             .onChange(of: signUpViewModel.documentNumber) { oldValue, newValue in
-                // define o limite baseado no tipo (14 para CPF com máscara, 18 para CNPJ)
-                let limit = signUpViewModel.selectedDocumentType == .pf ? 14 : 18
+                // adiciona máscara de formatação de acordo com o tipo de documento
+                let maskedText = signUpViewModel.applyDocumentMask(to: newValue)
                 
-                if newValue.count > limit {
-                    // corta a string se passar do limite
-                    signUpViewModel.documentNumber = String(newValue.prefix(limit))
+                if signUpViewModel.documentNumber != maskedText {
+                    signUpViewModel.documentNumber = maskedText
                 }
             }
             
-            VStack(){
+            if let errorText = signUpViewModel.errorMessage {
+                ErrorMessage(text: errorText)
+            }
+            
+            VStack(alignment: .center){
+                
+                
                 TipsText(text: "Utilizamos seu documento exclusivamente para sua identificação e ele não será compartilhado com outros usuários.")
                 
                 ComponentButton(textButton: "Começar", action: {})
                     .padding(.horizontal, 65)
             }
             .padding(.horizontal, 16)
-            
-            
         }
         .padding(.vertical, 24)
         
