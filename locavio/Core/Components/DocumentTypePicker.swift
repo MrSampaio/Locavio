@@ -25,14 +25,28 @@ struct DocumentTypePicker: View {
                 
                 Spacer()
                 
-                Picker(selection: $selection, label: Text("")) {
-                    ForEach(DocumentTypeModel.allCases, id: \.self) { type in
-                        Text(type.rawValue).tag(type)
+                Menu {
+                    Picker(selection: $selection, label: Text("")) {
+                        ForEach(DocumentTypeModel.allCases, id: \.self) { type in
+                            // text extenso na lista aberta
+                            Text(type.description).tag(type)
+                        }
+                    }
+                } label: {
+                    HStack(spacing: 6) {
+                        // sigla quando está fechado
+                        Text(selection.rawValue)
+                            .font(.body)
+                            .foregroundColor(.secondary)
+                        
+                        Image(systemName: "chevron.up.chevron.down")
+                            .font(.caption2)
+                            .foregroundColor(.secondary)
                     }
                 }
                 .tint(.secondary)
             }
-            .frame(width: .infinity)
+            .frame(maxWidth: .infinity)
             
             
         }

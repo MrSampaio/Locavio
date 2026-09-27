@@ -10,14 +10,14 @@ import Foundation
 enum DocumentTypeModel: String, CaseIterable {
     
     // casos possíveis
-    case pf = "Pessoa Física"
-    case pj = "Pessoa Jurídica"
+    case pf = "PF"
+    case pj = "PJ"
     
-//    // texto que vai aparecer quando abrir a lista
-//    var descricao: String {
-//        switch self {
-//            case .pf: return "Pessoa Física"
-//            case .pj: return "Pessoa Jurídica"
-//        }
-//    }
+    // description passa a ser o nome extenso (aparece na lista aberta)
+    var description: String {
+        switch self {
+            case .pf: return "Pessoa Física"
+            case .pj: return "Pessoa Jurídica"
+        }
+    }
 }

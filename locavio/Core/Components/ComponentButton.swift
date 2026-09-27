@@ -19,7 +19,7 @@ struct ComponentButton: View {
                 .fontWeight(.medium)
                 .foregroundStyle(.white)
                 .frame(maxWidth: .infinity)
-                .frame(height: 44)
+                .frame(height: 48)
                 .background(Color.accent)
                 .clipShape(
                     RoundedRectangle(cornerRadius: 20)

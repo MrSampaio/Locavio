@@ -24,10 +24,12 @@ struct SignUpTitle: View {
             Text(subtitle)
                 .font(.callout)
                 .multilineTextAlignment(.center)
+                .foregroundColor(.secondary)
         }
+        .frame(maxWidth: .infinity)
     }
 }
 
 #Preview {
-    SignUpTitle(title: "Lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit", subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ")
+    SignUpTitle(title: "Lorem Lorem ipsum dolor sit amet, consectetur adipiscing elit", subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation")
 }
