@@ -24,7 +24,9 @@ struct SignUpTitle: View {
             Text(subtitle)
                 .font(.callout)
                 .multilineTextAlignment(.center)
+                .foregroundColor(.secondary)
         }
+        .frame(maxWidth: .infinity)
     }
 }
 
