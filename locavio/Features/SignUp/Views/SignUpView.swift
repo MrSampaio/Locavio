@@ -53,7 +53,7 @@ struct SignUpView: View {
             .padding(.horizontal, 24)
             
             VStack(){
-                TipsText(text: "Utilizamos seu documento exclusivamente para sua identificação e não será compartilhado com outros usuários.")
+                TipsText(text: "Utilizamos seu documento exclusivamente para sua identificação e ele não será compartilhado com outros usuários.")
                 
                 ComponentButton(textButton: "Começar", action: {})
                     .padding(.horizontal, 65)
