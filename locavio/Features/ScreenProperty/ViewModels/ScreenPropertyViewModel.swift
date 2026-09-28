@@ -5,30 +5,38 @@
 //  Created by Guilherme Alves de Souza on 26/09/26.
 //
 
-//import SwiftUI
-//
-//@Observable
-//final class ScreenPropertyViewModel: ObservableObject {
-//    @Published var property: Property
-// 
-//    init(property: Property) {
-//        self.property = property
-//    }
-// 
-//    // Getters simples pra manter a View "burra" (só exibe o que o VM manda)
-//    var title: String { property.title }
-//    var address: String { property.address }
-//    var priceLabel: String { property.priceLabel }
-//    var price: String { property.price }
-//    var imageURL: String { property.imageURL }
-// 
-//    var tenantText: String? {
-//        guard let tenant = property.tenant else { return nil }
-//        return "Locatário: \(tenant)"
-//    }
-// 
-//    var nextPaymentText: String? {
-//        guard let date = property.nextPaymentDate else { return nil }
-//        return date
-//    }
-//}
+import SwiftUI
+import Combine
+
+enum PropertyFilter: String, CaseIterable, Identifiable {
+    case todos = "Todos"
+    case alugados = "Alugados"
+    case naoAlugados = "Não Alugados"
+
+    var id: Self { self }
+}
+
+final class ScreenPropertyViewModel: ObservableObject {
+    @Published var properties: [Property] = []
+    @Published var searchText = ""
+    @Published var filter: PropertyFilter = .todos
+
+    var filteredProperties: [Property] {
+        properties
+//            .filter { property in
+//                switch filter {
+//                case .todos: return true
+//                case .alugados: return property.isRented
+//                case .naoAlugados: return !property.isRented
+//                }
+//            }
+//            .filter { property in
+//                searchText.isEmpty ||
+//                property.title.localizedCaseInsensitiveContains(searchText) ||
+//                property.address.localizedCaseInsensitiveContains(searchText)
+//            }
+    }
+
+    func showOptions() { print("Opções") }
+    func addProperty() { print("Adicionar") }
+}
