@@ -15,7 +15,9 @@ final class Ticket: Identifiable {
     var ticketDescription: String?
     var createdAt: Date?
     var conclusionDate: Date?
-    var maintenance: Maintence?
+
+    @Relationship(deleteRule: .cascade, inverse: \Maintence.ticket)
+    var maintence: Maintence?
     
     init(title: String? = nil, ticketNumber: Int? = nil, ticketDescription: String? = nil, createdAt: Date? = nil, conclusionDate: Date? = nil) {
         self.title = title

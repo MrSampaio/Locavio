@@ -15,7 +15,7 @@ final class Owner: Identifiable {
     var name: String?
     var phone: String?
     var documentType: DocumentTypeModel?
-    var properties: [Property]?
+    var property: [Property]?
     var notifyPayments: Bool?
     var notifyDueDate: Bool?
     var notifyTickets: Bool?
@@ -25,7 +25,7 @@ final class Owner: Identifiable {
         self.name = name
         self.phone = phone
         self.documentType = documentType
-        self.properties = properties
+        self.property = property
         self.notifyPayments = notifyPayments
         self.notifyDueDate = notifyDueDate
         self.notifyTickets = notifyTickets
