@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum DocumentTypeModel: String, CaseIterable {
+enum DocumentTypeModel: String, CaseIterable, Codable {
     
     // casos possíveis
     case pf = "PF"

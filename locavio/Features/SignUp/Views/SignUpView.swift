@@ -15,16 +15,15 @@ struct SignUpView: View {
     
     var body: some View {
         ZStack{
-            Color(UIColor.background)
+            Color(UIColor.appBg)
                 .ignoresSafeArea()
             
             VStack(alignment: .center, spacing: 24){
                 titleSection
                 documentSection
             }
-            .background(Color(.background))
+            .background(Color(.appBg))
         }
-        
         
     }
     
@@ -40,6 +39,7 @@ struct SignUpView: View {
     private var documentSection: some View{
         VStack(alignment: .center, spacing: 12){
             VStack(spacing: 16){
+                
                 DocumentTypePicker(selection: $signUpViewModel.selectedDocumentType)
                 
                 Divider()
@@ -49,7 +49,7 @@ struct SignUpView: View {
             }
 
             .padding(16)
-            .background(Color(.secondarySystemBackground))
+            .background(Color(.bgForm))
             .overlay(
                 RoundedRectangle(cornerRadius: 34)
                     .stroke(signUpViewModel.errorMessage != nil ? .red : .clear, lineWidth: 1.5)
@@ -75,8 +75,6 @@ struct SignUpView: View {
             }
             
             VStack(alignment: .center){
-                
-                
                 TipsText(text: "Utilizamos seu documento exclusivamente para sua identificação e ele não será compartilhado com outros usuários.")
                 
                 ComponentButton(textButton: "Começar", action: {})
@@ -87,7 +85,7 @@ struct SignUpView: View {
         .padding(.vertical, 24)
         
         // se descomentar, vai travar
-//        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 38))
+        .background(.bgBox, in: RoundedRectangle(cornerRadius: 38))
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 38))
         .padding(.horizontal, 16)
     }
