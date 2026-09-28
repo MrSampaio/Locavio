@@ -1,58 +1,48 @@
 //
-//  HomeView.swift
+//  ScreenPropertyView.swift
 //  locavio
 //
-//  Created by Julio Sampaio on 19/09/26.
+//  Created by Guilherme Alves de Souza on 26/09/26.
 //
 
 import SwiftUI
-import SwiftData
 
 struct PropertiesView: View {
-    
-    @State private var propertiesViewModel = PropertiesViewModel()
-    @Environment(AppleAuthManager.self) var authManager
-    
-    @Environment(\.modelContext) private var context
-    
+    @State private var viewModel = PropertiesViewModel()
     var body: some View {
-        
-        VStack{
-            
-            VStack{
-                Text("aopa, \(propertiesViewModel.userName)!")
-                Text("Email: \(propertiesViewModel.userEmail)")
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("Imóveis")
+                        .font(.largeTitle.bold())
+
+                    SearchBarView(text: $viewModel.searchText)
+
+                    Picker("Filtro", selection: $viewModel.filter) {
+                        ForEach(PropertyFilter.allCases) { filter in
+                            Text(filter.rawValue).tag(filter)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+
+                    LazyVStack(spacing: 16) {
+                        // seus PropertyCardView entram aqui
+                    }
+                }
+                .padding(.horizontal)
             }
-            .font(.title)
-            .bold()
-            
-            
-            
-            Text("Essa é a home view. Só vai aparecer quando o Sign In With Apple funfar")
-                .padding()
-            
-            Button(action: {
-                authManager.logout()
-            }) {
-                Text("Sair do Aplicativo")
-                    .bold()
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 50)
+            .navigationBarTitleDisplayMode(.inline) // sem .navigationTitle
+            .toolbar {
+                AppToolbar(
+                    onMore: { viewModel.showOptions() },
+                    onAdd: { viewModel.addProperty() }
+                )
             }
-            .buttonStyle(.borderedProminent)
-            .tint(.red)
-            .padding(.horizontal, 26)
-            .padding(.bottom, 40)
-        }
-        
-        // função para carregar as infos do usuário no momento em que a página é aberta
-        .onAppear {
-            propertiesViewModel.fetchUserData(context: context)
         }
     }
 }
 
 #Preview {
     PropertiesView()
-        .environment(AppleAuthManager())
+       
 }
