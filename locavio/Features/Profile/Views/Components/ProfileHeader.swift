@@ -35,16 +35,16 @@ struct ProfileHeader: View {
            
             
             VStack(spacing: 4){
-                Text("Nome de usuário")
+                Text(userName)
                     .font(.title2)
                     .fontWeight(.bold)
                 
                 // outra bola: ●
-                Text("•••.123.•••.456-••")
+                Text(maskedDocument)
             }
             
             HStack(spacing: 12){
-                Text("5 imóveis")
+                Text("\(String(numberOfProperties)) imóveis")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
@@ -52,7 +52,7 @@ struct ProfileHeader: View {
                     .background(Color(.badget01))
                     .cornerRadius(40)
                 
-                Text("3 Inquilinos")
+                Text("\(String(numberOfTenants)) inquilinos")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .frame(maxWidth: .infinity)
