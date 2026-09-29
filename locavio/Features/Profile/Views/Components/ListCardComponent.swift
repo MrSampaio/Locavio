@@ -13,14 +13,15 @@ struct ListCardComponent: View {
     
     var body: some View {
         VStack {
-            Text(textList)
+            Text(LocalizedStringKey(textList))
                 .font(.caption2)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(10)
         .background(.listCard, in: RoundedRectangle(cornerRadius: 10))
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(.listStrokeCard)
+                .strokeBorder(.listStrokeCard, lineWidth: 1)
         )
         .contentShape(RoundedRectangle(cornerRadius: 10))
     }
