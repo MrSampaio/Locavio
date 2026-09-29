@@ -16,14 +16,24 @@ struct ProfileView: View {
 //    @Query private var userProfiles: [UserProfile]
 //    @Query private var properties: [Property]
 //    @Query private var tenants: [Tenant]
+    
     var body: some View {
-        ZStack{
-            Color(UIColor.appBg)
-                .ignoresSafeArea()
-            
-            VStack(spacing: 13){
-                profileHeader
-                notificationSettings
+        NavigationStack{
+            ZStack{
+                Color(UIColor.appBg)
+                    .ignoresSafeArea()
+                
+                VStack(spacing: 13){
+                    profileHeader
+                    notificationSettings
+                }
+
+                
+            }
+            .navigationTitle("Perfil")
+            .navigationBarTitleDisplayMode(.large)
+            .toolbar{
+                ProfileToolbar(onClick: {})
             }
         }
         
