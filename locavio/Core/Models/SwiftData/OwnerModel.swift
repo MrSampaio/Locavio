@@ -15,19 +15,21 @@ final class Owner: Identifiable {
     var name: String?
     var phone: String?
     var documentType: DocumentTypeModel?
-    var property: [Property]?
     var notifyPayments: Bool?
     var notifyDueDate: Bool?
     var notifyTickets: Bool?
     
-    init(email: String? = nil, name: String? = nil, phone: String? = nil, documentType: DocumentTypeModel? = .pf, properties: [Property]? = nil, notifyPayments: Bool? = nil, notifyDueDate: Bool? = nil, notifyTickets: Bool? = nil) {
+    @Relationship(deleteRule: .cascade, inverse: \Property.owner)
+    var properties: [Property]?
+    
+    init(email: String? = nil, name: String? = nil, phone: String? = nil, documentType: DocumentTypeModel? = nil, notifyPayments: Bool? = nil, notifyDueDate: Bool? = nil, notifyTickets: Bool? = nil, properties: [Property]? = nil) {
         self.email = email
         self.name = name
         self.phone = phone
         self.documentType = documentType
-        self.property = property
         self.notifyPayments = notifyPayments
         self.notifyDueDate = notifyDueDate
         self.notifyTickets = notifyTickets
+        self.properties = properties
     }
 }
