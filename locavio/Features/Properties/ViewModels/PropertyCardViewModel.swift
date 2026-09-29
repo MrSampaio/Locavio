@@ -25,17 +25,13 @@ final class PropertyCardViewModel {
 
 
     var image: UIImage? {
-        guard let data = property.image else {
-            return nil
-        }
+        guard let data = property.image else { return nil }
         return UIImage(data: data)
     }
 
-    var hasImage: Bool { image
-        != nil
-    }
+    var hasImage: Bool { image != nil }
 
-
+    
 
     var title: String {
         property.title?.trimmedOrNil ?? "Sem título"
@@ -45,18 +41,22 @@ final class PropertyCardViewModel {
     var address: String {
         let streetPart = [property.street?.trimmedOrNil,
                           property.number.map(String.init)]
-            .compactMap {
-                $0
-            }
+            .compactMap { $0 }
             .joined(separator: ", ")
 
         let parts = [streetPart.trimmedOrNil, property.city?.trimmedOrNil]
-            .compactMap {
-                $0
-            }
+            .compactMap { $0 }
 
         return parts.isEmpty ? "Endereço não informado" : parts.joined(separator: " - ")
     }
+
+   
+    var tenantName: String? {
+        let rawName: String? = property.tenant?.name
+        return rawName?.trimmedOrNil
+    }
+
+    var noTenantText: String { "Nenhum locatário" }
 
 
 
@@ -69,7 +69,8 @@ final class PropertyCardViewModel {
         )
     }
 
-    
+  
+
     var nextPaymentLabel: String { "Próx. Pagamento:" }
 
     var nextPaymentText: String {
@@ -77,7 +78,7 @@ final class PropertyCardViewModel {
         return Self.dateFormatter.string(from: date)
     }
 
-    
+   
     private var nextPaymentDate: Date? {
         guard let day = property.paymentDay, (1...31).contains(day) else { return nil }
 
