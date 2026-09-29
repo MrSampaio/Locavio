@@ -11,9 +11,6 @@ import SwiftUI
 struct ProfileCoordinatorView: View {
     @State private var profileCoordinator = ProfileCoordinator()
     
-    @State private var profileViewModel = ProfileViewModel()
-    
-    
     var body: some View {
         NavigationStack(path: $profileCoordinator.path) {
             ProfileView()

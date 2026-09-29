@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+
+enum ProfileRoutes{
+    case properties
+    case dashboard
+    case calendar
+    case ticket
+}
+
+enum ProfileSheet{
+    case editProfileSheet
+}

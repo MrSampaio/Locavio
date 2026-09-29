@@ -22,9 +22,7 @@ struct ProfileView: View {
         ZStack{
             Color(UIColor.appBg)
                 .ignoresSafeArea()
-            
-            
-            
+
             VStack(spacing: 13){
                 ScrollView(){
                     profileHeader
