@@ -15,6 +15,17 @@ struct ProfileCoordinatorView: View {
         NavigationStack(path: $profileCoordinator.path) {
             ProfileView()
             
+            
+            // roteador de pilha
+            .navigationDestination(for: ProfileRoutes.self) { route in
+                switch route {
+                    case .terms:
+                        #warning("ADICIONE A TELA DE TERMOS DE USO!")
+                        
+                    case .privacy:
+                        #warning("ADICIONE A TELA DE TERMOS DE PRIVACIDADE")
+                }
+            }
         }
     }
 }

@@ -17,21 +17,14 @@ final class ProfileCoordinator {
     var activeSheet: ProfileSheet?
     
     // navegação em pilha
-    func pushToProperties() {
-        path.append(ProfileRoutes.properties)
+    func pushToTerms() {
+        path.append(ProfileRoutes.terms)
     }
     
-    func pushToDashboard() {
-        path.append(ProfileRoutes.dashboard)
+    func pushToPrivacy() {
+        path.append(ProfileRoutes.privacy)
     }
     
-    func pushToCalendar(){
-        path.append(ProfileRoutes.calendar)
-    }
-    
-    func pushToTickets(){
-        path.append(ProfileRoutes.ticket)
-    }
     
     func pop() {
         if !path.isEmpty {

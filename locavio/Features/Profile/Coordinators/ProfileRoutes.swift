@@ -9,10 +9,8 @@ import Foundation
 
 
 enum ProfileRoutes{
-    case properties
-    case dashboard
-    case calendar
-    case ticket
+    case terms
+    case privacy
 }
 
 enum ProfileSheet{
