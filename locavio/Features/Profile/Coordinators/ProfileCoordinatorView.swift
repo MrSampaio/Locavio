@@ -14,7 +14,7 @@ struct ProfileCoordinatorView: View {
     var body: some View {
         NavigationStack(path: $profileCoordinator.path) {
             ProfileView()
-            
+                .environment(profileCoordinator)
             
             // roteador de pilha
             .navigationDestination(for: ProfileRoutes.self) { route in
@@ -29,14 +29,6 @@ struct ProfileCoordinatorView: View {
         }
     }
 }
-
-
-
-
-
-
-
-
 
 //struct PropertiesCoordinatorView: View {
 //

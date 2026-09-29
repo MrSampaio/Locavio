@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ProfileView: View {
     @State private var viewModel = ProfileViewModel()
+    @Environment(ProfileCoordinator.self) private var coordinator
     
     
     // futuras queries
@@ -23,11 +24,18 @@ struct ProfileView: View {
             Color(UIColor.appBg)
                 .ignoresSafeArea()
 
+            
             VStack(spacing: 13){
                 ScrollView(){
+                    Button(action: {
+                        coordinator.pushToTerms()
+                    }) {
+                        Text("Adicionar Novo Imóvel")
+                    }
                     profileHeader
                     notificationSettings
                 }
+
             }
             
         }
@@ -74,4 +82,5 @@ struct ProfileView: View {
 
 #Preview {
     ProfileView()
+        .environment(ProfileCoordinator())
 }
