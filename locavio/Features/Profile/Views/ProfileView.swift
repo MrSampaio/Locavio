@@ -17,6 +17,47 @@ struct ProfileView: View {
 //    @Query private var properties: [Property]
 //    @Query private var tenants: [Tenant]
     var body: some View {
-        Text("Profile")
+        ZStack{
+            Color(UIColor.appBg)
+                .ignoresSafeArea()
+            
+            VStack(spacing: 13){
+                profileHeader
+                notificationSettings
+            }
+        }
+        
     }
+    
+    @ViewBuilder
+    var profileHeader: some View {
+        VStack {
+            ProfileHeader(
+                userImage: nil,
+                userName: "Julis",
+                maskedDocument: "***********",
+                numberOfProperties: 10,
+                numberOfTenants: 5
+            )
+        }
+        .padding(.horizontal, 90)
+    }
+    
+    @ViewBuilder
+    var notificationSettings: some View {
+        Form{
+            OptionToggle(text: "Notificar Pagamentos", isOn: $viewModel.notifyPayments)
+            
+            OptionToggle(text: "Notificar Vencimentos", isOn: $viewModel.notifyPendentPayments)
+            
+            OptionToggle(text: "Notificar Chamados", isOn: $viewModel.notifyTickets)
+        }
+        .scrollContentBackground(.hidden)
+        .background(Color(.appBg))
+        .padding(.horizontal, 16)
+    }
+}
+
+#Preview {
+    ProfileView()
 }
