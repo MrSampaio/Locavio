@@ -10,24 +10,28 @@ import SwiftUI
 struct MainTabView: View {
     var body: some View {
         TabView {
-            PropertiesCoordinatorView()
-                .tabItem {
-                    Label("Imóveis", systemImage: "house")
-                }
-            DashboardCoordinatorView()
-                .tabItem{
-                    Label("Relatório", systemImage: "chart.bar")
-                }
+            Tab("Imóveis", systemImage: "house"){
+                PropertiesCoordinatorView()
+            }
             
-            CalendarCoordinatorView()
-                .tabItem{
-                    Label("Calendário", systemImage: "calendar")
-                }
+            Tab("Perfil", systemImage: "person"){
+                ProfileCoordinatorView()
+            }
             
-            TicketsCoordinatorView()
-                .tabItem{
-                    Label("Chamados", systemImage: "exclamationmark.bubble")
-                }
+//            DashboardCoordinatorView()
+//                .tabItem{
+//                    Label("Relatório", systemImage: "chart.bar")
+//                }
+//            
+//            CalendarCoordinatorView()
+//                .tabItem{
+//                    Label("Calendário", systemImage: "calendar")
+//                }
+//            
+//            TicketsCoordinatorView()
+//                .tabItem{
+//                    Label("Chamados", systemImage: "exclamationmark.bubble")
+//                }
         }
     }
 }

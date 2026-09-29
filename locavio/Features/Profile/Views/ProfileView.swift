@@ -13,35 +13,40 @@ struct ProfileView: View {
     
     
     // futuras queries
-//    @Query private var userProfiles: [UserProfile]
-//    @Query private var properties: [Property]
-//    @Query private var tenants: [Tenant]
+    //    @Query private var userProfiles: [UserProfile]
+    //    @Query private var properties: [Property]
+    //    @Query private var tenants: [Tenant]
     
     var body: some View {
-        NavigationStack{
-            ZStack{
-                Color(UIColor.appBg)
-                    .ignoresSafeArea()
-                
-                VStack(spacing: 13){
+        //        NavigationStack{
+        ZStack{
+            Color(UIColor.appBg)
+                .ignoresSafeArea()
+            
+            
+            
+            VStack(spacing: 13){
+                ScrollView(){
                     profileHeader
                     notificationSettings
                 }
-
-                
             }
-            .navigationTitle("Perfil")
-            .navigationBarTitleDisplayMode(.large)
-            .toolbar{
-                ProfileToolbar(onClick: {})
-            }
+            
         }
+        
+        .navigationTitle("Perfil")
+        .navigationBarTitleDisplayMode(.large)
+        .toolbar{
+            ProfileToolbar(onClick: {})
+        }
+        
+        //        }
         
     }
     
     @ViewBuilder
     var profileHeader: some View {
-        VStack {
+        VStack(alignment: .center){
             ProfileHeader(
                 userImage: nil,
                 userName: "Julis",
@@ -50,7 +55,6 @@ struct ProfileView: View {
                 numberOfTenants: 5
             )
         }
-        .padding(.horizontal, 90)
     }
     
     @ViewBuilder
@@ -62,6 +66,8 @@ struct ProfileView: View {
             
             OptionToggle(text: "Notificar Chamados", isOn: $viewModel.notifyTickets)
         }
+        .scrollDisabled(true)
+        .frame(height: 200)
         .scrollContentBackground(.hidden)
         .background(Color(.appBg))
         .padding(.horizontal, 16)
