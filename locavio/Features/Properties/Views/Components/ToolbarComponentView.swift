@@ -6,8 +6,6 @@
 //
 import SwiftUI
 
-import SwiftUI
-
 struct AppToolbar: ToolbarContent {
     var onMore: () -> Void
     var onAdd: () -> Void

@@ -32,5 +32,14 @@ struct PropertiesCoordinatorView: View {
 //                }
 //            }
         }
+        
+//        .navigationBarTitleDisplayMode(.inline) // sem .navigationTitle
+//        .toolbar {
+//            AppToolbar(
+//                onMore: { viewModel.showOptions() },
+//                onAdd: { viewModel.addProperty() }
+//            )
+//        }
+
     }
 }
