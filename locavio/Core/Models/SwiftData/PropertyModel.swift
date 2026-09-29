@@ -8,7 +8,7 @@
 import Foundation
 import SwiftData
 
-enum PropertyType: String, Codable{
+enum PropertyType: String, Codable, CaseIterable{
     case home = "Casa"
     case apartment = "Apartamento"
     case kitnet = "Kitnet"

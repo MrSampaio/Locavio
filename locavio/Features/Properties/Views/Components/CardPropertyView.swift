@@ -25,6 +25,7 @@ struct PropertyCardView: View {
         .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
     }
 
+   
 
     @ViewBuilder
     private var background: some View {
@@ -41,11 +42,13 @@ struct PropertyCardView: View {
                 .overlay(alignment: .top) {
                     Image(systemName: "photo")
                         .font(.system(size: 56))
-                        .foregroundStyle(Color(.black))
+                        .foregroundStyle(Color(.systemGray))
                         .padding(.top, 50)
                 }
         }
     }
+
+  
 
     private var infoPanel: some View {
         HStack(alignment: .top, spacing: 12) {
@@ -59,6 +62,8 @@ struct PropertyCardView: View {
                     .foregroundStyle(secondaryTextColor)
                     .lineLimit(1)
                     .truncationMode(.tail)
+
+                tenantLine
             }
             .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -87,16 +92,35 @@ struct PropertyCardView: View {
         .background { panelBackground }
     }
 
+    
+
+    @ViewBuilder
+    private var tenantLine: some View {
+        Group {
+            if let name = viewModel.tenantName {
+                Text("\(Text("Locatário:").bold()) \(name)")
+            } else {
+                Text(viewModel.noTenantText)
+            }
+        }
+        .font(.subheadline)
+        .foregroundStyle(primaryTextColor.opacity(0.75))
+        .lineLimit(1)
+    }
+
+    
+
     private var panelShape: RoundedRectangle {
         RoundedRectangle(cornerRadius: 32, style: .continuous)
     }
 
+  
     @ViewBuilder
     private var panelBackground: some View {
         if viewModel.hasImage {
             panelShape.fill(.ultraThinMaterial)
         } else if colorScheme == .dark {
-            panelShape.fill(Color.gray)
+            panelShape.fill(Color.white)
         } else {
             panelShape
                 .fill(.ultraThinMaterial)
@@ -120,17 +144,25 @@ struct PropertyCardView: View {
     }
 }
 
+#Preview("Sem imagem - light") {
+    PropertyCardView(property: Property(
+        title: "Casa 1", paymentDay: 10, street: "Rua Ipê dsdsd", number: 55,
+        city: "São Paulo", profit: 1200
+    ))
+    .padding()
+}
+
 #Preview("Sem imagem - dark") {
     PropertyCardView(property: Property(
         title: "Casa 1", paymentDay: 10, street: "Rua Ipê Amarelo", number: 55,
-        
+        city: "São Paulo", profit: 1200
     ))
     .padding()
     .preferredColorScheme(.dark)
 }
- 
-// MARK: - Previews com imagem (asset "CasaText")
- 
+
+
+
 private func previewPropertyWithImage() -> Property {
     Property(
         image: UIImage(named: "CasaText")?.jpegData(compressionQuality: 0.9),
@@ -138,12 +170,12 @@ private func previewPropertyWithImage() -> Property {
         city: "São Paulo", profit: 1200
     )
 }
- 
+
 #Preview("Com imagem - light") {
     PropertyCardView(property: previewPropertyWithImage())
         .padding()
 }
- 
+
 #Preview("Com imagem - dark") {
     PropertyCardView(property: previewPropertyWithImage())
         .padding()
