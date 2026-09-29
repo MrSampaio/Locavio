@@ -6,3 +6,13 @@
 //
 
 import Foundation
+
+
+enum ProfileRoutes{
+    case terms
+    case privacy
+}
+
+enum ProfileSheet{
+    case editProfileSheet
+}

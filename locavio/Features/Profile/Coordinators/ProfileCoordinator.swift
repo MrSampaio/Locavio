@@ -10,5 +10,34 @@ import SwiftUI
 
 @Observable
 final class ProfileCoordinator {
+    
     var path = NavigationPath()
+    
+    // controle das sheets
+    var activeSheet: ProfileSheet?
+    
+    // navegação em pilha
+    func pushToTerms() {
+        path.append(ProfileRoutes.terms)
+    }
+    
+    func pushToPrivacy() {
+        path.append(ProfileRoutes.privacy)
+    }
+    
+    
+    func pop() {
+        if !path.isEmpty {
+            path.removeLast()
+        }
+    }
+    
+    // navegação das sheets
+    func presentEditProfile() {
+        activeSheet = .editProfileSheet
+    }
+    
+    func dismissSheet() {
+        activeSheet = nil
+    }
 }

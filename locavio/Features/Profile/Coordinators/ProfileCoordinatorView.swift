@@ -11,24 +11,24 @@ import SwiftUI
 struct ProfileCoordinatorView: View {
     @State private var profileCoordinator = ProfileCoordinator()
     
-    @State private var profileViewModel = ProfileViewModel()
-    
-    
     var body: some View {
         NavigationStack(path: $profileCoordinator.path) {
             ProfileView()
+                .environment(profileCoordinator)
             
+            // roteador de pilha
+            .navigationDestination(for: ProfileRoutes.self) { route in
+                switch route {
+                    case .terms:
+                        #warning("ADICIONE A TELA DE TERMOS DE USO!")
+                        
+                    case .privacy:
+                        #warning("ADICIONE A TELA DE TERMOS DE PRIVACIDADE")
+                }
+            }
         }
     }
 }
-
-
-
-
-
-
-
-
 
 //struct PropertiesCoordinatorView: View {
 //
