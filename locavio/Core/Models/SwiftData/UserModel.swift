@@ -15,10 +15,17 @@ final class UserProfile {
     var appleUserID: String = ""
     var fullName: String?
     var email: String?
+    var documentType: DocumentTypeModel?
+    var documentNumber: String?
+    var properties: [Property]?
     
-    init(appleUserID: String, fullName: String? = nil, email: String? = nil) {
+    
+    
+    init(appleUserID: String, fullName: String? = nil, email: String? = nil, documentType: DocumentTypeModel? = nil, documentNumber: String? = nil) {
         self.appleUserID = appleUserID
         self.fullName = fullName
         self.email = email
+        self.documentType = documentType
+        self.documentNumber = documentNumber
     }
 }
