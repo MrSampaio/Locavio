@@ -10,7 +10,6 @@ import SwiftUI
 struct OptionToggle: View {
     var text: String
     @Binding var isOn: Bool
-    
 
     var body: some View {
         HStack {
@@ -22,13 +21,13 @@ struct OptionToggle: View {
                 .labelsHidden()
         }
         .frame(maxWidth: .infinity)
-        .padding(.horizontal, 20)
-        .padding(.vertical, 14)
+//        .padding(.horizontal, 20)
+//        .padding(.vertical, 14)
 //        .background(Color.gray.opacity(0.1))
         .tint(Color.accentColor)
-        .clipShape(
-            RoundedRectangle(cornerRadius: 20)
-        )
+//        .clipShape(
+//            RoundedRectangle(cornerRadius: 20)
+//        )
 
         // a caixa inteira é clicável
         .onTapGesture {
