@@ -9,8 +9,18 @@ import SwiftUI
 import AuthenticationServices
 import Security
 
+enum AppAuthState{
+    case needsRegistration
+    case authenticated
+}
+
 @Observable
 final class AppleAuthManager{
+    
+    
+//    var firtUse: Bool = false
+    
+    var currentAuthState: AppAuthState?
     
     // variável que controla autenticação do usuário
     var isAuthenticated: Bool = false
@@ -69,10 +79,12 @@ final class AppleAuthManager{
             return
         }
         
+        
+
         // caso tudo tenha dado certo, seta o controle de autenticação para true
-        DispatchQueue.main.async {
-            self.isAuthenticated = true
-        }
+//        DispatchQueue.main.async {
+//            self.isAuthenticated = true
+//        }
     }
     
     func checkCredentialStatus(){
@@ -94,22 +106,17 @@ final class AppleAuthManager{
                 case.authorized:
                     print("User is authorized!")
                     self.isAuthenticated = true
+                        
+//                        #warning("")
                     
                 // importante: as infos precisam ser apagadas do Keychain caso o usuário tenha revogado o acesso do app aos seus dados
-                case.revoked, .notFound:
-                    print("User revoked access or not found")
-                    self.logout()
-                    
-                case.transferred:
-                    print("Credential transfered.")
-                    self.logout()
-                    
+                case.revoked, .notFound, .transferred:
+                print("User revoked access, not found or revoked")
+                self.logout()
+
                 @unknown default:
                     break
                 }
-                
-                
-                
             }
         }
     }

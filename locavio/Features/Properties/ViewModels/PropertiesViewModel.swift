@@ -18,6 +18,8 @@ enum PropertyFilter: String, CaseIterable, Identifiable {
 
 @Observable
 final class PropertiesViewModel {
+    
+    var appleAuthManager = AppleAuthManager()
     var searchText = ""
     var filter: PropertyFilter = .todos
 
@@ -40,6 +42,9 @@ final class PropertiesViewModel {
     }
 
     func addProperty() { print("Adicionar") }
+    
+    
+    
 }
 
 

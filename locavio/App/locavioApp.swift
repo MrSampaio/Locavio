@@ -15,7 +15,14 @@ struct locavioApp: App {
     
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            UserProfile.self
+            Owner.self,
+            Property.self,
+            Tenant.self,
+            Contract.self,
+            Payment.self,
+            Expenses.self,
+            Ticket.self,
+            Maintence.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -30,10 +37,19 @@ struct locavioApp: App {
         WindowGroup {
             Group{
                 if appleAuthManager.isAuthenticated {
-                    MainTabView()
-                } else{
+                    switch appleAuthManager.currentAuthState {
+                        case .authenticated:
+                            MainTabView()
+                        case .needsRegistration:
+                            SignUpView()
+                            #warning("MUDA PRA SIGN UP VIEW COORDINATOR")
+                            
+                        case nil:
+                            LoginView()
+                    }
+                }
+                else{
                     LoginView()
-//                    SignUpView()
                 }
             }
             

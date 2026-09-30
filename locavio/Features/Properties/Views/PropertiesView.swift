@@ -10,7 +10,6 @@ import SwiftData
 
 struct PropertiesView: View {
     @State private var viewModel = PropertiesViewModel()
-
    
     @Query private var properties: [Property]
 
@@ -24,6 +23,10 @@ struct PropertiesView: View {
                 VStack(alignment: .leading, spacing: 16) {
                     Text("Imóveis")
                         .font(.largeTitle.bold())
+                    
+                    Button("Logout", action:{
+                        viewModel.appleAuthManager.logout()
+                    })
 
                     SearchBarView(text: $viewModel.searchText)
 
