@@ -144,7 +144,7 @@ struct PropertyCardView: View {
     }
 }
 
-#Preview("Sem imagem - light") {
+#Preview("Sem imagem") {
     PropertyCardView(property: Property(
         title: "Casa 1", paymentDay: 10, street: "Rua Ipê dsdsd", number: 55,
         city: "São Paulo", profit: 1200
@@ -152,14 +152,7 @@ struct PropertyCardView: View {
     .padding()
 }
 
-#Preview("Sem imagem - dark") {
-    PropertyCardView(property: Property(
-        title: "Casa 1", paymentDay: 10, street: "Rua Ipê Amarelo", number: 55,
-        city: "São Paulo", profit: 1200
-    ))
-    .padding()
-    .preferredColorScheme(.dark)
-}
+
 
 
 
@@ -171,16 +164,12 @@ private func previewPropertyWithImage() -> Property {
     )
 }
 
-#Preview("Com imagem - light") {
+#Preview("Com imagem") {
     PropertyCardView(property: previewPropertyWithImage())
         .padding()
 }
 
-#Preview("Com imagem - dark") {
-    PropertyCardView(property: previewPropertyWithImage())
-        .padding()
-        .preferredColorScheme(.dark)
-}
+
  
 
 
