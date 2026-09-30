@@ -7,14 +7,27 @@
 
 import SwiftUI
 
-struct Badges: View{
-    
-    
-    var body: some View{
-     Text("hello world")
+
+struct TagBadgeView: View {
+    let text: String
+    let color: Color
+
+    var body: some View {
+        Text(text)
+            .font(.subheadline.weight(.semibold))
+            .foregroundStyle(.white)
+            .lineLimit(1)
+            .padding(.horizontal, 14)
+            .padding(.vertical, 6)
+            .background(color, in: Capsule())
     }
 }
 
 #Preview {
-    Badges()
+    HStack {
+        TagBadgeView(text: "Casa", color: .brown)
+        TagBadgeView(text: "Aberto", color: .orange)
+        TagBadgeView(text: "Concluído", color: .green)
+    }
+    .padding()
 }
