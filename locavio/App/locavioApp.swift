@@ -15,7 +15,14 @@ struct locavioApp: App {
     
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            UserProfile.self
+            Owner.self,
+            Property.self,
+            Tenant.self,
+            Contract.self,
+            Payment.self,
+            Expenses.self,
+            Ticket.self,
+            Maintence.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 
@@ -28,12 +35,16 @@ struct locavioApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Group{
-                if appleAuthManager.isAuthenticated {
-                    MainTabView()
-                } else{
-                    LoginView()
-//                    SignUpView()
+            Group {
+                Group {
+                    switch appleAuthManager.currentAuthState {
+                        case .authenticated:
+                            MainTabView()
+                        case .needsRegistration:
+                            SignUpView()
+                        case .loggedOut:
+                            LoginView()
+                    }
                 }
             }
             
@@ -43,7 +54,7 @@ struct locavioApp: App {
                             appleAuthManager.logout() //vai alterar o isAuthenticated para false e a tela muda
                         }
                         .task {
-                            appleAuthManager.checkCredentialStatus() // checa o status toda vez que o app abre
+                            appleAuthManager.checkCredentialStatus(context: sharedModelContainer.mainContext)
                         }
 
         }

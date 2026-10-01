@@ -10,9 +10,12 @@ import SwiftData
 
 struct PropertiesView: View {
     @State private var viewModel = PropertiesViewModel()
-
+    
+    @Environment(AppleAuthManager.self) private var authManager
    
     @Query private var properties: [Property]
+    
+    @Query private var users: [Owner]
 
     private var visibleProperties: [Property] {
         viewModel.visibleProperties(from: properties)
@@ -24,6 +27,12 @@ struct PropertiesView: View {
                 VStack(alignment: .leading, spacing: 16) {
                     Text("Imóveis")
                         .font(.largeTitle.bold())
+                    
+                    Button("Logout", action:{
+                        authManager.logout()
+                    })
+                    
+                    Text("\(users.first?.documentNumber ?? "Sem documento")")
 
                     SearchBarView(text: $viewModel.searchText)
 

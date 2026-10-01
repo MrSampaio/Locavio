@@ -7,12 +7,18 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 
 struct SignUpView: View {
     
     @State private var signUpViewModel = SignUpViewModel()
     
+    // contexto do swift data
+    @Environment(\.modelContext) private var context
+    
+    @Environment(AppleAuthManager.self) private var authManager
+
     var body: some View {
         ZStack{
             Color(UIColor.appBg)
@@ -70,15 +76,28 @@ struct SignUpView: View {
                 signUpViewModel.documentNumber = ""
             }
             
-            if let errorText = signUpViewModel.errorMessage {
+            if var errorText = signUpViewModel.errorMessage {
                 ErrorMessage(text: errorText)
             }
             
             VStack(alignment: .center){
                 TipsText(text: "Utilizamos seu documento exclusivamente para sua identificação e ele não será compartilhado com outros usuários.")
                 
-                ComponentButton(textButton: "Começar", action: {})
+                ComponentButton(
+                    textButton: "Começar",
+                    action: {
+                        // passa as informações necessárias e o authManager
+                        signUpViewModel.saveDocument(
+                            document: signUpViewModel.documentNumber,
+                            documentType: signUpViewModel.selectedDocumentType,
+                            context: context,
+                            authManager: authManager
+                        )
+                    }
+                )
                     .padding(.horizontal, 65)
+                    .disabled(!signUpViewModel.isValid)
+
             }
             .padding(.horizontal, 16)
         }

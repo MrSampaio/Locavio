@@ -35,6 +35,7 @@ final class Property: Identifiable {
     var uf: String?
     var profit: Double?
     var owner: Owner?
+
     
     @Relationship(deleteRule: .cascade, inverse: \Expenses.property)
     var expenses: [Expenses]?
