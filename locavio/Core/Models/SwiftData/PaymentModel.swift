@@ -12,11 +12,13 @@ import SwiftData
 final class Payment: Identifiable{
     var date: Date?
     var property: Property?
+    var value: Double?
     var proof: Data?
     
-    init(date: Date? = nil, property: Property? = nil, proof: Data? = nil) {
+    init(date: Date? = nil, property: Property? = nil, value: Double? = nil, proof: Data? = nil) {
         self.date = date
         self.property = property
+        self.value = value
         self.proof = proof
     }
 }
