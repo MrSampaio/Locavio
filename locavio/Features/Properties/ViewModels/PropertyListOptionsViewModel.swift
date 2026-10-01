@@ -7,6 +7,7 @@
 
 import Foundation
 import Observation
+import SwiftData
 
 enum PropertySortOption: String, CaseIterable, Identifiable {
     case price = "Por preço"
@@ -83,4 +84,6 @@ final class PropertyListOptionsViewModel {
             return a.position > b.position
         }
     }
+    
+    
 }
