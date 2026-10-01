@@ -13,10 +13,12 @@ final class Expenses: Identifiable {
     var property: Property?
     var title: String?
     var value: Double?
+    var date: Date?
     
-    init(property: Property? = nil, title: String? = nil, value: Double? = nil) {
+    init(property: Property? = nil, title: String? = nil, value: Double? = nil, date: Date?) {
         self.property = property
         self.title = title
         self.value = value
+        self.date = date
     }
 }
