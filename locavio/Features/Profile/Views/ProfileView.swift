@@ -7,10 +7,17 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 struct ProfileView: View {
     @State private var viewModel = ProfileViewModel()
     @Environment(ProfileCoordinator.self) private var coordinator
+    
+    @Query private var users: [Owner]
+    
+    private var user: Owner? {
+        users.first
+    }
     
     
     // futuras queries
@@ -24,20 +31,21 @@ struct ProfileView: View {
                 .ignoresSafeArea()
 
             
-            VStack(spacing: 13){
                 ScrollView(){
-                    profileHeader
-                    notificationSettings
-                    legalSection
+                    VStack(spacing: 24){
+                        profileHeader
+                        notificationSettings
+                        legalSection
                 }
-
             }
+            
+                .padding(.bottom, 14)
             
         }
         
         .navigationTitle("Perfil")
         .navigationBarTitleDisplayMode(.large)
-        .toolbar{
+        .toolbar {
             ProfileToolbar(onClick: {})
         }
 
@@ -46,12 +54,20 @@ struct ProfileView: View {
     
     @ViewBuilder
     var profileHeader: some View {
+        
+        // extrai o documento
+        let rawDoc = user?.documentNumber ?? ""
+        
+        let maskedString = rawDoc.isEmpty ? "***.***.***-**" : viewModel.maskDocument(rawDoc)
+        
+        #warning("Adicionar lógica de numeros de inquilinos")
+        
         VStack(alignment: .center){
             ProfileHeader(
                 userImage: nil,
-                userName: "Julis",
-                maskedDocument: "***********",
-                numberOfProperties: 10,
+                userName: "\(user?.fullName ?? "Proprietário")",
+                maskedDocument: "CPF: \(maskedString)",
+                numberOfProperties: user?.properties?.count ?? 0,
                 numberOfTenants: 5
             )
         }
@@ -59,40 +75,54 @@ struct ProfileView: View {
     
     @ViewBuilder
     var notificationSettings: some View {
-        Form{
+        VStack(spacing: 0) {
             OptionToggle(text: "Notificar Pagamentos", isOn: $viewModel.notifyPayments)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+            
+            Divider()
+                .padding(.leading, 16)
             
             OptionToggle(text: "Notificar Vencimentos", isOn: $viewModel.notifyPendentPayments)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+            
+            Divider()
+                .padding(.leading, 16)
             
             OptionToggle(text: "Notificar Chamados", isOn: $viewModel.notifyTickets)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
         }
-        .cornerRadius(30)
-        .scrollDisabled(true)
-        .frame(height: 200)
-        .scrollContentBackground(.hidden)
-        .background(Color(.appBg))
+        .background(Color(.bgBox))
+        .cornerRadius(24)
         .padding(.horizontal, 16)
     }
     
     @ViewBuilder
     var legalSection: some View {
-        Form{
+        VStack(spacing: 0) {
             LegalOption(
                 text: "Termos de uso",
-                icon: "menucard.fill",
+                icon: "text.page.fill",
                 action: coordinator.pushToTerms
             )
+            .padding(.horizontal, 16)
+            .padding(.vertical, 14)
+            
+            Divider()
+                .padding(.leading, 16)
             
             LegalOption(
                 text: "Política de privacidade",
                 icon: "lock.fill",
                 action: coordinator.pushToPrivacy
             )
+            .padding(.horizontal, 16)
+            .padding(.vertical, 14)
         }
-        .scrollDisabled(true)
-        .frame(height: 200)
-        .scrollContentBackground(.hidden)
-        .background(Color(.appBg))
+        .background(Color(.bgBox))
+        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
         .padding(.horizontal, 16)
     }
 }
