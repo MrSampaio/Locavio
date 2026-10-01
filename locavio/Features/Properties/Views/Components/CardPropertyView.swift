@@ -21,11 +21,11 @@ struct PropertyCardView: View {
             infoPanel
         }
         .frame(maxWidth: .infinity)
-        .frame(height: 300)
+        .frame(height: 330)
         .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
     }
 
-   
+    // Fundo
 
     @ViewBuilder
     private var background: some View {
@@ -48,48 +48,62 @@ struct PropertyCardView: View {
         }
     }
 
-  
+    // Painel
 
     private var infoPanel: some View {
-        HStack(alignment: .top, spacing: 12) {
-            VStack(alignment: .leading, spacing: 6) {
-                Text(viewModel.title)
-                    .font(.title.bold())
-                    .lineLimit(1)
+        VStack(alignment: .leading, spacing: 16) {
+            HStack(alignment: .top, spacing: 12) {
+                VStack(alignment: .leading, spacing: 6) {
+                    Text(viewModel.title)
+                        .font(.title.bold())
+                        .lineLimit(1)
 
-                Text(viewModel.address)
-                    .font(.subheadline)
-                    .foregroundStyle(secondaryTextColor)
-                    .lineLimit(1)
-                    .truncationMode(.tail)
+                    Text(viewModel.address)
+                        .font(.subheadline)
+                        .foregroundStyle(secondaryTextColor)
+                        .lineLimit(1)
+                        .truncationMode(.tail)
 
-                tenantLine
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-
-            VStack(alignment: .trailing, spacing: 6) {
-                Text(viewModel.rentLabel)
-                    .font(.subheadline)
-                    .foregroundStyle(secondaryTextColor)
-
-                Text(viewModel.rentText)
-                    .font(.title2.bold())
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.7)
-
-                VStack(alignment: .trailing, spacing: 0) {
-                    Text(viewModel.nextPaymentLabel)
-                    Text(viewModel.nextPaymentText).fontWeight(.semibold)
+                    tenantLine
                 }
-                .font(.footnote)
-                .foregroundStyle(secondaryTextColor)
+                .frame(maxWidth: .infinity, alignment: .leading)
+
+                VStack(alignment: .trailing, spacing: 6) {
+                    Text(viewModel.rentLabel)
+                        .font(.subheadline)
+                        .foregroundStyle(secondaryTextColor)
+
+                    Text(viewModel.rentText)
+                        .font(.title2.bold())
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.7)
+
+                    VStack(alignment: .trailing, spacing: 0) {
+                        Text(viewModel.nextPaymentLabel)
+                        Text(viewModel.nextPaymentText).fontWeight(.semibold)
+                    }
+                    .font(.footnote)
+                    .foregroundStyle(secondaryTextColor)
+                }
+                .fixedSize(horizontal: true, vertical: false)
             }
-            .fixedSize(horizontal: true, vertical: false)
+
+            badgesRow
         }
         .foregroundStyle(primaryTextColor)
         .padding(20)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background { panelBackground }
+    }
+
+    
+
+    private var badgesRow: some View {
+        HStack(spacing: 8) {
+            ForEach(viewModel.badges) { badge in
+                TagBadgeView(badge)
+            }
+        }
     }
 
     
@@ -108,13 +122,12 @@ struct PropertyCardView: View {
         .lineLimit(1)
     }
 
-    
+    // Estilo do painel
 
     private var panelShape: RoundedRectangle {
         RoundedRectangle(cornerRadius: 32, style: .continuous)
     }
 
-  
     @ViewBuilder
     private var panelBackground: some View {
         if viewModel.hasImage {
@@ -144,23 +157,20 @@ struct PropertyCardView: View {
     }
 }
 
+
 #Preview("Sem imagem") {
     PropertyCardView(property: Property(
-        title: "Casa 1", paymentDay: 10, street: "Rua Ipê dsdsd", number: 55,
-        city: "São Paulo", profit: 1200
+        title: "Casa 1", type: .home, area: 32, paymentDay: 10,
+        street: "Rua Ipê Amarelo", number: 55, city: "São Paulo", profit: 1200
     ))
     .padding()
 }
 
-
-
-
-
 private func previewPropertyWithImage() -> Property {
     Property(
         image: UIImage(named: "CasaText")?.jpegData(compressionQuality: 0.9),
-        title: "Casa 1", paymentDay: 10, street: "Rua Ipê Amarelo", number: 55,
-        city: "São Paulo", profit: 1200
+        title: "Casa 1", type: .home, area: 32, paymentDay: 10,
+        street: "Rua Ipê Amarelo", number: 55, city: "São Paulo", profit: 1200
     )
 }
 
