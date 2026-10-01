@@ -79,7 +79,7 @@ final class AppleAuthManager{
             return
         }
         
-        
+        currentAuthState = .needsRegistration
 
         // caso tudo tenha dado certo, seta o controle de autenticação para true
 //        DispatchQueue.main.async {
