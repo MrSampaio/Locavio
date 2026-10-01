@@ -22,6 +22,18 @@ class DashboardViewModel {
         return sum
     }
     
+    func sumTotalBruteExpense(expenses: [Expenses]) -> Double {
+        var sum: Double = 0.0
+        
+        let expenses: [Double] = expenses.map { $0.value ?? 0 }
+        
+        for expense in expenses {
+            sum += expense
+        }
+        
+        return sum
+    }
+    
     func countReceivedRent(properties: [Property]) -> Int {
         let propertiesRentReceived: [Property] = properties.filter { $0.isPaid == true }
         
