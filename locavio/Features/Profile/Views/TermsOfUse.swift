@@ -143,6 +143,9 @@ struct TermsOfUseView: View {
             .padding()
             .scrollIndicators(.hidden)
         }
+        .toolbar(.hidden, for: .tabBar)
+        .navigationTitle("Termos de Uso")
+        .ignoresSafeArea(edges: .bottom)
     }
     
     private func sectionTitle(_ text: String) -> some View {

@@ -20,10 +20,9 @@ struct ProfileCoordinatorView: View {
             .navigationDestination(for: ProfileRoutes.self) { route in
                 switch route {
                     case .terms:
-                        #warning("ADICIONE A TELA DE TERMOS DE USO!")
-                        
+                        TermsOfUseView()
                     case .privacy:
-                        #warning("ADICIONE A TELA DE TERMOS DE PRIVACIDADE")
+                        PrivacyPolicyView()
                 }
             }
         }
