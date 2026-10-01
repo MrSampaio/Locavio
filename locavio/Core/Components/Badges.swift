@@ -7,10 +7,18 @@
 
 import SwiftUI
 
-
 struct TagBadgeView: View {
     let text: String
     let color: Color
+
+    init(text: String, color: Color) {
+        self.text = text
+        self.color = color
+    }
+
+    init(_ item: TagBadgeItem) {
+        self.init(text: item.text, color: item.color)
+    }
 
     var body: some View {
         Text(text)

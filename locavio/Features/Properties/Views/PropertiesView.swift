@@ -42,7 +42,7 @@ struct PropertiesView: View {
                 }
                 .padding(.horizontal)
             }
-            .navigationBarTitleDisplayMode(.inline) // sem .navigationTitle
+            .navigationBarTitleDisplayMode(.inline) 
             .toolbar {
                 AppToolbar(
                     options: viewModel.options,
