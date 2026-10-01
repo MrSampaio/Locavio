@@ -132,6 +132,9 @@ struct PrivacyPolicyView: View {
             .padding()
             .scrollIndicators(.hidden)
         }
+        .toolbar(.hidden, for: .tabBar)
+        .navigationTitle("Política de Pricavidade")
+        .ignoresSafeArea(edges: .bottom)
     }
     
     private func sectionTitle(_ text: String) -> some View {

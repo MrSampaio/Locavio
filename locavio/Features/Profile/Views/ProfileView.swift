@@ -19,7 +19,6 @@ struct ProfileView: View {
     //    @Query private var tenants: [Tenant]
     
     var body: some View {
-        //        NavigationStack{
         ZStack{
             Color(UIColor.appBg)
                 .ignoresSafeArea()
@@ -27,13 +26,9 @@ struct ProfileView: View {
             
             VStack(spacing: 13){
                 ScrollView(){
-                    Button(action: {
-                        coordinator.pushToTerms()
-                    }) {
-                        Text("Adicionar Novo Imóvel")
-                    }
                     profileHeader
                     notificationSettings
+                    legalSection
                 }
 
             }
@@ -45,8 +40,7 @@ struct ProfileView: View {
         .toolbar{
             ProfileToolbar(onClick: {})
         }
-        
-        //        }
+
         
     }
     
@@ -71,6 +65,29 @@ struct ProfileView: View {
             OptionToggle(text: "Notificar Vencimentos", isOn: $viewModel.notifyPendentPayments)
             
             OptionToggle(text: "Notificar Chamados", isOn: $viewModel.notifyTickets)
+        }
+        .cornerRadius(30)
+        .scrollDisabled(true)
+        .frame(height: 200)
+        .scrollContentBackground(.hidden)
+        .background(Color(.appBg))
+        .padding(.horizontal, 16)
+    }
+    
+    @ViewBuilder
+    var legalSection: some View {
+        Form{
+            LegalOption(
+                text: "Termos de uso",
+                icon: "menucard.fill",
+                action: coordinator.pushToTerms
+            )
+            
+            LegalOption(
+                text: "Política de privacidade",
+                icon: "lock.fill",
+                action: coordinator.pushToPrivacy
+            )
         }
         .scrollDisabled(true)
         .frame(height: 200)
