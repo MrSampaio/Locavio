@@ -13,7 +13,6 @@ import SwiftData
 final class SignUpViewModel {
     var selectedDocumentType: DocumentTypeModel = .pf
     var documentNumber: String = ""
-    var isButtonEnabled: Bool = false
     
     // variável computada que verifica em tempo real se o documento é válido
     var isValid: Bool {
@@ -23,8 +22,6 @@ final class SignUpViewModel {
             return documentNumber.isValidCNPJ
         }
     }
-    
-    
     
     // variável computada que contém mensagem de erro
     var errorMessage: String? {

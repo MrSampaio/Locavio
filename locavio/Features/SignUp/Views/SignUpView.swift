@@ -16,8 +16,9 @@ struct SignUpView: View {
     
     // contexto do swift data
     @Environment(\.modelContext) private var context
-
     
+    @Environment(AppleAuthManager.self) private var authManager
+
     var body: some View {
         ZStack{
             Color(UIColor.appBg)
@@ -85,13 +86,17 @@ struct SignUpView: View {
                 ComponentButton(
                     textButton: "Começar",
                     action: {
+                        // passa as informações necessárias e o authManager
                         signUpViewModel.saveDocument(
                             document: signUpViewModel.documentNumber,
-                            context: context
-                    )
-                })
+                            documentType: signUpViewModel.selectedDocumentType,
+                            context: context,
+                            authManager: authManager
+                        )
+                    }
+                )
                     .padding(.horizontal, 65)
-                    .disabled(signUpViewModel.isButtonEnabled)
+                    .disabled(!signUpViewModel.isValid)
 
             }
             .padding(.horizontal, 16)

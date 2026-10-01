@@ -8,10 +8,12 @@
 import SwiftUI
 import AuthenticationServices
 import Security
+import SwiftData
 
 enum AppAuthState{
     case needsRegistration
     case authenticated
+    case loggedOut
 }
 
 @Observable
@@ -20,7 +22,7 @@ final class AppleAuthManager{
     
 //    var firtUse: Bool = false
     
-    var currentAuthState: AppAuthState?
+    var currentAuthState: AppAuthState = .loggedOut
     
     // variável que controla autenticação do usuário
     var isAuthenticated: Bool = false
@@ -80,14 +82,14 @@ final class AppleAuthManager{
         }
         
         currentAuthState = .needsRegistration
-
+        
         // caso tudo tenha dado certo, seta o controle de autenticação para true
 //        DispatchQueue.main.async {
-//            self.isAuthenticated = true
+//            self.currentAuthState = .needsRegistration
 //        }
     }
     
-    func checkCredentialStatus(){
+    func checkCredentialStatus(context: ModelContext){
         
         // pega o ID do usuário salvo no Userdefaults
         guard let userID = keychainHelper.readString(for: "appleUserID") else {
@@ -106,6 +108,13 @@ final class AppleAuthManager{
                 case.authorized:
                     print("User is authorized!")
                     self.isAuthenticated = true
+                        
+                        let descriptor = FetchDescriptor<Owner>(predicate: #Predicate { $0.appleUserID == userID })
+                        if let user = try? context.fetch(descriptor).first, let doc = user.documentNumber, !doc.isEmpty {
+                            self.currentAuthState = .authenticated
+                        } else {
+                            self.currentAuthState = .needsRegistration
+                        }
                         
 //                        #warning("")
                     
@@ -126,6 +135,6 @@ final class AppleAuthManager{
         keychainHelper.delete(for: "appleUserFullName")
         keychainHelper.delete(for: "appleUserEmail")
         
-        isAuthenticated = false
+        currentAuthState = .loggedOut
     }
 }

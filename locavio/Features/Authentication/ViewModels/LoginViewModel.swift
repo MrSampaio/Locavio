@@ -25,10 +25,9 @@ final class LoginViewModel{
             
             if let user = existingUsers.first {
                 
-                if let hasDocument = user.documentNumber{
+                if let doc = user.documentNumber, !doc.isEmpty {
                     authManager.currentAuthState = .authenticated
-                    
-                } else{
+                } else {
                     authManager.currentAuthState = .needsRegistration
                 }
                 

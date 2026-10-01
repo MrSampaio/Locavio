@@ -35,21 +35,16 @@ struct locavioApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Group{
-                if appleAuthManager.isAuthenticated {
+            Group {
+                Group {
                     switch appleAuthManager.currentAuthState {
                         case .authenticated:
                             MainTabView()
                         case .needsRegistration:
                             SignUpView()
-                            #warning("MUDA PRA SIGN UP VIEW COORDINATOR")
-                            
-                        case nil:
+                        case .loggedOut:
                             LoginView()
                     }
-                }
-                else{
-                    LoginView()
                 }
             }
             
@@ -59,7 +54,7 @@ struct locavioApp: App {
                             appleAuthManager.logout() //vai alterar o isAuthenticated para false e a tela muda
                         }
                         .task {
-                            appleAuthManager.checkCredentialStatus() // checa o status toda vez que o app abre
+                            appleAuthManager.checkCredentialStatus(context: sharedModelContainer.mainContext)
                         }
 
         }
