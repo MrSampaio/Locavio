@@ -49,7 +49,12 @@ final class PropertyCardViewModel {
 
         return parts.isEmpty ? "Endereço não informado" : parts.joined(separator: " - ")
     }
+    
 
+    var badges: [TagBadgeItem] {
+        [property.tenantBadge, property.typeBadge, property.areaBadge]
+            .compactMap { $0 }
+    }
    
     var tenantName: String? {
         let rawName: String? = property.tenant?.name
