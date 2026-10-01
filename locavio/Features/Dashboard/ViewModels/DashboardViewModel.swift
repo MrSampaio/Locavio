@@ -10,30 +10,18 @@ import Foundation
 @Observable
 class DashboardViewModel {
     
-    func sumTotalBruteProfit(payments: [Payment], dashPeriod: DashboardPeriod) -> Double {
+    func sumTotal<T: DatedValue> (items: [T], dashPeriod: DashboardPeriod) -> Double {
         let startDate: Date = getStartDay(period: dashPeriod) ?? Date.now
         let endDate = Date.now
         
-        let filteredPayments = filterByRangeOfDate(items: payments, startDate: startDate, endDate: endDate)
+        let filteredItems = filterByRangeOfDate(items: items, startDate: startDate, endDate: endDate)
         
         var sum: Double = 0.0
         
-        let profits: [Double] = filteredPayments.map{ $0.value ?? 0 }
+        let itemsToSum: [Double] = filteredItems.map{ $0.value ?? 0 }
         
-        for profit in profits {
-            sum += profit
-        }
-        
-        return sum
-    }
-    
-    func sumTotalBruteExpense(expenses: [Expenses], dashPeriod: DashboardPeriod) -> Double {
-        var sum: Double = 0.0
-        
-        let expenses: [Double] = expenses.map { $0.value ?? 0 }
-        
-        for expense in expenses {
-            sum += expense
+        for item in itemsToSum {
+            sum += item
         }
         
         return sum

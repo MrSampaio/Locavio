@@ -13,3 +13,4 @@ protocol DatedValue {
 }
 
 extension Payment: DatedValue {}
+extension Expenses: DatedValue {}
