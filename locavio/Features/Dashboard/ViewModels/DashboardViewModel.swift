@@ -21,4 +21,16 @@ class DashboardViewModel {
         
         return sum
     }
+    
+    func countReceivedRent(properties: [Property]) -> Int {
+        let propertiesRentReceived: [Property] = properties.filter { $0.isPaid == true }
+        
+        return propertiesRentReceived.count
+    }
+    
+    func countNotReceivedRent(properties: [Property]) -> Int {
+        let propertiesNotReceivedRent: [Property] = properties.filter { $0.isPaid == false }
+        
+        return propertiesNotReceivedRent.count
+    }
 }
