@@ -18,6 +18,8 @@ struct MainTabView: View {
                 ProfileCoordinatorView()
             }
             
+            
+            
 //            DashboardCoordinatorView()
 //                .tabItem{
 //                    Label("Relatório", systemImage: "chart.bar")
@@ -33,5 +35,7 @@ struct MainTabView: View {
 //                    Label("Chamados", systemImage: "exclamationmark.bubble")
 //                }
         }
+        
+        
     }
 }

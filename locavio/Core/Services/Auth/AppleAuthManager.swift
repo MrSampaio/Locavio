@@ -8,9 +8,21 @@
 import SwiftUI
 import AuthenticationServices
 import Security
+import SwiftData
+
+enum AppAuthState{
+    case needsRegistration
+    case authenticated
+    case loggedOut
+}
 
 @Observable
 final class AppleAuthManager{
+    
+    
+//    var firtUse: Bool = false
+    
+    var currentAuthState: AppAuthState = .loggedOut
     
     // variável que controla autenticação do usuário
     var isAuthenticated: Bool = false
@@ -18,6 +30,25 @@ final class AppleAuthManager{
     // puxa o KeychainHelper pra simplificar a escrita
     let keychainHelper = KeychainHelper.shared
     
+    init() {
+        checkIfIsFirstLaunchAfterInstall()
+    }
+    
+    // funçao para verificar se é o primeiro uso e se foi desinstalado
+    private func checkIfIsFirstLaunchAfterInstall() {
+        // verifica se a chave "hasLaunchedBefore" existe no UserDefaults
+        let hasLaunched = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
+        
+        if !hasLaunched {
+            // se for false é pq o app acabou de ser instalado/reinstalado.
+           
+            // logout pra forçar o login
+            logout()
+            
+            // marca como true para a próxima validação
+            UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+        }
+    }
     
     func handleAuthorization(_ authorization: ASAuthorization){
         
@@ -69,13 +100,15 @@ final class AppleAuthManager{
             return
         }
         
+        currentAuthState = .needsRegistration
+        
         // caso tudo tenha dado certo, seta o controle de autenticação para true
-        DispatchQueue.main.async {
-            self.isAuthenticated = true
-        }
+//        DispatchQueue.main.async {
+//            self.currentAuthState = .needsRegistration
+//        }
     }
     
-    func checkCredentialStatus(){
+    func checkCredentialStatus(context: ModelContext){
         
         // pega o ID do usuário salvo no Userdefaults
         guard let userID = keychainHelper.readString(for: "appleUserID") else {
@@ -94,22 +127,24 @@ final class AppleAuthManager{
                 case.authorized:
                     print("User is authorized!")
                     self.isAuthenticated = true
+                        
+                        let descriptor = FetchDescriptor<Owner>(predicate: #Predicate { $0.appleUserID == userID })
+                        if let user = try? context.fetch(descriptor).first, let doc = user.documentNumber, !doc.isEmpty {
+                            self.currentAuthState = .authenticated
+                        } else {
+                            self.currentAuthState = .needsRegistration
+                        }
+                        
+//                        #warning("")
                     
                 // importante: as infos precisam ser apagadas do Keychain caso o usuário tenha revogado o acesso do app aos seus dados
-                case.revoked, .notFound:
-                    print("User revoked access or not found")
-                    self.logout()
-                    
-                case.transferred:
-                    print("Credential transfered.")
-                    self.logout()
-                    
+                case.revoked, .notFound, .transferred:
+                print("User revoked access, not found or revoked")
+                self.logout()
+
                 @unknown default:
                     break
                 }
-                
-                
-                
             }
         }
     }
@@ -119,6 +154,6 @@ final class AppleAuthManager{
         keychainHelper.delete(for: "appleUserFullName")
         keychainHelper.delete(for: "appleUserEmail")
         
-        isAuthenticated = false
+        currentAuthState = .loggedOut
     }
 }
