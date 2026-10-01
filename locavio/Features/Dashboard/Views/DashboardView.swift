@@ -15,9 +15,34 @@ enum DashboardPeriod: String, CaseIterable, Identifiable {
     var id: Self { self }
 }
 
+enum SegmentedDashboard: String, CaseIterable, Identifiable {
+    case profits = "Lucro"
+    case expenses = "Despesa"
+    
+    var id: Self { self }
+}
+
 struct DashboardView: View {
+    
+    @State private var currentFilter: SegmentedDashboard = .profits
+    
     var body: some View {
-        Text("Tela de Dashboard")
+        ZStack {
+            Color.appBg
+                .ignoresSafeArea()
+            
+            VStack {
+                Picker("Filtro", selection: $currentFilter) {
+                    ForEach(SegmentedDashboard.allCases) { filter in
+                        Text(filter.rawValue).tag(filter)
+                    }
+                }
+                .pickerStyle(.segmented)
+            }
+            .padding()
+            
+            
+        }
     }
 }
 
