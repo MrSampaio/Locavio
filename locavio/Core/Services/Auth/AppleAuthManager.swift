@@ -30,6 +30,25 @@ final class AppleAuthManager{
     // puxa o KeychainHelper pra simplificar a escrita
     let keychainHelper = KeychainHelper.shared
     
+    init() {
+        checkIfIsFirstLaunchAfterInstall()
+    }
+    
+    // funçao para verificar se é o primeiro uso e se foi desinstalado
+    private func checkIfIsFirstLaunchAfterInstall() {
+        // verifica se a chave "hasLaunchedBefore" existe no UserDefaults
+        let hasLaunched = UserDefaults.standard.bool(forKey: "hasLaunchedBefore")
+        
+        if !hasLaunched {
+            // se for false é pq o app acabou de ser instalado/reinstalado.
+           
+            // logout pra forçar o login
+            logout()
+            
+            // marca como true para a próxima validação
+            UserDefaults.standard.set(true, forKey: "hasLaunchedBefore")
+        }
+    }
     
     func handleAuthorization(_ authorization: ASAuthorization){
         
