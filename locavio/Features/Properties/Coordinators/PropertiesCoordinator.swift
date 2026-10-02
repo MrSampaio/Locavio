@@ -17,13 +17,15 @@ final class PropertiesCoordinator {
     var activeSheet: PropertiesSheet?
     
     // navegação em pilha
-    func pushToDetails(propertyId: UUID) {
-        path.append(PropertiesRoute.details(propertyId: propertyId))
+    func pushToDetails(property: Property) {
+        path.append(PropertiesRoute.details(property: property))
     }
+    
     
     func pushToNewProperty(){
         path.append(PropertiesRoute.newProperty)
     }
+    
     
     func pop() {
         if !path.isEmpty {
