@@ -10,8 +10,8 @@ import SwiftUI
 struct InformationDashboardCard: View {
     
     let totalSum: Double
-    let firstSmallCardInformation: Double
-    let secondSmallCardInformation: Double
+    let firstSmallCardInformation: Int
+    let secondSmallCardInformation: Int
     let cardType: SegmentedDashboard
     
     var body: some View {
@@ -37,65 +37,58 @@ struct InformationDashboardCard: View {
             }
             .gridCellColumns(2)
             
-            Divider()
-                .frame(width: 380)
-                .background(.secondary)
-            
-            GridRow {
-                HStack {
-                    VStack(spacing: 12) {
-                        HStack {
-                            Image(systemName: cardType == .profits ? "dollarsign.arrow.trianglehead.counterclockwise.rotate.90" : "wrench.and.screwdriver.fill")
-                                .foregroundStyle(cardType == .profits ? .profit : .redProfit)
-                                .font(.subheadline.bold())
+            if (cardType == .profits) {
+                Divider()
+                    .frame(width: 380)
+                    .background(.secondary)
+                
+                GridRow {
+                    HStack {
+                        VStack(spacing: 12) {
+                            HStack {
+                                Image(systemName: "dollarsign.arrow.trianglehead.counterclockwise.rotate.90")
+                                    .foregroundStyle(cardType == .profits ? .profit : .redProfit)
+                                    .font(.subheadline.bold())
+                                
+                                Text("Aluguéis Recebidos")
+                                    .foregroundStyle(.secondary)
+                                    .font(.footnote.bold())
+                            }
                             
-                            Text(cardType == .profits ? "Aluguéis Recebidos" : "Manutenção")
-                                .foregroundStyle(.secondary)
-                                .font(.footnote.bold())
+                            Text(String(firstSmallCardInformation))
+                                .font(.largeTitle.bold())
                         }
+                        .padding(10)
+                        .frame(maxWidth: .infinity)
                         
-                        smallCardValue(firstSmallCardInformation)
-                    }
-                    .padding(10)
-                    .frame(maxWidth: .infinity)
-                    
-                    Divider()
-                        .frame(height: 100)
-                        .background(.secondary)
-                    
-                    VStack(spacing: 12) {
-                        HStack {
-                            Image(systemName: cardType == .profits ? "clock" : "ellipsis.circle.badge")
+                        Divider()
+                            .frame(height: 100)
+                            .background(.secondary)
+                        
+                        VStack(spacing: 12) {
+                            HStack {
+                                Image(systemName: cardType == .profits ? "clock" : "ellipsis.circle.badge")
+                                    .foregroundStyle(.redProfit)
+                                    .font(.subheadline.bold())
+                                
+                                Text(cardType == .profits ? "Aluguéis Pendentes" : "Outras despesas")
+                                    .foregroundStyle(.secondary)
+                                    .font(.footnote.bold())
+                            }
+                            
+                            Text(String(secondSmallCardInformation))
+                                .font(.largeTitle.bold())
                                 .foregroundStyle(.redProfit)
-                                .font(.subheadline.bold())
-                            
-                            Text(cardType == .profits ? "Aluguéis Pendentes" : "Outras despesas")
-                                .foregroundStyle(.secondary)
-                                .font(.footnote.bold())
                         }
-                        
-                        smallCardValue(secondSmallCardInformation, pendingRent: cardType == .profits ? true : false)
+                        .padding(10)
+                        .frame(maxWidth: .infinity)
                     }
-                    .padding(10)
-                    .frame(maxWidth: .infinity)
                 }
+                .gridCellColumns(2)
             }
-            .gridCellColumns(2)
         }
-        .frame(maxWidth: .infinity, maxHeight: 240)
+        .frame(maxWidth: .infinity)
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 34))
-    }
-    
-    @ViewBuilder
-    private func smallCardValue(_ value: Double, pendingRent: Bool = false) -> some View {
-        if cardType == .profits {
-            Text(value, format: .number.precision(.fractionLength(0)))
-                .font(.largeTitle.bold())
-                .foregroundStyle(pendingRent ? .redProfit : .primary)
-        } else {
-            Text(value, format: .currency(code: "BRL"))
-                .font(.title2.bold())
-        }
     }
 }
 
