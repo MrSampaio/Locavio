@@ -13,6 +13,7 @@ struct PropertiesView: View {
     
     @Environment(AppleAuthManager.self) private var authManager
     
+   
     @Query private var properties: [Property]
     
     @Query private var users: [Owner]
@@ -22,33 +23,36 @@ struct PropertiesView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                Text("Imóveis")
-                    .font(.largeTitle.bold())
-                
-                Button("Logout", action:{
-                    authManager.logout()
-                })
-                
-                Text("\(users.first?.documentNumber ?? "Sem documento")")
-                
-                SearchBarView(text: $viewModel.searchText)
-                
-                Picker("Filtro", selection: $viewModel.filter) {
-                    ForEach(PropertyFilter.allCases) { filter in
-                        Text(filter.rawValue).tag(filter)
+        NavigationStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("Imóveis")
+                        .font(.largeTitle.bold())
+                    
+                    SearchBarView(text: $viewModel.searchText)
+
+                    Picker("Filtro", selection: $viewModel.filter) {
+                        ForEach(PropertyFilter.allCases) { filter in
+                            Text(filter.rawValue).tag(filter)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+
+                    LazyVStack(spacing: 16) {
+                        ForEach(visibleProperties) { property in
+                            PropertyCardView(property: property)
+                        }
                     }
                 }
-                .pickerStyle(.segmented)
-                
-                LazyVStack(spacing: 16) {
-                    ForEach(visibleProperties) { property in
-                        PropertyCardView(property: property)
-                    }
-                }
+                .padding(.horizontal)
             }
-            .padding(.horizontal)
+            .navigationBarTitleDisplayMode(.inline) 
+            .toolbar {
+                AppToolbar(
+                    options: viewModel.options,
+                    onAdd: { viewModel.addProperty() }
+                )
+            }
         }
         .navigationBarTitleDisplayMode(.inline)
 //        .toolbar {
@@ -61,7 +65,6 @@ struct PropertiesView: View {
 }
 
 #Preview {
-    
     let container = try! ModelContainer(
         for: Property.self, Owner.self, Tenant.self, Contract.self,
         Payment.self, Expenses.self, Ticket.self,
@@ -72,6 +75,7 @@ struct PropertiesView: View {
         title: "Casa 1", type: .home, area: 32, paymentDay: 10, isPaid: true,
         street: "Rua Ipê Amarelo", number: 55, city: "São Paulo", profit: 1200
     ))
+
     container.mainContext.insert(Property(
         title: "Apto 202", type: .apartment, area: 58, paymentDay: 5, isPaid: false,
         street: "Av. Paulista", number: 1000, city: "São Paulo", profit: 2800
