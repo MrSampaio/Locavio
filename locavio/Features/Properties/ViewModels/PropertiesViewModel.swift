@@ -10,54 +10,8 @@ import Observation
 import SwiftData
 import PhotosUI
 
-enum PropertyFilter: String, CaseIterable, Identifiable {
-    case todos = "Todos"
-    case alugados = "Alugados"
-    case naoAlugados = "Não Alugados"
-
-    var id: Self { self }
-}
-
 @Observable
 final class PropertiesViewModel {
-    
-    enum PropertiesErrors: LocalizedError {
-        case invalidTitle
-        case invalidArea
-        case invalidNumber
-        case invalidProfit
-        
-        var errorDescription: String? {
-            switch self {
-                case .invalidTitle:
-                    return "Insira um título válido."
-                case .invalidArea:
-                    return "Insira uma área válida."
-                case .invalidNumber:
-                    return "Insira um número válido."
-                case .invalidProfit:
-                    return "Insira um lucro válido."
-            }
-        }
-    }
-    
-    enum TenantErrors: LocalizedError {
-        case invalidName
-        case invalidCpf
-        case invalidPhone
-        
-        var errorDescription: String? {
-            switch self {
-                case .invalidName:
-                    return "Insira um nome válido."
-                case .invalidCpf:
-                    return "Insira um CPF válido."
-                case .invalidPhone:
-                    return "Insira um telefone válido."
-            }
-        }
-    }
-    
     
     var searchText = ""
     var filter: PropertyFilter = .todos
@@ -79,6 +33,7 @@ final class PropertiesViewModel {
         }
     }
     
+    #warning("Depois implementa a lógica de adicionar contrato")
     // função de adicionar propriedade
     func addProperty(context: ModelContext, image: Data?, title: String, type: PropertyType, area: String, paymentDay: Int, isPaid: Bool, cep: String, street: String, neighborhood: String, number: String, city: String, uf: String, profit: String, expenses: [Expenses], tenantName: String? = nil, tenantEmail: String? = nil, tenantCpf: String? = nil, tenantPhone: String? = nil) throws -> Bool {
         
@@ -139,22 +94,7 @@ final class PropertiesViewModel {
         }
     }
     
-//    var name: String?
-//    var email: String?
-//    var cpf: String?
-//    var phone: String?
-//    var property: Property?
     
-//    func addTenant(property: Property, name: String, email: String, cpf: String, phone: String) -> Bool{
-//        
-//        let cleanName = name.trimmingCharacters(in: .whitespacesAndNewlines)
-//        
-//        if(cleanName.isEmpty){
-//            
-//        }
-//        
-//        return false
-//    }
     
 //    func updateProperty(context: ModelContext, property: Property, image: Data?, title: String, type: PropertyType, area: Int, paymentDay: Int, isPaid: Bool, cep: String, street: String, neighborhood: String, number: Int, city: String, uf: String, profit: Double) {
 //        
