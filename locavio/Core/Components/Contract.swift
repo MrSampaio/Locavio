@@ -72,6 +72,8 @@ struct ContractComponent: View {
     }
 }
 
+// teste
+
 #Preview {
     VStack(spacing: 24) {
         
