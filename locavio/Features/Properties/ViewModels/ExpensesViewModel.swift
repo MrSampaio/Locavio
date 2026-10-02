@@ -57,7 +57,8 @@ final class ExpensesViewModel {
     func addExpense(in context: ModelContext) {
         guard let title = newTitle.trimmedOrNil, let value = parsedNewValue else { return }
 
-        let expense = Expenses(property: property, title: title, value: value)
+        let expense = Expenses(property: property, title: title, value: value, date: Date())
+        
         context.insert(expense)
 
         newTitle = ""

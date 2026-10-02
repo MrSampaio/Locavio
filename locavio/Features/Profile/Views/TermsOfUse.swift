@@ -132,7 +132,7 @@ struct TermsOfUseView: View {
                     
                     Text("Versões anteriores destes Termos e Condições serão mantidas e disponibilizadas mediante solicitação, entrando em contato com o Provedor de Serviços \nem [jusampa2@gmail.com](mailto:jusampa2@gmail.com).")
                     
-                    Text("Estes termos e condições entram em vigor a partir \nŒde 25-09-2026.")
+                    Text("Estes termos e condições entram em vigor a partir \nde 25-09-2026.")
                     
                     sectionTitle("14. Fale Conosco")
                     
