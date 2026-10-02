@@ -35,7 +35,7 @@ struct ContractComponent: View {
                     
                     Image(systemName: "doc")
                         .font(.title3)
-                        .foregroundStyle(.accent)
+                        .foregroundStyle(Color.accentColor)
                     
                     VStack(alignment: .leading, spacing: 2) {
                         Text(contractName)
