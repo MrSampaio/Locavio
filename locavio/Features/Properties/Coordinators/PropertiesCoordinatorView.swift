@@ -3,6 +3,8 @@ import SwiftUI
 struct PropertiesCoordinatorView: View {
     
     @State private var propertiesCoordinator = PropertiesCoordinator()
+    @State private var propertiesViewModel = PropertiesViewModel()
+    
     
     var body: some View {
         NavigationStack(path: $propertiesCoordinator.path) {
@@ -10,6 +12,7 @@ struct PropertiesCoordinatorView: View {
             // puxa a tela inicial
             PropertiesView()
                 .environment(propertiesCoordinator)
+                .environment(propertiesViewModel)
             
             // roteador de pilha
             .navigationDestination(for: PropertiesRoute.self) { route in
@@ -32,5 +35,14 @@ struct PropertiesCoordinatorView: View {
 //                }
 //            }
         }
+        
+//        .navigationBarTitleDisplayMode(.inline) // sem .navigationTitle
+//        .toolbar {
+//            AppToolbar(
+//                onMore: { viewModel.showOptions() },
+//                onAdd: { viewModel.addProperty() }
+//            )
+//        }
+
     }
 }

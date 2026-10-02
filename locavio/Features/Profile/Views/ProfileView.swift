@@ -7,16 +7,127 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 struct ProfileView: View {
     @State private var viewModel = ProfileViewModel()
+    @Environment(ProfileCoordinator.self) private var coordinator
+    
+    @Query private var users: [Owner]
+    
+    private var user: Owner? {
+        users.first
+    }
     
     
     // futuras queries
-//    @Query private var userProfiles: [UserProfile]
-//    @Query private var properties: [Property]
-//    @Query private var tenants: [Tenant]
+    //    @Query private var userProfiles: [UserProfile]
+    //    @Query private var properties: [Property]
+    //    @Query private var tenants: [Tenant]
+    
     var body: some View {
-        Text("Profile")
+        ZStack{
+            Color(UIColor.appBg)
+                .ignoresSafeArea()
+
+            
+                ScrollView(){
+                    VStack(spacing: 24){
+                        profileHeader
+                        notificationSettings
+                        legalSection
+                }
+            }
+            
+                .padding(.bottom, 14)
+            
+        }
+        
+        .navigationTitle("Perfil")
+        .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            ProfileToolbar(onClick: {})
+        }
+
+        
     }
+    
+    @ViewBuilder
+    var profileHeader: some View {
+        
+        // extrai o documento
+        let rawDoc = user?.documentNumber ?? ""
+        
+        let maskedString = rawDoc.isEmpty ? "***.***.***-**" : viewModel.maskDocument(rawDoc)
+        
+        #warning("Adicionar lógica de numeros de inquilinos")
+        
+        VStack(alignment: .center){
+            ProfileHeader(
+                userImage: nil,
+                userName: "\(user?.fullName ?? "Proprietário")",
+                maskedDocument: "CPF: \(maskedString)",
+                numberOfProperties: user?.properties?.count ?? 0,
+                numberOfTenants: 5
+            )
+        }
+    }
+    
+    @ViewBuilder
+    var notificationSettings: some View {
+        VStack(spacing: 0) {
+            OptionToggle(text: "Notificar Pagamentos", isOn: $viewModel.notifyPayments)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+            
+            Divider()
+                .padding(.leading, 16)
+            
+            OptionToggle(text: "Notificar Vencimentos", isOn: $viewModel.notifyPendentPayments)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+            
+            Divider()
+                .padding(.leading, 16)
+            
+            OptionToggle(text: "Notificar Chamados", isOn: $viewModel.notifyTickets)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+        }
+        .background(Color(.bgBox))
+        .cornerRadius(24)
+        .padding(.horizontal, 16)
+    }
+    
+    @ViewBuilder
+    var legalSection: some View {
+        VStack(spacing: 0) {
+            LegalOption(
+                text: "Termos de uso",
+                icon: "text.page.fill",
+                action: coordinator.pushToTerms
+            )
+            .padding(.horizontal, 16)
+            .padding(.vertical, 14)
+            
+            Divider()
+                .padding(.leading, 16)
+            
+            LegalOption(
+                text: "Política de privacidade",
+                icon: "lock.fill",
+                action: coordinator.pushToPrivacy
+            )
+            .padding(.horizontal, 16)
+            .padding(.vertical, 14)
+        }
+        .background(Color(.bgBox))
+        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .padding(.horizontal, 16)
+    }
+}
+
+#Preview {
+    ProfileView()
+        .environment(ProfileCoordinator())
 }

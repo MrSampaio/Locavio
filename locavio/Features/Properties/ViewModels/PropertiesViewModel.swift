@@ -5,79 +5,111 @@
 //  Created by Julio Sampaio on 20/09/26.
 //
 
-import SwiftUI
+import Foundation
+import Observation
 import SwiftData
+import PhotosUI
 
-
-enum PropertyFilter: String, CaseIterable, Identifiable {
-    case todos = "Todos"
-    case alugados = "Alugados"
-    case naoAlugados = "Não Alugados"
-
-    var id: Self { self }
-}
 @Observable
-final class PropertiesViewModel{
-     var properties: [Property] = []
-     var searchText = ""
-     var filter: PropertyFilter = .todos
+final class PropertiesViewModel {
+    
+    var searchText = ""
+    var filter: PropertyFilter = .todos
+    
+    let options = PropertyListOptionsViewModel()
 
-    var filteredProperties: [Property] {
-        properties
-//            .filter { property in
-//                switch filter {
-//                case .todos: return true
-//                case .alugados: return property.isRented
-//                case .naoAlugados: return !property.isRented
-//                }
-//            }
-//            .filter { property in
-//                searchText.isEmpty ||
-//                property.title.localizedCaseInsensitiveContains(searchText) ||
-//                property.address.localizedCaseInsensitiveContains(searchText)
-//            }
+  
+    func visibleProperties(from properties: [Property]) -> [Property] {
+        let bySegment = properties.filter(matchesSegment)
+        return options.apply(to: bySegment, search: searchText)
     }
 
-    func showOptions() { print("Opções") }
-    func addProperty() { print("Adicionar") }
+
+    private func matchesSegment(_ property: Property) -> Bool {
+        switch filter {
+        case .todos:       return true
+        case .alugados:    return property.tenant != nil
+        case .naoAlugados: return property.tenant == nil
+        }
+    }
+    
+    #warning("Depois implementa a lógica de adicionar contrato")
+    // função de adicionar propriedade
+    func addProperty(context: ModelContext, image: Data?, title: String, type: PropertyType, area: String, paymentDay: Int, isPaid: Bool, cep: String, street: String, neighborhood: String, number: String, city: String, uf: String, profit: String, expenses: [Expenses], tenantName: String? = nil, tenantEmail: String? = nil, tenantCpf: String? = nil, tenantPhone: String? = nil) throws -> Bool {
+        
+        let cleanTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        //let cleanDescription = noteDescription.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if(cleanTitle.isEmpty){
+            throw PropertiesErrors.invalidTitle
+        }
+        
+        guard let convertedArea = Int(area) else {
+            throw PropertiesErrors.invalidArea
+        }
+        
+        guard let convertedNumber = Int(number) else {
+            throw PropertiesErrors.invalidNumber
+        }
+        
+        guard let convertedProfit = Double(profit) else {
+            throw PropertiesErrors.invalidProfit
+        }
+        
+        var newTenant: Tenant? = nil
+        if let tName = tenantName, !tName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            
+            guard let cpf = tenantCpf, !cpf.isEmpty else { throw TenantErrors.invalidCpf }
+            guard let phone = tenantPhone, !phone.isEmpty else { throw TenantErrors.invalidPhone }
+            
+            newTenant = Tenant(name: tName, email: tenantEmail, cpf: cpf, phone: phone)
+        }
+        
+        let newProperty = Property(
+            image: image,
+            title: title,
+            type: type,
+            area: convertedArea,
+            paymentDay: paymentDay,
+            isPaid: isPaid,
+            cep: cep,
+            street: street,
+            neighborhood: neighborhood,
+            number: convertedNumber,
+            city: city,
+            uf: uf,
+            profit: convertedProfit,
+            expenses: expenses,
+            tenant: newTenant
+        )
+        
+        context.insert(newProperty)
+        
+        do {
+            try context.save()
+            return true
+        } catch {
+            print("Error when trying to save a new property: \(error)")
+            return false
+        }
+    }
+    
+    
+    
+//    func updateProperty(context: ModelContext, property: Property, image: Data?, title: String, type: PropertyType, area: Int, paymentDay: Int, isPaid: Bool, cep: String, street: String, neighborhood: String, number: Int, city: String, uf: String, profit: Double) {
+//        
+//        property.image = image
+//        property.title = title
+//        property.type = type
+//        property.area = area
+//        
+//        
+//    }
+    
+
     
     
     
 }
-
-//final class PropertiesViewModel {
-//
-//    var userName: String = "Carregando..."
-//    var userEmail: String = "Carregando..."
-//
-//    // função de fetch para pegar os dados do usuário pelo keychain
-//    // recebe o contexto como parâmetro, já que ele só pode ser passado em structs
-//    func fetchUserData(context: ModelContext) {
-//
-//        // pega o id do usuário cadastrado no keychain
-//        guard let userID = KeychainHelper.shared.readString(for: "appleUserID") else {
-//            self.userName = "No user found"
-//            return
-//        }
-//
-//        // procura no SwiftData o perfil que tem esse id
-//        let descriptor = FetchDescriptor<UserProfile>(predicate: #Predicate { $0.appleUserID == userID })
-//
-//        do {
-//            let existingUsers = try context.fetch(descriptor)
-//
-//            if let userProfile = existingUsers.first {
-//                // caso tenha achado o perfil no banco, atualiza as variáveis
-//                self.userName = userProfile.fullName ?? "Usuário"
-//                self.userEmail = userProfile.email ?? "Sem email cadastrado"
-//            } else {
-//                // caso não tenha encontrado ou caso o icloud demore pra responder
-//                self.userName = "No user found"
-//            }
-//        } catch {
-//            print("Error when trying to fetch user from SwiftData: \(error)")
-//        }
-//    }
-//}
 
 

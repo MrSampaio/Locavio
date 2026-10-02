@@ -11,6 +11,10 @@ import SwiftUI
 @Observable
 final class ProfileViewModel{
     
+    var notifyPayments: Bool = true
+    var notifyPendentPayments: Bool = true
+    var notifyTickets: Bool = true
+    
     // função que mascara o documento para não ser completamente exibido na tela de perfil
     func maskDocument(_ document: String) -> String {
         let numbers = document.filter { $0.isNumber }

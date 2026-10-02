@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 @Observable
 final class SignUpViewModel {
@@ -36,6 +37,40 @@ final class SignUpViewModel {
         return nil
     }
     
+    func saveDocument(document: String, documentType: DocumentTypeModel, context: ModelContext, authManager: AppleAuthManager) {
+        
+        guard let userID = KeychainHelper.shared.readString(for: "appleUserID") else {
+            print("Error: User ID not found in Keychain Storage.")
+            return
+        }
+        
+        let descriptor = FetchDescriptor<Owner>(predicate: #Predicate { $0.appleUserID == userID })
+        
+        do {
+            if let user = try context.fetch(descriptor).first {
+                
+                // atualiza o usuário existente no banco com o documento e tipo
+                user.documentNumber = document
+                user.documentType = documentType
+                
+                // força o salvamento no banco local
+                try context.save()
+                
+                // muda o estado global para que o app redirecione para a MainTabView
+                DispatchQueue.main.async {
+                    authManager.currentAuthState = .authenticated
+                }
+                
+            } else {
+                print("Error: User not found in database to add document")
+            }
+        } catch {
+            print("Error when trying to fetch/save user into database: \(error)")
+        }
+    }
+    
+    
+    
     // função que injeta a pontuação em tempo real baseada no Enum
     func applyDocumentMask(to text: String) -> String {
         let numbers = Array(text.filter { $0.isNumber })
@@ -58,6 +93,8 @@ final class SignUpViewModel {
         
         return result
     }
+    
+    
     
     
     
