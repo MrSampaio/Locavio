@@ -35,9 +35,9 @@ struct ToggleComponentPayment: View {
                     }
                 }
             }
-            .background(.quaternary, in: RoundedRectangle(cornerRadius: 10))
-            .frame(maxWidth: .infinity)
-            .frame(height: 85)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(20)
+            .background(.quaternary, in: RoundedRectangle(cornerRadius: 28, style: .continuous))
        
     }
 }
