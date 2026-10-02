@@ -52,7 +52,7 @@ struct ExpensesCardView: View {
             .padding(.horizontal, 20)
             .padding(.vertical, 18)
             .frame(maxWidth: .infinity)
-            .background(Color(.systemBackground))
+            .background(.quaternary)
         }
         .buttonStyle(.plain)
     }

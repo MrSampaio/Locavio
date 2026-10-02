@@ -11,7 +11,7 @@ import SwiftData
 struct PropertiesView: View {
     @State private var viewModel = PropertiesViewModel()
     
-    @Environment(AppleAuthManager.self) private var authManager
+    
    
     @Query private var properties: [Property]
     
@@ -28,12 +28,6 @@ struct PropertiesView: View {
                     Text("Imóveis")
                         .font(.largeTitle.bold())
                     
-                    Button("Logout", action:{
-                        authManager.logout()
-                    })
-                    
-                    Text("\(users.first?.documentNumber ?? "Sem documento")")
-
                     SearchBarView(text: $viewModel.searchText)
 
                     Picker("Filtro", selection: $viewModel.filter) {
@@ -63,7 +57,6 @@ struct PropertiesView: View {
 }
 
 #Preview {
-    
     let container = try! ModelContainer(
         for: Property.self, Owner.self, Tenant.self, Contract.self,
              Payment.self, Expenses.self, Ticket.self,
@@ -74,6 +67,7 @@ struct PropertiesView: View {
         title: "Casa 1", type: .home, area: 32, paymentDay: 10, isPaid: true,
         street: "Rua Ipê Amarelo", number: 55, city: "São Paulo", profit: 1200
     ))
+
     container.mainContext.insert(Property(
         title: "Apto 202", type: .apartment, area: 58, paymentDay: 5, isPaid: false,
         street: "Av. Paulista", number: 1000, city: "São Paulo", profit: 2800
