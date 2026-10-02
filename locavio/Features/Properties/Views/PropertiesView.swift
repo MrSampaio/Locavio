@@ -12,7 +12,6 @@ struct PropertiesView: View {
     @State private var viewModel = PropertiesViewModel()
     
     @Environment(AppleAuthManager.self) private var authManager
-    
    
     @Query private var properties: [Property]
     
@@ -23,45 +22,44 @@ struct PropertiesView: View {
     }
     
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
-                    Text("Imóveis")
-                        .font(.largeTitle.bold())
-                    
-                    SearchBarView(text: $viewModel.searchText)
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                Text("Imóveis")
+                    .font(.largeTitle.bold())
+                
+                SearchBarView(text: $viewModel.searchText)
 
-                    Picker("Filtro", selection: $viewModel.filter) {
-                        ForEach(PropertyFilter.allCases) { filter in
-                            Text(filter.rawValue).tag(filter)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-
-                    LazyVStack(spacing: 16) {
-                        ForEach(visibleProperties) { property in
-                            PropertyCardView(property: property)
-                        }
+                Picker("Filtro", selection: $viewModel.filter) {
+                    ForEach(PropertyFilter.allCases) { filter in
+                        Text(filter.rawValue).tag(filter)
                     }
                 }
-                .padding(.horizontal)
+                .pickerStyle(.segmented)
+
+                LazyVStack(spacing: 16) {
+                    ForEach(visibleProperties) { property in
+                        PropertyCardView(property: property)
+                    }
+                }
             }
-            .navigationBarTitleDisplayMode(.inline) 
             .toolbar {
                 AppToolbar(
                     options: viewModel.options,
-                    onAdd: { viewModel.addProperty() }
+                    onAdd: {}
                 )
             }
+            .padding(.horizontal)
         }
         .navigationBarTitleDisplayMode(.inline)
-//        .toolbar {
-//            AppToolbar(
-//                options: viewModel.options,
-//                onAdd: { viewModel.addProperty() }
-//            )
-//        }
     }
+    
+    
+    //        .toolbar {
+    //            AppToolbar(
+    //                options: viewModel.options,
+    //                onAdd: { viewModel.addProperty() }
+    //            )
+    //        }
 }
 
 #Preview {

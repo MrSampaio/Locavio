@@ -42,30 +42,14 @@ final class PropertiesViewModel {
         }
     }
     
-    
-
-//    var image: Data?
-//    var title: String?
-//    var type: PropertyType?
-//    var area: Int?
-//    var paymentDay: Int?
-//    var isPaid: Bool?
-//    var cep: String?
-//    var street: String?
-//    var neighborhood: String?
-//    var number: Int?
-//    var city: String?
-//    var uf: String?
-//    var profit: Double?
-//    var owner: Owner?
-    
+    // função de adicionar propriedade
     func addProperty(context: ModelContext, image: Data?, title: String, type: PropertyType, area: Int, paymentDay: Int, isPaid: Bool, cep: String, street: String, neighborhood: String, number: Int, city: String, uf: String, profit: Double) -> Bool {
         
-        let defaultImageData = UIImage(named: "DefaultUser")?.jpegData(compressionQuality: 1) ?? Data()
-        let coverData = image ?? defaultImageData
+        let cleanTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        //let cleanDescription = noteDescription.trimmingCharacters(in: .whitespacesAndNewlines)
         
         let newProperty = Property(
-            image: coverData,
+            image: image,
             title: title,
             type: type,
             area: area,

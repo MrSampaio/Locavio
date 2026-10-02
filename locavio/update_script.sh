@@ -1,1 +1,1 @@
-sed -i '' 's/"DefaultUser"/"CasaText"/g' /Users/sampaio/Documents/Locavio/locavio/locavio/Features/Properties/ViewModels/PropertiesViewModel.swift
+sed -i '' -e '/let defaultImageData/d' -e '/let coverData/d' -e 's/image: coverData,/image: image,/g' /Users/sampaio/Documents/Locavio/locavio/locavio/Features/Properties/ViewModels/PropertiesViewModel.swift
