@@ -31,13 +31,15 @@ struct DashboardView: View {
             Color.appBg
                 .ignoresSafeArea()
             
-            VStack {
+            VStack(spacing: 16) {
                 Picker("Filtro", selection: $currentFilter) {
                     ForEach(SegmentedDashboard.allCases) { filter in
                         Text(filter.rawValue).tag(filter)
                     }
                 }
                 .pickerStyle(.segmented)
+                
+                InformationDashboardCard(totalSum: 150000, firstSmallCardInformation: 7, secondSmallCardInformation: 2, cardType: currentFilter)
             }
             .padding()
             
