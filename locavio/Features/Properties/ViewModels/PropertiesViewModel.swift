@@ -16,6 +16,8 @@ final class PropertiesViewModel {
     var searchText = ""
     var filter: PropertyFilter = .todos
     
+    var savedProperties: [Property] = []
+    
     let options = PropertyListOptionsViewModel()
 
   
@@ -93,6 +95,18 @@ final class PropertiesViewModel {
             return false
         }
     }
+    
+    // função para deletar propriedade
+    func deleteProperty(property: Property, context: ModelContext) throws {
+        
+        context.delete(property)
+        self.savedProperties.removeAll(where: { $0.persistentModelID == property.persistentModelID })
+        
+    }
+    
+    
+    
+
     
     
     
