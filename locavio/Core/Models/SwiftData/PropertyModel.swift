@@ -35,8 +35,6 @@ final class Property: Identifiable {
     var uf: String?
     var profit: Double?
     var owner: Owner?
-
-    #warning("Owner não vai ter relacionamento?")
     
     @Relationship(deleteRule: .cascade, inverse: \Expenses.property)
     var expenses: [Expenses]?
