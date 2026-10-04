@@ -26,23 +26,18 @@ struct ProfileView: View {
     //    @Query private var tenants: [Tenant]
     
     var body: some View {
-        ZStack{
-            Color(UIColor.appBg)
-                .ignoresSafeArea()
-
-            
-                ScrollView(){
-                    VStack(spacing: 24){
-                        profileHeader
-                        notificationSettings
-                        legalSection
-                }
+        ScrollView {
+            VStack(spacing: 24) {
+                profileHeader
+                notificationSettings
+                legalSection
+                buttonsSection
             }
-            
-                .padding(.bottom, 14)
-            
+            .padding(.bottom, 30)
         }
-        
+        .background(Color(UIColor.appBg))
+        .scrollIndicators(.hidden)
+        .scrollEdgeEffectStyle(.soft, for: .bottom)
         .navigationTitle("Perfil")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
@@ -50,8 +45,6 @@ struct ProfileView: View {
                 coordinator.activeSheet = .editProfileSheet
             })
         }
-
-        
     }
     
     @ViewBuilder
@@ -126,6 +119,21 @@ struct ProfileView: View {
         }
         .background(Color(.bgBox))
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .padding(.horizontal, 16)
+    }
+    
+    @ViewBuilder
+    var buttonsSection: some View {
+        VStack(spacing: 16) {
+            ComponentButton(
+                textButton: "Sair",
+                action: {},
+                variant: .secondary
+            )
+            
+            DestructiveButton(text: "Excluir Conta", action: {})
+        }
+        
         .padding(.horizontal, 16)
     }
 }

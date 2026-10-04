@@ -17,15 +17,18 @@ struct ProfileCoordinatorView: View {
                 .environment(profileCoordinator)
             
             // roteador de pilha
-            .navigationDestination(for: ProfileRoutes.self) { route in
-                switch route {
-                    case .terms:
-                        TermsOfUseView()
-                    case .privacy:
-                        PrivacyPolicyView()
+                .navigationDestination(for: ProfileRoutes.self) { route in
+                    switch route {
+                        case .terms:
+                            TermsOfUseView()
+                        case .privacy:
+                            PrivacyPolicyView()
+                    }
                 }
-            }
         }
+        
+       
+//        .toolbarBackground(.ultraThinMaterial, for: .tabBar)
         .sheet(item: $profileCoordinator.activeSheet) { sheet in
             switch sheet {
                 case .editProfileSheet:

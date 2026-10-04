@@ -19,7 +19,7 @@ struct DestructiveButton: View {
                 .font(.headline)
                 .fontWeight(.medium)
                 .frame(maxWidth: .infinity)
-                .frame(height: 44)
+                .frame(minHeight: 44)
                 .clipShape(
                     RoundedRectangle(cornerRadius: 20)
                 )
