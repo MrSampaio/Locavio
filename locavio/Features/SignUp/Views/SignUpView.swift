@@ -112,4 +112,5 @@ struct SignUpView: View {
 
 #Preview {
     SignUpView()
+        .environment(AppleAuthManager())
 }

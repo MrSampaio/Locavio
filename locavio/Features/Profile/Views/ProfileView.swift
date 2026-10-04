@@ -46,7 +46,9 @@ struct ProfileView: View {
         .navigationTitle("Perfil")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
-            ProfileToolbar(onClick: {})
+            ProfileToolbar(onClick: {
+                coordinator.activeSheet = .editProfileSheet
+            })
         }
 
         
@@ -67,8 +69,9 @@ struct ProfileView: View {
                 userImage: nil,
                 userName: "\(user?.fullName ?? "Proprietário")",
                 maskedDocument: "CPF: \(maskedString)",
-                numberOfProperties: user?.properties?.count ?? 0,
-                numberOfTenants: 5
+                numberOfProperties: viewModel
+                    .calculateTotalProperties(from: user?.properties),
+                numberOfTenants: viewModel.calculateActiveTenants(from: user?.properties)
             )
         }
     }
@@ -131,3 +134,19 @@ struct ProfileView: View {
     ProfileView()
         .environment(ProfileCoordinator())
 }
+
+
+
+//Button(action: {
+//    coordinator.path.append(.newProperty)
+//}) {
+//    Text("Adicionar Novo Imóvel")
+//}
+//
+//// Exemplo passando um parâmetro para a rota de detalhes
+//Button(action: {
+//    let idDoImovel = 1 // Isso viria do seu SwiftData
+//    coordinator.path.append(.details(id: idDoImovel))
+//}) {
+//    Text("Ver Detalhes do Imóvel 1")
+//}

@@ -36,4 +36,18 @@ final class ProfileViewModel{
         }
         return "Documento Inválido"
     }
+    
+    // função de contagem de inquilinos
+    func calculateActiveTenants(from properties: [Property]?) -> Int {
+        guard let properties = properties else { return 0 }
+        
+        // filtra os imóveis que têm um inquilino e conta quantos são
+        return properties.filter { $0.tenant != nil }.count
+    }
+    
+    // função de contagem de propriedades
+    func calculateTotalProperties(from properties: [Property]?) -> Int {
+        guard let properties = properties else { return 0 }
+        return properties.count
+    }
 }
