@@ -57,7 +57,7 @@ struct ProfileView: View {
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ProfileToolbar(onClick: {
-                coordinator.activeSheet = .editProfileSheet
+                coordinator.presentEditProfile(user: user!)
             })
         }
     }

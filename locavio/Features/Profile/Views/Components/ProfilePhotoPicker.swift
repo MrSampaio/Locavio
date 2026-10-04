@@ -20,7 +20,7 @@ struct ProfilePhotoPicker: View {
     var body: some View {
         VStack(spacing: 12) {
             
-            // o pPhotosPicker envolve a área clicável que abre a galeria
+            // o photosPicker envolve a área clicável que abre a galeria
             PhotosPicker(selection: $selectedItem, matching: .images, photoLibrary: .shared()) {
                 
                 // layout circular com o ícone sobreposto

@@ -31,8 +31,8 @@ struct ProfileCoordinatorView: View {
 //        .toolbarBackground(.ultraThinMaterial, for: .tabBar)
         .sheet(item: $profileCoordinator.activeSheet) { sheet in
             switch sheet {
-                case .editProfileSheet:
-                    EditProfileSheet()
+                case .editProfileSheet(let user):
+                    EditProfileSheet(user: user)
                         .environment(profileCoordinator)
             }
         }

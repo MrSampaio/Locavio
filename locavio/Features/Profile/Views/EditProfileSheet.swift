@@ -10,17 +10,16 @@ import SwiftUI
 
 struct EditProfileSheet: View {
     
-    // passa pra viewmodel depois
-    @State private var userImageData: Data? = nil
-    
-    @State var selectedDocumentType: DocumentTypeModel = .pf
-    @State var documentNumber: String = ""
-    
+    @State var viewModel = EditProfileViewModel()
+    @State var user: Owner
+
     var body: some View {
         NavigationStack{
             VStack(alignment: .center, spacing: 26){
                 
-                ProfilePhotoPicker(imageData: $userImageData)
+                ProfilePhotoPicker(
+                    imageData: $viewModel.userImageData
+                )
                 
                 TipsText(text: "Toque para alterar sua foto de perfil")
                 
@@ -29,13 +28,27 @@ struct EditProfileSheet: View {
                 Spacer()
                 
             }
-            .toolbar{
+            .onAppear {
+//                loadUserData()
+            }
+            .toolbar {
                 SheetsToolbar(
-                    onConfirm: {},
-                    onClose: {},
+                    onConfirm: {
+//                        saveUserData()
+                    },
+                    onClose: {
+//                        dismiss()
+                    },
                     title: "Editar Perfil"
                 )
             }
+//            .toolbar{
+//                SheetsToolbar(
+//                    onConfirm: {},
+//                    onClose: {},
+//                    title: "Editar Perfil"
+//                )
+//            }
         }
        
     }
@@ -45,14 +58,14 @@ struct EditProfileSheet: View {
         
         VStack(spacing: 16){
             
-            DocumentTypePicker(selection: $selectedDocumentType)
+            DocumentTypePicker(selection: $viewModel.selectedDocumentType)
             
             Divider()
                 .padding(.horizontal, 50)
             
             DocumentTextField(
-                text: $documentNumber,
-                documentType: selectedDocumentType
+                text: $viewModel.documentNumber,
+                documentType: viewModel.selectedDocumentType
             )
         }
         
@@ -81,8 +94,4 @@ struct EditProfileSheet: View {
 ////        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 38))
 ////        .padding(.horizontal, 16)
     }
-}
-
-#Preview {
-    EditProfileSheet()
 }
