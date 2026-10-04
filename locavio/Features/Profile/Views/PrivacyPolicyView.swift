@@ -133,7 +133,7 @@ struct PrivacyPolicyView: View {
             .scrollIndicators(.hidden)
         }
         .toolbar(.hidden, for: .tabBar)
-        .navigationTitle("Política de Pricavidade")
+        .navigationTitle("Política de Privacidade")
         .ignoresSafeArea(edges: .bottom)
     }
     

@@ -15,6 +15,8 @@ final class ProfileViewModel{
     var notifyPendentPayments: Bool = true
     var notifyTickets: Bool = true
     
+    var showLogoutAlert: Bool = false
+    
     // função que mascara o documento para não ser completamente exibido na tela de perfil
     func maskDocument(_ document: String) -> String {
         let numbers = document.filter { $0.isNumber }

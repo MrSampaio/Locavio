@@ -13,6 +13,8 @@ struct ProfileView: View {
     @State private var viewModel = ProfileViewModel()
     @Environment(ProfileCoordinator.self) private var coordinator
     
+    @Environment(AppleAuthManager.self) private var authManager
+    
     @Query private var users: [Owner]
     
     private var user: Owner? {
@@ -33,6 +35,19 @@ struct ProfileView: View {
                 legalSection
                 buttonsSection
             }
+            
+            .alert("Sair da conta", isPresented: $viewModel.showLogoutAlert){
+                
+                Button("Cancelar", role: .cancel) {
+                }
+                
+                Button("Sair", role: .destructive) {
+                    authManager.logout()
+                }
+            } message: {
+                Text("Tem certeza de que deseja sair do aplicativo?")
+            }
+    
             .padding(.bottom, 30)
         }
         .background(Color(UIColor.appBg))
@@ -127,7 +142,9 @@ struct ProfileView: View {
         VStack(spacing: 16) {
             ComponentButton(
                 textButton: "Sair",
-                action: {},
+                action: {
+                    viewModel.showLogoutAlert.toggle()
+                },
                 variant: .secondary
             )
             
