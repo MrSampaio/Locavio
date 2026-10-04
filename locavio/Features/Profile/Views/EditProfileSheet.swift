@@ -32,6 +32,21 @@ struct EditProfileSheet: View {
                 Spacer()
                 
             }
+            .onChange(of: viewModel.documentNumber) {
+                oldValue,
+                newValue in
+                let maskedText = viewModel.maskDocument(
+                    text: newValue,
+                    type: viewModel.selectedDocumentType
+                )
+                
+                if viewModel.documentNumber != maskedText {
+                    viewModel.documentNumber = maskedText
+                }
+            }
+            .onChange(of: viewModel.selectedDocumentType) { oldValue, newValue in
+                viewModel.documentNumber = ""
+            }
             .onAppear {
                 viewModel.loadUserData(user: user)
             }

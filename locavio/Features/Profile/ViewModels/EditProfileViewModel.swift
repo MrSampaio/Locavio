@@ -28,13 +28,20 @@ final class EditProfileViewModel{
     }
     
     
-    
     // função para salvar os dados do usuário
     func saveUserData(context: ModelContext, user: Owner) -> Bool{
+        
+        guard DocumentAuth.isValidDocument(document: documentNumber, type: selectedDocumentType) else {
+            errorMessage = "O documento informado é inválido."
+            showErrorAlert = true
+            return false
+        }
+        
         user.profilePicture = userImageData
         
         user.documentType = selectedDocumentType
         user.documentNumber = documentNumber
+        
         
         do {
             try context.save()
@@ -48,5 +55,9 @@ final class EditProfileViewModel{
             
             return false
         }
+    }
+    
+    func maskDocument(text: String, type: DocumentTypeModel) -> String{
+        return DocumentAuth.applyDocumentMask(to: text, documentType: type)
     }
 }
