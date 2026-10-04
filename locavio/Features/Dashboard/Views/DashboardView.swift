@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import Charts
 
 struct DashboardView: View {
     
@@ -22,7 +23,7 @@ struct DashboardView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 16) {
-                Picker("Filtro", selection: $dashboardViewModelBind.currentFilter) {
+                Picker("Filtro", selection: $dashboardViewModelBind.currentFilter.animation(.easeInOut)) {
                     ForEach(SegmentedDashboard.allCases) { filter in
                         Text(filter.rawValue).tag(filter)
                     }
@@ -30,12 +31,53 @@ struct DashboardView: View {
                 .pickerStyle(.segmented)
                 
                 InformationDashboardCard(totalSum: dashboardViewModel.totalSum, firstSmallCardInformation: dashboardViewModel.countReceivedRent(), secondSmallCardInformation: dashboardViewModel.countNotReceivedRent(), cardType: dashboardViewModel.currentFilter)
+                
+                VStack(alignment: .leading, spacing: 24) {
+                    
+                    Text(dashboardViewModel.chartTitle)
+                        .font(.subheadline.bold())
+                        .foregroundStyle(.secondary)
+                    
+                    Chart(dashboardViewModel.monthlyChartData) { data in
+                        BarMark(
+                            x: .value("Mês", data.month, unit: .month),
+                            y: .value("Valor", data.total),
+                        )
+                        .foregroundStyle(dashboardViewModel.currentFilter == .profits ? .profit : .redProfit)
+                        .clipShape(
+                            UnevenRoundedRectangle(
+                                topLeadingRadius: 18,
+                                bottomLeadingRadius: 0,
+                                bottomTrailingRadius: 0,
+                                topTrailingRadius: 18
+                            )
+                        )
+                    }
+                    .chartXAxis {
+                        AxisMarks(values: .stride(by: .month)) { value in
+                            AxisValueLabel(centered: true) {
+                                if let date = value.as(Date.self) {
+                                    Text(shortMonth(date))
+                                        .font(.caption)
+                                }
+                            }
+                        }
+                    }
+                }
+                .padding(20)
+                .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 34))
             }
             .padding()
         }
         .onAppear {
             dashboardViewModel.properties = properties
         }
+    }
+    
+    private func shortMonth(_ date: Date) -> String {
+        date.formatted(.dateTime.month(.abbreviated).locale(Locale(identifier: "pt_BR")))
+            .replacingOccurrences(of: ".", with: "")
+            .capitalized
     }
 }
 
@@ -71,8 +113,8 @@ struct DashboardView: View {
     let payments2 = [
         Payment(date: daysAgo(3), property: property, value: 1200),
         Payment(date: daysAgo(5), property: property, value: 3000),
-        Payment(date: daysAgo(10), property: property, value: 2500),
-        Payment(date: daysAgo(20), property: property, value: 4100)
+        Payment(date: daysAgo(50), property: property, value: 2500),
+        Payment(date: daysAgo(50), property: property, value: 4100)
     ]
     
     let expenses2 = [
