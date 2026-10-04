@@ -17,31 +17,28 @@ final class PropertiesViewModel {
     var filter: PropertyFilter = .todos
     
     let options = PropertyListOptionsViewModel()
-
-  
+    
     func visibleProperties(from properties: [Property]) -> [Property] {
         let bySegment = properties.filter(matchesSegment)
         return options.apply(to: bySegment, search: searchText)
     }
-
-
+    
     private func matchesSegment(_ property: Property) -> Bool {
         switch filter {
-        case .todos:       return true
-        case .alugados:    return property.tenant != nil
-        case .naoAlugados: return property.tenant == nil
+            case .todos: return true
+            case .alugados: return property.tenant != nil
+            case .naoAlugados: return property.tenant == nil
         }
     }
     
     #warning("Depois implementa a lógica de adicionar contrato")
     #warning("também comenta sobre um toggle de `está alugado` ou não")
-    // função de adicionar propriedade
-    func addProperty(context: ModelContext, image: Data?, title: String, type: PropertyType, area: String, paymentDay: Int, cep: String, street: String, neighborhood: String, number: String, city: String, uf: String, profit: String, expenses: [Expenses], tenantName: String? = nil, tenantEmail: String? = nil, tenantCpf: String? = nil, tenantPhone: String? = nil) throws -> Bool {
+    
+    func addProperty(context: ModelContext, image: Data?, title: String, type: PropertyType, area: String, paymentDay: Int, cep: String, street: String, neighborhood: String, number: String, city: String, uf: String, profit: String, expenses: [ExpenseFormData], tenantName: String? = nil, tenantEmail: String? = nil, tenantCpf: String? = nil, tenantPhone: String? = nil) throws -> Bool {
         
         let cleanTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
-        //let cleanDescription = noteDescription.trimmingCharacters(in: .whitespacesAndNewlines)
         
-        if(cleanTitle.isEmpty){
+        if cleanTitle.isEmpty {
             throw PropertiesErrors.invalidTitle
         }
         
@@ -51,6 +48,18 @@ final class PropertiesViewModel {
         
         guard let convertedProfit = Double(profit) else {
             throw PropertiesErrors.invalidProfit
+        }
+        
+        // valida as despesas existentes. caso alguma esteja errada, impede a criação do imóvel
+        for data in expenses {
+            
+            if data.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                throw ExpensesErrors.invalidTitle
+            }
+            
+            if Double(data.value) == nil {
+                throw ExpensesErrors.invalidValue
+            }
         }
         
         let newProperty = Property(
@@ -65,23 +74,35 @@ final class PropertiesViewModel {
             number: number,
             city: city,
             uf: uf,
-            profit: convertedProfit,
-            expenses: expenses
+            profit: convertedProfit
         )
         
         context.insert(newProperty)
         
-        // laço que insere cada despesa e atribui a propriedade (aparentemente se passar direto, o swift data pode perder infos)
-        for expense in expenses {
-            expense.property = newProperty
+        // cria as despesas depois da validação e depois de criar o imóvel
+        for data in expenses {
+            
+            let validTitle = data.title.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            let validValue = Double(data.value)!
+            
+            let newExpense = Expenses(title: validTitle, value: validValue, date: data.date)
+            
+            newExpense.property = newProperty
         }
         
-        // associa o inquilino separadamente também
+        // adiciona o inquilino caso exista
         if let tName = tenantName, !tName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            guard let cpf = tenantCpf, !cpf.isEmpty else { throw TenantErrors.invalidCpf }
-            guard let phone = tenantPhone, !phone.isEmpty else { throw TenantErrors.invalidPhone }
+            
+            guard let cpf = tenantCpf, !cpf.isEmpty else {
+                throw TenantErrors.invalidCpf
+            }
+            guard let phone = tenantPhone, !phone.isEmpty else {
+                throw TenantErrors.invalidPhone
+            }
             
             let newTenant = Tenant(name: tName, email: tenantEmail, cpf: cpf, phone: phone)
+            
             newTenant.property = newProperty
         }
         
@@ -94,33 +115,122 @@ final class PropertiesViewModel {
         }
     }
     
-    // função para deletar propriedade
+    // função de delete de propriedade
     func deleteProperty(property: Property, context: ModelContext) throws {
-        
         context.delete(property)
-        
     }
     
+    // função de update de propriedade
+    func updateProperty(context: ModelContext, property: Property, image: Data?, title: String, type: PropertyType, area: String, paymentDay: Int, cep: String, street: String, neighborhood: String, number: String, city: String, uf: String, profit: String) throws -> Bool {
+        
+        let cleanTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if cleanTitle.isEmpty {
+            throw PropertiesErrors.invalidTitle
+        }
+        
+        guard let convertedArea = Int(area) else {
+            throw PropertiesErrors.invalidArea
+        }
+        
+        guard let convertedProfit = Double(profit) else {
+            throw PropertiesErrors.invalidProfit
+        }
+        
+        property.image = image
+        property.title = cleanTitle
+        property.type = type
+        property.area = convertedArea
+        property.paymentDay = paymentDay
+        property.cep = cep
+        property.street = street
+        property.neighborhood = neighborhood
+        property.number = number
+        property.city = city
+        property.uf = uf
+        property.profit = convertedProfit
+        
+        do {
+            try context.save()
+            return true
+        } catch {
+            print("Error when trying to save property: \(error)")
+            return false
+        }
+    }
     
+    // função de update de inquilino
+    func updateTenant(context: ModelContext, tenant: Tenant, name: String, email: String, cpf: String, phone: String) throws -> Bool {
+        
+        let cleanName = name.trimmingCharacters(in: .whitespacesAndNewlines)
+        let cleanCpf = cpf.trimmingCharacters(in: .whitespacesAndNewlines)
+        let cleanPhone = phone.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if cleanName.isEmpty {
+            throw TenantErrors.invalidName
+        }
+        
+        if cleanCpf.isEmpty {
+            throw TenantErrors.invalidCpf
+        }
+        
+        if cleanPhone.isEmpty {
+            throw TenantErrors.invalidPhone
+        }
+        
+        tenant.name = cleanName
+        tenant.email = email
+        tenant.cpf = cleanCpf
+        tenant.phone = cleanPhone
+        
+        do {
+            try context.save()
+            return true
+        } catch {
+            print("Erro ao tentar atualizar o inquilino: \(error)")
+            return false
+        }
+    }
     
-
-    
-    
-    
-//    func updateProperty(context: ModelContext, property: Property, image: Data?, title: String, type: PropertyType, area: Int, paymentDay: Int, isPaid: Bool, cep: String, street: String, neighborhood: String, number: Int, city: String, uf: String, profit: Double) {
-//        
-//        property.image = image
-//        property.title = title
-//        property.type = type
-//        property.area = area
-//        
-//        
-//    }
-    
-
-    
-    
-    
+    // função para salvar as despesas em lote (recebe um array de expenses)
+    func saveExpensesBatch(context: ModelContext, property: Property, formDataArray: [ExpenseFormData]) throws -> Bool {
+        
+        // valida cada elemento do array, caso haja algum incompleto, barra o insert
+        for data in formDataArray {
+            if data.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                throw ExpensesErrors.invalidTitle
+            }
+            if Double(data.value) == nil {
+                throw ExpensesErrors.invalidValue
+            }
+        }
+        
+        // atualiza cada uma das despesas
+        for data in formDataArray {
+            
+            let validTitle = data.title.trimmingCharacters(in: .whitespacesAndNewlines)
+            let validValue = Double(data.value)!
+            
+            // verifica se a despesa já existe, se sim, atualiza os valores respectivos
+            if let existing = data.existingExpense {
+                existing.title = validTitle
+                existing.value = validValue
+                existing.date = data.date
+            } else {
+                
+                // caso não exista, cria uma nova despesa e insere no banco
+                let newExpense = Expenses(title: validTitle, value: validValue, date: data.date)
+                newExpense.property = property
+                context.insert(newExpense)
+            }
+        }
+        
+        do {
+            try context.save()
+            return true
+        } catch {
+            print("Erro ao tentar salvar lote de despesas: \(error)")
+            return false
+        }
+    }
 }
-
-
