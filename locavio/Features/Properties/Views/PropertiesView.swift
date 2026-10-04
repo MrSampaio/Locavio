@@ -16,71 +16,107 @@ struct PropertiesView: View {
     @Query private var properties: [Property]
     
     @Query private var users: [Owner]
-
+    
     private var visibleProperties: [Property] {
         viewModel.visibleProperties(from: properties)
     }
-
+    
     var body: some View {
-        NavigationStack {
-            ScrollView {
-                VStack(alignment: .leading, spacing: 16) {
-                    Text("Imóveis")
-                        .font(.largeTitle.bold())
-                    
-                    Button("Logout", action:{
-                        authManager.logout()
-                    })
-                    
-                    Text("\(users.first?.documentNumber ?? "Sem documento")")
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+                Text("Imóveis")
+                    .font(.largeTitle.bold())
+                
+                SearchBarView(text: $viewModel.searchText)
 
-                    SearchBarView(text: $viewModel.searchText)
-
-                    Picker("Filtro", selection: $viewModel.filter) {
-                        ForEach(PropertyFilter.allCases) { filter in
-                            Text(filter.rawValue).tag(filter)
-                        }
-                    }
-                    .pickerStyle(.segmented)
-
-                    LazyVStack(spacing: 16) {
-                        ForEach(visibleProperties) { property in
-                            PropertyCardView(property: property)
-                        }
+                Picker("Filtro", selection: $viewModel.filter) {
+                    ForEach(PropertyFilter.allCases) { filter in
+                        Text(filter.rawValue).tag(filter)
                     }
                 }
-                .padding(.horizontal)
+                .pickerStyle(.segmented)
+
+                LazyVStack(spacing: 16) {
+                    ForEach(visibleProperties) { property in
+                        PropertyCardView(property: property)
+                    }
+                }
             }
-            .navigationBarTitleDisplayMode(.inline) // sem .navigationTitle
             .toolbar {
                 AppToolbar(
                     options: viewModel.options,
-                    onAdd: { viewModel.addProperty() }
+                    onAdd: {}
                 )
             }
+            .padding(.horizontal)
         }
+        .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    
+    //        .toolbar {
+    //            AppToolbar(
+    //                options: viewModel.options,
+    //                onAdd: { viewModel.addProperty() }
+    //            )
+    //        }
+}
+
+enum PropertiesPreviewData {
+    static func makeContainer() -> ModelContainer {
+        let schema = Schema([
+            Property.self, Owner.self, Tenant.self, Contract.self,
+            Payment.self, Expenses.self, Ticket.self
+            // inclua aqui também o modelo de manutenção (MaintenceModel.swift),
+            // se o Property tiver relação com ele
+        ])
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        
+        do {
+            let container = try ModelContainer(for: schema, configurations: [config])
+            insertSamples(into: container.mainContext)
+            return container
+        } catch {
+            fatalError("Falha ao criar container do preview: \(error)")
+        }
+    }
+    
+    private static func insertSamples(into context: ModelContext) {
+        let samplePhotoData = UIImage(systemName: "house.fill")?.pngData()
+        
+        let house = Property(
+            title: "Casa 1",
+            type: .home,
+            area: 32,
+            paymentDay: 10,
+            isPaid: true,
+            street: "Rua Ipê Amarelo",
+            number: "55",
+            city: "São Paulo",
+            profit: 1200.0
+        )
+        
+        let apartment = Property(
+            title: "Apto 202",
+            type: .apartment,
+            area: 58,
+            paymentDay: 5,
+            isPaid: false,
+            street: "Av. Paulista",
+            number: "1000",
+            city: "São Paulo",
+            profit: 2800.0
+        )
+        
+        context.insert(house)
+        context.insert(apartment)
     }
 }
 
 #Preview {
-    
-    let container = try! ModelContainer(
-        for: Property.self, Owner.self, Tenant.self, Contract.self,
-             Payment.self, Expenses.self, Ticket.self,
-        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
-    )
-
-    container.mainContext.insert(Property(
-        title: "Casa 1", type: .home, area: 32, paymentDay: 10, isPaid: true,
-        street: "Rua Ipê Amarelo", number: 55, city: "São Paulo", profit: 1200
-    ))
-    container.mainContext.insert(Property(
-        title: "Apto 202", type: .apartment, area: 58, paymentDay: 5, isPaid: false,
-        street: "Av. Paulista", number: 1000, city: "São Paulo", profit: 2800
-    ))
-
-    return PropertiesView()
-        .modelContainer(container)
+    PropertiesView()
+        .modelContainer(PropertiesPreviewData.makeContainer())
+        .environment(AppleAuthManager())
 }
 
 // exemplos chamada coordinator:
