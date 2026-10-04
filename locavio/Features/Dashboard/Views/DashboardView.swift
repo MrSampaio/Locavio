@@ -14,6 +14,16 @@ struct DashboardView: View {
     @Environment(DashboardViewModel.self) private var dashboardViewModel
     @Query private var properties: [Property]
     
+    @State private var selectedDate: Date?
+    
+    private var selectedItem: MonthlyTotal? {
+        guard let selectedDate,
+              let monthStart = dashboardViewModel.getStartOfMonth(selectedDate)
+        else { return nil }
+        
+        return dashboardViewModel.monthlyChartData.first { $0.month == monthStart }
+    }
+    
     var body: some View {
         
         @Bindable var dashboardViewModelBind = dashboardViewModel
@@ -34,24 +44,40 @@ struct DashboardView: View {
                 
                 VStack(alignment: .leading, spacing: 24) {
                     
-                    Text(dashboardViewModel.chartTitle)
-                        .font(.subheadline.bold())
-                        .foregroundStyle(.secondary)
+                    HStack {
+                        Text(dashboardViewModel.chartTitle)
+                            .font(.subheadline.bold())
+                            .foregroundStyle(.secondary)
+
+                        Spacer()
+
+                        if let selectedItem {
+                            Text(selectedItem.total, format: .currency(code: "BRL"))
+                                .font(.subheadline.bold())
+                        }
+                    }
                     
-                    Chart(dashboardViewModel.monthlyChartData) { data in
-                        BarMark(
-                            x: .value("Mês", data.month, unit: .month),
-                            y: .value("Valor", data.total),
-                        )
-                        .foregroundStyle(dashboardViewModel.currentFilter == .profits ? .profit : .redProfit)
-                        .clipShape(
-                            UnevenRoundedRectangle(
-                                topLeadingRadius: 18,
-                                bottomLeadingRadius: 0,
-                                bottomTrailingRadius: 0,
-                                topTrailingRadius: 18
+                    Chart {
+                        ForEach(dashboardViewModel.monthlyChartData) { data in
+                            BarMark(
+                                x: .value("Mês", data.month, unit: .month),
+                                y: .value("Valor", data.total),
                             )
-                        )
+                            .foregroundStyle(dashboardViewModel.currentFilter == .profits ? .profit : .redProfit)
+                            .opacity(selectedItem == nil || selectedItem?.id == data.id ? 1 : 0.4)
+                            .clipShape(
+                                UnevenRoundedRectangle(
+                                    topLeadingRadius: 18,
+                                    bottomLeadingRadius: 0,
+                                    bottomTrailingRadius: 0,
+                                    topTrailingRadius: 18
+                                )
+                            )
+                        }
+                    }
+                    .chartXSelection(value: $selectedDate)
+                    .chartYAxis {
+                        AxisMarks(position: .leading)
                     }
                     .chartXAxis {
                         AxisMarks(values: .stride(by: .month)) { value in
