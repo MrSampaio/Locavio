@@ -67,8 +67,9 @@ struct ProfileView: View {
                 userImage: nil,
                 userName: "\(user?.fullName ?? "Proprietário")",
                 maskedDocument: "CPF: \(maskedString)",
-                numberOfProperties: user?.properties?.count ?? 0,
-                numberOfTenants: 5
+                numberOfProperties: viewModel
+                    .calculateTotalProperties(from: user?.properties),
+                numberOfTenants: viewModel.calculateActiveTenants(from: user?.properties)
             )
         }
     }
