@@ -7,20 +7,23 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 struct EditProfileSheet: View {
     
-    // passa pra viewmodel depois
-    @State private var userImageData: Data? = nil
-    
-    @State var selectedDocumentType: DocumentTypeModel = .pf
-    @State var documentNumber: String = ""
-    
+    @Environment(\.modelContext) private var context
+    @Environment(ProfileCoordinator.self) private var coordinator
+
+    @State var viewModel = EditProfileViewModel()
+    @State var user: Owner
+
     var body: some View {
         NavigationStack{
             VStack(alignment: .center, spacing: 26){
                 
-                ProfilePhotoPicker(imageData: $userImageData)
+                ProfilePhotoPicker(
+                    imageData: $viewModel.userImageData
+                )
                 
                 TipsText(text: "Toque para alterar sua foto de perfil")
                 
@@ -29,13 +32,55 @@ struct EditProfileSheet: View {
                 Spacer()
                 
             }
-            .toolbar{
+            .onChange(of: viewModel.documentNumber) {
+                oldValue,
+                newValue in
+                let maskedText = viewModel.maskDocument(
+                    text: newValue,
+                    type: viewModel.selectedDocumentType
+                )
+                
+                if viewModel.documentNumber != maskedText {
+                    viewModel.documentNumber = maskedText
+                }
+            }
+            .onChange(of: viewModel.selectedDocumentType) { oldValue, newValue in
+                viewModel.documentNumber = ""
+            }
+            .onAppear {
+                viewModel.loadUserData(user: user)
+            }
+            .toolbar {
                 SheetsToolbar(
-                    onConfirm: {},
-                    onClose: {},
+                    onConfirm: {
+                        
+                        let success = viewModel.saveUserData(context: context, user: user)
+                        
+                        if success {
+                            coordinator.dismissSheet()
+                        }
+                        
+                        
+                    },
+                    onClose: {
+                        coordinator.dismissSheet()
+                    },
                     title: "Editar Perfil"
                 )
             }
+            
+            .alert("Erro ao Salvar", isPresented: $viewModel.showErrorAlert) {
+                Button("Entendi", role: .cancel) {}
+            } message: {
+                Text(viewModel.errorMessage)
+            }
+//            .toolbar{
+//                SheetsToolbar(
+//                    onConfirm: {},
+//                    onClose: {},
+//                    title: "Editar Perfil"
+//                )
+//            }
         }
        
     }
@@ -45,14 +90,14 @@ struct EditProfileSheet: View {
         
         VStack(spacing: 16){
             
-            DocumentTypePicker(selection: $selectedDocumentType)
+            DocumentTypePicker(selection: $viewModel.selectedDocumentType)
             
             Divider()
                 .padding(.horizontal, 50)
             
             DocumentTextField(
-                text: $documentNumber,
-                documentType: selectedDocumentType
+                text: $viewModel.documentNumber,
+                documentType: viewModel.selectedDocumentType
             )
         }
         
@@ -81,8 +126,4 @@ struct EditProfileSheet: View {
 ////        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 38))
 ////        .padding(.horizontal, 16)
     }
-}
-
-#Preview {
-    EditProfileSheet()
 }

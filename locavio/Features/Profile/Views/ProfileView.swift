@@ -13,6 +13,8 @@ struct ProfileView: View {
     @State private var viewModel = ProfileViewModel()
     @Environment(ProfileCoordinator.self) private var coordinator
     
+    @Environment(AppleAuthManager.self) private var authManager
+    
     @Query private var users: [Owner]
     
     private var user: Owner? {
@@ -33,6 +35,19 @@ struct ProfileView: View {
                 legalSection
                 buttonsSection
             }
+            
+            .alert("Sair da conta", isPresented: $viewModel.showLogoutAlert){
+                
+                Button("Cancelar", role: .cancel) {
+                }
+                
+                Button("Sair", role: .destructive) {
+                    authManager.logout()
+                }
+            } message: {
+                Text("Tem certeza de que deseja sair do aplicativo?")
+            }
+    
             .padding(.bottom, 30)
         }
         .background(Color(UIColor.appBg))
@@ -42,7 +57,7 @@ struct ProfileView: View {
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ProfileToolbar(onClick: {
-                coordinator.activeSheet = .editProfileSheet
+                coordinator.presentEditProfile(user: user!)
             })
         }
     }
@@ -59,9 +74,9 @@ struct ProfileView: View {
         
         VStack(alignment: .center){
             ProfileHeader(
-                userImage: nil,
+                userImage: user?.profilePicture,
                 userName: "\(user?.fullName ?? "Proprietário")",
-                maskedDocument: "CPF: \(maskedString)",
+                maskedDocument: "\(maskedString)",
                 numberOfProperties: viewModel
                     .calculateTotalProperties(from: user?.properties),
                 numberOfTenants: viewModel.calculateActiveTenants(from: user?.properties)
@@ -127,7 +142,9 @@ struct ProfileView: View {
         VStack(spacing: 16) {
             ComponentButton(
                 textButton: "Sair",
-                action: {},
+                action: {
+                    viewModel.showLogoutAlert.toggle()
+                },
                 variant: .secondary
             )
             
@@ -141,6 +158,7 @@ struct ProfileView: View {
 #Preview {
     ProfileView()
         .environment(ProfileCoordinator())
+        .environment(AppleAuthManager())
 }
 
 

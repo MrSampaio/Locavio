@@ -50,6 +50,7 @@ struct PropertiesView: View {
             }
             .padding(.horizontal)
         }
+        .background(Color.appBg)
         .navigationBarTitleDisplayMode(.inline)
     }
     

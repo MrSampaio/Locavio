@@ -33,8 +33,8 @@ final class ProfileCoordinator {
     }
     
     // navegação das sheets
-    func presentEditProfile() {
-        activeSheet = .editProfileSheet
+    func presentEditProfile(user: Owner) {
+        activeSheet = .editProfileSheet(user)
     }
     
     func dismissSheet() {

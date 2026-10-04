@@ -14,6 +14,7 @@ final class Owner: Identifiable {
     
     var appleUserID: String = ""
     var fullName: String?
+    var profilePicture: Data?
     var email: String?
     var documentType: DocumentTypeModel?
     var documentNumber: String?
@@ -25,10 +26,22 @@ final class Owner: Identifiable {
     @Relationship(deleteRule: .cascade, inverse: \Property.owner)
     var properties: [Property]?
     
-    
-    init(appleUserID: String, fullName: String? = nil, email: String? = nil, documentType: DocumentTypeModel? = nil, documentNumber: String? = nil, phone: String? = nil, notifyPayments: Bool? = nil, notifyDueDate: Bool? = nil, notifyTickets: Bool? = nil, properties: [Property]? = nil) {
+    init(
+        appleUserID: String,
+        fullName: String? = nil,
+        profilePicture: Data? = nil,
+        email: String? = nil,
+        documentType: DocumentTypeModel? = nil,
+        documentNumber: String? = nil,
+        phone: String? = nil,
+        notifyPayments: Bool? = nil,
+        notifyDueDate: Bool? = nil,
+        notifyTickets: Bool? = nil,
+        properties: [Property]? = nil
+    ) {
         self.appleUserID = appleUserID
         self.fullName = fullName
+        self.profilePicture = profilePicture
         self.email = email
         self.documentType = documentType
         self.documentNumber = documentNumber

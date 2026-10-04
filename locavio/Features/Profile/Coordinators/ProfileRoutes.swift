@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftData
 
 
 enum ProfileRoutes{
@@ -13,13 +14,13 @@ enum ProfileRoutes{
     case privacy
 }
 
-enum ProfileSheet: Identifiable{
-    case editProfileSheet
+enum ProfileSheet: Identifiable {
+    case editProfileSheet(Owner)
     
     var id: String {
         switch self {
-            case .editProfileSheet:
-                return "editProfileSheet"
+            case .editProfileSheet(let owner):
+                return "editProfileSheet_\(owner.persistentModelID)"
         }
     }
 }
