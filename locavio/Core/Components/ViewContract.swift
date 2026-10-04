@@ -24,7 +24,7 @@ struct ViewContractComponent: View {
                 VStack(alignment: .leading, spacing: 2) {
                     Text(contractName)
                         .font(.body)
-                        .foregroundStyle(.black)
+                        .foregroundStyle(.primary)
                         .lineLimit(1)
                     
                     Text("Anexado em: \(attachmentDate)")
@@ -40,7 +40,7 @@ struct ViewContractComponent: View {
             .padding(.horizontal, 16)
             .frame(maxWidth: .infinity)
             .frame(height: 75)
-            .background(Color(hex: "E0E0E5"))
+            .background(.quaternary)
             .clipShape(
                 RoundedRectangle(cornerRadius: 24)
             )
