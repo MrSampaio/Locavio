@@ -7,26 +7,11 @@
 
 import Foundation
 
-enum DashboardPeriod: String, CaseIterable, Identifiable {
-    case oneMonth = "1 mês"
-    case sixMonths = "6 meses"
-    case oneYear = "1 ano"
-    
-    var id: Self { self }
-}
-
-enum SegmentedDashboard: String, CaseIterable, Identifiable {
-    case profits = "Lucro"
-    case expenses = "Despesa"
-    
-    var id: Self { self }
-}
-
 @Observable
 class DashboardViewModel {
     
     var currentFilter: SegmentedDashboard = .profits
-    var currentDashPeriod: DashboardPeriod = .oneMonth
+    var currentDashPeriod: DashboardPeriod = .sixMonths
     var properties: [Property] = []
     
     var totalSum: Double {
@@ -35,6 +20,58 @@ class DashboardViewModel {
             sumTotal(items: getPayments(), dashPeriod: currentDashPeriod)
         case .expenses:
             sumTotal(items: getExpenses(), dashPeriod: currentDashPeriod)
+        }
+    }
+    
+    var chartTitle: String {
+        switch currentFilter {
+        case .profits: "Lucro mensal"
+        case .expenses: "Despesa mensal"
+        }
+    }
+    
+    var monthlyChartData: [MonthlyTotal] {
+        
+        let months = lastMonths(monthCount)
+        
+        switch currentFilter {
+        case .profits: return monthlyTotals(items: getPayments(), months: months)
+        case .expenses: return monthlyTotals(items: getExpenses(), months: months)
+        }
+    }
+    
+    var monthCount: Int {
+        switch currentDashPeriod {
+        case .oneMonth: 1
+        case .sixMonths: 6
+        case .oneYear: 12
+        }
+    }
+    
+    func lastMonths(_ count: Int) -> [Date] {
+        let calendar = Calendar.current
+        guard let current = getStartOfMonth(.now) else { return [] }
+        
+        return (0..<count)
+            .reversed()
+            .compactMap { calendar.date(byAdding: .month, value: -$0, to: current) }
+            .compactMap { getStartOfMonth($0) }
+    }
+    
+    func monthlyTotals<T: DatedValue>(items: [T], months: [Date]) -> [MonthlyTotal] {
+        var totals: [Date: Double] = [:]
+        
+        for item in items {
+            guard let date = item.date,
+                  let value = item.value,
+                  let monthStart = getStartOfMonth(date)
+            else { continue }
+            
+            totals[monthStart, default: 0] += value
+        }
+        
+        return months.map { month in
+            MonthlyTotal(month: month, total: totals[month, default: 0])
         }
     }
     
@@ -84,6 +121,10 @@ class DashboardViewModel {
         }
         
         return Calendar.current.date(byAdding: periodType, value: -startPeriodValue, to: .now)
+    }
+    
+    func getStartOfMonth(_ date: Date) -> Date? {
+        Calendar.current.dateInterval(of: .month, for: date)?.start
     }
     
     func filterByRangeOfDate<T: DatedValue>(items: [T], startDate: Date, endDate: Date) -> [T] {
