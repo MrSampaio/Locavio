@@ -52,16 +52,10 @@ final class PropertyDetailViewModel {
     /// Ex.: "Rua Ipê Amarelo, 55 - Santo Amaro - SP"
     var address: String {
         let streetPart = [property.street?.trimmedOrNil,
-                          property.number.map(String.init)]
+                          property.number.map { String($0) }] // Use a closure aqui
             .compactMap { $0 }
             .joined(separator: ", ")
-
-        let parts = [streetPart.trimmedOrNil,
-                     property.neighborhood?.trimmedOrNil,
-                     property.uf?.trimmedOrNil?.uppercased()]
-            .compactMap { $0 }
-
-        return parts.isEmpty ? "Endereço não informado" : parts.joined(separator: " - ")
+        return streetPart
     }
 
     /// Ex.: "CEP: 12345-678"

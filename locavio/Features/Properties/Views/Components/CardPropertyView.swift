@@ -161,7 +161,7 @@ struct PropertyCardView: View {
 #Preview("Sem imagem") {
     PropertyCardView(property: Property(
         title: "Casa 1", type: .home, area: 32, paymentDay: 10,
-        street: "Rua Ipê Amarelo", number: 55, city: "São Paulo", profit: 1200
+        street: "Rua Ipê Amarelo", number: "55", city: "São Paulo", profit: 1200
     ))
     .padding()
 }
@@ -170,7 +170,7 @@ private func previewPropertyWithImage() -> Property {
     Property(
         image: UIImage(named: "CasaText")?.jpegData(compressionQuality: 0.9),
         title: "Casa 1", type: .home, area: 32, paymentDay: 10,
-        street: "Rua Ipê Amarelo", number: 55, city: "São Paulo", profit: 1200
+        street: "Rua Ipê Amarelo", number: "55", city: "São Paulo", profit: 1200
     )
 }
 

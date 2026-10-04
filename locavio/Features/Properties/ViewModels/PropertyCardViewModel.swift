@@ -39,8 +39,10 @@ final class PropertyCardViewModel {
 
    
     var address: String {
-        let streetPart = [property.street?.trimmedOrNil,
-                          property.number.map(String.init)]
+        let streetPart = [
+            property.street?.trimmedOrNil,
+            property.number?.trimmedOrNil
+        ]
             .compactMap { $0 }
             .joined(separator: ", ")
 

@@ -24,7 +24,12 @@ struct locavioApp: App {
             Ticket.self,
             Maintence.self
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
+        
+        // testa se é preview do canva, NÃO REMOVER EM HIPÓTESE ALGUMA!!!!!!!!!!!
+        let isPreview = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PLAYGROUNDS"] == "1"
+        
+        // se for Canvas, isStoredInMemoryOnly vira TRUE. Se for o app real, vira FALSE.
+        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: isPreview)
 
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
