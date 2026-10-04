@@ -59,7 +59,7 @@ struct ProfileHeader: View {
                     .foregroundColor(.white)
                     .frame(width: 100)
                     .padding(10)
-                    .background(Color(.badget02))
+                    .background(Color("ListCardColor"))
                     .cornerRadius(40)
             }
         }

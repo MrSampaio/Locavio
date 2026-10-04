@@ -15,7 +15,7 @@ struct TagBadgeItem: Identifiable {
 
 enum BadgeColor {
     static let rented = Color("Badget01")
-    static let propertyType = Color("Badget02")
+    static let propertyType = Color.accent
     static let notRented = Color("Badget03")
     static let area = Color("Badget04")
 }

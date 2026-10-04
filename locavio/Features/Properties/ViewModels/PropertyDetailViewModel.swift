@@ -23,7 +23,7 @@ final class PropertyDetailViewModel {
         self.today = today
     }
 
-    // MARK: - Imagem
+    // Imagem
 
     var image: UIImage? {
         guard let data = property.image else { return nil }
@@ -32,12 +32,9 @@ final class PropertyDetailViewModel {
 
     var hasImage: Bool { image != nil }
 
-    // MARK: - Cabeçalho
+    // Cabeçalho
 
-    /// Tag do tipo do imóvel (ex.: "Casa"). `nil` esconde a tag.
-    var typeTag: String? {
-        property.type?.rawValue
-    }
+    var typeBadge: TagBadgeItem? { property.typeBadge }
 
     var title: String {
         property.title?.trimmedOrNil ?? "Sem título"
@@ -68,7 +65,7 @@ final class PropertyDetailViewModel {
         return "CEP: \(digits.prefix(5))-\(digits.suffix(3))"
     }
 
-    // MARK: - Próximo pagamento
+    // Próximo pagamento
 
     var nextPaymentLabel: String { "Próx. Pagamento:" }
 
@@ -77,7 +74,7 @@ final class PropertyDetailViewModel {
         return Self.dateFormatter.string(from: date)
     }
 
-    // MARK: - Inquilino
+    // Inquilino
 
     var tenantSectionTitle: String { "Inquilino" }
 
@@ -107,7 +104,7 @@ final class PropertyDetailViewModel {
         return raw?.trimmedOrNil
     }
 
-    // MARK: - Helpers
+    //  Helpers
 
     private var nextPaymentDate: Date? {
         guard let day = property.paymentDay, (1...31).contains(day) else { return nil }
@@ -141,6 +138,29 @@ final class PropertyDetailViewModel {
         f.dateFormat = "dd/MM/yyyy"
         return f
     }()
+    
+    // MARK: - Contrato
+    
+    /// Nome para o componente, que não aceita opcional.
+    var contractDisplayName: String { contractName ?? "Nenhum contrato anexado" }
+    
+    var contractSectionTitle: String { "Contrato" }
+
+    /// Nome do arquivo do contrato. `nil` quando não há contrato.
+    var contractName: String? {
+        let raw: String? = property.contract?.fileName        
+        return raw?.trimmedOrNil
+    }
+
+    var contractAttachmentDate: String {
+        let date: Date? = property.contract?.createdAt
+        guard let date else { return "—" }
+        return Self.dateFormatter.string(from: date)
+    }
+
+    //Solicitações
+
+    var requestsSectionTitle: String { "Solicitações" }
 }
 
 private extension String {
