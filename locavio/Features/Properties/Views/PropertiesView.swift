@@ -62,25 +62,60 @@ struct PropertiesView: View {
     //        }
 }
 
-#Preview {
-    let container = try! ModelContainer(
-        for: Property.self, Owner.self, Tenant.self, Contract.self,
-        Payment.self, Expenses.self, Ticket.self,
-        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
-    )
+enum PropertiesPreviewData {
+    static func makeContainer() -> ModelContainer {
+        let schema = Schema([
+            Property.self, Owner.self, Tenant.self, Contract.self,
+            Payment.self, Expenses.self, Ticket.self
+            // inclua aqui também o modelo de manutenção (MaintenceModel.swift),
+            // se o Property tiver relação com ele
+        ])
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        
+        do {
+            let container = try ModelContainer(for: schema, configurations: [config])
+            insertSamples(into: container.mainContext)
+            return container
+        } catch {
+            fatalError("Falha ao criar container do preview: \(error)")
+        }
+    }
     
-    container.mainContext.insert(Property(
-        title: "Casa 1", type: .home, area: 32, paymentDay: 10, isPaid: true,
-        street: "Rua Ipê Amarelo", number: 55, city: "São Paulo", profit: 1200
-    ))
+    private static func insertSamples(into context: ModelContext) {
+        let samplePhotoData = UIImage(systemName: "house.fill")?.pngData()
+        
+        let house = Property(
+            title: "Casa 1",
+            type: .home,
+            area: 32,
+            paymentDay: 10,
+            isPaid: true,
+            street: "Rua Ipê Amarelo",
+            number: "55",
+            city: "São Paulo",
+            profit: 1200.0
+        )
+        
+        let apartment = Property(
+            title: "Apto 202",
+            type: .apartment,
+            area: 58,
+            paymentDay: 5,
+            isPaid: false,
+            street: "Av. Paulista",
+            number: "1000",
+            city: "São Paulo",
+            profit: 2800.0
+        )
+        
+        context.insert(house)
+        context.insert(apartment)
+    }
+}
 
-    container.mainContext.insert(Property(
-        title: "Apto 202", type: .apartment, area: 58, paymentDay: 5, isPaid: false,
-        street: "Av. Paulista", number: 1000, city: "São Paulo", profit: 2800
-    ))
-    
-    return PropertiesView()
-        .modelContainer(container)
+#Preview {
+    PropertiesView()
+        .modelContainer(PropertiesPreviewData.makeContainer())
         .environment(AppleAuthManager())
 }
 
