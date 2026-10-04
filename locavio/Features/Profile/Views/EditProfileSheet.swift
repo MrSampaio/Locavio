@@ -17,22 +17,27 @@ struct EditProfileSheet: View {
     @State var documentNumber: String = ""
     
     var body: some View {
-        VStack(alignment: .center, spacing: 26){
-            
-            ProfilePhotoPicker(imageData: $userImageData)
-            
-            TipsText(text: "Toque para alterar sua foto de perfil")
-            
-            documentSection
-            
+        NavigationStack{
+            VStack(alignment: .center, spacing: 26){
+                
+                ProfilePhotoPicker(imageData: $userImageData)
+                
+                TipsText(text: "Toque para alterar sua foto de perfil")
+                
+                documentSection
+                
+                Spacer()
+                
+            }
+            .toolbar{
+                SheetsToolbar(
+                    onConfirm: {},
+                    onClose: {},
+                    title: "Editar Perfil"
+                )
+            }
         }
-        .toolbar{
-            SheetsToolbar(
-                onConfirm: {},
-                onClose: {},
-                title: "Editar Perfil"
-            )
-        }
+       
     }
     
     @ViewBuilder

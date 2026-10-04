@@ -26,6 +26,13 @@ struct ProfileCoordinatorView: View {
                 }
             }
         }
+        .sheet(item: $profileCoordinator.activeSheet) { sheet in
+            switch sheet {
+                case .editProfileSheet:
+                    EditProfileSheet()
+                        .environment(profileCoordinator)
+            }
+        }
     }
 }
 

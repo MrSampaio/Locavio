@@ -13,6 +13,13 @@ enum ProfileRoutes{
     case privacy
 }
 
-enum ProfileSheet{
+enum ProfileSheet: Identifiable{
     case editProfileSheet
+    
+    var id: String {
+        switch self {
+            case .editProfileSheet:
+                return "editProfileSheet"
+        }
+    }
 }
