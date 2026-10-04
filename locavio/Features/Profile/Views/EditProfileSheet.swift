@@ -7,9 +7,13 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 struct EditProfileSheet: View {
     
+    @Environment(\.modelContext) private var context
+    @Environment(ProfileCoordinator.self) private var coordinator
+
     @State var viewModel = EditProfileViewModel()
     @State var user: Owner
 
@@ -29,18 +33,31 @@ struct EditProfileSheet: View {
                 
             }
             .onAppear {
-//                loadUserData()
+                viewModel.loadUserData(user: user)
             }
             .toolbar {
                 SheetsToolbar(
                     onConfirm: {
-//                        saveUserData()
+                        
+                        let success = viewModel.saveUserData(context: context, user: user)
+                        
+                        if success {
+                            coordinator.dismissSheet()
+                        }
+                        
+                        
                     },
                     onClose: {
-//                        dismiss()
+                        coordinator.dismissSheet()
                     },
                     title: "Editar Perfil"
                 )
+            }
+            
+            .alert("Erro ao Salvar", isPresented: $viewModel.showErrorAlert) {
+                Button("Entendi", role: .cancel) {}
+            } message: {
+                Text(viewModel.errorMessage)
             }
 //            .toolbar{
 //                SheetsToolbar(

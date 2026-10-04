@@ -74,9 +74,9 @@ struct ProfileView: View {
         
         VStack(alignment: .center){
             ProfileHeader(
-                userImage: nil,
+                userImage: user?.profilePicture,
                 userName: "\(user?.fullName ?? "Proprietário")",
-                maskedDocument: "CPF: \(maskedString)",
+                maskedDocument: "\(maskedString)",
                 numberOfProperties: viewModel
                     .calculateTotalProperties(from: user?.properties),
                 numberOfTenants: viewModel.calculateActiveTenants(from: user?.properties)

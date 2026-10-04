@@ -16,6 +16,9 @@ final class EditProfileViewModel{
     var selectedDocumentType: DocumentTypeModel = .pf
     var documentNumber: String = ""
     
+    var showErrorAlert: Bool = false
+    var errorMessage = ""
+    
     // função para carregar os dados do usuário com o objeto que vem  na sheet
     func loadUserData(user: Owner){
         userImageData = user.profilePicture
@@ -24,11 +27,26 @@ final class EditProfileViewModel{
         documentNumber = user.documentNumber ?? ""
     }
     
+    
+    
     // função para salvar os dados do usuário
-    func saveUserData(user: Owner) throws{
+    func saveUserData(context: ModelContext, user: Owner) -> Bool{
         user.profilePicture = userImageData
         
         user.documentType = selectedDocumentType
         user.documentNumber = documentNumber
+        
+        do {
+            try context.save()
+            return true
+            
+        } catch {
+            errorMessage = "Não foi possível salvar as alterações. Verifique os dados e tente novamente."
+            showErrorAlert = true
+            
+            print("Error when trying to save data from EditProfileView: \(error.localizedDescription)")
+            
+            return false
+        }
     }
 }
