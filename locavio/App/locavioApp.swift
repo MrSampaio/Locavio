@@ -12,6 +12,7 @@ import AuthenticationServices
 @main
 struct locavioApp: App {
     @State private var appleAuthManager = AppleAuthManager()
+    @State private var dashboardViewModel = DashboardViewModel()
     
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
@@ -52,8 +53,8 @@ struct locavioApp: App {
                     }
                 }
             }
-            
             .environment(appleAuthManager)
+            .environment(dashboardViewModel)
             .onReceive(NotificationCenter.default.publisher(for: ASAuthorizationAppleIDProvider.credentialRevokedNotification)){ _ in
                             print("Credential revoked in real time.")
                             appleAuthManager.logout() //vai alterar o isAuthenticated para false e a tela muda

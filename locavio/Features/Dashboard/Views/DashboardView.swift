@@ -42,23 +42,6 @@ struct DashboardView: View {
             
             VStack(spacing: 16) {
                 
-                VStack {
-                    Menu {
-                        Picker("Filtrar por período", selection: $dashboardViewModelBind.currentDashPeriod) {
-                            ForEach(DashboardPeriod.allCases) { filter in
-                                Text(filter.rawValue).tag(filter)
-                            }
-                        }
-                    }label: {
-                        Text(filterTitle)
-                            .tint(.primary)
-                            .font(.body)
-                    }
-                    .padding()
-                    .glassEffect(.regular, in: Capsule())
-                }
-                .frame(maxWidth: .infinity, alignment: .trailing)
-                
                 Picker("Filtro", selection: $dashboardViewModelBind.currentFilter.animation(.easeInOut)) {
                     ForEach(SegmentedDashboard.allCases) { filter in
                         Text(filter.rawValue).tag(filter)
@@ -121,9 +104,25 @@ struct DashboardView: View {
             }
             .padding()
         }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Menu {
+                    Picker("Filtrar por período", selection: $dashboardViewModelBind.currentDashPeriod) {
+                        ForEach(DashboardPeriod.allCases) { filter in
+                            Text(filter.rawValue).tag(filter)
+                        }
+                    }
+                }label: {
+                    Text(filterTitle)
+                        .tint(.primary)
+                        .font(.body)
+                }
+            }
+        }
         .onAppear {
             dashboardViewModel.properties = properties
         }
+        .navigationTitle("Relatório")
     }
     
     private func shortMonth(_ date: Date) -> String {
