@@ -2021,6 +2021,10 @@ final class SignUpViewModel {
                 
                 user.documentNumber = document
                 user.documentType = documentType
+                user.fullName = KeychainHelper.shared.readString(for: "appleUserFullName")
+                print("Nome completo depois do cadastro: ", KeychainHelper.shared.readString(for: "appleUserFullName"))
+                user.email = KeychainHelper.shared
+                    .readString(for: "appleUserEmail")
                 
                 try context.save()
                 
@@ -2267,28 +2271,6 @@ final class DashboardCoordinator{
 
 ---
 
-### Arquivo: \⁠ ./locavio/Features/Dashboard/ViewModels/DatedValue.swift\ ⁠
-⁠ swift
-//
-//  DatedValue.swift
-//  locavio
-//
-//  Created by João Cláudio dos Santos Souza on 01/10/26.
-//
-
-import Foundation
-
-protocol DatedValue {
-    var date: Date? { get }
-    var value: Double? { get }
-}
-
-extension Payment: DatedValue {}
-extension Expenses: DatedValue {}
- ⁠
-
----
-
 ### Arquivo: \⁠ ./locavio/Features/Dashboard/ViewModels/DashboardViewModel.swift\ ⁠
 ⁠ swift
 //
@@ -2300,52 +2282,66 @@ extension Expenses: DatedValue {}
 
 import Foundation
 
-enum DashboardPeriod: String, CaseIterable, Identifiable {
-    case oneMonth = "1 mês"
-    case sixMonths = "6 meses"
-    case oneYear = "1 ano"
-    
-    var id: Self { self }
-}
-
-enum SegmentedDashboard: String, CaseIterable, Identifiable {
-    case profits = "Lucro"
-    case expenses = "Despesa"
-    
-    var id: Self { self }
-}
-
 @Observable
 class DashboardViewModel {
     
     var currentFilter: SegmentedDashboard = .profits
-    var currentDashPeriod: DashboardPeriod = .oneMonth
+    var currentDashPeriod: DashboardPeriod = .sixMonths
     var properties: [Property] = []
     
     var totalSum: Double {
+        monthlyChartData.reduce(0) { $0 + $1.total }
+    }
+    
+    var chartTitle: String {
         switch currentFilter {
-        case .profits:
-            sumTotal(items: getPayments(), dashPeriod: currentDashPeriod)
-        case .expenses:
-            sumTotal(items: getExpenses(), dashPeriod: currentDashPeriod)
+        case .profits: "Lucro mensal"
+        case .expenses: "Despesa mensal"
         }
     }
     
-    func sumTotal<T: DatedValue> (items: [T], dashPeriod: DashboardPeriod) -> Double {
-        let startDate: Date = getStartDay(period: dashPeriod) ?? Date.now
-        let endDate = Date.now
+    var monthlyChartData: [MonthlyTotal] {
         
-        let filteredItems = filterByRangeOfDate(items: items, startDate: startDate, endDate: endDate)
+        let months = lastMonths(monthCount)
         
-        var sum: Double = 0.0
+        switch currentFilter {
+        case .profits: return monthlyTotals(items: getPayments(), months: months)
+        case .expenses: return monthlyTotals(items: getExpenses(), months: months)
+        }
+    }
+    
+    var monthCount: Int {
+        switch currentDashPeriod {
+        case .oneMonth: 1
+        case .sixMonths: 6
+        case .oneYear: 12
+        }
+    }
+    
+    func lastMonths(_ count: Int) -> [Date] {
+        let calendar = Calendar.current
+        guard let current = getStartOfMonth(.now) else { return [] }
         
-        let itemsToSum: [Double] = filteredItems.map{ $0.value ?? 0 }
+        return (0..<count)
+            .reversed()
+            .compactMap { calendar.date(byAdding: .month, value: -$0, to: current) }
+    }
+    
+    func monthlyTotals<T: DatedValue>(items: [T], months: [Date]) -> [MonthlyTotal] {
+        var totals: [Date: Double] = [:]
         
-        for item in itemsToSum {
-            sum += item
+        for item in items {
+            guard let date = item.date,
+                  let value = item.value,
+                  let monthStart = getStartOfMonth(date)
+            else { continue }
+            
+            totals[monthStart, default: 0] += value
         }
         
-        return sum
+        return months.map { month in
+            MonthlyTotal(month: month, total: totals[month, default: 0])
+        }
     }
     
     func countReceivedRent() -> Int {
@@ -2360,37 +2356,8 @@ class DashboardViewModel {
         return propertiesNotReceivedRent.count
     }
     
-    func getStartDay(period: DashboardPeriod) -> Date? {
-        var startPeriodValue = 0
-        let periodType: Calendar.Component
-        
-        switch period {
-        case .oneMonth:
-            startPeriodValue = 1
-            periodType = .month
-        case .sixMonths:
-            startPeriodValue = 6
-            periodType = .month
-        case .oneYear:
-            startPeriodValue = 1
-            periodType = .year
-        }
-        
-        return Calendar.current.date(byAdding: periodType, value: -startPeriodValue, to: .now)
-    }
-    
-    func filterByRangeOfDate<T: DatedValue>(items: [T], startDate: Date, endDate: Date) -> [T] {
-        
-        let calendar = Calendar.current
-        let start = calendar.startOfDay(for: startDate)
-        guard let endNextDay = calendar.date(byAdding: .day, value: 1, to: calendar.startOfDay(for: endDate)) else { return [] }
-        
-        let interval = DateInterval(start: start, end: endNextDay)
-        
-        return items.filter {
-            guard let itemDate = $0.date else { return false }
-            return interval.contains(itemDate)
-        }
+    func getStartOfMonth(_ date: Date) -> Date? {
+        Calendar.current.dateInterval(of: .month, for: date)?.start
     }
     
     func getPayments() -> [Payment] {
@@ -2426,6 +2393,77 @@ class DashboardViewModel {
 
 ---
 
+### Arquivo: \⁠ ./locavio/Features/Dashboard/Models/DatedValue.swift\ ⁠
+⁠ swift
+//
+//  DatedValue.swift
+//  locavio
+//
+//  Created by João Cláudio dos Santos Souza on 01/10/26.
+//
+
+import Foundation
+
+protocol DatedValue {
+    var date: Date? { get }
+    var value: Double? { get }
+}
+
+extension Payment: DatedValue {}
+extension Expenses: DatedValue {}
+ ⁠
+
+---
+
+### Arquivo: \⁠ ./locavio/Features/Dashboard/Models/MonthlyTotal.swift\ ⁠
+⁠ swift
+//
+//  MonthlyTotal.swift
+//  locavio
+//
+//  Created by João Cláudio dos Santos Souza on 02/10/26.
+//
+
+import Foundation
+
+struct MonthlyTotal: Identifiable {
+    let month: Date
+    let total: Double
+    var id: Date { month }
+}
+ ⁠
+
+---
+
+### Arquivo: \⁠ ./locavio/Features/Dashboard/Models/DashboardFilters.swift\ ⁠
+⁠ swift
+//
+//  DashboardFilters.swift
+//  locavio
+//
+//  Created by João Cláudio dos Santos Souza on 02/10/26.
+//
+
+import Foundation
+
+enum DashboardPeriod: String, CaseIterable, Identifiable {
+    case oneMonth = "1 mês"
+    case sixMonths = "6 meses"
+    case oneYear = "1 ano"
+    
+    var id: Self { self }
+}
+
+enum SegmentedDashboard: String, CaseIterable, Identifiable {
+    case profits = "Lucro"
+    case expenses = "Despesa"
+    
+    var id: Self { self }
+}
+ ⁠
+
+---
+
 ### Arquivo: \⁠ ./locavio/Features/Dashboard/Views/DashboardView.swift\ ⁠
 ⁠ swift
 //
@@ -2437,11 +2475,22 @@ class DashboardViewModel {
 
 import SwiftUI
 import SwiftData
+import Charts
 
 struct DashboardView: View {
     
     @Environment(DashboardViewModel.self) private var dashboardViewModel
     @Query private var properties: [Property]
+    
+    @State private var selectedDate: Date?
+    
+    private var selectedItem: MonthlyTotal? {
+        guard let selectedDate,
+              let monthStart = dashboardViewModel.getStartOfMonth(selectedDate)
+        else { return nil }
+        
+        return dashboardViewModel.monthlyChartData.first { $0.month == monthStart }
+    }
     
     var body: some View {
         
@@ -2452,7 +2501,7 @@ struct DashboardView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 16) {
-                Picker("Filtro", selection: $dashboardViewModelBind.currentFilter) {
+                Picker("Filtro", selection: $dashboardViewModelBind.currentFilter.animation(.easeInOut)) {
                     ForEach(SegmentedDashboard.allCases) { filter in
                         Text(filter.rawValue).tag(filter)
                     }
@@ -2460,12 +2509,69 @@ struct DashboardView: View {
                 .pickerStyle(.segmented)
                 
                 InformationDashboardCard(totalSum: dashboardViewModel.totalSum, firstSmallCardInformation: dashboardViewModel.countReceivedRent(), secondSmallCardInformation: dashboardViewModel.countNotReceivedRent(), cardType: dashboardViewModel.currentFilter)
+                
+                VStack(alignment: .leading, spacing: 24) {
+                    
+                    HStack {
+                        Text(dashboardViewModel.chartTitle)
+                            .font(.subheadline.bold())
+                            .foregroundStyle(.secondary)
+
+                        Spacer()
+
+                        if let selectedItem {
+                            Text(selectedItem.total, format: .currency(code: "BRL"))
+                                .font(.subheadline.bold())
+                        }
+                    }
+                    
+                    Chart {
+                        ForEach(dashboardViewModel.monthlyChartData) { data in
+                            BarMark(
+                                x: .value("Mês", data.month, unit: .month),
+                                y: .value("Valor", data.total),
+                            )
+                            .foregroundStyle(dashboardViewModel.currentFilter == .profits ? .profit : .redProfit)
+                            .opacity(selectedItem == nil || selectedItem?.id == data.id ? 1 : 0.4)
+                            .clipShape(
+                                UnevenRoundedRectangle(
+                                    topLeadingRadius: 18,
+                                    bottomLeadingRadius: 0,
+                                    bottomTrailingRadius: 0,
+                                    topTrailingRadius: 18
+                                )
+                            )
+                        }
+                    }
+                    .chartXSelection(value: $selectedDate)
+                    .chartYAxis {
+                        AxisMarks(position: .leading)
+                    }
+                    .chartXAxis {
+                        AxisMarks(values: .stride(by: .month)) { value in
+                            AxisValueLabel(centered: true) {
+                                if let date = value.as(Date.self) {
+                                    Text(shortMonth(date))
+                                        .font(.caption)
+                                }
+                            }
+                        }
+                    }
+                }
+                .padding(20)
+                .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 34))
             }
             .padding()
         }
         .onAppear {
             dashboardViewModel.properties = properties
         }
+    }
+    
+    private func shortMonth(_ date: Date) -> String {
+        date.formatted(.dateTime.month(.abbreviated).locale(Locale(identifier: "pt_BR")))
+            .replacingOccurrences(of: ".", with: "")
+            .capitalized
     }
 }
 
@@ -2501,8 +2607,8 @@ struct DashboardView: View {
     let payments2 = [
         Payment(date: daysAgo(3), property: property, value: 1200),
         Payment(date: daysAgo(5), property: property, value: 3000),
-        Payment(date: daysAgo(10), property: property, value: 2500),
-        Payment(date: daysAgo(20), property: property, value: 4100)
+        Payment(date: daysAgo(50), property: property, value: 2500),
+        Payment(date: daysAgo(50), property: property, value: 4100)
     ]
     
     let expenses2 = [
@@ -2863,6 +2969,7 @@ final class EditProfileViewModel{
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 @Observable
 final class ProfileViewModel{
@@ -2872,6 +2979,7 @@ final class ProfileViewModel{
     var notifyTickets: Bool = true
     
     var showLogoutAlert: Bool = false
+    var showDeleteAccountAlert: Bool = false
     
     // função que mascara o documento para não ser completamente exibido na tela de perfil
     func maskDocument(_ document: String) -> String {
@@ -2907,6 +3015,23 @@ final class ProfileViewModel{
     func calculateTotalProperties(from properties: [Property]?) -> Int {
         guard let properties = properties else { return 0 }
         return properties.count
+    }
+    
+    // função para deletar perfil do usuário
+    func deleteAccount(user: Owner, context: ModelContext, authManager: AppleAuthManager) {
+        do {
+            // deleta o usuário. o cascade irá apagar TUDO relacionado a ele.
+            context.delete(user)
+            
+            // força o salvamento para garantir que os dados sumam do CloudKit/Banco local na hora
+            try context.save()
+            
+            // limpa as credenciais do Keychain e muda o estado do app para .loggedOut
+            authManager.logout()
+            
+        } catch {
+            print("Error when trying to delete user: \(error.localizedDescription)")
+        }
     }
 }
  ⁠
@@ -3064,9 +3189,8 @@ import SwiftData
 struct ProfileView: View {
     @State private var viewModel = ProfileViewModel()
     @Environment(ProfileCoordinator.self) private var coordinator
-    
     @Environment(AppleAuthManager.self) private var authManager
-    
+    @Environment(\.modelContext) private var context
     @Query private var users: [Owner]
     
     private var user: Owner? {
@@ -3098,6 +3222,23 @@ struct ProfileView: View {
                 }
             } message: {
                 Text("Tem certeza de que deseja sair do aplicativo?")
+            }
+            
+            .alert("Excluir Conta Permanentemente", isPresented: $viewModel.showDeleteAccountAlert) {
+                
+                Button("Cancelar", role: .cancel) { }
+                
+                Button("Excluir Tudo", role: .destructive) {
+                    if let currentUser = user {
+                        viewModel.deleteAccount(
+                            user: currentUser,
+                            context: context,
+                            authManager: authManager
+                        )
+                    }
+                }
+            } message: {
+                Text("Esta ação é irreversível. Todos os seus imóveis, inquilinos, contratos, despesas e pagamentos serão apagados permanentemente.")
             }
     
             .padding(.bottom, 30)
@@ -3200,7 +3341,9 @@ struct ProfileView: View {
                 variant: .secondary
             )
             
-            DestructiveButton(text: "Excluir Conta", action: {})
+            DestructiveButton(text: "Excluir Conta", action: {
+                viewModel.showDeleteAccountAlert = true
+            })
         }
         
         .padding(.horizontal, 16)

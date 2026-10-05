@@ -18,6 +18,7 @@ final class ProfileViewModel{
     
     var showLogoutAlert: Bool = false
     var showDeleteAccountAlert: Bool = false
+    var showDeleteErrorAlert: Bool = false
     
     // função que mascara o documento para não ser completamente exibido na tela de perfil
     func maskDocument(_ document: String) -> String {
@@ -30,7 +31,7 @@ final class ProfileViewModel{
             let end = numbers.suffix(2)
             return "•••.\(start).•••-\(end)"
             
-        // máscara de CNPJ
+            // máscara de CNPJ
         } else if numbers.count == 14 {
             
             let start = numbers.prefix(2)
@@ -57,18 +58,22 @@ final class ProfileViewModel{
     
     // função para deletar perfil do usuário
     func deleteAccount(user: Owner, context: ModelContext, authManager: AppleAuthManager) {
+        // pega o ID antes de apagar, porque depois o objeto deixa de existir
+        let userID = user.appleUserID
+        
         do {
-            // deleta o usuário. o cascade irá apagar TUDO relacionado a ele.
-            context.delete(user)
+            // apaga o Owner (o cascade apaga TUDO relacionado a ele), salva, limpa o Keychain
+            // e muda o estado do app para .loggedOut. se falhar, nada é limpo e o usuário é avisado
+            try authManager.deleteLocalAccount(userID: userID, context: context)
             
-            // força o salvamento para garantir que os dados sumam do CloudKit/Banco local na hora
-            try context.save()
-            
-            // limpa as credenciais do Keychain e muda o estado do app para .loggedOut
-            authManager.logout()
+            // ATENÇÃO (App Store, diretriz 5.1.1(v)): quem usa Sign in with Apple precisa revogar o token
+            // da Apple ao excluir a conta. isso só é possível a partir de um servidor (a chave .p8 não pode
+            // ficar no app) chamando https://appleid.apple.com/auth/revoke. sem servidor, a alternativa
+            // documentada na TN3194 é orientar o usuário a revogar o acesso em Ajustes (ver texto do alerta)
             
         } catch {
             print("Error when trying to delete user: \(error.localizedDescription)")
+            showDeleteErrorAlert = true
         }
     }
 }

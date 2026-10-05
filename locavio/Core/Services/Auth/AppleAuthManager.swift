@@ -7,28 +7,33 @@
 
 import SwiftUI
 import AuthenticationServices
-import Security
 import SwiftData
 
-enum AppAuthState{
+enum AppAuthState {
     case needsRegistration
     case authenticated
     case loggedOut
 }
 
+// dados que a Apple entrega no login.
+struct AppleSignInInfo {
+    let userID: String
+    let fullName: String?
+    let email: String?
+}
+
 @Observable
-final class AppleAuthManager{
-    
-    
-//    var firtUse: Bool = false
+final class AppleAuthManager {
     
     var currentAuthState: AppAuthState = .loggedOut
     
-    // variável que controla autenticação do usuário
-    var isAuthenticated: Bool = false
-    
     // puxa o KeychainHelper pra simplificar a escrita
-    let keychainHelper = KeychainHelper.shared
+    private let keychainHelper = KeychainHelper.shared
+    
+    // ID do usuário logado. é a única informação que fica no Keychain
+    var currentUserID: String? {
+        keychainHelper.readString(for: KeychainKey.appleUserID)
+    }
     
     init() {
         checkIfIsFirstLaunchAfterInstall()
@@ -41,7 +46,7 @@ final class AppleAuthManager{
         
         if !hasLaunched {
             // se for false é pq o app acabou de ser instalado/reinstalado.
-           
+            
             // logout pra forçar o login
             logout()
             
@@ -50,109 +55,127 @@ final class AppleAuthManager{
         }
     }
     
-    func handleAuthorization(_ authorization: ASAuthorization){
+    // extrai o que a Apple enviou e guarda SÓ o ID no Keychain.
+    // quem decide pra qual tela ir é o LoginViewModel, depois de olhar o SwiftData
+    func handleAuthorization(_ authorization: ASAuthorization) -> AppleSignInInfo? {
         
-        // guard let para converter a credencial para o tipo AppleIDCredential
-        // essa credential vai ser a chave de identificação do usuário no sistema
-        guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential
-        else{
+        guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential else {
             print("User invalid credentials")
-            return
+            return nil
         }
         
-        // o userID vai ser a chave de identificação do usuário no sistema
-        let userID = credential.user
+        // o userID é a chave de identificação do usuário no sistema
+        keychainHelper.save(credential.user, for: KeychainKey.appleUserID)
         
-        // salva o userID no keychain pra maior segurançå
-        keychainHelper.save(userID, for: "appleUserID")
-        
-        // tenta pegar o nome completo do usuário
-        if let fullName = credential.fullName {
-            let givenName = fullName.givenName ?? ""
-            let familyName = fullName.familyName ?? ""
+        // nome completo: só vem na primeira autorização. nas outras vezes fullName é nil
+        var fullName: String?
+        if let components = credential.fullName {
+            let name = [components.givenName, components.familyName]
+                .compactMap { $0 }
+                .joined(separator: " ")
+                .trimmingCharacters(in: .whitespaces)
             
-            // limpa o nome recebido
-            let completeName = "\(givenName) \(familyName)".trimmingCharacters(in: .whitespaces)
-                
-            // salva o nome no Keychain para maior segurança
-            if !completeName.isEmpty {
-                keychainHelper.save(completeName, for: "appleUserFullName")
-            }
-            // depois faz a lógica aqui pra salvar o nome do usuário
+            fullName = name.isEmpty ? nil : name
         }
         
-        // tenta pegar o email do usuário
-        if let userEmail = credential.email {
-            keychainHelper.save(userEmail, for: "appleUserEmail")
-        }
-        
-        // guard let para receber o tokenData. será utilizado nas validações
-        // esse é o JWT que pod ser usado para validar a identidade do usuário
-        guard let tokenData = credential.identityToken, let token = String(data: tokenData, encoding: .utf8) else {
-            print("Error when trying to access tokenData")
-            return
-            
-        }
-        
-        // guard let que recebe o código de autorização. vai ser usado como código único das validações
-        guard let codeData = credential.authorizationCode, let code = String(data: codeData, encoding: .utf8) else{
-            print("Error when trying to access codeData")
-            return
-        }
-        
-        currentAuthState = .needsRegistration
-        
-        // caso tudo tenha dado certo, seta o controle de autenticação para true
-//        DispatchQueue.main.async {
-//            self.currentAuthState = .needsRegistration
-//        }
+        return AppleSignInInfo(
+            userID: credential.user,
+            fullName: fullName,
+            email: credential.email
+        )
     }
     
-    func checkCredentialStatus(context: ModelContext){
+    func checkCredentialStatus(context: ModelContext) {
         
-        // pega o ID do usuário salvo no Userdefaults
-        guard let userID = keychainHelper.readString(for: "appleUserID") else {
+        // pega o ID do usuário salvo no Keychain
+        guard let userID = currentUserID else {
             print("There is no user logged in Keychain storage.")
-            DispatchQueue.main.async { self.isAuthenticated = false }
+            currentAuthState = .loggedOut
             return
         }
         
         let provider = ASAuthorizationAppleIDProvider()
         
-        provider.getCredentialState(forUserID: userID){
-            status, error in
+        provider.getCredentialState(forUserID: userID) { status, error in
             
-            DispatchQueue.main.async{
-                switch status{
-                case.authorized:
-                    print("User is authorized!")
-                    self.isAuthenticated = true
+            DispatchQueue.main.async {
+                switch status {
+                    case .authorized:
+                        print("User is authorized!")
+                        self.routeAuthorizedUser(userID: userID, context: context)
                         
-                        let descriptor = FetchDescriptor<Owner>(predicate: #Predicate { $0.appleUserID == userID })
-                        if let user = try? context.fetch(descriptor).first, let doc = user.documentNumber, !doc.isEmpty {
-                            self.currentAuthState = .authenticated
-                        } else {
-                            self.currentAuthState = .needsRegistration
-                        }
+                    case .revoked:
+                        print("User revoked access.")
+                        self.handleCredentialRevoked(context: context)
                         
-//                        #warning("")
-                    
-                // importante: as infos precisam ser apagadas do Keychain caso o usuário tenha revogado o acesso do app aos seus dados
-                case.revoked, .notFound, .transferred:
-                print("User revoked access, not found or revoked")
-                self.logout()
-
-                @unknown default:
-                    break
+                    case .notFound, .transferred:
+                        print("User not found or transferred.")
+                        self.logout()
+                        
+                    @unknown default:
+                        break
                 }
             }
         }
     }
     
-    func logout(){
-        keychainHelper.delete(for: "appleUserID")
-        keychainHelper.delete(for: "appleUserFullName")
-        keychainHelper.delete(for: "appleUserEmail")
+    // decide a tela de um usuário que a Apple confirmou como autorizado
+    private func routeAuthorizedUser(userID: String, context: ModelContext) {
+        let descriptor = FetchDescriptor<Owner>(predicate: #Predicate { $0.appleUserID == userID })
+        
+        if let owner = try? context.fetch(descriptor).first,
+           let doc = owner.documentNumber, !doc.isEmpty {
+            currentAuthState = .authenticated
+        } else {
+            currentAuthState = .needsRegistration
+        }
+    }
+    
+    // chamado quando a Apple avisa que o acesso foi revogado
+    // (credentialRevokedNotification ou .revoked no getCredentialState).
+    // a TN3194 da Apple manda apagar todos os dados do usuário, inclusive Keychain e disco, e voltar ao login
+    func handleCredentialRevoked(context: ModelContext) {
+        guard let userID = currentUserID else {
+            logout()
+            return
+        }
+        
+        do {
+            try deleteLocalAccount(userID: userID, context: context)
+        } catch {
+            print("Error when trying to erase local data after revocation: \(error.localizedDescription)")
+            
+            // mesmo se der erro, encerra a sessão
+            logout()
+        }
+    }
+
+    func deleteLocalAccount(userID: String, context: ModelContext) throws {
+        let descriptor = FetchDescriptor<Owner>(predicate: #Predicate { $0.appleUserID == userID })
+        
+        for owner in try context.fetch(descriptor) {
+            context.delete(owner)
+        }
+        
+        do {
+            // salva na hora pra garantir que os dados sumam do banco local (e do CloudKit, se estiver ligado)
+            try context.save()
+        } catch {
+            context.rollback()
+            throw error
+        }
+        
+        logout()
+    }
+    
+    // encerra só a SESSÃO neste aparelho. NÃO apaga nenhum dado do usuário no SwiftData,
+    // então ao entrar de novo o perfil, o nome e os imóveis continuam lá
+    func logout() {
+        keychainHelper.delete(for: KeychainKey.appleUserID)
+        
+        // limpa chaves de versões antigas do app, que guardavam nome e email no Keychain
+        keychainHelper.delete(for: KeychainKey.legacyFullName)
+        keychainHelper.delete(for: KeychainKey.legacyEmail)
         
         currentAuthState = .loggedOut
     }
