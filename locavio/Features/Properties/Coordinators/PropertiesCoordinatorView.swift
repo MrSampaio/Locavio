@@ -1,9 +1,10 @@
 import SwiftUI
-
+import SwiftData
 struct PropertiesCoordinatorView: View {
-    
+    @Environment(\.modelContext) private var modelContext
     @State private var propertiesCoordinator = PropertiesCoordinator()
     @State private var propertiesViewModel = PropertiesViewModel()
+    
     
     
     var body: some View {
@@ -15,16 +16,26 @@ struct PropertiesCoordinatorView: View {
                 .environment(propertiesViewModel)
             
             // roteador de pilha
-            .navigationDestination(for: PropertiesRoute.self) { route in
-                switch route {
-                case .details(let id):
-                    // PropertyDetailsView(propertyId: id)
-                    Text("Detalhes do imóvel \(id)")
-                    
-                case .newProperty:
-                    NewPropertyView()
+                .navigationDestination(for: PropertiesRoute.self) { route in
+                    switch route {
+                    case .details(let property):
+                        PropertyDetailView(
+                            property: property,
+                            onShowLastPayments: {
+                                propertiesCoordinator.pushToLastPayments(property: property)
+                            },
+                            onDelete: {
+                                delete(property)
+                            }
+                        )
+
+                    case .lastPayments(let property):
+                        RecentPaymentsView(property: property)
+
+                    case .newProperty:
+                        NewPropertyView()
+                    }
                 }
-            }
             
             // roteador de sheets
 //            .sheet(item: $propertiesCoordinator.activeSheet) { sheet in
@@ -44,5 +55,18 @@ struct PropertiesCoordinatorView: View {
 //            )
 //        }
 
+    }
+    
+    private func delete(_ property: Property) {
+        // sai da tela antes de apagar, para ela não ler um imóvel já removido
+        propertiesCoordinator.pop()
+
+        DispatchQueue.main.async {
+            do {
+                try propertiesViewModel.deleteProperty(property: property, context: modelContext)
+            } catch {
+                print("Erro ao apagar imóvel: \(error)")
+            }
+        }
     }
 }

@@ -41,4 +41,10 @@ final class PropertiesCoordinator {
     func dismissSheet() {
         activeSheet = nil
     }
+    
+    func pushToLastPayments(property: Property) {
+        path.append(PropertiesRoute.lastPayments(property: property))
+    }
 }
+
+

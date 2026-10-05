@@ -11,6 +11,7 @@ import Foundation
 enum PropertiesRoute: Hashable {
     case details(property: Property)
     case newProperty
+    case lastPayments(property: Property)
 }
 
 // rotas de sheets

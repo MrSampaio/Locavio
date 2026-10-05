@@ -139,14 +139,14 @@ final class PropertyDetailViewModel {
         return f
     }()
     
-    // MARK: - Contrato
+    //  Contrato
     
     /// Nome para o componente, que não aceita opcional.
     var contractDisplayName: String { contractName ?? "Nenhum contrato anexado" }
     
     var contractSectionTitle: String { "Contrato" }
 
-    /// Nome do arquivo do contrato. `nil` quando não há contrato.
+    // Nome do arquivo do contrato. `nil` quando não há contrato.
     var contractName: String? {
         let raw: String? = property.contract?.fileName        
         return raw?.trimmedOrNil
@@ -167,5 +167,14 @@ private extension String {
     var trimmedOrNil: String? {
         let t = trimmingCharacters(in: .whitespacesAndNewlines)
         return t.isEmpty ? nil : t
+    }
+    
+    
+    //ações
+    var lastPaymentsButtonTitle: String { "Últimos Pagamentos" }
+    var deleteButtonTitle: String { "Apagar imóvel" }
+    var deleteAlertTitle: String { "Apagar imóvel?" }
+    var deleteAlertMessage: String {
+        "Essa ação não pode ser desfeita. Pagamentos, despesas e chamados deste imóvel também serão apagados."
     }
 }
