@@ -11,7 +11,7 @@ import SwiftData
 struct PropertiesView: View {
     @State private var viewModel = PropertiesViewModel()
     
-    @Environment(AppleAuthManager.self) private var authManager
+    @Environment(PropertiesCoordinator.self) private var coordinator
    
     @Query private var properties: [Property]
     
@@ -38,7 +38,12 @@ struct PropertiesView: View {
 
                 LazyVStack(spacing: 16) {
                     ForEach(visibleProperties) { property in
-                        PropertyCardView(property: property)
+                        Button {
+                            coordinator.pushToDetails(property: property)
+                        } label: {
+                            PropertyCardView(property: property)
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
             }
@@ -50,6 +55,8 @@ struct PropertiesView: View {
             }
             .padding(.horizontal)
         }
+        .scrollEdgeEffectStyle(.soft, for: .bottom)
+        .scrollIndicators(.hidden)
         .background(Color.appBg)
         .navigationBarTitleDisplayMode(.inline)
     }
@@ -115,9 +122,12 @@ enum PropertiesPreviewData {
 }
 
 #Preview {
-    PropertiesView()
-        .modelContainer(PropertiesPreviewData.makeContainer())
-        .environment(AppleAuthManager())
+    NavigationStack {
+         PropertiesView()
+     }
+     .modelContainer(PropertiesPreviewData.makeContainer())
+     
+     .environment(PropertiesCoordinator())
 }
 
 // exemplos chamada coordinator:
