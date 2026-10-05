@@ -43,6 +43,10 @@ final class SignUpViewModel {
                 
                 user.documentNumber = document
                 user.documentType = documentType
+                user.fullName = KeychainHelper.shared.readString(for: "appleUserFullName")
+                print("Nome completo depois do cadastro: ", KeychainHelper.shared.readString(for: "appleUserFullName"))
+                user.email = KeychainHelper.shared
+                    .readString(for: "appleUserEmail")
                 
                 try context.save()
                 

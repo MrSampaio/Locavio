@@ -14,11 +14,13 @@ struct MainTabView: View {
                 PropertiesCoordinatorView()
             }
             
+            Tab("Relatório", systemImage: "chart.bar") {
+                DashboardCoordinatorView()
+            }
+            
             Tab("Perfil", systemImage: "person"){
                 ProfileCoordinatorView()
             }
-            
-            
             
 //            DashboardCoordinatorView()
 //                .tabItem{
