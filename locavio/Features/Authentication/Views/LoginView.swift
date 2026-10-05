@@ -74,17 +74,17 @@ struct LoginView: View {
                         request.requestedScopes = [.fullName, .email]
                     } onCompletion: { result in
                         switch result {
-                        case .success(let authorization):
-                            
-                            // atualiza a variável isAuthenticated do App
-                            appleAuthManager.handleAuthorization(authorization)
-                            
-                            // sincroniza com o SwiftData para subir pro iCloud
-                            // passa o contexto como parâmetro pq o swift data só pode ser usado em structs
-                            loginViewModel.syncUserToSwiftData(context: context, authManager: appleAuthManager)
-                            
-                        case .failure(let error):
-                            print("Error when trying to sign in: \(error.localizedDescription)")
+                            case .success(let authorization):
+                                
+                                // extrai o ID (e nome/email, se a Apple enviar) da credencial
+                                guard let info = appleAuthManager.handleAuthorization(authorization) else { return }
+                                
+                                // cria/atualiza o Owner no SwiftData para subir pro iCloud e decide a próxima tela
+                                // passa o contexto como parâmetro pq o swift data só pode ser usado em structs
+                                loginViewModel.syncUserToSwiftData(info: info, context: context, authManager: appleAuthManager)
+                                
+                            case .failure(let error):
+                                print("Error when trying to sign in: \(error.localizedDescription)")
                         }
                     }
                     //            .signInWithAppleButtonStyle(.whiteOutline)

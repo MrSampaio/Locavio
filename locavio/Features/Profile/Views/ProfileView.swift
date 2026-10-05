@@ -16,8 +16,10 @@ struct ProfileView: View {
     @Environment(\.modelContext) private var context
     @Query private var users: [Owner]
     
+    // só o Owner da conta que está logada (e não "o primeiro que aparecer" no banco)
     private var user: Owner? {
-        users.first
+        guard let userID = authManager.currentUserID else { return nil }
+        return users.first { $0.appleUserID == userID }
     }
     
     
@@ -61,9 +63,15 @@ struct ProfileView: View {
                     }
                 }
             } message: {
-                Text("Esta ação é irreversível. Todos os seus imóveis, inquilinos, contratos, despesas e pagamentos serão apagados permanentemente.")
+                Text("Esta ação é irreversível. Todos os seus imóveis, inquilinos, contratos, despesas e pagamentos serão apagados permanentemente.\n\nPara desvincular também o Locavio do seu ID Apple, acesse Ajustes › seu nome › Iniciar Sessão com a Apple › Locavio › Parar de Usar.")
             }
-    
+            
+            .alert("Não foi possível excluir", isPresented: $viewModel.showDeleteErrorAlert) {
+                Button("Entendi", role: .cancel) { }
+            } message: {
+                Text("Ocorreu um erro ao excluir sua conta. Seus dados não foram apagados. Tente novamente.")
+            }
+            
             .padding(.bottom, 30)
         }
         .background(Color(UIColor.appBg))
@@ -73,7 +81,9 @@ struct ProfileView: View {
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
             ProfileToolbar(onClick: {
-                coordinator.presentEditProfile(user: user!)
+                if let currentUser = user {
+                    coordinator.presentEditProfile(user: currentUser)
+                }
             })
         }
     }
@@ -86,7 +96,7 @@ struct ProfileView: View {
         
         let maskedString = rawDoc.isEmpty ? "***.***.***-**" : viewModel.maskDocument(rawDoc)
         
-        #warning("Adicionar lógica de numeros de inquilinos")
+#warning("Adicionar lógica de numeros de inquilinos")
         
         VStack(alignment: .center){
             ProfileHeader(

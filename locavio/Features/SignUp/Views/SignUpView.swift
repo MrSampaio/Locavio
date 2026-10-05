@@ -31,6 +31,10 @@ struct SignUpView: View {
         } message: {
             Text(signUpViewModel.alertMessage)
         }
+        .task {
+            // descobre se precisa pedir o nome (a Apple só envia na primeira autorização)
+            signUpViewModel.loadOwner(context: context, authManager: authManager)
+        }
     }
     
     @ViewBuilder
@@ -42,9 +46,37 @@ struct SignUpView: View {
     }
     
     @ViewBuilder
+    private var nameRow: some View {
+        HStack(spacing: 16) {
+            Image(systemName: "person.fill")
+                .font(.title3)
+                .foregroundColor(.accentColor)
+            
+            Text("Nome")
+                .font(.body)
+            
+            Spacer()
+            
+            TextField("Seu nome completo", text: $signUpViewModel.fullName)
+                .multilineTextAlignment(.trailing)
+                .textContentType(.name)
+                .textInputAutocapitalization(.words)
+                .foregroundColor(.primary)
+        }
+        .frame(maxWidth: .infinity)
+    }
+    
+    @ViewBuilder
     private var documentSection: some View {
         VStack(alignment: .center, spacing: 12) {
             VStack(spacing: 16) {
+                
+                if signUpViewModel.needsFullName {
+                    nameRow
+                    
+                    Divider()
+                        .padding(.horizontal, 50)
+                }
                 
                 DocumentTypePicker(selection: $signUpViewModel.selectedDocumentType)
                 
@@ -58,7 +90,7 @@ struct SignUpView: View {
             .cornerRadius(34)
             .padding(.horizontal, 24)
             .onChange(of: signUpViewModel.documentNumber) {
- oldValue,
+                oldValue,
                 newValue in
                 let maskedText = signUpViewModel.maskDocument(
                     text: newValue,

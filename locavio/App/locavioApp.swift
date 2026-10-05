@@ -30,14 +30,14 @@ struct locavioApp: App {
         
         // se for Canvas, isStoredInMemoryOnly vira TRUE. Se for o app real, vira FALSE.
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: isPreview)
-
+        
         do {
             return try ModelContainer(for: schema, configurations: [modelConfiguration])
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-
+    
     var body: some Scene {
         WindowGroup {
             Group {
@@ -55,13 +55,14 @@ struct locavioApp: App {
             
             .environment(appleAuthManager)
             .onReceive(NotificationCenter.default.publisher(for: ASAuthorizationAppleIDProvider.credentialRevokedNotification)){ _ in
-                            print("Credential revoked in real time.")
-                            appleAuthManager.logout() //vai alterar o isAuthenticated para false e a tela muda
-                        }
-                        .task {
-                            appleAuthManager.checkCredentialStatus(context: sharedModelContainer.mainContext)
-                        }
-
+                print("Credential revoked in real time.")
+                // apaga os dados do usuário (como a Apple pede), limpa o Keychain e a tela volta pro login
+                appleAuthManager.handleCredentialRevoked(context: sharedModelContainer.mainContext)
+            }
+            .task {
+                appleAuthManager.checkCredentialStatus(context: sharedModelContainer.mainContext)
+            }
+            
         }
         
         .modelContainer(sharedModelContainer)
