@@ -4,6 +4,7 @@
 //
 //  Created by Mirella Bransford Lourenço on 30/09/26.
 //
+
 import SwiftUI
 
 struct ImageUpload: View {
@@ -12,9 +13,22 @@ struct ImageUpload: View {
     
     let action: () -> Void
     
+    @Environment(\.colorScheme) private var colorScheme
+    
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             
+            // Card
+            RoundedRectangle(cornerRadius: 32)
+                .fill(
+                    colorScheme == .dark
+                    ? Color(red: 28 / 255, green: 28 / 255, blue: 30 / 255)
+                    : Color.white
+                )
+                .frame(maxWidth: .infinity)
+                .frame(height: 175)
+            
+            // Conteúdo do card
             Group {
                 if let image {
                     image
@@ -24,22 +38,22 @@ struct ImageUpload: View {
                     Text("Adicionar Foto do Imóvel")
                         .font(.title3)
                         .fontWeight(.semibold)
+                        .foregroundStyle(.primary)
                 }
             }
             .frame(maxWidth: .infinity)
             .frame(height: 175)
-            .background(Color.white)
             .clipShape(
                 RoundedRectangle(cornerRadius: 32)
             )
-            .clipped()
             
+            // Botão da câmera
             Button(action: action) {
                 Image(systemName: "camera.fill")
                     .font(.title3)
                     .foregroundStyle(.white)
                     .frame(width: 56, height: 56)
-                    .background(Color("ColorOnboarding"))
+                    .background(Color.accentColor)
                     .clipShape(Circle())
             }
             .buttonStyle(.plain)
