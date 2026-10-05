@@ -11,7 +11,7 @@ import Foundation
 class DashboardViewModel {
     
     var currentFilter: SegmentedDashboard = .profits
-    var currentDashPeriod: DashboardPeriod = .sixMonths
+    var currentDashPeriod: DashboardPeriod = .oneMonth
     var properties: [Property] = []
     
     var totalSum: Double {
@@ -20,8 +20,18 @@ class DashboardViewModel {
     
     var chartTitle: String {
         switch currentFilter {
-        case .profits: "Lucro mensal"
-        case .expenses: "Despesa mensal"
+        case .profits:
+            switch currentDashPeriod {
+            case .oneMonth: "Lucro mensal"
+            case .sixMonths: "Lucro semestral"
+            case .oneYear: "Lucro anual"
+            }
+        case .expenses:
+            switch currentDashPeriod {
+            case .oneMonth: "Despesa mensal"
+            case .sixMonths: "Despesa semestral"
+            case .oneYear: "Despesa anual"
+            }
         }
     }
     
@@ -47,7 +57,7 @@ class DashboardViewModel {
         let calendar = Calendar.current
         guard let current = getStartOfMonth(.now) else { return [] }
         
-        return (0..<count)
+        return (0 ..< count)
             .reversed()
             .compactMap { calendar.date(byAdding: .month, value: -$0, to: current) }
     }

@@ -24,6 +24,14 @@ struct DashboardView: View {
         return dashboardViewModel.monthlyChartData.first { $0.month == monthStart }
     }
     
+    private var filterTitle: String {
+        switch dashboardViewModel.currentDashPeriod {
+        case .oneMonth: "1 mês"
+        case .sixMonths: "6 meses"
+        case .oneYear: "1 ano"
+        }
+    }
+    
     var body: some View {
         
         @Bindable var dashboardViewModelBind = dashboardViewModel
@@ -33,6 +41,24 @@ struct DashboardView: View {
                 .ignoresSafeArea()
             
             VStack(spacing: 16) {
+                
+                VStack {
+                    Menu {
+                        Picker("Filtrar por período", selection: $dashboardViewModelBind.currentDashPeriod) {
+                            ForEach(DashboardPeriod.allCases) { filter in
+                                Text(filter.rawValue).tag(filter)
+                            }
+                        }
+                    }label: {
+                        Text(filterTitle)
+                            .tint(.primary)
+                            .font(.body)
+                    }
+                    .padding()
+                    .glassEffect(.regular, in: Capsule())
+                }
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                
                 Picker("Filtro", selection: $dashboardViewModelBind.currentFilter.animation(.easeInOut)) {
                     ForEach(SegmentedDashboard.allCases) { filter in
                         Text(filter.rawValue).tag(filter)
@@ -40,7 +66,7 @@ struct DashboardView: View {
                 }
                 .pickerStyle(.segmented)
                 
-                InformationDashboardCard(totalSum: dashboardViewModel.totalSum, firstSmallCardInformation: dashboardViewModel.countReceivedRent(), secondSmallCardInformation: dashboardViewModel.countNotReceivedRent(), cardType: dashboardViewModel.currentFilter)
+                InformationDashboardCard(totalSum: dashboardViewModel.totalSum, firstSmallCardInformation: dashboardViewModel.countReceivedRent(), secondSmallCardInformation: dashboardViewModel.countNotReceivedRent(), cardType: dashboardViewModel.currentFilter, cardPeriod: dashboardViewModel.currentDashPeriod)
                 
                 VStack(alignment: .leading, spacing: 24) {
                     
@@ -90,7 +116,7 @@ struct DashboardView: View {
                         }
                     }
                 }
-                .padding(20)
+                .padding()
                 .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 34))
             }
             .padding()

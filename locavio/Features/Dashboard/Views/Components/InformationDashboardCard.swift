@@ -13,6 +13,24 @@ struct InformationDashboardCard: View {
     let firstSmallCardInformation: Int
     let secondSmallCardInformation: Int
     let cardType: SegmentedDashboard
+    let cardPeriod: DashboardPeriod
+    
+    private var cardTotalTitle: String {
+        switch cardType {
+        case .profits:
+            switch cardPeriod {
+            case .oneMonth: "Lucro Total Mensal"
+            case .sixMonths: "Lucro Total Semestral"
+            case .oneYear: "Lucro Total Anual"
+            }
+        case .expenses:
+            switch cardPeriod {
+            case .oneMonth: "Despesa Total Mensal"
+            case .sixMonths: "Despesa Total Semestral"
+            case .oneYear: "Despesa Total Anual"
+            }
+        }
+    }
     
     var body: some View {
         Grid {
@@ -23,7 +41,7 @@ struct InformationDashboardCard: View {
                             .foregroundStyle(cardType == .profits ? .profit : .redProfit)
                             .font(.subheadline.bold())
                         
-                        Text(cardType == .profits ? "Lucro Total" : "Despesas Totais")
+                        Text(cardTotalTitle)
                             .foregroundStyle(.secondary)
                             .font(.footnote.bold())
                     }
@@ -93,5 +111,5 @@ struct InformationDashboardCard: View {
 }
 
 #Preview {
-    InformationDashboardCard(totalSum: 2700, firstSmallCardInformation: 700, secondSmallCardInformation: 2000, cardType: .profits)
+    InformationDashboardCard(totalSum: 2700, firstSmallCardInformation: 700, secondSmallCardInformation: 2000, cardType: .profits, cardPeriod: .oneMonth)
 }
