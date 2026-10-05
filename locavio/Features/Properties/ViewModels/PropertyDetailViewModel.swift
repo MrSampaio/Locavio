@@ -161,14 +161,6 @@ final class PropertyDetailViewModel {
     //Solicitações
 
     var requestsSectionTitle: String { "Solicitações" }
-}
-
-private extension String {
-    var trimmedOrNil: String? {
-        let t = trimmingCharacters(in: .whitespacesAndNewlines)
-        return t.isEmpty ? nil : t
-    }
-    
     
     //ações
     var lastPaymentsButtonTitle: String { "Últimos Pagamentos" }
@@ -178,3 +170,13 @@ private extension String {
         "Essa ação não pode ser desfeita. Pagamentos, despesas e chamados deste imóvel também serão apagados."
     }
 }
+
+
+private extension String {
+    var trimmedOrNil: String? {
+        let t = trimmingCharacters(in: .whitespacesAndNewlines)
+        return t.isEmpty ? nil : t
+    }
+}
+    
+   

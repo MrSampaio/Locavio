@@ -12,15 +12,22 @@ struct PropertyDetailView: View {
     let property: Property
     var onEdit: () -> Void = {}
     var onOpenContract: () -> Void = {}
+    var onShowLastPayments: () -> Void = {}
+    var onDelete: () -> Void = {}
 
     @State private var viewModel: PropertyDetailViewModel
+    @State private var showDeleteAlert = false
 
     init(property: Property,
          onEdit: @escaping () -> Void = {},
-         onOpenContract: @escaping () -> Void = {}) {
+         onOpenContract: @escaping () -> Void = {},
+         onShowLastPayments: @escaping () -> Void = {},
+         onDelete: @escaping () -> Void = {}) {
         self.property = property
         self.onEdit = onEdit
         self.onOpenContract = onOpenContract
+        self.onShowLastPayments = onShowLastPayments
+        self.onDelete = onDelete
         _viewModel = State(initialValue: PropertyDetailViewModel(property: property))
     }
 
@@ -47,9 +54,17 @@ struct PropertyDetailView: View {
         .toolbar {
             ToolbarDetailsComponentView(onEdit: onEdit)
         }
+        .alert(viewModel.deleteAlertTitle, isPresented: $showDeleteAlert) {
+            Button(viewModel.deleteButtonTitle, role: .destructive) {
+                onDelete()
+            }
+            Button("Cancelar", role: .cancel) {}
+        } message: {
+            Text(viewModel.deleteAlertMessage)
+        }
     }
 
-   
+    // MARK: - Fundo (foto fixa; o material do painel borra ela)
 
     @ViewBuilder
     private var background: some View {
@@ -74,7 +89,7 @@ struct PropertyDetailView: View {
         }
     }
 
-    
+    // MARK: - Painel
 
     private var panel: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -97,6 +112,8 @@ struct PropertyDetailView: View {
             section(viewModel.requestsSectionTitle) {
                 RequestsComponentView(property: property)
             }
+
+            actionButtons
         }
         .padding(20)
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -109,7 +126,7 @@ struct PropertyDetailView: View {
         }
     }
 
-    
+    // MARK: - Cabeçalho
 
     private var header: some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -147,7 +164,34 @@ struct PropertyDetailView: View {
         }
     }
 
-    
+    // MARK: - Helper de seção
+
+    private var actionButtons: some View {
+        VStack(spacing: 12) {
+            Button(action: onShowLastPayments) {
+                Text(viewModel.lastPaymentsButtonTitle)
+                    .font(.body.weight(.medium))
+                    .foregroundStyle(.primary)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 16)
+                    .background(.quaternary, in: Capsule())
+            }
+            .buttonStyle(.plain)
+
+            Button {
+                showDeleteAlert = true
+            } label: {
+                Text(viewModel.deleteButtonTitle)
+                    .font(.subheadline)
+                    .foregroundStyle(.red)
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 14)
+                    .background(.quaternary, in: Capsule())
+            }
+            .buttonStyle(.plain)
+        }
+        .padding(.top, 4)
+    }
 
     private func section<Content: View>(_ title: String,
                                         @ViewBuilder content: () -> Content) -> some View {
@@ -160,7 +204,7 @@ struct PropertyDetailView: View {
     }
 }
 
-
+// MARK: - Preview
 
 #Preview {
     let container = PreviewData.makeContainer()
@@ -172,6 +216,7 @@ struct PropertyDetailView: View {
     .modelContainer(container)
 }
 
+// MARK: - Dados do preview
 
 @MainActor
 private enum PreviewData {
@@ -194,7 +239,7 @@ private enum PreviewData {
         return property
     }
 
-  
+    // MARK: - Partes
 
     private static func makeBaseProperty() -> Property {
         let tenant = Tenant(name: "Alberto Caeiro",
