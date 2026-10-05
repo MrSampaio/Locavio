@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import SwiftData
 
 @Observable
 final class ProfileViewModel{
@@ -16,6 +17,7 @@ final class ProfileViewModel{
     var notifyTickets: Bool = true
     
     var showLogoutAlert: Bool = false
+    var showDeleteAccountAlert: Bool = false
     
     // função que mascara o documento para não ser completamente exibido na tela de perfil
     func maskDocument(_ document: String) -> String {
@@ -51,5 +53,22 @@ final class ProfileViewModel{
     func calculateTotalProperties(from properties: [Property]?) -> Int {
         guard let properties = properties else { return 0 }
         return properties.count
+    }
+    
+    // função para deletar perfil do usuário
+    func deleteAccount(user: Owner, context: ModelContext, authManager: AppleAuthManager) {
+        do {
+            // deleta o usuário. o cascade irá apagar TUDO relacionado a ele.
+            context.delete(user)
+            
+            // força o salvamento para garantir que os dados sumam do CloudKit/Banco local na hora
+            try context.save()
+            
+            // limpa as credenciais do Keychain e muda o estado do app para .loggedOut
+            authManager.logout()
+            
+        } catch {
+            print("Error when trying to delete user: \(error.localizedDescription)")
+        }
     }
 }

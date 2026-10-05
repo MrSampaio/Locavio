@@ -12,9 +12,8 @@ import SwiftData
 struct ProfileView: View {
     @State private var viewModel = ProfileViewModel()
     @Environment(ProfileCoordinator.self) private var coordinator
-    
     @Environment(AppleAuthManager.self) private var authManager
-    
+    @Environment(\.modelContext) private var context
     @Query private var users: [Owner]
     
     private var user: Owner? {
@@ -46,6 +45,23 @@ struct ProfileView: View {
                 }
             } message: {
                 Text("Tem certeza de que deseja sair do aplicativo?")
+            }
+            
+            .alert("Excluir Conta Permanentemente", isPresented: $viewModel.showDeleteAccountAlert) {
+                
+                Button("Cancelar", role: .cancel) { }
+                
+                Button("Excluir Tudo", role: .destructive) {
+                    if let currentUser = user {
+                        viewModel.deleteAccount(
+                            user: currentUser,
+                            context: context,
+                            authManager: authManager
+                        )
+                    }
+                }
+            } message: {
+                Text("Esta ação é irreversível. Todos os seus imóveis, inquilinos, contratos, despesas e pagamentos serão apagados permanentemente.")
             }
     
             .padding(.bottom, 30)
@@ -148,7 +164,9 @@ struct ProfileView: View {
                 variant: .secondary
             )
             
-            DestructiveButton(text: "Excluir Conta", action: {})
+            DestructiveButton(text: "Excluir Conta", action: {
+                viewModel.showDeleteAccountAlert = true
+            })
         }
         
         .padding(.horizontal, 16)
