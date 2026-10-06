@@ -139,8 +139,9 @@ final class PropertyDetailViewModel {
         return f
     }()
     
+
     //  Contrato
-    
+
     /// Nome para o componente, que não aceita opcional.
     var contractDisplayName: String { contractName ?? "Nenhum contrato anexado" }
     
