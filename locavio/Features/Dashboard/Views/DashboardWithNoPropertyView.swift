@@ -8,7 +8,7 @@
 import SwiftUI
 
 
-struct DashboardWithNoProperty:View {
+struct DashboardWithNoPropertyView:View {
     var body: some View {
         VStack{
             Image(systemName: "house.slash")
@@ -38,5 +38,5 @@ struct DashboardWithNoProperty:View {
 }
 
 #Preview {
-    DashboardWithNoProperty()
+    DashboardWithNoPropertyView()
 }
