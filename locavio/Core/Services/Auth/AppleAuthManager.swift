@@ -10,6 +10,7 @@ import AuthenticationServices
 import SwiftData
 
 enum AppAuthState {
+    case loading
     case needsRegistration
     case authenticated
     case loggedOut
@@ -25,7 +26,9 @@ struct AppleSignInInfo {
 @Observable
 final class AppleAuthManager {
     
-    var currentAuthState: AppAuthState = .loggedOut
+//    var currentAuthState: AppAuthState = .loggedOut
+    
+    var currentAuthState: AppAuthState = .loading
     
     // puxa o KeychainHelper pra simplificar a escrita
     private let keychainHelper = KeychainHelper.shared
