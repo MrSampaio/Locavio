@@ -54,7 +54,6 @@ struct locavioApp: App {
                     })
                     
                 } else {
-                    // 👇 3. Fluxo de roteamento normal após a Splash
                     switch appleAuthManager.currentAuthState {
                         case .authenticated:
                             MainTabView()
@@ -63,7 +62,7 @@ struct locavioApp: App {
                         case .loggedOut:
                             LoginView()
                         case .loading:
-                            EmptyView() // Inalcançável devido ao 'if' acima
+                            EmptyView()
                     }
                 }
             }

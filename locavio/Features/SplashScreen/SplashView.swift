@@ -23,12 +23,12 @@ struct SplashView: View {
                     fileExtension: "mp4",
                     onFinish: onFinish
                 )
-                .frame(width: 250, height: 200)
+                .frame(width: 300, height: 300)
             }
             .padding(.bottom, 80)
         }
         .task {
-            try? await Task.sleep(for: .milliseconds(1000))
+            try? await Task.sleep(for: .milliseconds(500))
 //            SoundManager.shared.playSound(named: .splash)
         }
         
