@@ -8,11 +8,32 @@
 import SwiftUI
 
 struct PropertyLabeledContent: View {
+    
+    var textPropertyLabel: String
+    var iconPropertyLabel: String
+    var textFieldPlaceholder: String
+    var textFieldContent: String?
+    var textFieldHasUnit: Bool
+    var textFieldUnit: String?
+    var textFieldIsNumber: Bool
+    var textFieldCharacterLimit: Int
+    var textFieldType: PropertyFieldType
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        LabeledContent {
+            PropertyTextField(placeholder: textFieldPlaceholder, content: textFieldContent, hasUnit: textFieldHasUnit, unit: textFieldUnit, isNumber: textFieldIsNumber, characterLimit: textFieldCharacterLimit, propertyFieldType: textFieldType)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+        } label: {
+            iconLabel(textPropertyLabel, systemImage: iconPropertyLabel)
+        }
     }
-}
-
-#Preview {
-    PropertyLabeledContent()
+    
+    private func iconLabel(_ label: String, systemImage: String) -> some View {
+        Label {
+            Text(label)
+        } icon: {
+            Image(systemName: systemImage)
+                .foregroundStyle(.accent)
+        }
+    }
 }

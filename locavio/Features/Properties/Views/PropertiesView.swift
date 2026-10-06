@@ -50,7 +50,7 @@ struct PropertiesView: View {
             .toolbar {
                 AppToolbar(
                     options: viewModel.options,
-                    onAdd: {}
+                    onAdd: { coordinator.presentAddProperty() }
                 )
             }
             .padding(.horizontal)
@@ -60,14 +60,6 @@ struct PropertiesView: View {
         .background(Color.appBg)
         .navigationBarTitleDisplayMode(.inline)
     }
-    
-    
-    //        .toolbar {
-    //            AppToolbar(
-    //                options: viewModel.options,
-    //                onAdd: { viewModel.addProperty() }
-    //            )
-    //        }
 }
 
 enum PropertiesPreviewData {
@@ -129,19 +121,3 @@ enum PropertiesPreviewData {
      
      .environment(PropertiesCoordinator())
 }
-
-// exemplos chamada coordinator:
-
-//Button(action: {
-//    coordinator.path.append(.newProperty)
-//}) {
-//    Text("Adicionar Novo Imóvel")
-//}
-//
-//// Exemplo passando um parâmetro para a rota de detalhes
-//Button(action: {
-//    let idDoImovel = 1 // Isso viria do seu SwiftData
-//    coordinator.path.append(.details(id: idDoImovel))
-//}) {
-//    Text("Ver Detalhes do Imóvel 1")
-//}

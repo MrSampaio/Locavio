@@ -22,11 +22,6 @@ final class PropertiesCoordinator {
     }
     
     
-    func pushToNewProperty(){
-        path.append(PropertiesRoute.newProperty)
-    }
-    
-    
     func pop() {
         if !path.isEmpty {
             path.removeLast()
@@ -34,12 +29,8 @@ final class PropertiesCoordinator {
     }
     
     // navegação das sheets
-//    func presentAddProperty() {
-//        activeSheet = .addProperty
-//    }
-    
-    func dismissSheet() {
-        activeSheet = nil
+    func presentAddProperty() {
+        activeSheet = .addProperty
     }
     
     func pushToLastPayments(property: Property) {
