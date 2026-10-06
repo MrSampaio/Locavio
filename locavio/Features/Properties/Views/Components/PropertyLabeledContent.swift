@@ -20,11 +20,13 @@ struct PropertyLabeledContent: View {
     var textFieldType: PropertyFieldType
     
     var body: some View {
-        LabeledContent {
+        HStack(spacing: 12) {
+            iconLabel(textPropertyLabel, systemImage: iconPropertyLabel)
+                .lineLimit(1)
+                .layoutPriority(1)
+            
             PropertyTextField(placeholder: textFieldPlaceholder, content: textFieldContent, hasUnit: textFieldHasUnit, unit: textFieldUnit, isNumber: textFieldIsNumber, characterLimit: textFieldCharacterLimit, propertyFieldType: textFieldType)
                 .frame(maxWidth: .infinity, alignment: .trailing)
-        } label: {
-            iconLabel(textPropertyLabel, systemImage: iconPropertyLabel)
         }
     }
     

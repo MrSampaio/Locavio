@@ -20,7 +20,7 @@ struct NewPropertySheet: View {
             VStack {
                 Form {
                     Section("Informações do Imóvel") {
-                        PropertyLabeledContent(textPropertyLabel: "Nome do Imóvel", iconPropertyLabel: "pencil.line", textFieldPlaceholder: "Ex: Casa 1", textFieldHasUnit: false, textFieldIsNumber: false, textFieldCharacterLimit: 50, textFieldType: .name)
+                        PropertyLabeledContent(textPropertyLabel: "Nome do Imóvel", iconPropertyLabel: "pencil.line", textFieldPlaceholder: "Ex: Casa 1", textFieldHasUnit: false, textFieldIsNumber: false, textFieldCharacterLimit: 20, textFieldType: .name)
                     }
                 }
             }
