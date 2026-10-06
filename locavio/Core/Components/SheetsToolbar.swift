@@ -24,15 +24,16 @@ struct SheetsToolbar: ToolbarContent {
         ToolbarItem(placement: .principal){
             Text(title ?? "")
                 .font(.headline)
-                .fontWeight(.regular)
+                .fontWeight(.semibold)
                 .foregroundColor(.primary)
         }
         
         ToolbarItem(placement: .topBarTrailing) {
             Button(action: onConfirm) {
                 Image(systemName: "checkmark")
+                    .foregroundStyle(.white)
             }
-            .tint(Color.accentColor)
+            .buttonStyle(.glassProminent)
             
         }
     }
