@@ -6,6 +6,16 @@
 //
 
 import Foundation
+import SwiftUI
 
+struct ViaCEPResponse: Codable {
+    var cep: String?
+    var logradouro: String?
+    var bairro: String?
+    var estado: String? // cidade
+    var uf: String?
+    
+    var error: String?
+}
 
 
