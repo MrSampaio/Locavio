@@ -63,22 +63,24 @@ final class PropertiesViewModel {
             propertyDraft.tenantEmail = value
         case .tenantCPF:
             propertyDraft.tenantCPF = value
+        case .tenantPhone:
+            propertyDraft.tenantPhone = value
         }
     }
     
-    func addProperty(context: ModelContext, image: Data?, title: String, type: PropertyType, area: String, paymentDay: Int, cep: String, street: String, neighborhood: String, number: String, city: String, uf: String, profit: String, expenses: [ExpenseFormData], tenantName: String? = nil, tenantEmail: String? = nil, tenantCpf: String? = nil, tenantPhone: String? = nil) throws -> Bool {
+    func addProperty(context: ModelContext, image: Data?, type: PropertyType, expenses: [ExpenseFormData]) throws -> Bool {
         
-        let cleanTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        let cleanTitle = propertyDraft.name.trimmingCharacters(in: .whitespacesAndNewlines)
         
         if cleanTitle.isEmpty {
             throw PropertiesErrors.invalidTitle
         }
         
-        guard let convertedArea = Int(area) else {
+        guard let convertedArea = Int(propertyDraft.area) else {
             throw PropertiesErrors.invalidArea
         }
         
-        guard let convertedProfit = Double(profit) else {
+        guard let convertedProfit = Double(propertyDraft.profit) else {
             throw PropertiesErrors.invalidProfit
         }
         
@@ -96,16 +98,16 @@ final class PropertiesViewModel {
         
         let newProperty = Property(
             image: image,
-            title: title,
+            title: cleanTitle,
             type: type,
             area: convertedArea,
-            paymentDay: paymentDay,
-            cep: cep,
-            street: street,
-            neighborhood: neighborhood,
-            number: number,
-            city: city,
-            uf: uf,
+            paymentDay: Int(propertyDraft.payday),
+            cep: propertyDraft.cep,
+            street: propertyDraft.street,
+            neighborhood: propertyDraft.neighborhood,
+            number: propertyDraft.number,
+            city: propertyDraft.city,
+            uf: propertyDraft.federalUnit,
             profit: convertedProfit
         )
         
@@ -124,16 +126,19 @@ final class PropertiesViewModel {
         }
         
         // adiciona o inquilino caso exista
-        if let tName = tenantName, !tName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+        if !propertyDraft.tenantName.isEmpty, !propertyDraft.tenantName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             
-            guard let cpf = tenantCpf, !cpf.isEmpty else {
+            var cpf = propertyDraft.tenantCPF
+            var phone = propertyDraft.tenantPhone
+            
+            guard !cpf.isEmpty else {
                 throw TenantErrors.invalidCpf
             }
-            guard let phone = tenantPhone, !phone.isEmpty else {
+            guard !phone.isEmpty else {
                 throw TenantErrors.invalidPhone
             }
             
-            let newTenant = Tenant(name: tName, email: tenantEmail, cpf: cpf, phone: phone)
+            let newTenant = Tenant(name: propertyDraft.tenantName, email: propertyDraft.tenantEmail, cpf: cpf, phone: phone)
             
             newTenant.property = newProperty
         }

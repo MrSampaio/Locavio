@@ -21,6 +21,7 @@ enum PropertyFieldType {
     case tenantName
     case tenantEmail
     case tenantCPF
+    case tenantPhone
     
     var id: Self { self }
 }
@@ -39,4 +40,5 @@ struct PropertyDraft {
     var tenantName = ""
     var tenantEmail = ""
     var tenantCPF = ""
+    var tenantPhone = ""
 }
