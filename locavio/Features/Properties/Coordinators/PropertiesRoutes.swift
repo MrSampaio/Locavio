@@ -10,7 +10,6 @@ import Foundation
 // rotas de empilhamento (NavigationStack)
 enum PropertiesRoute: Hashable {
     case details(property: Property)
-    case newProperty
     case lastPayments(property: Property)
 }
 

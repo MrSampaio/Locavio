@@ -31,20 +31,14 @@ struct PropertiesCoordinatorView: View {
 
                     case .lastPayments(let property):
                         RecentPaymentsView(property: property)
-
-                    case .newProperty:
-                        NewPropertyView()
                     }
                 }
-            
-            // roteador de sheets
-//            .sheet(item: $propertiesCoordinator.activeSheet) { sheet in
-//                switch sheet {
-//                case .addProperty:
-//                    // AddPropertyView()
-//                    Text("Tela de adicionar imóvel")
-//                }
-//            }
+            .sheet(item: $propertiesCoordinator.activeSheet) { sheet in
+                switch sheet {
+                case .addProperty:
+                    NewPropertySheet()
+                }
+            }
         }
         
 //        .navigationBarTitleDisplayMode(.inline) // sem .navigationTitle
