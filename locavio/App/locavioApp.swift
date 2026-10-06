@@ -16,6 +16,8 @@ struct locavioApp: App {
     @State private var propertiesViewModel = PropertiesViewModel()
     @State private var propertiesCoordinator = PropertiesCoordinator()
     
+    @AppStorage("onboardingConcluido") private var onboardingConcluido = false
+    
     @State private var isVideoFinished = false
     
     var sharedModelContainer: ModelContainer = {
@@ -46,25 +48,27 @@ struct locavioApp: App {
     var body: some Scene {
         WindowGroup {
             Group {
-                if !isVideoFinished || appleAuthManager.currentAuthState == .loading {
-                    
-                    SplashView(onFinish: {
-                        // Quando o AVPlayer terminar, ele muda o estado com uma transição suave
-                        withAnimation(.easeInOut) {
-                            isVideoFinished = true
+                if !isVideoFinished {
+                    SplashView(
+                        onFinish: {
+                            withAnimation(.easeInOut) {
+                                isVideoFinished = true
+                            }
                         }
-                    })
+                    )
+                } else if !onboardingConcluido {
                     
+                    OnboardingView()
                 } else {
                     switch appleAuthManager.currentAuthState {
-                        case .authenticated:
-                            MainTabView()
-                        case .needsRegistration:
-                            SignUpView()
-                        case .loggedOut:
-                            LoginView()
-                        case .loading:
-                            EmptyView()
+                    case .authenticated:
+                        MainTabView()
+                    case .needsRegistration:
+                        SignUpView()
+                    case .loggedOut:
+                        LoginView()
+                    case .loading:
+                        EmptyView()
                     }
                 }
             }
