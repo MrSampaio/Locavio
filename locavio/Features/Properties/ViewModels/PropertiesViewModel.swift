@@ -15,6 +15,7 @@ final class PropertiesViewModel {
     
     var searchText = ""
     var filter: PropertyFilter = .todos
+    var propertyDraft = PropertyDraft()
     
     let options = PropertyListOptionsViewModel()
     
@@ -33,6 +34,37 @@ final class PropertiesViewModel {
     
     #warning("Depois implementa a lógica de adicionar contrato")
     #warning("também comenta sobre um toggle de `está alugado` ou não")
+    
+    func setValueToPropertyDraft(_ value: String, propertyFieldType: PropertyFieldType) {
+        switch propertyFieldType {
+        case .name:
+            propertyDraft.name = value
+        case .area:
+            propertyDraft.area = value
+        case .cep:
+            propertyDraft.cep = value
+        case .street:
+            propertyDraft.street = value
+        case .number:
+            propertyDraft.number = value
+        case .neighborhood:
+            propertyDraft.neighborhood = value
+        case .city:
+            propertyDraft.city = value
+        case .federalUnit:
+            propertyDraft.federalUnit = value
+        case .profit:
+            propertyDraft.profit = value
+        case .payday:
+            propertyDraft.payday = value
+        case .tenantName:
+            propertyDraft.tenantName = value
+        case .tenantEmail:
+            propertyDraft.tenantEmail = value
+        case .tenantCPF:
+            propertyDraft.tenantCPF = value
+        }
+    }
     
     func addProperty(context: ModelContext, image: Data?, title: String, type: PropertyType, area: String, paymentDay: Int, cep: String, street: String, neighborhood: String, number: String, city: String, uf: String, profit: String, expenses: [ExpenseFormData], tenantName: String? = nil, tenantEmail: String? = nil, tenantCpf: String? = nil, tenantPhone: String? = nil) throws -> Bool {
         
