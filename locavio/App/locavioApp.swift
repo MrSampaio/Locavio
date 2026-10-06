@@ -14,6 +14,8 @@ struct locavioApp: App {
     @State private var appleAuthManager = AppleAuthManager()
     @State private var dashboardViewModel = DashboardViewModel()
     
+    @State private var isVideoFinished = false
+    
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Owner.self,
@@ -42,7 +44,17 @@ struct locavioApp: App {
     var body: some Scene {
         WindowGroup {
             Group {
-                Group {
+                if !isVideoFinished || appleAuthManager.currentAuthState == .loading {
+                    
+                    SplashView(onFinish: {
+                        // Quando o AVPlayer terminar, ele muda o estado com uma transição suave
+                        withAnimation(.easeInOut) {
+                            isVideoFinished = true
+                        }
+                    })
+                    
+                } else {
+                    // 👇 3. Fluxo de roteamento normal após a Splash
                     switch appleAuthManager.currentAuthState {
                         case .authenticated:
                             MainTabView()
@@ -50,6 +62,8 @@ struct locavioApp: App {
                             SignUpView()
                         case .loggedOut:
                             LoginView()
+                        case .loading:
+                            EmptyView() // Inalcançável devido ao 'if' acima
                     }
                 }
             }
