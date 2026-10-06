@@ -14,8 +14,6 @@ struct CallDetails: View {
     let total: String
     let closeAction: () -> Void
     
-    @Environment(\.colorScheme) private var colorScheme
-    
     var body: some View {
         VStack(alignment: .leading, spacing: 28) {
             
@@ -33,7 +31,7 @@ struct CallDetails: View {
                         alignment: .leading
                     )
             }
-                 
+            
             VStack(alignment: .leading, spacing: 16) {
                 
                 Text("Valores")
@@ -82,30 +80,11 @@ struct CallDetails: View {
                 }
             }
             
-            Button {
-                closeAction()
-            } label: {
-                Text("Fechar chamado")
-                    .font(.body)
-                    .fontWeight(.semibold)
-                    .foregroundStyle(
-                        Color(hex: "FF383C")
-                    )
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 51)
-                    .background(
-                        colorScheme == .dark
-                        ? Color(hex: "2C2C2E")
-                        : Color(hex: "E5E5EA")
-                    )
-                    .clipShape(
-                        RoundedRectangle(cornerRadius: 16)
-                    )
-                    .contentShape(
-                        RoundedRectangle(cornerRadius: 16)
-                    )
-            }
-            .buttonStyle(.plain)
+            DestructiveButton(
+                text: "Fechar chamado",
+                action: closeAction,
+                useGlass: false
+            )
         }
         .frame(
             maxWidth: .infinity,
