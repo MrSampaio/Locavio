@@ -58,9 +58,9 @@ struct RecentPaymentsView: View {
     private func paymentRow(_ row: PaymentRow) -> some View {
         HStack(spacing: 16) {
             Image(systemName: "dollarsign")
-                .font(.body.weight(.semibold))
+                .font(.footnote.weight(.semibold))
                 .foregroundStyle(.white)
-                .frame(width: 44, height: 44)
+                .frame(width:26,height:52)
                 .background(Color.accentColor, in: Circle())
 
             Text(row.monthText)
@@ -74,7 +74,7 @@ struct RecentPaymentsView: View {
                 viewModel.showProof(for: row.id)
             } label: {
                 Image(systemName: "info.circle")
-                    .font(.title)
+                    .font(.system(size: 22))
                     .foregroundStyle(Color.accentColor)
             }
             .buttonStyle(.plain)
