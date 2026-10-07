@@ -57,18 +57,22 @@ struct locavioApp: App {
                         }
                     )
                 } else if !onboardingConcluido {
-                    
                     OnboardingView()
                 } else {
-                    switch appleAuthManager.currentAuthState {
-                    case .authenticated:
-                        MainTabView()
-                    case .needsRegistration:
-                        SignUpView()
-                    case .loggedOut:
-                        LoginView()
-                    case .loading:
-                        EmptyView()
+                    NavigationStack {
+                        switch appleAuthManager.currentAuthState {
+                        case .authenticated:
+                            MainTabView()
+                            
+                        case .needsRegistration:
+                            SignUpView()
+                            
+                        case .loggedOut:
+                            LoginView()
+                            
+                        case .loading:
+                            EmptyView()
+                        }
                     }
                 }
             }
@@ -76,17 +80,23 @@ struct locavioApp: App {
             .environment(dashboardViewModel)
             .environment(propertiesCoordinator)
             .environment(propertiesViewModel)
-            .onReceive(NotificationCenter.default.publisher(for: ASAuthorizationAppleIDProvider.credentialRevokedNotification)){ _ in
+            .onReceive(
+                NotificationCenter.default.publisher(
+                    for: ASAuthorizationAppleIDProvider.credentialRevokedNotification
+                )
+            ) { _ in
                 print("Credential revoked in real time.")
-                // apaga os dados do usuário (como a Apple pede), limpa o Keychain e a tela volta pro login
-                appleAuthManager.handleCredentialRevoked(context: sharedModelContainer.mainContext)
+                
+                appleAuthManager.handleCredentialRevoked(
+                    context: sharedModelContainer.mainContext
+                )
             }
             .task {
-                appleAuthManager.checkCredentialStatus(context: sharedModelContainer.mainContext)
+                appleAuthManager.checkCredentialStatus(
+                    context: sharedModelContainer.mainContext
+                )
             }
-            
         }
-        
         .modelContainer(sharedModelContainer)
     }
 }
