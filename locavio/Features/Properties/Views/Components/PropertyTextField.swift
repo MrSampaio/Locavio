@@ -11,26 +11,27 @@ struct PropertyTextField: View {
     
     @Environment(PropertiesViewModel.self) private var viewModel
     
-    var placeholder: String
-    var content: String?
-    var hasUnit: Bool
-    var unit: String?
-    var isNumber: Bool
-    var characterLimit: Int
-    var propertyFieldType: PropertyFieldType
+    let placeholder: String
+    let content: String?
+    let hasUnit: Bool
+    let unit: String?
+    let isNumber: Bool
+    let characterLimit: Int?
+    let propertyFieldType: PropertyFieldType
     
-    @State private var textDisplayed = ""
+    @State private var textDisplayed: String = ""
     
     var body: some View {
         HStack(spacing: 5) {
             TextField(placeholder, text: $textDisplayed)
                 .multilineTextAlignment(.trailing)
+                .autocorrectionDisabled(true)
                 .keyboardType(!isNumber ? .default : .decimalPad)
                 .onChange(of: textDisplayed) { _, newValue in
                     var processedValue = newValue
                     
-                    if processedValue.count > characterLimit {
-                        processedValue = String(processedValue.prefix(characterLimit))
+                    if let limit = characterLimit, processedValue.count > limit {
+                        processedValue = String(processedValue.prefix(limit))
                     }
                     
                     if processedValue != textDisplayed {
@@ -61,6 +62,6 @@ struct PropertyTextField: View {
     var isNumber = true
     var characterLimit = 10
     
-    PropertyTextField(placeholder: placeholder, hasUnit: hasUnit, unit: unit, isNumber: isNumber, characterLimit: characterLimit, propertyFieldType: .name)
+    PropertyTextField(placeholder: placeholder, content: nil, hasUnit: hasUnit, unit: unit, isNumber: isNumber, characterLimit: characterLimit, propertyFieldType: .name)
         .environment(PropertiesViewModel())
 }
