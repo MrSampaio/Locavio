@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 struct PropertyTextField: View {
     
@@ -24,7 +25,6 @@ struct PropertyTextField: View {
     var body: some View {
         HStack(spacing: 5) {
             TextField(placeholder, text: $textDisplayed)
-                .multilineTextAlignment(.trailing)
                 .autocorrectionDisabled(true)
                 .keyboardType(!isNumber ? .default : .decimalPad)
                 .onChange(of: textDisplayed) { _, newValue in

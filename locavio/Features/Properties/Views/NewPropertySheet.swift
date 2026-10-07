@@ -30,6 +30,7 @@ struct NewPropertySheet: View {
                             Text("Tipo de Imóvel")
                         } icon: {
                             Image(systemName: "house")
+                                .font(.subheadline)
                                 .foregroundStyle(.accent)
                         }
                     }
