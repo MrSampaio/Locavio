@@ -42,8 +42,8 @@ struct SplashView: View {
             .padding(.bottom, 80)
         }
         .task {
-            try? await Task.sleep(for: .milliseconds(500))
-//            SoundManager.shared.playSound(named: .splash)
+            try? await Task.sleep(for: .milliseconds(40))
+            SoundManager.shared.playSound(named: .splash)
         }
         
         

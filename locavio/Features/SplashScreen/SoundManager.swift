@@ -15,12 +15,10 @@ class SoundManager {
     
     enum SoundType {
         case splash
-        case success
         
         var fileName: (name: String, extension: String) {
             switch self {
-                case .splash: return ("splash", "mp3")
-                case .success: return ("readSucess", "mp3")
+                case .splash: return ("ding-dong", "mp3")
             }
         }
     }
