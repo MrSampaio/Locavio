@@ -16,7 +16,7 @@ struct PropertyLabeledContent: View {
     var textFieldHasUnit: Bool
     var textFieldUnit: String?
     var textFieldIsNumber: Bool
-    var textFieldCharacterLimit: Int
+    var textFieldCharacterLimit: Int?
     var textFieldType: PropertyFieldType
     
     var body: some View {
@@ -26,7 +26,6 @@ struct PropertyLabeledContent: View {
                 .layoutPriority(1)
             
             PropertyTextField(placeholder: textFieldPlaceholder, content: textFieldContent, hasUnit: textFieldHasUnit, unit: textFieldUnit, isNumber: textFieldIsNumber, characterLimit: textFieldCharacterLimit, propertyFieldType: textFieldType)
-                .frame(maxWidth: .infinity, alignment: .trailing)
         }
     }
     
