@@ -86,9 +86,35 @@ struct EditProfileSheet: View {
     }
     
     @ViewBuilder
+    var nameRow: some View {
+        HStack(spacing: 16) {
+            Image(systemName: "person.fill")
+                .font(.title3)
+                .foregroundColor(.accentColor)
+            
+            Text("Nome")
+                .font(.body)
+            
+            Spacer()
+            
+            TextField(
+                "Seu nome completo", text: $viewModel.fullName)
+                .multilineTextAlignment(.trailing)
+                .textContentType(.name)
+                .textInputAutocapitalization(.words)
+                .foregroundColor(.primary)
+        }
+        .frame(maxWidth: .infinity)
+    }
+    
+    @ViewBuilder
     private var documentSection: some View{
         
         VStack(spacing: 16){
+            nameRow
+            
+            Divider()
+                .padding(.horizontal, 50)
             
             DocumentTypePicker(selection: $viewModel.selectedDocumentType)
             

@@ -13,16 +13,23 @@ import SwiftData
 final class EditProfileViewModel{
     var userImageData: Data? = nil
     
+    var fullName: String = ""
     var selectedDocumentType: DocumentTypeModel = .pf
     var documentNumber: String = ""
+    
     
     var showErrorAlert: Bool = false
     var errorMessage = ""
     
+
+    
     // função para carregar os dados do usuário com o objeto que vem  na sheet
     func loadUserData(user: Owner){
         userImageData = user.profilePicture
-    
+        
+        #warning("tratar exibição para mostrar apenas o primeiro e ultimo nome do usuário e avisar enquanto ele estiver preenchendo o nome completo")
+        fullName = user.fullName ?? ""
+
         selectedDocumentType = user.documentType ?? .pf
         documentNumber = user.documentNumber ?? ""
     }
@@ -37,10 +44,16 @@ final class EditProfileViewModel{
             return false
         }
         
+        var trimmedFullName: String {
+            fullName.trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        
         user.profilePicture = userImageData
         
         user.documentType = selectedDocumentType
         user.documentNumber = documentNumber
+        
+        user.fullName = trimmedFullName
         
         
         do {
