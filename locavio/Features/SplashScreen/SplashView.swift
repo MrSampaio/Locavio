@@ -11,19 +11,33 @@ import SwiftUI
 struct SplashView: View {
     var onFinish: () -> Void = {}
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         ZStack(alignment: .center){
             
-            Color(.black)
+            
+            Color(.appBg)
                 .ignoresSafeArea()
             
             VStack(alignment: .center, spacing: 0) {
-                VideoPlayerView(
-                    fileName: "locavio_black",
-                    fileExtension: "mp4",
-                    onFinish: onFinish
-                )
-                .frame(width: 300, height: 300)
+                
+                if(colorScheme == .dark){
+                    VideoPlayerView(
+                        fileName: "locavio_dark",
+                        fileExtension: "mov",
+                        onFinish: onFinish
+                    )
+                    .frame(width: 300, height: 300)
+                } else{
+                    VideoPlayerView(
+                        fileName: "locavio_white",
+                        fileExtension: "mov",
+                        onFinish: onFinish
+                    )
+                    .frame(width: 300, height: 300)
+                }
+               
             }
             .padding(.bottom, 80)
         }
