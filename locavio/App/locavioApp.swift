@@ -59,7 +59,6 @@ struct locavioApp: App {
                 } else if !onboardingConcluido {
                     OnboardingView()
                 } else {
-                    NavigationStack {
                         switch appleAuthManager.currentAuthState {
                         case .authenticated:
                             MainTabView()
@@ -73,7 +72,6 @@ struct locavioApp: App {
                         case .loading:
                             EmptyView()
                         }
-                    }
                 }
             }
             .environment(appleAuthManager)
