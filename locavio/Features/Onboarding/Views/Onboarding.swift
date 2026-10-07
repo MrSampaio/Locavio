@@ -8,9 +8,8 @@
 import SwiftUI
 
 
-
 struct OnboardingView: View {
-    @Bindable var viewModel = TextsOnboardingViewModel()
+    @State private var viewModel = TextsOnboardingViewModel()
 
     var body: some View {
         NavigationStack{

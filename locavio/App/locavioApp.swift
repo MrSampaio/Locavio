@@ -59,19 +59,19 @@ struct locavioApp: App {
                 } else if !onboardingConcluido {
                     OnboardingView()
                 } else {
-                    switch appleAuthManager.currentAuthState {
-                    case .authenticated:
-                        MainTabView()
-                        
-                    case .needsRegistration:
-                        SignUpView()
-                        
-                    case .loggedOut:
-                        LoginView()
-                        
-                    case .loading:
-                        EmptyView()
-                    }
+                        switch appleAuthManager.currentAuthState {
+                        case .authenticated:
+                            MainTabView()
+                            
+                        case .needsRegistration:
+                            SignUpView()
+                            
+                        case .loggedOut:
+                            LoginView()
+                            
+                        case .loading:
+                            EmptyView()
+                        }
                 }
             }
             .environment(appleAuthManager)
