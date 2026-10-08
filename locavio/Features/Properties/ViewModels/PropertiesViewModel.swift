@@ -33,6 +33,18 @@ final class PropertiesViewModel {
         }
     }
     
+    func calcTotalRent(totalValueExpenses: Double) -> Double {
+        return (parseCurrency(propertyDraft.profit) ?? 0) + totalValueExpenses
+    }
+    
+    func parseCurrency(_ text: String) -> Double? {
+        let cleaned = text
+            .replacingOccurrences(of: ".", with: "")
+            .replacingOccurrences(of: ",", with: ".")
+            .filter { $0.isNumber || $0 == "." }
+        return Double(cleaned)
+    }
+    
     #warning("Depois implementa a lógica de adicionar contrato")
     #warning("também comenta sobre um toggle de `está alugado` ou não")
     
@@ -83,7 +95,7 @@ final class PropertiesViewModel {
             throw PropertiesErrors.invalidArea
         }
         
-        guard let convertedProfit = Double(propertyDraft.profit) else {
+        guard let convertedProfit = parseCurrency(propertyDraft.profit) else {
             throw PropertiesErrors.invalidProfit
         }
         

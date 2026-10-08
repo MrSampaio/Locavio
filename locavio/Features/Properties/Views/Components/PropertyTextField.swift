@@ -21,21 +21,37 @@ struct PropertyTextField: View {
     let propertyFieldType: PropertyFieldType
     
     @State private var textDisplayed: String = ""
+    @FocusState private var isFocused: Bool
     
     var body: some View {
         HStack(spacing: 5) {
             TextField(placeholder, text: $textDisplayed)
+                .focused($isFocused)
                 .autocorrectionDisabled(true)
                 .keyboardType(!isNumber ? .default : .decimalPad)
+                .onChange(of: isFocused) { _, isNowFocused in
+                    if !isNowFocused && propertyFieldType == .profit {
+                        var cleanText = textDisplayed.replacingOccurrences(of: ".", with: "")
+                        cleanText = cleanText.replacingOccurrences(of: ",", with: ".")
+                        cleanText = cleanText.filter { $0.isNumber || $0 == "." }
+                        
+                        if let value = Double(cleanText) {
+                            textDisplayed = value.formatted(.currency(code: "BRL").locale(Locale(identifier: "pt_BR")))
+                            viewModel.setValueToPropertyDraft(textDisplayed, propertyFieldType: propertyFieldType)
+                        }
+                    } else if isNowFocused && propertyFieldType == .profit {
+                        formatAsDouble()
+                    }
+                }
                 .onChange(of: textDisplayed) { _, newValue in
                     var processedValue = newValue
                     
                     if let limit = characterLimit, processedValue.count > limit {
                         processedValue = String(processedValue.prefix(limit))
-                    }
-                    
-                    if processedValue != textDisplayed {
-                        textDisplayed = processedValue
+                        
+                        if processedValue != textDisplayed {
+                            textDisplayed = processedValue
+                        }
                     }
                     
                     viewModel.setValueToPropertyDraft(processedValue, propertyFieldType: propertyFieldType)
@@ -51,6 +67,11 @@ struct PropertyTextField: View {
                     .foregroundStyle(textDisplayed.isEmpty ? .tertiary : .primary)
             }
         }
+    }
+    
+    private func formatAsDouble() {
+        var cleaned = textDisplayed.replacingOccurrences(of: ".", with: "")
+        textDisplayed = cleaned.filter { $0.isNumber || $0 == "," }
     }
 }
 
