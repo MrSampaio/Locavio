@@ -11,18 +11,11 @@ import SwiftData
 struct ExpensesTextFieldCard: View {
     
     @Environment(\.modelContext) private var context
-    @Environment(ExpensesViewModel.self) private var viewModel
+   
+    let viewModel: ExpensesViewModel
     
-    private let property: Property
-    
-    @State private var expenses: [Expenses]
     @State private var newExpenseName = ""
     @State private var newExpenseValue: Double?
-    
-    init(property: Property, expenses: [Expenses]) {
-        self.property = property
-        _expenses = State(initialValue: expenses)
-    }
     
     private var isButtonDisabled: Bool {
         if !(newExpenseName.trimmingCharacters(in: .whitespaces).isEmpty) && !(newExpenseValue == nil) {
@@ -38,7 +31,7 @@ struct ExpensesTextFieldCard: View {
             
             if viewModel.isExpanded {
                 VStack(spacing: 10) {
-                    ForEach($expenses) { $expense in
+                    ForEach(viewModel.expenses) { expense in
                         line(expense: expense)
                     }
                     
@@ -48,13 +41,6 @@ struct ExpensesTextFieldCard: View {
                 .transition(.opacity)
                 .clipped()
             }
-        }
-        .padding(20)
-        .background(.background, in: RoundedRectangle(cornerRadius: 24))
-        .padding()
-        .onAppear {
-            viewModel.property = property
-            viewModel.property.expenses = expenses
         }
     }
     
@@ -94,8 +80,7 @@ struct ExpensesTextFieldCard: View {
     private func line(expense: Expenses) -> some View {
         HStack(spacing: 10) {
             Button {
-                viewModel.delete(expense.persistentModelID, in: context)
-                expenses = viewModel.property.expenses ?? []
+                viewModel.delete(expense, context: context)
             } label: {
                 circleIcon(iconName: "minus.circle.fill", color: .red)
             }
@@ -117,8 +102,7 @@ struct ExpensesTextFieldCard: View {
                 viewModel.newValueText = String(newExpenseValue ?? Double())
                 
                 if viewModel.canAdd {
-                    viewModel.addExpense(in: context)
-                    expenses = viewModel.property.expenses ?? []
+                    viewModel.addExpense(context: context)
                     newExpenseName = ""
                     newExpenseValue = nil
                 }
@@ -146,22 +130,7 @@ struct ExpensesTextFieldCard: View {
 }
 
 #Preview {
-    
-    let container = try! ModelContainer(
-        for: Property.self, Expenses.self,
-        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
-    )
-    
-    let property = Property()
-    container.mainContext.insert(property)
-    
-    let iptu = Expenses(property: property, title: "IPTU", value: 345, date: Date())
-    let condominio = Expenses(property: property, title: "Condomínio", value: 120, date: Date())
-    container.mainContext.insert(iptu)
-    container.mainContext.insert(condominio)
-    
-    return ExpensesTextFieldCard(property: property, expenses: property.expenses ?? [])
-        .environment(ExpensesViewModel())
-        .modelContainer(container)
+    ExpensesTextFieldCard(viewModel: ExpensesViewModel())
+        .modelContainer(for: Expenses.self, inMemory: true)
 }
 

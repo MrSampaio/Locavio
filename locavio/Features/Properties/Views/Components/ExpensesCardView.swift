@@ -13,8 +13,7 @@ struct ExpensesCardView: View {
     @State private var viewModel: ExpensesViewModel
     
     init(property: Property) {
-        _viewModel = State(initialValue: ExpensesViewModel())
-        viewModel.property = property
+        _viewModel = State(initialValue: ExpensesViewModel(property: property))
     }
     
     var body: some View {
@@ -97,7 +96,7 @@ struct ExpensesCardView: View {
         .contentShape(Rectangle())
         .contextMenu {
             Button(role: .destructive) {
-                viewModel.delete(row.id, in: modelContext)
+                viewModel.delete(row.expense, context: modelContext)
             } label: {
                 Label("Remover", systemImage: "trash")
             }

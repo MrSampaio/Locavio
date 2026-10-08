@@ -11,8 +11,8 @@ struct NewPropertySheet: View {
     
     @Environment(\.dismiss) var dismiss
     @Environment(PropertiesViewModel.self) private var viewModel
-    @Environment(PropertiesCoordinator.self) private var coordinator
     
+    @State private var expensesViewModel = ExpensesViewModel()
     @State private var propertyType: PropertyType = .other
     
     var body: some View {
@@ -52,6 +52,10 @@ struct NewPropertySheet: View {
                     PropertyLabeledContent(textPropertyLabel: "UF", iconPropertyLabel: "flag", textFieldPlaceholder: "Ex: SP", textFieldHasUnit: false, textFieldIsNumber: false, textFieldCharacterLimit: 2, textFieldType: .federalUnit)
                 }
                 
+                Section("Financeiro") {
+                    ExpensesTextFieldCard(viewModel: expensesViewModel)
+                }
+                
                 Section("Inquilino") {
                     PropertyLabeledContent(textPropertyLabel: "Nome", iconPropertyLabel: "person", textFieldPlaceholder: "Ex: Júlio", textFieldHasUnit: false, textFieldIsNumber: false, textFieldCharacterLimit: 45, textFieldType: .tenantName)
                     
@@ -77,5 +81,5 @@ struct NewPropertySheet: View {
 #Preview {
     NewPropertySheet()
         .environment(PropertiesViewModel())
-        .environment(PropertiesCoordinator())
+        .environment(ExpensesViewModel())
 }

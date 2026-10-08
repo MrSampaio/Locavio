@@ -16,6 +16,7 @@ final class PropertiesViewModel {
     var searchText = ""
     var filter: PropertyFilter = .todos
     var propertyDraft = PropertyDraft()
+    var property = Property()
     
     let options = PropertyListOptionsViewModel()
     

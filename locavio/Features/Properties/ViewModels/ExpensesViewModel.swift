@@ -13,78 +13,120 @@ struct ExpenseRow: Identifiable {
     let id: PersistentIdentifier
     let title: String
     let valueText: String
+    let expense: Expenses
 }
 
 @Observable
 final class ExpensesViewModel {
     
-    var property: Property = Property()
-    var isExpanded = true
+    enum Storage {
+        case persisted(Property)
+        case draft
+    }
+    
+    private let storage: Storage
+    var expenses: [Expenses]
+    var isExpanded = false
     var newTitle = ""
     var newValueText = ""
-
+    
+    init(property: Property) {
+        storage = .persisted(property)
+        expenses = property.expenses ?? []
+    }
+    
+    init() {
+        storage = .draft
+        expenses = []
+    }
+    
     var totalLabel: String { "Valor total" }
     var emptyText: String { "Nenhuma despesa adicionada" }
-
+    
     var rows: [ExpenseRow] {
-        (property.expenses ?? []).map { expense in
+        expenses.map { expense in
             ExpenseRow(
                 id: expense.persistentModelID,
                 title: expense.title?.trimmedOrNil ?? "Sem título",
-                valueText: Self.format(expense.value ?? 0)
+                valueText: Self.format(expense.value ?? 0),
+                expense: expense
             )
         }
     }
-
+    
     ///Soma de todas as despesas do imóvel
     var totalExpenses: Double {
-        (property.expenses ?? []).reduce(0) { $0 + ($1.value ?? 0) }
+        expenses.reduce(0) { $0 + ($1.value ?? 0) }
     }
-
+    
     //Adicionar / remover
-
+    
     var canAdd: Bool {
         newTitle.trimmedOrNil != nil && parsedNewValue != nil
     }
-
+    
     func toggle() { isExpanded.toggle() }
-
-    func addExpense(in context: ModelContext) {
-        guard let title = newTitle.trimmedOrNil, let value = parsedNewValue else { return }
-
-        let expense = Expenses(property: property, title: title, value: value, date: Date())
+    
+    func addExpense(context: ModelContext) {
         
-        context.insert(expense)
-        try? context.save()
-
+        guard let title = newTitle.trimmedOrNil, let value = parsedNewValue else { return }
+        
+        switch storage {
+        case .persisted(let property):
+            let expense = Expenses(property: property, title: title, value: value, date: Date())
+            context.insert(expense)
+            save(context)
+            expenses.append(expense)
+        case .draft:
+            expenses.append(Expenses(title: title, value: value, date: Date()))
+        }
+        
         newTitle = ""
         newValueText = ""
     }
-
-    func delete(_ id: PersistentIdentifier, in context: ModelContext) {
-        guard let expense = property.expenses?.first(where: { $0.persistentModelID == id }) else { return }
-        
-        property.expenses?.removeAll { $0.persistentModelID == id }
-        context.delete(expense)
-        try? context.save()
-    }
-
     
+    func delete(_ expense: Expenses, context: ModelContext) {
+        expenses.removeAll { $0 == expense }
+        
+        if case .persisted(let property) = storage {
+            property.expenses?.removeAll { $0 == expense }
+            context.delete(expense)
+            save(context)
+        }
+    }
+    
+    private func save(_ context: ModelContext) {
+        do { try context.save() }
+        catch { print("Erro ao salvar despesas: \(error)") }
+    }
+    
+    /// Chamar quando o imóvel for salvo, para persistir as despesas do rascunho
+    func assignPropertyToExpense(to property: Property, context: ModelContext) {
+        guard case .draft = storage else { return }
 
+        for expense in expenses {
+            expense.property = property
+            context.insert(expense)
+        }
+        
+        save(context)
+    }
+    
+    
     /// Aceita "200", "200,50", "200.50" e "1.200,50".
     private var parsedNewValue: Double? {
         var text = newValueText.trimmingCharacters(in: .whitespaces)
         guard !text.isEmpty else { return nil }
-
+        
         if text.contains(",") {
             text = text.replacingOccurrences(of: ".", with: "")
-                       .replacingOccurrences(of: ",", with: ".")
+                .replacingOccurrences(of: ",", with: ".")
         }
-
+        
         guard let value = Double(text), value >= 0 else { return nil }
         return value
     }
-
+    
     private static func format(_ value: Double) -> String {
         value.formatted(.currency(code: "BRL").locale(Locale(identifier: "pt_BR")))
     }
