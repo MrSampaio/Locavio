@@ -11,6 +11,7 @@ enum TicketsError: LocalizedError {
     case invalidTitle
     case savingError
     case generateTicketNumberError
+    case editTicketError
     
     var errorDescription: String? {
         switch self {
@@ -20,6 +21,8 @@ enum TicketsError: LocalizedError {
                 return "Erro ao salvar ticket. Verifique os campos e tente novamente."
             case .generateTicketNumberError:
                 return "Erro ao gerar o número do ticket. Tente novamente."
+            case .editTicketError:
+                return "Erro ao editar ticket. Tente novamente."
         }
     }
 }

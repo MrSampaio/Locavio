@@ -28,13 +28,23 @@ final class Ticket: Identifiable {
     var maintence: [Maintence]?
     
     
-    init(title: String? = nil, ticketNumber: Int? = nil, ticketDescription: String? = nil, createdAt: Date? = nil, conclusionDate: Date? = nil, property: Property? = nil, maintence: [Maintence]? = nil) {
+    init(
+        title: String? = nil,
+        ticketNumber: Int? = nil,
+        ticketDescription: String? = nil,
+        createdAt: Date? = nil,
+        conclusionDate: Date? = nil,
+        property: Property? = nil,
+        isConcluded: Bool? = nil,
+        maintence: [Maintence]? = nil
+    ) {
         self.title = title
         self.ticketNumber = ticketNumber
         self.ticketDescription = ticketDescription
         self.createdAt = createdAt
         self.conclusionDate = conclusionDate
         self.property = property
+        self.isConcluded = isConcluded
         self.maintence = maintence
     }
 }
