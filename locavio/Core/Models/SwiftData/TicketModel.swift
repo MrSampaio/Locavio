@@ -22,6 +22,7 @@ final class Ticket: Identifiable {
     var createdAt: Date?
     var conclusionDate: Date?
     var property: Property?
+    var isConcluded: Bool? = false
 
     @Relationship(deleteRule: .cascade, inverse: \Maintence.ticket)
     var maintence: [Maintence]?
