@@ -153,7 +153,7 @@ final class PropertiesViewModel {
     }
     
     // função de delete de propriedade
-    func deleteProperty(property: Property, context: ModelContext) throws {
+    func deleteProperty(property: Property, context: ModelContext) {
         context.delete(property)
     }
     

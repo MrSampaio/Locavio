@@ -24,9 +24,11 @@ final class TicketsViewModel {
         let cleanTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
         let cleanDescription = ticketDescription.trimmingCharacters(in: .whitespacesAndNewlines)
         
+        let ticketNumber = try generateTicketNumber(context: context)
+        
         let newTicket = Ticket(
             title: cleanTitle,
-            ticketNumber: 01,
+            ticketNumber: ticketNumber,
             ticketDescription: cleanDescription,
             createdAt: createdAt,
             conclusionDate: conclusionDate,
@@ -39,6 +41,38 @@ final class TicketsViewModel {
             try context.save()
         } catch {
             print("Error when trying to save a new ticket: \(error)")
+            throw TicketsError.savingError
+        }
+    }
+    
+    func deleteTicket(ticket: Ticket, context: ModelContext) {
+        context.delete(ticket)
+    }
+    
+    // gerar numero do chamado
+    func generateTicketNumber(context: ModelContext) throws -> Int {
+        
+        // fetch de todos os chamados existentes
+        var descriptor = FetchDescriptor<Ticket>(
+            sortBy: [SortDescriptor(\.ticketNumber, order: .reverse)]
+        )
+        // traz apenas o primeiro resultado
+        descriptor.fetchLimit = 1
+        
+        do {
+            let latestTickets = try context.fetch(descriptor)
+            
+            // se encontrou algum chamado, pega o número dele e soma 1
+            if let lastTicket = latestTickets.first {
+                return (lastTicket.ticketNumber ?? 0) + 1
+            } else {
+                // se não tem nenhum chamado no banco, esse é o número 1
+                return 1
+            }
+            
+        } catch {
+            print("Error when trying to fetch the latest ticket number: \(error)")
+            throw TicketsError.generateTicketNumberError
         }
     }
     
