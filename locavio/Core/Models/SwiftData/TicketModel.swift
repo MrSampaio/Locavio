@@ -9,11 +9,6 @@ import Foundation
 import SwiftData
 
 
-enum TicketStats: String, Codable, CaseIterable{
-    case completed = "Concluido"
-    case open = "Aberto"
-}
-
 @Model
 final class Ticket: Identifiable {
     var title: String?
