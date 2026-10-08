@@ -11,8 +11,8 @@ struct NewPropertySheet: View {
     
     @Environment(\.dismiss) var dismiss
     @Environment(PropertiesViewModel.self) private var viewModel
-    @Environment(PropertiesCoordinator.self) private var coordinator
     
+    @State private var expensesViewModel = ExpensesViewModel()
     @State private var propertyType: PropertyType = .other
     
     var body: some View {
@@ -30,6 +30,7 @@ struct NewPropertySheet: View {
                             Text("Tipo de Imóvel")
                         } icon: {
                             Image(systemName: "house")
+                                .font(.subheadline)
                                 .foregroundStyle(.accent)
                         }
                     }
@@ -49,6 +50,10 @@ struct NewPropertySheet: View {
                     PropertyLabeledContent(textPropertyLabel: "Cidade", iconPropertyLabel: "building.2", textFieldPlaceholder: "Ex: São Paulo", textFieldHasUnit: false, textFieldIsNumber: false, textFieldCharacterLimit: 32, textFieldType: .city)
                     
                     PropertyLabeledContent(textPropertyLabel: "UF", iconPropertyLabel: "flag", textFieldPlaceholder: "Ex: SP", textFieldHasUnit: false, textFieldIsNumber: false, textFieldCharacterLimit: 2, textFieldType: .federalUnit)
+                }
+                
+                Section("Financeiro") {
+                    ExpensesTextFieldCard(viewModel: expensesViewModel)
                 }
                 
                 Section("Inquilino") {
@@ -76,5 +81,5 @@ struct NewPropertySheet: View {
 #Preview {
     NewPropertySheet()
         .environment(PropertiesViewModel())
-        .environment(PropertiesCoordinator())
+        .environment(ExpensesViewModel())
 }

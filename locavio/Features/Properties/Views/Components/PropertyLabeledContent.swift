@@ -20,21 +20,18 @@ struct PropertyLabeledContent: View {
     var textFieldType: PropertyFieldType
     
     var body: some View {
-        HStack(spacing: 12) {
-            iconLabel(textPropertyLabel, systemImage: iconPropertyLabel)
-                .lineLimit(1)
-                .layoutPriority(1)
+        HStack(alignment: .top) {
             
-            PropertyTextField(placeholder: textFieldPlaceholder, content: textFieldContent, hasUnit: textFieldHasUnit, unit: textFieldUnit, isNumber: textFieldIsNumber, characterLimit: textFieldCharacterLimit, propertyFieldType: textFieldType)
+            Image(systemName: iconPropertyLabel)
+                .foregroundStyle(.accent)
+            
+            VStack(alignment: .leading) {
+                Text(textPropertyLabel)
+                    .font(.subheadline.bold())
+                
+                PropertyTextField(placeholder: textFieldPlaceholder, content: textFieldContent, hasUnit: textFieldHasUnit, unit: textFieldUnit, isNumber: textFieldIsNumber, characterLimit: textFieldCharacterLimit, propertyFieldType: textFieldType)
+            }
         }
     }
     
-    private func iconLabel(_ label: String, systemImage: String) -> some View {
-        Label {
-            Text(label)
-        } icon: {
-            Image(systemName: systemImage)
-                .foregroundStyle(.accent)
-        }
-    }
 }

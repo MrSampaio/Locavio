@@ -16,6 +16,7 @@ final class PropertiesViewModel {
     var searchText = ""
     var filter: PropertyFilter = .todos
     var propertyDraft = PropertyDraft()
+    var property = Property()
     
     let options = PropertyListOptionsViewModel()
     
@@ -36,6 +37,8 @@ final class PropertiesViewModel {
     #warning("também comenta sobre um toggle de `está alugado` ou não")
     
     func setValueToPropertyDraft(_ value: String, propertyFieldType: PropertyFieldType) {
+        
+        
         switch propertyFieldType {
         case .name:
             propertyDraft.name = value
