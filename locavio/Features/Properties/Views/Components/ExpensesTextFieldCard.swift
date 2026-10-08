@@ -11,14 +11,16 @@ import SwiftData
 struct ExpensesTextFieldCard: View {
     
     @Environment(\.modelContext) private var context
-   
+    
     let viewModel: ExpensesViewModel
     
     @State private var newExpenseName = ""
-    @State private var newExpenseValue: Double?
+    @State private var newExpenseValueText = ""
+    
+    @FocusState private var isFocused: Bool
     
     private var isButtonDisabled: Bool {
-        if !(newExpenseName.trimmingCharacters(in: .whitespaces).isEmpty) && !(newExpenseValue == nil) {
+        if !(newExpenseName.trimmingCharacters(in: .whitespaces).isEmpty) && !(newExpenseValueText.trimmingCharacters(in: .whitespaces).isEmpty) {
             return false
         } else {
             return true
@@ -99,12 +101,12 @@ struct ExpensesTextFieldCard: View {
         HStack(spacing: 10) {
             Button{
                 viewModel.newTitle = newExpenseName
-                viewModel.newValueText = String(newExpenseValue ?? Double())
+                viewModel.newValueText = newExpenseValueText
                 
                 if viewModel.canAdd {
                     viewModel.addExpense(context: context)
                     newExpenseName = ""
-                    newExpenseValue = nil
+                    newExpenseValueText = ""
                 }
             } label: {
                 circleIcon(iconName: "plus.circle.fill", color: .green)
@@ -114,10 +116,29 @@ struct ExpensesTextFieldCard: View {
             
             TextField("Título", text: $newExpenseName)
             
-            TextField("Valor", value: $newExpenseValue, format: .currency(code: "BRL"))
+            TextField("Valor", text: $newExpenseValueText)
                 .keyboardType(.decimalPad)
                 .multilineTextAlignment(.trailing)
+                .focused($isFocused)
+                .onChange(of: isFocused) { _, isNowFocused in
+                    if !isNowFocused {
+                        var cleanText = newExpenseValueText.replacingOccurrences(of: ".", with: "")
+                        cleanText = cleanText.replacingOccurrences(of: ",", with: ".")
+                        cleanText = cleanText.filter { $0.isNumber || $0 == "." }
+                        
+                        if let value = Double(cleanText) {
+                            newExpenseValueText = value.formatted(.currency(code: "BRL"))
+                        }
+                    } else if isNowFocused {
+                        formatAsDouble()
+                    }
+                }
         }
+    }
+    
+    private func formatAsDouble() {
+        var cleaned = newExpenseValueText.replacingOccurrences(of: ".", with: "")
+        newExpenseValueText = cleaned.filter { $0.isNumber || $0 == "," }
     }
     
     @ViewBuilder
