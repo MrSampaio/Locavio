@@ -10,7 +10,7 @@ import Foundation
 enum TicketsFilter: String, CaseIterable, Identifiable {
     case all = "Todos"
     case open = "Abertos"
-    case noRented = "Concluídos"
+    case closed = "Concluídos"
     
     var id: Self { self }
 }

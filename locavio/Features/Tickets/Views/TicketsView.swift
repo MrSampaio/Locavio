@@ -18,7 +18,12 @@ struct TicketsView: View {
             VStack(alignment: .leading, spacing: 20) {
                 SearchBarView(text: $viewModel.searchText)
                 
-                Text("Tela de chamados")
+                Picker("Filtro", selection: $viewModel.filter) {
+                    ForEach(TicketsFilter.allCases) { filter in
+                        Text(filter.rawValue).tag(filter)
+                    }
+                }
+                .pickerStyle(.segmented)
             }
             .frame(maxHeight: .infinity, alignment: .top)
         }
