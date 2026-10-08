@@ -130,15 +130,10 @@ struct ExpensesTextFieldCard: View {
                             newExpenseValueText = value.formatted(.currency(code: "BRL"))
                         }
                     } else if isNowFocused {
-                        formatAsDouble()
+                        newExpenseValueText = viewModel.formatAsDouble(textToFormat: newExpenseValueText)
                     }
                 }
         }
-    }
-    
-    private func formatAsDouble() {
-        var cleaned = newExpenseValueText.replacingOccurrences(of: ".", with: "")
-        newExpenseValueText = cleaned.filter { $0.isNumber || $0 == "," }
     }
     
     @ViewBuilder

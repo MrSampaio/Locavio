@@ -115,6 +115,7 @@ final class ExpensesViewModel {
     
     /// Aceita "200", "200,50", "200.50" e "1.200,50".
     private var parsedNewValue: Double? {
+        newValueText = formatAsDouble(textToFormat: newValueText)
         var text = newValueText.trimmingCharacters(in: .whitespaces)
         guard !text.isEmpty else { return nil }
         
@@ -129,6 +130,13 @@ final class ExpensesViewModel {
     
     private static func format(_ value: Double) -> String {
         value.formatted(.currency(code: "BRL").locale(Locale(identifier: "pt_BR")))
+    }
+    
+    func formatAsDouble(textToFormat: String) -> String {
+        var newExpenseValueText = textToFormat
+        var cleaned = newExpenseValueText.replacingOccurrences(of: ".", with: "")
+        newExpenseValueText = cleaned.filter { $0.isNumber || $0 == "," }
+        return newExpenseValueText
     }
 }
 
