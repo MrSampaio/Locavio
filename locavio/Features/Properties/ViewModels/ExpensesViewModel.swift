@@ -17,15 +17,11 @@ struct ExpenseRow: Identifiable {
 
 @Observable
 final class ExpensesViewModel {
-    private let property: Property
-
+    
+    var property: Property = Property()
     var isExpanded = true
     var newTitle = ""
     var newValueText = ""
-
-    init(property: Property) {
-        self.property = property
-    }
 
     var totalLabel: String { "Valor total" }
     var emptyText: String { "Nenhuma despesa adicionada" }
@@ -41,9 +37,8 @@ final class ExpensesViewModel {
     }
 
     ///Soma de todas as despesas do imóvel
-    var totalText: String {
-        let total = (property.expenses ?? []).reduce(0) { $0 + ($1.value ?? 0) }
-        return Self.format(total)
+    var totalExpenses: Double {
+        (property.expenses ?? []).reduce(0) { $0 + ($1.value ?? 0) }
     }
 
     //Adicionar / remover
@@ -60,6 +55,7 @@ final class ExpensesViewModel {
         let expense = Expenses(property: property, title: title, value: value, date: Date())
         
         context.insert(expense)
+        try? context.save()
 
         newTitle = ""
         newValueText = ""
@@ -67,7 +63,10 @@ final class ExpensesViewModel {
 
     func delete(_ id: PersistentIdentifier, in context: ModelContext) {
         guard let expense = property.expenses?.first(where: { $0.persistentModelID == id }) else { return }
+        
+        property.expenses?.removeAll { $0.persistentModelID == id }
         context.delete(expense)
+        try? context.save()
     }
 
     

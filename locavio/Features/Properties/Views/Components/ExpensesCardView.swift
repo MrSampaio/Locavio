@@ -13,7 +13,8 @@ struct ExpensesCardView: View {
     @State private var viewModel: ExpensesViewModel
     
     init(property: Property) {
-        _viewModel = State(initialValue: ExpensesViewModel(property: property))
+        _viewModel = State(initialValue: ExpensesViewModel())
+        viewModel.property = property
     }
     
     var body: some View {
@@ -40,7 +41,7 @@ struct ExpensesCardView: View {
                 
                 Spacer()
                 
-                Text(viewModel.totalText)
+                Text(viewModel.totalExpenses, format: .currency(code: "BRL"))
                     .font(.title3.weight(.semibold))
                     .foregroundStyle(.secondary)
                 

@@ -15,6 +15,7 @@ struct locavioApp: App {
     @State private var dashboardViewModel = DashboardViewModel()
     @State private var propertiesViewModel = PropertiesViewModel()
     @State private var propertiesCoordinator = PropertiesCoordinator()
+    @State private var expensesViewModel = ExpensesViewModel()
     
     @State private var isVideoFinished = false
     
@@ -72,6 +73,7 @@ struct locavioApp: App {
             .environment(dashboardViewModel)
             .environment(propertiesCoordinator)
             .environment(propertiesViewModel)
+            .environment(expensesViewModel)
             .onReceive(NotificationCenter.default.publisher(for: ASAuthorizationAppleIDProvider.credentialRevokedNotification)){ _ in
                 print("Credential revoked in real time.")
                 // apaga os dados do usuário (como a Apple pede), limpa o Keychain e a tela volta pro login
