@@ -9,32 +9,46 @@ import Foundation
 import SwiftUI
 
 struct SheetsToolbar: ToolbarContent {
+    
     var onConfirm: () -> Void
     var onClose: () -> Void
     var title: String?
+    var isDetail: Bool = false
     
     var body: some ToolbarContent {
         
         ToolbarItem(placement: .topBarLeading) {
             Button(action: onClose) {
-                Image(systemName: "xmark")
+                Image(
+                    systemName: isDetail
+                    ? "chevron.left"
+                    : "xmark"
+                )
             }
         }
         
-        ToolbarItem(placement: .principal){
+        ToolbarItem(placement: .principal) {
             Text(title ?? "")
                 .font(.headline)
                 .fontWeight(.semibold)
-                .foregroundColor(.primary)
+                .foregroundStyle(.primary)
         }
         
         ToolbarItem(placement: .topBarTrailing) {
-            Button(action: onConfirm) {
-                Image(systemName: "checkmark")
-                    .foregroundStyle(.white)
+            if isDetail {
+                
+                Button(action: onConfirm) {
+                    Image(systemName: "square.and.pencil")
+                }
+                
+            } else {
+                
+                Button(action: onConfirm) {
+                    Image(systemName: "checkmark")
+                        .foregroundStyle(.white)
+                }
+                .buttonStyle(.glassProminent)
             }
-            .buttonStyle(.glassProminent)
-            
         }
     }
 }

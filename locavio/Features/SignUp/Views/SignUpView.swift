@@ -15,30 +15,9 @@ struct SignUpView: View {
     @Environment(\.modelContext) private var context
     @Environment(AppleAuthManager.self) private var authManager
     
-    var body: some View {
-        ZStack {
-            Color(UIColor.appBg)
-                .ignoresSafeArea()
-            
-            VStack(alignment: .center, spacing: 24) {
-                titleSection
-                documentSection
-            }
-            .background(Color(.appBg))
-        }
-        .alert("Erro no Cadastro", isPresented: $signUpViewModel.showAlert) {
-            Button("Entendi", role: .cancel) { }
-        } message: {
-            Text(signUpViewModel.alertMessage)
-        }
-        .task {
-            // descobre se precisa pedir o nome (a Apple só envia na primeira autorização)
-            signUpViewModel.loadOwner(context: context, authManager: authManager)
-        }
-    }
     
     @ViewBuilder
-    private var titleSection: some View {
+    var titleSection: some View {
         HStack {
             SignUpTitle(title: "Informações Pessoais", subtitle: "Precisamos de algumas informações para configurar seu perfil. Você poderá revisar essas informações depois nas configurações da conta.")
         }
@@ -46,7 +25,7 @@ struct SignUpView: View {
     }
     
     @ViewBuilder
-    private var nameRow: some View {
+    var nameRow: some View {
         HStack(spacing: 16) {
             Image(systemName: "person.fill")
                 .font(.title3)
@@ -67,7 +46,7 @@ struct SignUpView: View {
     }
     
     @ViewBuilder
-    private var documentSection: some View {
+    var documentSection: some View {
         VStack(alignment: .center, spacing: 12) {
             VStack(spacing: 16) {
                 
@@ -128,6 +107,48 @@ struct SignUpView: View {
         .padding(.vertical, 24)
         .background(.bgBox, in: RoundedRectangle(cornerRadius: 38))
         .padding(.horizontal, 16)
+    }
+    
+    
+    var body: some View {
+        ZStack {
+            Color(UIColor.appBg)
+                .ignoresSafeArea()
+            
+            
+            
+            ScrollView(){
+                
+                VStack(alignment: .center, spacing: 24) {
+                    
+                    Spacer(minLength: CGFloat(100))
+                    
+                    titleSection
+                    documentSection
+                }
+                .background(Color(.appBg))
+            }
+            .scrollIndicators(.hidden)
+            
+        }
+        .alert("Erro no Cadastro", isPresented: $signUpViewModel.showAlert) {
+            Button("Entendi", role: .cancel) { }
+        } message: {
+            Text(signUpViewModel.alertMessage)
+        }
+        .task {
+            // descobre se precisa pedir o nome (a Apple só envia na primeira autorização)
+            signUpViewModel.loadOwner(context: context, authManager: authManager)
+        }
+        .ignoresSafeArea(.keyboard)
+        .onTapGesture {
+            #if canImport(UIKit)
+                hideKeyboard()
+            #endif
+        }
+
+        
+
     }
 }
 

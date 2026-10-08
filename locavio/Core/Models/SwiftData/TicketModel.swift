@@ -9,11 +9,6 @@ import Foundation
 import SwiftData
 
 
-enum TicketStats: String, Codable, CaseIterable{
-    case completed = "Concluido"
-    case open = "Aberto"
-}
-
 @Model
 final class Ticket: Identifiable {
     var title: String?
@@ -22,18 +17,29 @@ final class Ticket: Identifiable {
     var createdAt: Date?
     var conclusionDate: Date?
     var property: Property?
+    var isConcluded: Bool? = false
 
     @Relationship(deleteRule: .cascade, inverse: \Maintence.ticket)
     var maintence: [Maintence]?
     
     
-    init(title: String? = nil, ticketNumber: Int? = nil, ticketDescription: String? = nil, createdAt: Date? = nil, conclusionDate: Date? = nil, property: Property? = nil, maintence: [Maintence]? = nil) {
+    init(
+        title: String? = nil,
+        ticketNumber: Int? = nil,
+        ticketDescription: String? = nil,
+        createdAt: Date? = nil,
+        conclusionDate: Date? = nil,
+        property: Property? = nil,
+        isConcluded: Bool? = nil,
+        maintence: [Maintence]? = nil
+    ) {
         self.title = title
         self.ticketNumber = ticketNumber
         self.ticketDescription = ticketDescription
         self.createdAt = createdAt
         self.conclusionDate = conclusionDate
         self.property = property
+        self.isConcluded = isConcluded
         self.maintence = maintence
     }
 }

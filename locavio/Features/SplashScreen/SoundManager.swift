@@ -31,12 +31,14 @@ class SoundManager {
             return
         }
         
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.prepareToPlay()
-            audioPlayer?.play()
-        } catch {
-            print("Error when reproducing sound: \(error.localizedDescription)")
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                self.audioPlayer = try AVAudioPlayer(contentsOf: url)
+                self.audioPlayer?.prepareToPlay()
+                self.audioPlayer?.play()
+            } catch {
+                print("Error when reproducing sound: \(error.localizedDescription)")
+            }
         }
     }
 }
