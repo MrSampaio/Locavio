@@ -4,27 +4,42 @@
 //
 //  Created by Julio Sampaio on 20/09/26.
 //
-
 import SwiftUI
+import SwiftData
 
 struct TicketsView: View {
     @State private var viewModel = TicketsViewModel()
+    @Query(sort: \Ticket.createdAt, order: .reverse) private var tickets: [Ticket]
+
     var onAdd: () -> Void = {}
+    var onSelect: (Ticket) -> Void = { _ in }
+
     var body: some View {
         ZStack {
             Color(.appBg)
                 .ignoresSafeArea()
-            
+
             VStack(alignment: .leading, spacing: 20) {
                 SearchBarView(text: $viewModel.searchText)
-                
+
                 Picker("Filtro", selection: $viewModel.filter) {
                     ForEach(TicketsFilter.allCases) { filter in
                         Text(filter.rawValue).tag(filter)
                     }
                 }
                 .pickerStyle(.segmented)
+
+                ScrollView {
+                    LazyVStack(spacing: 12) {
+                        ForEach(viewModel.visibleTickets(from: tickets)) { ticket in
+                            TicketComponent(ticket: ticket) {
+                                onSelect(ticket)
+                            }
+                        }
+                    }
+                }
             }
+            .padding(.horizontal)
             .frame(maxHeight: .infinity, alignment: .top)
         }
         .navigationTitle("Chamados")
@@ -35,7 +50,21 @@ struct TicketsView: View {
 }
 
 #Preview {
-    NavigationStack {
-           TicketsView(onAdd: { print("Adicionar chamado") })
-       }
+    let container = try! ModelContainer(
+        for: Ticket.self, Property.self, Maintence.self,
+        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+    )
+
+    let concluded = Ticket(title: "Trocar telha", createdAt: .now, conclusionDate: .now)
+    concluded.isConcluded = true
+    let open = Ticket(title: "Consertar portão", createdAt: .now)
+    open.isConcluded = false
+
+    container.mainContext.insert(concluded)
+    container.mainContext.insert(open)
+
+    return NavigationStack {
+        TicketsView(onAdd: { print("Adicionar chamado") })
+    }
+    .modelContainer(container)
 }
