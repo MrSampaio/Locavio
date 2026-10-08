@@ -11,13 +11,18 @@ import SwiftData
 
 @Observable
 final class TicketsViewModel {
-    
+    var searchText = ""
+    var filter: TicketsFilter = .all
     var title: String = ""
     var createdAt: Date = Date()
     var conclusionDate: Date = Date()
     var ticketDescription: String = ""
     var property: Property?
 //    var maintence: [Maintence] = []
+    
+    enum TicketSegment: CaseIterable {
+        case all, open, closed
+    }
     
     func createTicket(context: ModelContext, title: String, createdAt: Date, conclusionDate: Date, ticketDescription: String, property: Property) throws {
         
@@ -76,6 +81,26 @@ final class TicketsViewModel {
         }
     }
     
+    
+    func visibleTickets(from tickets: [Ticket]) -> [Ticket] {
+        let bySegment = tickets.filter(matchesSegment)
+
+        let query = searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !query.isEmpty else { return bySegment }
+
+        return bySegment.filter { ticket in
+            (ticket.title ?? "").localizedCaseInsensitiveContains(query)
+            || (ticket.ticketDescription ?? "").localizedCaseInsensitiveContains(query)
+        }
+    }
+
+    private func matchesSegment(_ ticket: Ticket) -> Bool {
+        switch filter {
+        case .all: return true
+        case .open:   return (ticket.isConcluded != true)
+        case .closed: return (ticket.isConcluded == true)
+        }
+    }
     
     
     

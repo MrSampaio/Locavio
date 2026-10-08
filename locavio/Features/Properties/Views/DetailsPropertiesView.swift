@@ -64,8 +64,6 @@ struct PropertyDetailView: View {
         }
     }
 
-    // MARK: - Fundo (foto fixa; o material do painel borra ela)
-
     @ViewBuilder
     private var background: some View {
         if let uiImage = viewModel.image {
@@ -89,7 +87,7 @@ struct PropertyDetailView: View {
         }
     }
 
-    // MARK: - Painel
+    // Painel
 
     private var panel: some View {
         VStack(alignment: .leading, spacing: 20) {
@@ -118,15 +116,11 @@ struct PropertyDetailView: View {
         .padding(20)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background {
-            // o material se estende para baixo do conteúdo: no fim do scroll
-            // (ou no bounce) nunca aparece a foto embaixo do painel
             UnevenRoundedRectangle(topLeadingRadius: 32, topTrailingRadius: 32, style: .continuous)
                 .fill(.regularMaterial)
                 .padding(.bottom, -1000)
         }
     }
-
-    // MARK: - Cabeçalho
 
     private var header: some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -164,7 +158,6 @@ struct PropertyDetailView: View {
         }
     }
 
-    // MARK: - Helper de seção
 
     private var actionButtons: some View {
         VStack(spacing: 12) {
@@ -204,7 +197,6 @@ struct PropertyDetailView: View {
     }
 }
 
-// MARK: - Preview
 
 #Preview {
     let container = PreviewData.makeContainer()
@@ -216,7 +208,6 @@ struct PropertyDetailView: View {
     .modelContainer(container)
 }
 
-// MARK: - Dados do preview
 
 @MainActor
 private enum PreviewData {
@@ -239,7 +230,7 @@ private enum PreviewData {
         return property
     }
 
-    // MARK: - Partes
+
 
     private static func makeBaseProperty() -> Property {
         let tenant = Tenant(name: "Alberto Caeiro",

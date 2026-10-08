@@ -8,11 +8,34 @@
 import SwiftUI
 
 struct TicketsView: View {
+    @State private var viewModel = TicketsViewModel()
+    var onAdd: () -> Void = {}
     var body: some View {
-        Text("Tela de chamados")
+        ZStack {
+            Color(.appBg)
+                .ignoresSafeArea()
+            
+            VStack(alignment: .leading, spacing: 20) {
+                SearchBarView(text: $viewModel.searchText)
+                
+                Picker("Filtro", selection: $viewModel.filter) {
+                    ForEach(TicketsFilter.allCases) { filter in
+                        Text(filter.rawValue).tag(filter)
+                    }
+                }
+                .pickerStyle(.segmented)
+            }
+            .frame(maxHeight: .infinity, alignment: .top)
+        }
+        .navigationTitle("Chamados")
+        .toolbar {
+            ToolbarTicketView(onAdd: onAdd)
+        }
     }
 }
 
 #Preview {
-    TicketsView()
+    NavigationStack {
+           TicketsView(onAdd: { print("Adicionar chamado") })
+       }
 }
