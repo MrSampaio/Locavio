@@ -22,6 +22,14 @@ struct MainTabView: View {
                 ProfileCoordinatorView()
             }
             
+            Tab("Calendário", systemImage: "calendar"){
+                CalendarCoordinatorView()
+            }
+            
+            Tab("Chamados", systemImage: "exclamationmark.bubble"){
+                TicketsCoordinatorView()
+            }
+            
 //            DashboardCoordinatorView()
 //                .tabItem{
 //                    Label("Relatório", systemImage: "chart.bar")
