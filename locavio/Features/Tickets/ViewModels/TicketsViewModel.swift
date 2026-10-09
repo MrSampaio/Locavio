@@ -22,6 +22,9 @@ final class TicketsViewModel {
     
     var showDeleteAlert = false
     
+    var isSelectionMode = false
+    var selectedTickets: Set<Ticket> = []
+    
     enum TicketSegment: CaseIterable {
         case all, open, closed
     }
@@ -57,6 +60,23 @@ final class TicketsViewModel {
     
     func deleteTicket(ticket: Ticket, context: ModelContext) {
         context.delete(ticket)
+    }
+    
+    func deleteSelectedTickets(context: ModelContext) {
+        for ticket in selectedTickets {
+            deleteTicket(ticket: ticket, context: context)
+        }
+        
+        selectedTickets.removeAll()
+        isSelectionMode = false
+    }
+    
+    func toggleSelection(for ticket: Ticket) {
+        if selectedTickets.contains(ticket) {
+            selectedTickets.remove(ticket)
+        } else {
+            selectedTickets.insert(ticket)
+        }
     }
     
     // gerar numero do chamado

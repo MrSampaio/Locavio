@@ -40,18 +40,33 @@ struct TicketsView: View {
                     
                     LazyVStack(spacing: 12) {
                         ForEach(viewModel.visibleTickets(from: tickets)) { ticket in
-                            TicketComponent(
-                                ticket: ticket,
-                                onTap: {
-                                    coordinator.pushToTicketDetails(ticket: ticket)
+                            HStack {
+                                if viewModel.isSelectionMode {
+                                    Image(systemName: viewModel.selectedTickets.contains(ticket) ? "checkmark.circle.fill" : "circle")
+                                        .font(.title2)
+                                        .foregroundColor(viewModel.selectedTickets.contains(ticket) ? .blue : .gray)
+                                        .padding(.trailing, 4)
+                                        .onTapGesture {
+                                            viewModel.toggleSelection(for: ticket)
+                                        }
+                                        .transition(.scale.combined(with: .opacity))
                                 }
-                            )
+                                
+                                TicketComponent(
+                                    ticket: ticket,
+                                    onTap: {
+                                        if viewModel.isSelectionMode {
+                                            viewModel.toggleSelection(for: ticket)
+                                        } else {
+                                            coordinator.pushToTicketDetails(ticket: ticket)
+                                        }
+                                    }
+                                )
+                            }
                         }
-                    }
-                    
-                    ScrollView {
                         
                     }
+                    .animation(.default, value: viewModel.isSelectionMode)
                     .scrollIndicators(.hidden)
                 }
                 .sheet(item: $bindableCoordinator.activeSheet) { currentSheet in
@@ -74,9 +89,50 @@ struct TicketsView: View {
         }
         .navigationTitle("Chamados")
         .toolbar {
-            ToolbarTicketView(onAdd: {
-                coordinator.presentAddTicket()
-            })
+            if viewModel.isSelectionMode {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("Cancelar") {
+                        withAnimation {
+                            viewModel.isSelectionMode = false
+                            viewModel.selectedTickets.removeAll()
+                        }
+                    }
+                }
+                
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(role: .destructive) {
+                        viewModel.showDeleteAlert = true
+                    } label: {
+                        Image(systemName: "trash")
+                            .foregroundColor(viewModel.selectedTickets.isEmpty ? .gray : .red)
+                    }
+                    .disabled(viewModel.selectedTickets.isEmpty) // Desabilita se nada foi selecionado
+                }
+            } else {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("Selecionar") {
+                        withAnimation {
+                            viewModel.isSelectionMode = true
+                        }
+                    }
+                }
+                
+                ToolbarTicketView(onAdd: {
+                    coordinator.presentAddTicket()
+                })
+            }
+        }
+        
+        .alert("Apagar Selecionados", isPresented: $viewModel.showDeleteAlert) {
+            Button("Cancelar", role: .cancel) { }
+            
+            Button("Apagar", role: .destructive) {
+                withAnimation {
+                    viewModel.deleteSelectedTickets(context: context)
+                }
+            }
+        } message: {
+            Text("Tem certeza que deseja apagar os \(viewModel.selectedTickets.count) chamados selecionados? Essa ação não pode ser desfeita.")
         }
         .onTapGesture {
             #if canImport(UIKit)
