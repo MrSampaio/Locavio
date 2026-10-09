@@ -20,6 +20,8 @@ final class TicketsViewModel {
     var property: Property?
 //    var maintence: [Maintence] = []
     
+    var showDeleteAlert = false
+    
     enum TicketSegment: CaseIterable {
         case all, open, closed
     }

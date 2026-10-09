@@ -27,17 +27,17 @@ struct TicketsView: View {
             Color(.appBg)
                 .ignoresSafeArea()
 
-            VStack(alignment: .leading, spacing: 20) {
-                SearchBarView(text: $viewModel.searchText)
-
-                Picker("Filtro", selection: $viewModel.filter) {
-                    ForEach(TicketsFilter.allCases) { filter in
-                        Text(filter.rawValue).tag(filter)
+            ScrollView{
+                VStack(alignment: .leading, spacing: 20) {
+                    SearchBarView(text: $viewModel.searchText)
+                    
+                    Picker("Filtro", selection: $viewModel.filter) {
+                        ForEach(TicketsFilter.allCases) { filter in
+                            Text(filter.rawValue).tag(filter)
+                        }
                     }
-                }
-                .pickerStyle(.segmented)
-
-                ScrollView {
+                    .pickerStyle(.segmented)
+                    
                     LazyVStack(spacing: 12) {
                         ForEach(viewModel.visibleTickets(from: tickets)) { ticket in
                             TicketComponent(
@@ -48,52 +48,27 @@ struct TicketsView: View {
                             )
                         }
                     }
+                    
+                    ScrollView {
+                        
+                    }
+                    .scrollIndicators(.hidden)
                 }
-                .scrollIndicators(.hidden)
-            }
-            .sheet(item: $bindableCoordinator.activeSheet) { currentSheet in
-                
-                switch currentSheet {
-                    case .addTicket:
-                        CreateTicketSheet(
-//                            onAdd: {
-//                                do{
-//                                    
-//                                    print("\(viewModel.ticketTitle)")
-//                                    print("saldksadksahdkjsadh")
-//                                    
-//                                    try viewModel
-//                                        .createTicket(
-//                                            context: context
-//                                        )
-////                                        .createTicket(
-////                                            context: context,
-////                                            ticketTitle: viewModel.ticketTitle,
-////                                            createdAt: viewModel.createdAt,
-////                                            conclusionDate: viewModel.conclusionDate,
-////                                            ticketDescription: viewModel.ticketDescription,
-////                                            property: viewModel.property
-////                                        )
-//                                    
-//                                    
-//                                    print("\(viewModel.ticketTitle)")
-//                                    dismiss()
-//                                } catch {
-//                                    print("Error when trying to add new ticket: \(error)")
-//                                }
-//                                
-//                            },
-//                            onClose: {
-//                                dismiss()
-//                            })
-                            )
-                            .presentationDetents([.fraction(0.65), .large])
-                            .presentationDragIndicator(.visible)
-                            .presentationBackground(Color(.systemGray6))
+                .sheet(item: $bindableCoordinator.activeSheet) { currentSheet in
+                    
+                    switch currentSheet {
+                        case .addTicket:
+                            CreateTicketSheet()
+                                .presentationDetents([.fraction(0.65), .large])
+                                .presentationDragIndicator(.visible)
+                                .presentationBackground(Color(.systemGray6))
+                    }
                 }
+                .padding()
+                .frame(maxHeight: .infinity, alignment: .top)
             }
-            .padding()
-            .frame(maxHeight: .infinity, alignment: .top)
+            .scrollIndicators(.hidden)
+            
             
            
         }
