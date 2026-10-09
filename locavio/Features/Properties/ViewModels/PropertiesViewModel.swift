@@ -106,7 +106,7 @@ final class PropertiesViewModel {
         // valida as despesas existentes. caso alguma esteja errada, impede a criação do imóvel
         for data in expenses {
             
-            if ((data.title?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) != nil) {
+            if (data.title ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
                 throw ExpensesErrors.invalidTitle
             }
             
