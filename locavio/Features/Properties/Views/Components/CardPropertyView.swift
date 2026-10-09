@@ -60,7 +60,7 @@ struct PropertyCardView: View {
 
                     Text(viewModel.address)
                         .font(.subheadline)
-                        .foregroundStyle(secondaryTextColor)
+                        .foregroundStyle(.secondary)
                         .lineLimit(1)
                         .truncationMode(.tail)
 
@@ -71,7 +71,7 @@ struct PropertyCardView: View {
                 VStack(alignment: .trailing, spacing: 6) {
                     Text(viewModel.rentLabel)
                         .font(.subheadline)
-                        .foregroundStyle(secondaryTextColor)
+                        .foregroundStyle(.secondary)
 
                     Text(viewModel.rentText)
                         .font(.title2.bold())
@@ -83,14 +83,14 @@ struct PropertyCardView: View {
                         Text(viewModel.nextPaymentText).fontWeight(.semibold)
                     }
                     .font(.footnote)
-                    .foregroundStyle(secondaryTextColor)
+                    .foregroundStyle(.secondary)
                 }
                 .fixedSize(horizontal: true, vertical: false)
             }
 
             badgesRow
         }
-        .foregroundStyle(primaryTextColor)
+        .foregroundStyle(.primary)
         .padding(20)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background { panelBackground }
@@ -118,7 +118,7 @@ struct PropertyCardView: View {
             }
         }
         .font(.subheadline)
-        .foregroundStyle(primaryTextColor.opacity(0.75))
+        .foregroundStyle(.secondary.opacity(0.75))
         .lineLimit(1)
     }
 
@@ -132,17 +132,9 @@ struct PropertyCardView: View {
     private var panelBackground: some View {
         if viewModel.hasImage {
             panelShape.fill(.ultraThinMaterial)
-        } else if colorScheme == .dark {
-            panelShape.fill(Color.white)
         } else {
             panelShape
-                .fill(.ultraThinMaterial)
-                .environment(\.colorScheme, .dark)
-                .overlay {
-                    LinearGradient(colors: [.black.opacity(0.25), .black.opacity(0.6)],
-                                   startPoint: .top, endPoint: .bottom)
-                        .clipShape(panelShape)
-                }
+                .fill(.quaternary)
         }
     }
 
