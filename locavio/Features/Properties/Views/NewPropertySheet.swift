@@ -62,6 +62,8 @@ struct NewPropertySheet: View {
                     PropertyLabeledContent(textPropertyLabel: "Cidade", iconPropertyLabel: "building.2", textFieldPlaceholder: "Ex: São Paulo", textFieldHasUnit: false, textFieldIsNumber: false, textFieldCharacterLimit: 32, textFieldType: .city)
                     
                     PropertyLabeledContent(textPropertyLabel: "UF", iconPropertyLabel: "flag", textFieldPlaceholder: "Ex: SP", textFieldHasUnit: false, textFieldIsNumber: false, textFieldCharacterLimit: 2, textFieldType: .federalUnit)
+                    
+                    PropertyLabeledContent(textPropertyLabel: "Complemento", iconPropertyLabel: "door.left.hand.closed", textFieldPlaceholder: "Ex: Apartamento 21", textFieldHasUnit: false, textFieldIsNumber: false, textFieldType: .complement)
                 }
                 
                 Section {

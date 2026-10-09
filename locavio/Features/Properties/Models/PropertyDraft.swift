@@ -16,6 +16,7 @@ enum PropertyFieldType {
     case neighborhood
     case city
     case federalUnit
+    case complement
     case profit
     case payday
     case tenantName
@@ -35,6 +36,7 @@ struct PropertyDraft {
     var neighborhood = ""
     var city = ""
     var federalUnit = ""
+    var complement = ""
     var profit = ""
     var payday = ""
     var tenantName = ""

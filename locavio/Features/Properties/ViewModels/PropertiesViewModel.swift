@@ -70,6 +70,8 @@ final class PropertiesViewModel {
             propertyDraft.city = value
         case .federalUnit:
             propertyDraft.federalUnit = value
+        case .complement:
+            propertyDraft.complement = value
         case .profit:
             propertyDraft.profit = value
         case .payday:

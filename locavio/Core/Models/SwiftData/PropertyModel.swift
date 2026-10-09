@@ -34,6 +34,7 @@ final class Property: Identifiable {
     var number: String?
     var city: String?
     var uf: String?
+    var complement: String?
     var profit: Double?
     var owner: Owner?
     
@@ -58,7 +59,7 @@ final class Property: Identifiable {
     }
 
     
-    init(image: Data? = nil, title: String? = nil, type: PropertyType? = nil, area: Int? = nil, paymentDay: Int? = nil, cep: String? = nil, street: String? = nil, neighborhood: String? = nil, number: String? = nil, city: String? = nil, uf: String? = nil, profit: Double? = nil, owner: Owner? = nil, expenses: [Expenses]? = nil, tenant: Tenant? = nil, contract: Contract? = nil, payments: [Payment]? = nil, tickets: [Ticket]? = nil) {
+    init(image: Data? = nil, title: String? = nil, type: PropertyType? = nil, area: Int? = nil, paymentDay: Int? = nil, cep: String? = nil, street: String? = nil, neighborhood: String? = nil, number: String? = nil, city: String? = nil, uf: String? = nil, complement: String? = nil, profit: Double? = nil, owner: Owner? = nil, expenses: [Expenses]? = nil, tenant: Tenant? = nil, contract: Contract? = nil, payments: [Payment]? = nil, tickets: [Ticket]? = nil) {
         self.image = image
         self.title = title
         self.type = type
@@ -70,6 +71,7 @@ final class Property: Identifiable {
         self.number = number
         self.city = city
         self.uf = uf
+        self.complement = complement
         self.profit = profit
         self.owner = owner
         self.expenses = expenses
