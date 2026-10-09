@@ -85,7 +85,9 @@ final class PropertiesViewModel {
         }
     }
     
-    func addProperty(context: ModelContext, image: Data?, type: PropertyType, expenses: [Expenses]) throws -> Bool {
+    func addProperty(context: ModelContext, image: Data?, type: PropertyType, expenses: [Expenses], owner: Owner?) throws -> Bool {
+        
+        guard let currentOwner = owner else { throw PropertiesErrors.invalidOwner }
         
         let cleanTitle = propertyDraft.name.trimmingCharacters(in: .whitespacesAndNewlines)
         
@@ -128,8 +130,6 @@ final class PropertiesViewModel {
             profit: convertedProfit
         )
         
-        context.insert(newProperty)
-        
         // cria as despesas depois da validação e depois de criar o imóvel
         for expense in expenses {
             expense.property = newProperty
@@ -151,6 +151,7 @@ final class PropertiesViewModel {
             let newTenant = Tenant(name: propertyDraft.tenantName, email: propertyDraft.tenantEmail, cpf: cpf, phone: phone)
             
             newTenant.property = newProperty
+            newProperty.tenant = newTenant
         }
         
         if let draft = contractDraft {
@@ -162,8 +163,15 @@ final class PropertiesViewModel {
             )
             
             newContract.property = property
+            newProperty.contract = newContract
             context.insert(newContract)
         }
+        
+        
+        newProperty.expenses = expenses
+        context.insert(newProperty)
+        currentOwner.properties?.append(newProperty)
+        context.insert(currentOwner)
         
         do {
             try context.save()

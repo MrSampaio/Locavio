@@ -12,6 +12,8 @@ import UniformTypeIdentifiers
 
 struct NewPropertySheet: View {
     
+    @Query private var owner: [Owner]
+    
     @Environment(\.dismiss) var dismiss
     @Environment(PropertiesViewModel.self) private var viewModel
     @Environment(\.colorScheme) private var colorScheme
@@ -159,7 +161,8 @@ struct NewPropertySheet: View {
                 context: context,
                 image: nil,
                 type: propertyType,
-                expenses: expensesViewModel.expenses
+                expenses: expensesViewModel.expenses,
+                owner: owner.first ?? nil
             )
             if saved { dismiss() }
         } catch {

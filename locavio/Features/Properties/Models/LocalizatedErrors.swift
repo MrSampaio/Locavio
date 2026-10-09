@@ -12,17 +12,20 @@ enum PropertiesErrors: LocalizedError {
     case invalidArea
     case invalidNumber
     case invalidProfit
+    case invalidOwner
     
     var errorDescription: String? {
         switch self {
-            case .invalidTitle:
-                return "Insira um título válido."
-            case .invalidArea:
-                return "Insira uma área válida."
-            case .invalidNumber:
-                return "Insira um número válido."
-            case .invalidProfit:
-                return "Insira um lucro válido."
+        case .invalidTitle:
+            return "Insira um título válido."
+        case .invalidArea:
+            return "Insira uma área válida."
+        case .invalidNumber:
+            return "Insira um número válido."
+        case .invalidProfit:
+            return "Insira um lucro válido."
+        case .invalidOwner:
+            return "Problema na autenticação. Entre em contato com o administrador do sistema"
         }
     }
 }
