@@ -15,8 +15,7 @@ struct TicketsView: View {
     @Query(sort: \Ticket.createdAt, order: .reverse) private var tickets: [Ticket]
 
     var onAdd: () -> Void = {}
-    
-    
+    var onSelect: (Ticket) -> Void = { _ in }
     
     var body: some View {
         
