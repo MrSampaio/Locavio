@@ -46,26 +46,44 @@ struct TicketsView: View {
                         }
                     }
                 }
+                .scrollIndicators(.hidden)
             }
             .sheet(item: $bindableCoordinator.activeSheet) { currentSheet in
                 
                 switch currentSheet {
                     case .addTicket:
                         CreateTicketSheet(
-                            onAdd: {
-                                do{
-                                    try viewModel.createTicket(
-                                        context: context
-                                    )
-                                    dismiss()
-                                } catch {
-                                    print("Error when trying to add new ticket: \(error)")
-                                }
-                                
-                            },
-                            onClose: {
-                                dismiss()
-                            })
+//                            onAdd: {
+//                                do{
+//                                    
+//                                    print("\(viewModel.ticketTitle)")
+//                                    print("saldksadksahdkjsadh")
+//                                    
+//                                    try viewModel
+//                                        .createTicket(
+//                                            context: context
+//                                        )
+////                                        .createTicket(
+////                                            context: context,
+////                                            ticketTitle: viewModel.ticketTitle,
+////                                            createdAt: viewModel.createdAt,
+////                                            conclusionDate: viewModel.conclusionDate,
+////                                            ticketDescription: viewModel.ticketDescription,
+////                                            property: viewModel.property
+////                                        )
+//                                    
+//                                    
+//                                    print("\(viewModel.ticketTitle)")
+//                                    dismiss()
+//                                } catch {
+//                                    print("Error when trying to add new ticket: \(error)")
+//                                }
+//                                
+//                            },
+//                            onClose: {
+//                                dismiss()
+//                            })
+                            )
                             .presentationDetents([.fraction(0.65), .large])
                             .presentationDragIndicator(.visible)
                             .presentationBackground(Color(.systemGray6))
@@ -101,6 +119,7 @@ struct TicketsView: View {
 
     return NavigationStack {
         TicketsView(onAdd: { print("Adicionar chamado") })
+            .environment(TicketsCoordinator())
     }
     .modelContainer(container)
 }

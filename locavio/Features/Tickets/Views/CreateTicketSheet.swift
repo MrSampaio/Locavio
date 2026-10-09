@@ -15,6 +15,7 @@ struct CreateTicketSheet: View {
     @Query var properties: [Property]
     
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var context
     
     var onAdd: () -> Void = {}
     var onClose: () -> Void = {}
@@ -38,8 +39,19 @@ struct CreateTicketSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 SheetsToolbar(
-                    onConfirm: { onAdd() },
-                    onClose: { onClose() },
+                    onConfirm: {
+                        do {
+                            try viewModel.createTicket(context: context)
+                            
+                            dismiss()
+                            
+                        } catch {
+                            print("Erro when trying to save a new ticket: \(error)")
+                        }
+                    },
+                    onClose: {
+                        dismiss()
+                    },
                     title: "Adicionar Chamado"
                 )
             }
@@ -49,7 +61,7 @@ struct CreateTicketSheet: View {
     @ViewBuilder
     var textFields: some View {
         VStack(spacing: 0) {
-            TextField("Título", text: $viewModel.title)
+            TextField("Título", text: $viewModel.ticketTitle)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 14)
             

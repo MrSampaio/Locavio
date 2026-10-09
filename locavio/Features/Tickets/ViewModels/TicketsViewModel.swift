@@ -13,9 +13,9 @@ import SwiftData
 final class TicketsViewModel {
     var searchText = ""
     var filter: TicketsFilter = .all
-    var title: String = ""
-    var createdAt: Date = Date()
-    var conclusionDate: Date = Date()
+    var ticketTitle: String = ""
+    var createdAt: Date? = Date()
+    var conclusionDate: Date? = Date()
     var ticketDescription: String = ""
     var property: Property?
 //    var maintence: [Maintence] = []
@@ -28,7 +28,7 @@ final class TicketsViewModel {
     
     func createTicket(context: ModelContext) throws {
         
-        let cleanTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        let cleanTitle = ticketTitle.trimmingCharacters(in: .whitespacesAndNewlines)
         let cleanDescription = ticketDescription.trimmingCharacters(in: .whitespacesAndNewlines)
         
         let ticketNumber = try generateTicketNumber(context: context)
@@ -46,6 +46,13 @@ final class TicketsViewModel {
         
         do {
             try context.save()
+            
+            ticketTitle = ""
+            ticketDescription = ""
+            createdAt = nil
+            conclusionDate = nil
+            property = nil
+            
         } catch {
             print("Error when trying to save a new ticket: \(error)")
             throw TicketsError.savingError
