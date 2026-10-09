@@ -13,12 +13,17 @@ import SwiftData
 final class TicketsViewModel {
     var searchText = ""
     var filter: TicketsFilter = .all
-    var title: String = ""
+    var ticketTitle: String = ""
     var createdAt: Date = Date()
     var conclusionDate: Date = Date()
     var ticketDescription: String = ""
     var property: Property?
 //    var maintence: [Maintence] = []
+    
+    var showDeleteAlert = false
+    
+    var isSelectionMode = false
+    var selectedTickets: Set<Ticket> = []
     
     enum TicketSegment: CaseIterable {
         case all, open, closed
@@ -28,7 +33,7 @@ final class TicketsViewModel {
     
     func createTicket(context: ModelContext) throws {
         
-        let cleanTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
+        let cleanTitle = ticketTitle.trimmingCharacters(in: .whitespacesAndNewlines)
         let cleanDescription = ticketDescription.trimmingCharacters(in: .whitespacesAndNewlines)
         
         let ticketNumber = try generateTicketNumber(context: context)
@@ -46,6 +51,7 @@ final class TicketsViewModel {
         
         do {
             try context.save()
+            
         } catch {
             print("Error when trying to save a new ticket: \(error)")
             throw TicketsError.savingError
@@ -54,6 +60,23 @@ final class TicketsViewModel {
     
     func deleteTicket(ticket: Ticket, context: ModelContext) {
         context.delete(ticket)
+    }
+    
+    func deleteSelectedTickets(context: ModelContext) {
+        for ticket in selectedTickets {
+            deleteTicket(ticket: ticket, context: context)
+        }
+        
+        selectedTickets.removeAll()
+        isSelectionMode = false
+    }
+    
+    func toggleSelection(for ticket: Ticket) {
+        if selectedTickets.contains(ticket) {
+            selectedTickets.remove(ticket)
+        } else {
+            selectedTickets.insert(ticket)
+        }
     }
     
     // gerar numero do chamado

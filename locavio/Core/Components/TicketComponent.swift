@@ -9,6 +9,8 @@ import SwiftData
 
 struct TicketComponent: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.modelContext) private var context
+    @State private var viewModel = TicketsViewModel()
     
     let ticket: Ticket
     var onTap: () -> Void
@@ -58,7 +60,35 @@ struct TicketComponent: View {
             )
             .contentShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
         }
+        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+            Button(role: .destructive) {
+                
+                viewModel.showDeleteAlert.toggle()
+            } label: {
+                Label("Apagar", systemImage: "trash")
+            }
+        }
+        
+        .contextMenu {
+            
+            Button(role: .destructive) {
+                viewModel.showDeleteAlert.toggle()
+            } label: {
+                Label("Apagar", systemImage: "trash")
+            }
+        }
+        
         .buttonStyle(.plain)
+        
+        .alert("Apagar Chamado", isPresented: $viewModel.showDeleteAlert) {
+            Button("Cancelar", role: .cancel) { }
+            
+            Button("Apagar", role: .destructive) {
+                viewModel.deleteTicket(ticket: ticket, context: context)
+            }
+        } message: {
+            Text("Tem certeza que deseja apagar este chamado? Essa ação não pode ser desfeita.")
+        }
     }
 
     private func infoRow(icon: String, text: String) -> some View {
