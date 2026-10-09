@@ -8,15 +8,48 @@
 import Foundation
 import SwiftData
 
-enum PropertyType: String, Codable, CaseIterable, Identifiable{
-    case home = "Casa"
+enum PropertyType: String, Codable, CaseIterable, Identifiable {
     case apartment = "Apartamento"
+    case home = "Casa"
+    case warehouse = "Galpão"
     case kitnet = "Kitnet"
     case store = "Loja"
     case loft = "Loft"
-    case warehouse = "Galpão"
     case studio = "Studio"
     case other = "Outro"
+    
+    var id: Self { self }
+}
+
+enum UF: String, CaseIterable, Identifiable {
+    case insert = "Selecione"
+    case ac = "AC"
+    case al = "AL"
+    case ap = "AP"
+    case am = "AM"
+    case ba = "BA"
+    case ce = "CE"
+    case es = "ES"
+    case go = "GO"
+    case df = "DF"
+    case ma = "MA"
+    case mt = "MT"
+    case ms = "MS"
+    case mg = "MG"
+    case pa = "PA"
+    case pb = "PB"
+    case pr = "PR"
+    case pe = "PE"
+    case pi = "PI"
+    case rj = "RJ"
+    case rn = "RN"
+    case rs = "RS"
+    case ro = "RO"
+    case rr = "RR"
+    case sc = "SC"
+    case sp = "SP"
+    case se = "SE"
+    case to = "TO"
     
     var id: Self { self }
 }
@@ -28,13 +61,13 @@ final class Property: Identifiable {
     var type: PropertyType?
     var area: Int?
     var paymentDay: Int?
-    var isPaid: Bool?
     var cep: String?
     var street: String?
     var neighborhood: String?
     var number: String?
     var city: String?
     var uf: String?
+    var complement: String?
     var profit: Double?
     var owner: Owner?
     
@@ -54,22 +87,24 @@ final class Property: Identifiable {
     @Relationship(deleteRule: .cascade, inverse: \Ticket.property)
     var tickets: [Ticket]?
     
-//    @Relationship(deleteRule: .cascade, inverse: \Owner.property)
+    var isPaid: Bool {
+        !(payments(inMonthOf: .now, calendar: .current)).isEmpty
+    }
 
     
-    init(image: Data? = nil, title: String? = nil, type: PropertyType? = nil, area: Int? = nil, paymentDay: Int? = nil, isPaid: Bool? = nil, cep: String? = nil, street: String? = nil, neighborhood: String? = nil, number: String? = nil, city: String? = nil, uf: String? = nil, profit: Double? = nil, owner: Owner? = nil, expenses: [Expenses]? = nil, tenant: Tenant? = nil, contract: Contract? = nil, payments: [Payment]? = nil, tickets: [Ticket]? = nil) {
+    init(image: Data? = nil, title: String? = nil, type: PropertyType? = nil, area: Int? = nil, paymentDay: Int? = nil, cep: String? = nil, street: String? = nil, neighborhood: String? = nil, number: String? = nil, city: String? = nil, uf: String? = nil, complement: String? = nil, profit: Double? = nil, owner: Owner? = nil, expenses: [Expenses]? = nil, tenant: Tenant? = nil, contract: Contract? = nil, payments: [Payment]? = nil, tickets: [Ticket]? = nil) {
         self.image = image
         self.title = title
         self.type = type
         self.area = area
         self.paymentDay = paymentDay
-        self.isPaid = isPaid
         self.cep = cep
         self.street = street
         self.neighborhood = neighborhood
         self.number = number
         self.city = city
         self.uf = uf
+        self.complement = complement
         self.profit = profit
         self.owner = owner
         self.expenses = expenses

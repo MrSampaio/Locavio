@@ -177,7 +177,6 @@ struct DashboardView: View {
     
     property2.payments = payments2
     property2.expenses = expenses2
-    property2.isPaid = true
     
     container.mainContext.insert(property)
     container.mainContext.insert(property2)

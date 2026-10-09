@@ -23,6 +23,7 @@ struct PropertyCardView: View {
         .frame(maxWidth: .infinity)
         .frame(height: 330)
         .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
+        .contentShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
     }
 
     // Fundo
@@ -35,8 +36,9 @@ struct PropertyCardView: View {
                     Image(uiImage: uiImage)
                         .resizable()
                         .scaledToFill()
+                        .allowsHitTesting(false)
                 }
-                .clipped()
+                .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
         } else {
             Color(.systemGray4)
                 .overlay(alignment: .top) {
