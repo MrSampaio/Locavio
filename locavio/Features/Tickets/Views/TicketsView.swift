@@ -10,6 +10,7 @@ import SwiftUI
 struct TicketsView: View {
     @State private var viewModel = TicketsViewModel()
     var onAdd: () -> Void = {}
+    
     var body: some View {
         ZStack {
             Color(.appBg)
@@ -25,17 +26,28 @@ struct TicketsView: View {
                 }
                 .pickerStyle(.segmented)
             }
+            .sheet(isPresented: $viewModel.isPresentedSheet) {
+                CreateTicketSheet()
+                    .presentationDetents([.fraction(0.65), .large])
+                    .presentationDragIndicator(.visible)
+                    .presentationBackground(Color(.systemGray6))
+            }
+            .padding()
             .frame(maxHeight: .infinity, alignment: .top)
+            
+           
         }
         .navigationTitle("Chamados")
         .toolbar {
-            ToolbarTicketView(onAdd: onAdd)
+            ToolbarTicketView(onAdd: {
+                viewModel.isPresentedSheet.toggle()
+            })
         }
     }
 }
 
 #Preview {
     NavigationStack {
-           TicketsView(onAdd: { print("Adicionar chamado") })
-       }
+        TicketsView(onAdd: { print("Adicionar chamado") })
+    }
 }
