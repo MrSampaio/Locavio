@@ -14,8 +14,8 @@ final class TicketsViewModel {
     var searchText = ""
     var filter: TicketsFilter = .all
     var ticketTitle: String = ""
-    var createdAt: Date? = Date()
-    var conclusionDate: Date? = Date()
+    var createdAt: Date = Date()
+    var conclusionDate: Date = Date()
     var ticketDescription: String = ""
     var property: Property?
 //    var maintence: [Maintence] = []
@@ -46,12 +46,6 @@ final class TicketsViewModel {
         
         do {
             try context.save()
-            
-            ticketTitle = ""
-            ticketDescription = ""
-            createdAt = nil
-            conclusionDate = nil
-            property = nil
             
         } catch {
             print("Error when trying to save a new ticket: \(error)")
