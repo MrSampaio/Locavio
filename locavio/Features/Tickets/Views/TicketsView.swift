@@ -10,6 +10,8 @@ import SwiftData
 struct TicketsView: View {
     
     @Environment(TicketsCoordinator.self) private var coordinator
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var context
     
     @State private var viewModel = TicketsViewModel()
     @Query(sort: \Ticket.createdAt, order: .reverse) private var tickets: [Ticket]
@@ -49,7 +51,21 @@ struct TicketsView: View {
                 
                 switch currentSheet {
                     case .addTicket:
-                        CreateTicketSheet()
+                        CreateTicketSheet(
+                            onAdd: {
+                                do{
+                                    try viewModel.createTicket(
+                                        context: context
+                                    )
+                                    dismiss()
+                                } catch {
+                                    print("Error when trying to add new ticket: \(error)")
+                                }
+                                
+                            },
+                            onClose: {
+                                dismiss()
+                            })
                             .presentationDetents([.fraction(0.65), .large])
                             .presentationDragIndicator(.visible)
                             .presentationBackground(Color(.systemGray6))

@@ -26,7 +26,7 @@ final class TicketsViewModel {
     
     var isPresentedSheet: Bool = false
     
-    func createTicket(context: ModelContext, title: String, createdAt: Date, conclusionDate: Date, ticketDescription: String, property: Property) throws {
+    func createTicket(context: ModelContext) throws {
         
         let cleanTitle = title.trimmingCharacters(in: .whitespacesAndNewlines)
         let cleanDescription = ticketDescription.trimmingCharacters(in: .whitespacesAndNewlines)

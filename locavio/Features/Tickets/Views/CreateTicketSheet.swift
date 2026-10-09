@@ -16,6 +16,9 @@ struct CreateTicketSheet: View {
     
     @Environment(\.dismiss) private var dismiss
     
+    var onAdd: () -> Void = {}
+    var onClose: () -> Void = {}
+    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -35,10 +38,8 @@ struct CreateTicketSheet: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 SheetsToolbar(
-                    onConfirm: {},
-                    onClose: {
-                        dismiss()
-                    },
+                    onConfirm: { onAdd() },
+                    onClose: { onClose() },
                     title: "Adicionar Chamado"
                 )
             }
