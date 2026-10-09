@@ -162,7 +162,7 @@ final class PropertiesViewModel {
                 pdfData: draft.pdfData
             )
             
-            newContract.property = property
+            newContract.property = newProperty
             newProperty.contract = newContract
             context.insert(newContract)
         }

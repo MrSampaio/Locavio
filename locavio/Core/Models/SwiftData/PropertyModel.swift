@@ -28,7 +28,6 @@ final class Property: Identifiable {
     var type: PropertyType?
     var area: Int?
     var paymentDay: Int?
-    var isPaid: Bool?
     var cep: String?
     var street: String?
     var neighborhood: String?
@@ -54,16 +53,17 @@ final class Property: Identifiable {
     @Relationship(deleteRule: .cascade, inverse: \Ticket.property)
     var tickets: [Ticket]?
     
-//    @Relationship(deleteRule: .cascade, inverse: \Owner.property)
+    var isPaid: Bool {
+        !(payments(inMonthOf: .now, calendar: .current)).isEmpty
+    }
 
     
-    init(image: Data? = nil, title: String? = nil, type: PropertyType? = nil, area: Int? = nil, paymentDay: Int? = nil, isPaid: Bool? = nil, cep: String? = nil, street: String? = nil, neighborhood: String? = nil, number: String? = nil, city: String? = nil, uf: String? = nil, profit: Double? = nil, owner: Owner? = nil, expenses: [Expenses]? = nil, tenant: Tenant? = nil, contract: Contract? = nil, payments: [Payment]? = nil, tickets: [Ticket]? = nil) {
+    init(image: Data? = nil, title: String? = nil, type: PropertyType? = nil, area: Int? = nil, paymentDay: Int? = nil, cep: String? = nil, street: String? = nil, neighborhood: String? = nil, number: String? = nil, city: String? = nil, uf: String? = nil, profit: Double? = nil, owner: Owner? = nil, expenses: [Expenses]? = nil, tenant: Tenant? = nil, contract: Contract? = nil, payments: [Payment]? = nil, tickets: [Ticket]? = nil) {
         self.image = image
         self.title = title
         self.type = type
         self.area = area
         self.paymentDay = paymentDay
-        self.isPaid = isPaid
         self.cep = cep
         self.street = street
         self.neighborhood = neighborhood
