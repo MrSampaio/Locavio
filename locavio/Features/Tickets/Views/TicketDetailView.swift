@@ -75,6 +75,7 @@ struct TicketDetailView: View {
             .padding(.horizontal, 16)
             .padding(.bottom, 24)
         }
+        .toolbar(.hidden, for: .tabBar)
         .background(Color.appBg)
         .navigationTitle("Detalhes do chamado")
         .navigationBarTitleDisplayMode(.inline)
@@ -105,7 +106,7 @@ struct TicketDetailView: View {
                 .padding(35)
                 .frame(width: 150, height: 150)
                 .background(Color(.systemGray6))
-                .foregroundStyle(.tertiary) 
+                .foregroundStyle(.tertiary)
                 .clipShape(Circle())
         }
     }
