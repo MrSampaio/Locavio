@@ -8,10 +8,18 @@
 import SwiftUI
 
 struct TicketsView: View {
+    
+    @Environment(TicketsCoordinator.self) private var coordinator
+    
     @State private var viewModel = TicketsViewModel()
     var onAdd: () -> Void = {}
     
+    
+    
     var body: some View {
+        
+        @Bindable var bindableCoordinator = coordinator
+        
         ZStack {
             Color(.appBg)
                 .ignoresSafeArea()
@@ -26,11 +34,15 @@ struct TicketsView: View {
                 }
                 .pickerStyle(.segmented)
             }
-            .sheet(isPresented: $viewModel.isPresentedSheet) {
-                CreateTicketSheet()
-                    .presentationDetents([.fraction(0.65), .large])
-                    .presentationDragIndicator(.visible)
-                    .presentationBackground(Color(.systemGray6))
+            .sheet(item: $bindableCoordinator.activeSheet) { currentSheet in
+                
+                switch currentSheet {
+                    case .addTicket:
+                        CreateTicketSheet()
+                            .presentationDetents([.fraction(0.65), .large])
+                            .presentationDragIndicator(.visible)
+                            .presentationBackground(Color(.systemGray6))
+                }
             }
             .padding()
             .frame(maxHeight: .infinity, alignment: .top)
@@ -40,7 +52,7 @@ struct TicketsView: View {
         .navigationTitle("Chamados")
         .toolbar {
             ToolbarTicketView(onAdd: {
-                viewModel.isPresentedSheet.toggle()
+                coordinator.presentAddTicket()
             })
         }
     }
@@ -49,5 +61,6 @@ struct TicketsView: View {
 #Preview {
     NavigationStack {
         TicketsView(onAdd: { print("Adicionar chamado") })
+            .environment(TicketsCoordinator())
     }
 }
