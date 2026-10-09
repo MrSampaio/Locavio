@@ -7,7 +7,7 @@
 import SwiftUI
 struct SearchBarView: View {
     @Binding var text: String
-    var prompt: String = "Pesquise seus imóveis aqui"
+    var prompt: String = "Pesquise seus chamados aqui"
 
     var body: some View {
         HStack(spacing: 8) {

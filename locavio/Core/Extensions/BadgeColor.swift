@@ -50,18 +50,12 @@ extension Property {
 }
 
 //ticket
-extension TicketStats {
+extension Ticket {
     var badgeText: String {
-        switch self {
-        case .open:      return "Aberto"
-        case .completed: return "Concluído"
-        }
+        isConcluded == true ? "Concluído" : "Aberto"
     }
- 
+
     var badgeColor: Color {
-        switch self {
-        case .open:return Color(.accent)
-        case .completed: return Color(BadgeColor.rented)
-        }
+        isConcluded == true ? Color(BadgeColor.rented) : Color(.accent)
     }
 }

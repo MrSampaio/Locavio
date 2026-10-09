@@ -11,10 +11,25 @@ import SwiftUI
 @Observable
 final class TicketsCoordinator{
     var path = NavigationPath()
+
+    // controle das sheets
+    var activeSheet: TicketsSheet?
+    
+    func pushToTicketDetails(ticket: Ticket) {
+        path.append(TicketsRoutes.ticketDetails(ticket: ticket))
+    }
     
     func pop() {
         if !path.isEmpty {
             path.removeLast()
         }
     }
+    
+    // navegação das sheets
+    func presentAddTicket() {
+        activeSheet = .addTicket
+    }
+    
+    
+    
 }

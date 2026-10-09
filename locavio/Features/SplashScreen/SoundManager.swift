@@ -15,12 +15,10 @@ class SoundManager {
     
     enum SoundType {
         case splash
-        case success
         
         var fileName: (name: String, extension: String) {
             switch self {
-                case .splash: return ("splash", "mp3")
-                case .success: return ("readSucess", "mp3")
+                case .splash: return ("ding-dong", "mp3")
             }
         }
     }
@@ -33,12 +31,14 @@ class SoundManager {
             return
         }
         
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.prepareToPlay()
-            audioPlayer?.play()
-        } catch {
-            print("Error when reproducing sound: \(error.localizedDescription)")
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                self.audioPlayer = try AVAudioPlayer(contentsOf: url)
+                self.audioPlayer?.prepareToPlay()
+                self.audioPlayer?.play()
+            } catch {
+                print("Error when reproducing sound: \(error.localizedDescription)")
+            }
         }
     }
 }

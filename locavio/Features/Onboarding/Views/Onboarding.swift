@@ -8,17 +8,19 @@
 import SwiftUI
 
 
-
 struct OnboardingView: View {
-    @Bindable var viewModel = TextsOnboardingViewModel()
+    @State private var viewModel = TextsOnboardingViewModel()
 
     var body: some View {
-        OnboardingComponent(viewModel: viewModel, screen: viewModel.currentScreen)
-            .onChange(of: viewModel.finish) { _, finish in
-                if finish {
-                    viewModel.finishOnboarding()
+        NavigationStack{
+            OnboardingComponent(viewModel: viewModel, screen: viewModel.currentScreen)
+                .onChange(of: viewModel.finish) { _, finish in
+                    if finish {
+                        viewModel.finishOnboarding()
+                    }
                 }
-            }
+        }
+        
     }
 }
 

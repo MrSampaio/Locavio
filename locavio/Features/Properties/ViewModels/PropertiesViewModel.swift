@@ -142,8 +142,8 @@ final class PropertiesViewModel {
         // adiciona o inquilino caso exista
         if !propertyDraft.tenantName.isEmpty, !propertyDraft.tenantName.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             
-            var cpf = propertyDraft.tenantCPF
-            var phone = propertyDraft.tenantPhone
+            let cpf = propertyDraft.tenantCPF
+            let phone = propertyDraft.tenantPhone
             
             guard !cpf.isEmpty else {
                 throw TenantErrors.invalidCpf
@@ -188,7 +188,7 @@ final class PropertiesViewModel {
     }
     
     // função de delete de propriedade
-    func deleteProperty(property: Property, context: ModelContext) throws {
+    func deleteProperty(property: Property, context: ModelContext) {
         context.delete(property)
     }
     
@@ -301,7 +301,7 @@ final class PropertiesViewModel {
             try context.save()
             return true
         } catch {
-            print("Erro ao tentar salvar lote de despesas: \(error)")
+            print("Error when trying to save expenses batch: \(error)")
             return false
         }
     }

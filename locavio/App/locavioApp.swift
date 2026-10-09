@@ -15,6 +15,8 @@ struct locavioApp: App {
     @State private var dashboardViewModel = DashboardViewModel()
     @State private var propertiesViewModel = PropertiesViewModel()
     
+    @AppStorage("onboardingConcluido") private var onboardingConcluido = false
+    
     @State private var isVideoFinished = false
     
     var sharedModelContainer: ModelContainer = {
@@ -45,42 +47,54 @@ struct locavioApp: App {
     var body: some Scene {
         WindowGroup {
             Group {
-                if !isVideoFinished || appleAuthManager.currentAuthState == .loading {
-                    
-                    SplashView(onFinish: {
-                        // Quando o AVPlayer terminar, ele muda o estado com uma transição suave
-                        withAnimation(.easeInOut) {
-                            isVideoFinished = true
+                if !isVideoFinished {
+                    SplashView(
+                        onFinish: {
+                            withAnimation(.easeInOut) {
+                                isVideoFinished = true
+                            }
                         }
-                    })
-                    
+                    )
+                } else if !onboardingConcluido {
+                    OnboardingView()
                 } else {
-                    switch appleAuthManager.currentAuthState {
+                        switch appleAuthManager.currentAuthState {
                         case .authenticated:
                             MainTabView()
+                            
                         case .needsRegistration:
                             SignUpView()
+                            
                         case .loggedOut:
                             LoginView()
+                            
                         case .loading:
                             EmptyView()
-                    }
+                        }
                 }
             }
             .environment(appleAuthManager)
             .environment(dashboardViewModel)
             .environment(propertiesViewModel)
-            .onReceive(NotificationCenter.default.publisher(for: ASAuthorizationAppleIDProvider.credentialRevokedNotification)){ _ in
+            .onReceive(
+                NotificationCenter.default.publisher(
+                    for: ASAuthorizationAppleIDProvider.credentialRevokedNotification
+                )
+            ) { _ in
                 print("Credential revoked in real time.")
-                // apaga os dados do usuário (como a Apple pede), limpa o Keychain e a tela volta pro login
-                appleAuthManager.handleCredentialRevoked(context: sharedModelContainer.mainContext)
+                
+                appleAuthManager.handleCredentialRevoked(
+                    context: sharedModelContainer.mainContext
+                )
             }
             .task {
-                appleAuthManager.checkCredentialStatus(context: sharedModelContainer.mainContext)
+                appleAuthManager.checkCredentialStatus(
+                    context: sharedModelContainer.mainContext
+                )
             }
-            
         }
-        
         .modelContainer(sharedModelContainer)
     }
 }
+
+
