@@ -9,6 +9,7 @@ import SwiftUI
 import SwiftData
 import QuickLook
 import UniformTypeIdentifiers
+import PhotosUI
 
 struct NewPropertySheet: View {
     
@@ -20,6 +21,7 @@ struct NewPropertySheet: View {
     @Environment(\.modelContext) private var context
     
     @State private var expensesViewModel = ExpensesViewModel()
+    @State private var selectedImage: PhotosPickerItem?
     @State private var propertyType: PropertyType = .other
     @State private var uf: UF = .insert
     @State private var paymentDay: Int = 1
@@ -29,8 +31,54 @@ struct NewPropertySheet: View {
     @State private var errorMessage = ""
     
     var body: some View {
+        
+        let propertyImage = viewModel.propertyDraft.image
+        
         NavigationStack {
+            
             Form {
+                
+                PhotosPicker(selection: $selectedImage, matching: .images) {
+                    VStack {
+                        if let image = propertyImage, let uiImage = UIImage(data: image) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(maxWidth: .infinity)
+                                .frame(height: 175)
+                        } else {
+                            VStack {
+                                Text("Adicionar Foto do Imóvel")
+                                    .foregroundStyle(.black)
+                                    .bold()
+                            }
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 175)
+                            .background(.white)
+                        }
+                    }
+                    .clipShape(RoundedRectangle(cornerRadius: 30))
+                    .overlay(alignment: .bottomTrailing) {
+                        Image(systemName: "camera.fill")
+                            .font(.subheadline)
+                            .padding(15)
+                            .foregroundStyle(.white)
+                            .background(.imageFieldCameraInput)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color(.systemGroupedBackground), lineWidth: 3))
+                            .offset(x: 10, y: 10)
+                    }
+                }
+                .listRowBackground(Color.clear)
+                .listRowInsets(EdgeInsets(top: 0, leading: 16, bottom: 16, trailing: 16))
+                .buttonStyle(.plain)
+                .onChange(of: selectedImage) { _, newImage in
+                    Task {
+                        let data = await viewModel.loadImage(from: newImage)
+                        viewModel.propertyDraft.image = data
+                    }
+                }
+                
                 Section("Informações do Imóvel") {
                     PropertyLabeledContent(textPropertyLabel: "Nome", iconPropertyLabel: "pencil.line", textFieldPlaceholder: "Ex: Casa 1", textFieldHasUnit: false, textFieldIsNumber: false, textFieldCharacterLimit: 20, textFieldType: .name)
                     
@@ -174,7 +222,6 @@ struct NewPropertySheet: View {
         do {
             let saved = try viewModel.addProperty(
                 context: context,
-                image: nil,
                 type: propertyType,
                 uf: uf,
                 expenses: expensesViewModel.expenses,

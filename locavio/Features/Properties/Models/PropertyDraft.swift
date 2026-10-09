@@ -28,6 +28,7 @@ enum PropertyFieldType {
 }
 
 struct PropertyDraft {
+    var image: Data? = nil
     var name = ""
     var area = ""
     var cep = ""

@@ -10,6 +10,7 @@ import Observation
 import SwiftData
 import PhotosUI
 import PDFKit
+import _PhotosUI_SwiftUI
 
 @Observable
 final class PropertiesViewModel {
@@ -19,6 +20,7 @@ final class PropertiesViewModel {
     var propertyDraft = PropertyDraft()
     var contractDraft: ContractDraft?
     var property = Property()
+    var errorMessage = ""
     
     let options = PropertyListOptionsViewModel()
     
@@ -87,7 +89,7 @@ final class PropertiesViewModel {
         }
     }
     
-    func addProperty(context: ModelContext, image: Data?, type: PropertyType, uf: UF, expenses: [Expenses], owner: Owner?) throws -> Bool {
+    func addProperty(context: ModelContext, type: PropertyType, uf: UF, expenses: [Expenses], owner: Owner?) throws -> Bool {
         
         guard let currentOwner = owner else { throw PropertiesErrors.invalidOwner }
         
@@ -118,7 +120,7 @@ final class PropertiesViewModel {
         }
         
         let newProperty = Property(
-            image: image,
+            image: propertyDraft.image,
             title: cleanTitle,
             type: type,
             area: convertedArea,
@@ -301,6 +303,25 @@ final class PropertiesViewModel {
         } catch {
             print("Erro ao tentar salvar lote de despesas: \(error)")
             return false
+        }
+    }
+    
+    func loadImage(from item: PhotosPickerItem?) async -> Data? {
+        errorMessage = ""
+        
+        guard let item else { return nil }
+        
+        do {
+            guard let imageData = try await item.loadTransferable(type: Data.self) else {
+                errorMessage = "Não foi possível carregar a imagem"
+                return nil
+            }
+            
+            propertyDraft.image = imageData
+            return imageData
+        } catch {
+            errorMessage = "Não foi possível carregar a imagem"
+            return nil
         }
     }
     
