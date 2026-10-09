@@ -9,6 +9,10 @@ import Foundation
 
 #warning("TODO: Implementar rotas de tickets")
 
+
+enum TicketsRoutes: Hashable {
+    case ticketDetails(ticket: Ticket)
+}
 // rotas de sheets
 enum TicketsSheet: String, Identifiable {
     case addTicket

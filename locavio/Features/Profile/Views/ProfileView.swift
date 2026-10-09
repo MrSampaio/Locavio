@@ -80,7 +80,7 @@ struct ProfileView: View {
         .navigationTitle("Perfil")
         .navigationBarTitleDisplayMode(.large)
         .toolbar {
-            ProfileToolbar(onClick: {
+            EditToolbar(onClick: {
                 if let currentUser = user {
                     coordinator.presentEditProfile(user: currentUser)
                 }
@@ -95,8 +95,6 @@ struct ProfileView: View {
         let rawDoc = user?.documentNumber ?? ""
         
         let maskedString = rawDoc.isEmpty ? "***.***.***-**" : viewModel.maskDocument(rawDoc)
-        
-#warning("Adicionar lógica de numeros de inquilinos")
         
         VStack(alignment: .center){
             ProfileHeader(

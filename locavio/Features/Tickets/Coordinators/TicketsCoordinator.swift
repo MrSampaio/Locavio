@@ -15,6 +15,10 @@ final class TicketsCoordinator{
     // controle das sheets
     var activeSheet: TicketsSheet?
     
+    func pushToTicketDetails(ticket: Ticket) {
+        path.append(TicketsRoutes.ticketDetails(ticket: ticket))
+    }
+    
     func pop() {
         if !path.isEmpty {
             path.removeLast()
@@ -25,6 +29,7 @@ final class TicketsCoordinator{
     func presentAddTicket() {
         activeSheet = .addTicket
     }
+    
     
     
 }

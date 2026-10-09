@@ -8,10 +8,11 @@
 import SwiftUI
 import UIKit
 
-struct CallDetailView: View {
+struct TicketDetailView: View {
 
     @Environment(\.dismiss) private var dismiss
-
+    @State private var ticketsCoordinator = TicketsCoordinator()
+    
     let ticket: Ticket
     let closeAction: () -> Void
     let editAction: () -> Void
@@ -74,17 +75,13 @@ struct CallDetailView: View {
             .padding(.horizontal, 16)
             .padding(.bottom, 24)
         }
+        .background(Color.appBg)
         .navigationTitle("Detalhes do chamado")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            SheetsToolbar(
-                onConfirm: editAction,
-                onClose: {
-                    dismiss()
-                },
-                title: "Detalhes do chamado",
-                isDetail: true
-            )
+            EditToolbar(onClick: {
+                editAction()
+            })
         }
     }
 
@@ -163,7 +160,7 @@ struct CallDetailView: View {
             ]
         )
 
-        CallDetailView(
+        TicketDetailView(
             ticket: ticket,
             closeAction: {
                 print("Chamado fechado")

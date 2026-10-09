@@ -15,6 +15,17 @@ struct TicketsCoordinatorView: View {
         NavigationStack(path: $ticketsCoordinator.path) {
             TicketsView()
                 .environment(ticketsCoordinator)
+                .navigationDestination(for: TicketsRoutes.self) { route in
+                    switch route {
+                        case .ticketDetails(let ticket):
+                            TicketDetailView(
+                                ticket: ticket,
+                                closeAction: {},
+                                editAction: {}
+                                
+                            )
+                    }
+                }
         }
     }
 }

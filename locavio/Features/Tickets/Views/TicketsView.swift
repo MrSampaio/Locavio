@@ -40,9 +40,12 @@ struct TicketsView: View {
                 ScrollView {
                     LazyVStack(spacing: 12) {
                         ForEach(viewModel.visibleTickets(from: tickets)) { ticket in
-                            TicketComponent(ticket: ticket) {
-                                onSelect(ticket)
-                            }
+                            TicketComponent(
+                                ticket: ticket,
+                                onTap: {
+                                    coordinator.pushToTicketDetails(ticket: ticket)
+                                }
+                            )
                         }
                     }
                 }
@@ -99,6 +102,11 @@ struct TicketsView: View {
             ToolbarTicketView(onAdd: {
                 coordinator.presentAddTicket()
             })
+        }
+        .onTapGesture {
+            #if canImport(UIKit)
+                hideKeyboard()
+            #endif
         }
     }
 }
