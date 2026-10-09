@@ -15,51 +15,59 @@ struct CallDescriptionText: View {
     let closeAction: () -> Void
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 28) {
+        ZStack{
+            Color(UIColor.bgForm)
+                .ignoresSafeArea()
             
-            VStack(alignment: .leading, spacing: 12) {
+            VStack(alignment: .leading, spacing: 28) {
                 
-                Text("Descrição")
-                    .font(.title2)
-                    .fontWeight(.semibold)
+                VStack(alignment: .leading, spacing: 12) {
+                    
+                    Text("Descrição")
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    
+                    Text(description)
+                        .font(.body)
+                        .foregroundStyle(.secondary)
+                        .frame(
+                            maxWidth: .infinity,
+                            alignment: .leading
+                        )
+                }
                 
-                Text(description)
-                    .font(.body)
-                    .foregroundStyle(.secondary)
-                    .frame(
-                        maxWidth: .infinity,
-                        alignment: .leading
-                    )
+                MaintenanceValues(
+                    items: items,
+                    total: total
+                )
+                
+                DestructiveButton(
+                    text: "Fechar chamado",
+                    action: closeAction,
+                    useGlass: false
+                )
             }
-            
-            MaintenanceValues(
-                items: items,
-                total: total
+
+            .frame(
+                maxWidth: .infinity,
+                alignment: .leading
+            )
+            .padding(.horizontal, 24)
+            .padding(.vertical, 24)
+            .glassEffect(
+                .regular,
+                in: .rect(cornerRadius: 16)
             )
             
-            DestructiveButton(
-                text: "Fechar chamado",
-                action: closeAction,
-                useGlass: false
-            )
         }
-        .frame(
-            maxWidth: .infinity,
-            alignment: .leading
-        )
-        .padding(.horizontal, 24)
-        .padding(.vertical, 24)
-        .glassEffect(
-            .regular,
-            in: .rect(cornerRadius: 16)
-        )
+
     }
 }
 
 #Preview {
     ZStack {
         
-        Color(UIColor.appBg)
+        Color(UIColor.bgForm)
             .ignoresSafeArea()
         
         CallDescriptionText(

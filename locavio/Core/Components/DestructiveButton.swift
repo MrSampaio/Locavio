@@ -52,7 +52,7 @@ struct DestructiveButton: View {
                     .frame(height: 51)
                     .background(
                         colorScheme == .dark
-                        ? Color(hex: "2C2C2E")
+                        ? Color(.systemGray4)
                         : Color(hex: "E5E5EA")
                     )
                     .clipShape(
