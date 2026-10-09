@@ -16,6 +16,7 @@ struct CustomDatePicker: View {
     var body: some View {
         DatePicker("\(inputTitle)", selection: $date, displayedComponents: .date)
             .environment(\.locale, Locale(identifier: "pt_BR"))
+            .frame(maxWidth: .infinity)
     }
 }
 

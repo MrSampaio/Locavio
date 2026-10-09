@@ -8,13 +8,20 @@ import SwiftUI
 import SwiftData
 
 struct TicketsView: View {
+    
+    @Environment(TicketsCoordinator.self) private var coordinator
+    
     @State private var viewModel = TicketsViewModel()
     @Query(sort: \Ticket.createdAt, order: .reverse) private var tickets: [Ticket]
 
     var onAdd: () -> Void = {}
-    var onSelect: (Ticket) -> Void = { _ in }
-
+    
+    
+    
     var body: some View {
+        
+        @Bindable var bindableCoordinator = coordinator
+        
         ZStack {
             Color(.appBg)
                 .ignoresSafeArea()
@@ -39,12 +46,26 @@ struct TicketsView: View {
                     }
                 }
             }
-            .padding(.horizontal)
+            .sheet(item: $bindableCoordinator.activeSheet) { currentSheet in
+                
+                switch currentSheet {
+                    case .addTicket:
+                        CreateTicketSheet()
+                            .presentationDetents([.fraction(0.65), .large])
+                            .presentationDragIndicator(.visible)
+                            .presentationBackground(Color(.systemGray6))
+                }
+            }
+            .padding()
             .frame(maxHeight: .infinity, alignment: .top)
+            
+           
         }
         .navigationTitle("Chamados")
         .toolbar {
-            ToolbarTicketView(onAdd: onAdd)
+            ToolbarTicketView(onAdd: {
+                coordinator.presentAddTicket()
+            })
         }
     }
 }
