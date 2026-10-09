@@ -8,15 +8,48 @@
 import Foundation
 import SwiftData
 
-enum PropertyType: String, Codable, CaseIterable, Identifiable{
-    case home = "Casa"
+enum PropertyType: String, Codable, CaseIterable, Identifiable {
     case apartment = "Apartamento"
+    case home = "Casa"
+    case warehouse = "Galpão"
     case kitnet = "Kitnet"
     case store = "Loja"
     case loft = "Loft"
-    case warehouse = "Galpão"
     case studio = "Studio"
     case other = "Outro"
+    
+    var id: Self { self }
+}
+
+enum UF: String, CaseIterable, Identifiable {
+    case insert = "Selecione"
+    case ac = "AC"
+    case al = "AL"
+    case ap = "AP"
+    case am = "AM"
+    case ba = "BA"
+    case ce = "CE"
+    case es = "ES"
+    case go = "GO"
+    case df = "DF"
+    case ma = "MA"
+    case mt = "MT"
+    case ms = "MS"
+    case mg = "MG"
+    case pa = "PA"
+    case pb = "PB"
+    case pr = "PR"
+    case pe = "PE"
+    case pi = "PI"
+    case rj = "RJ"
+    case rn = "RN"
+    case rs = "RS"
+    case ro = "RO"
+    case rr = "RR"
+    case sc = "SC"
+    case sp = "SP"
+    case se = "SE"
+    case to = "TO"
     
     var id: Self { self }
 }

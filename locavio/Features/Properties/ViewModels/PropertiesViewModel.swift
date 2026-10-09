@@ -87,7 +87,7 @@ final class PropertiesViewModel {
         }
     }
     
-    func addProperty(context: ModelContext, image: Data?, type: PropertyType, expenses: [Expenses], owner: Owner?) throws -> Bool {
+    func addProperty(context: ModelContext, image: Data?, type: PropertyType, uf: UF, expenses: [Expenses], owner: Owner?) throws -> Bool {
         
         guard let currentOwner = owner else { throw PropertiesErrors.invalidOwner }
         
@@ -128,7 +128,7 @@ final class PropertiesViewModel {
             neighborhood: propertyDraft.neighborhood,
             number: propertyDraft.number,
             city: propertyDraft.city,
-            uf: propertyDraft.federalUnit,
+            uf: uf.rawValue,
             profit: convertedProfit
         )
         

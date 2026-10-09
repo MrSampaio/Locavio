@@ -21,6 +21,7 @@ struct NewPropertySheet: View {
     
     @State private var expensesViewModel = ExpensesViewModel()
     @State private var propertyType: PropertyType = .other
+    @State private var uf: UF = .insert
     @State private var paymentDay: Int = 1
     @State private var isImportingContract = false
     @State private var contractPreviewURL: URL?
@@ -61,7 +62,19 @@ struct NewPropertySheet: View {
                     
                     PropertyLabeledContent(textPropertyLabel: "Cidade", iconPropertyLabel: "building.2", textFieldPlaceholder: "Ex: São Paulo", textFieldHasUnit: false, textFieldIsNumber: false, textFieldCharacterLimit: 32, textFieldType: .city)
                     
-                    PropertyLabeledContent(textPropertyLabel: "UF", iconPropertyLabel: "flag", textFieldPlaceholder: "Ex: SP", textFieldHasUnit: false, textFieldIsNumber: false, textFieldCharacterLimit: 2, textFieldType: .federalUnit)
+                    Picker(selection: $uf) {
+                        ForEach(UF.allCases) { uf in
+                            Text(uf.rawValue).tag(uf)
+                        }
+                    } label: {
+                        Label {
+                            Text("UF")
+                        } icon: {
+                            Image(systemName: "flag")
+                                .font(.subheadline)
+                                .foregroundStyle(.accent)
+                        }
+                    }
                     
                     PropertyLabeledContent(textPropertyLabel: "Complemento", iconPropertyLabel: "door.left.hand.closed", textFieldPlaceholder: "Ex: Apartamento 21", textFieldHasUnit: false, textFieldIsNumber: false, textFieldType: .complement)
                 }
@@ -163,6 +176,7 @@ struct NewPropertySheet: View {
                 context: context,
                 image: nil,
                 type: propertyType,
+                uf: uf,
                 expenses: expensesViewModel.expenses,
                 owner: owner.first ?? nil
             )
