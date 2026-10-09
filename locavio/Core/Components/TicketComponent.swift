@@ -9,6 +9,8 @@ import SwiftData
 
 struct TicketComponent: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.modelContext) private var context
+    @State private var viewModel = TicketsViewModel()
     
     let ticket: Ticket
     var onTap: () -> Void
@@ -58,6 +60,23 @@ struct TicketComponent: View {
             )
             .contentShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
         }
+        .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+            Button(role: .destructive) {
+                viewModel.deleteTicket(ticket: ticket, context: context)
+            } label: {
+                Label("Apagar", systemImage: "trash")
+            }
+        }
+        
+        .contextMenu {
+            
+            Button(role: .destructive) {
+                viewModel.deleteTicket(ticket: ticket, context: context)
+            } label: {
+                Label("Apagar", systemImage: "trash")
+            }
+        }
+        
         .buttonStyle(.plain)
     }
 

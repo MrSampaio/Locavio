@@ -101,8 +101,11 @@ struct TicketDetailView: View {
 
             Image(systemName: "house.fill")
                 .resizable()
-                .scaledToFill()
-                .frame(width: 100, height: 100)
+                .scaledToFit()
+                .padding(35)
+                .frame(width: 150, height: 150)
+                .background(Color(.systemGray6))
+                .foregroundStyle(.tertiary) 
                 .clipShape(Circle())
         }
     }
