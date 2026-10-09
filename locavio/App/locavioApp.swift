@@ -14,7 +14,6 @@ struct locavioApp: App {
     @State private var appleAuthManager = AppleAuthManager()
     @State private var dashboardViewModel = DashboardViewModel()
     @State private var propertiesViewModel = PropertiesViewModel()
-    @State private var propertiesCoordinator = PropertiesCoordinator()
     
     @AppStorage("onboardingConcluido") private var onboardingConcluido = false
     
@@ -76,7 +75,6 @@ struct locavioApp: App {
             }
             .environment(appleAuthManager)
             .environment(dashboardViewModel)
-            .environment(propertiesCoordinator)
             .environment(propertiesViewModel)
             .onReceive(
                 NotificationCenter.default.publisher(

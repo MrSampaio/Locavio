@@ -40,7 +40,7 @@ struct ExpensesCardView: View {
                 
                 Spacer()
                 
-                Text(viewModel.totalText)
+                Text(viewModel.totalExpenses, format: .currency(code: "BRL"))
                     .font(.title3.weight(.semibold))
                     .foregroundStyle(.secondary)
                 
@@ -96,7 +96,7 @@ struct ExpensesCardView: View {
         .contentShape(Rectangle())
         .contextMenu {
             Button(role: .destructive) {
-                viewModel.delete(row.id, in: modelContext)
+                viewModel.delete(row.expense, context: modelContext)
             } label: {
                 Label("Remover", systemImage: "trash")
             }
