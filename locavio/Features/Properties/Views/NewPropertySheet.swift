@@ -6,16 +6,24 @@
 //
 
 import SwiftUI
+import SwiftData
+import QuickLook
+import UniformTypeIdentifiers
 
 struct NewPropertySheet: View {
     
     @Environment(\.dismiss) var dismiss
     @Environment(PropertiesViewModel.self) private var viewModel
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.modelContext) private var context
     
     @State private var expensesViewModel = ExpensesViewModel()
     @State private var propertyType: PropertyType = .other
     @State private var paymentDay: Int = 1
+    @State private var isImportingContract = false
+    @State private var contractPreviewURL: URL?
+    @State private var showErrorAlert = false
+    @State private var errorMessage = ""
     
     var body: some View {
         NavigationStack {
@@ -100,16 +108,68 @@ struct NewPropertySheet: View {
                     
                     PropertyLabeledContent(textPropertyLabel: "Telefone", iconPropertyLabel: "phone", textFieldPlaceholder: "Ex: (99) 99999-9999", textFieldHasUnit: false, textFieldIsNumber: true, textFieldCharacterLimit: 15, textFieldType: .tenantPhone)
                 }
+                
+                Section("Contrato") {
+                    ContractComponent(
+                        contractName: viewModel.contractDraft?.title,
+                        attachmentDate: viewModel.contractDraft?.createdAt) {
+                            if viewModel.contractDraft == nil {
+                                isImportingContract = true
+                            } else {
+                                viewModel.removeContractDraft()
+                            }
+                        } onOpen: {
+                            contractPreviewURL = viewModel.makeContractPreviewURL()
+                        }
+                }
             }
             .scrollDismissesKeyboard(.interactively)
+            .fileImporter(isPresented: $isImportingContract, allowedContentTypes: [.pdf]) { result in
+                switch result {
+                case .success(let url):
+                    do {
+                        try viewModel.importContract(from: url)
+                    } catch {
+                        show(error)
+                    }
+                case .failure(let failure):
+                    show(failure)
+                }
+            }
+            .quickLookPreview($contractPreviewURL)
+            .alert("Atenção!", isPresented: $showErrorAlert) {
+                Button("OK", role: .cancel) {}
+            } message: {
+                Text(errorMessage)
+            }
             .toolbar {
                 SheetsToolbar(onConfirm: {
-                    
+                    saveProperty()
                 }, onClose: {
+                    viewModel.removeContractDraft()
                     dismiss()
                 }, title: "Adicionar Imóvel")
             }
         }
+    }
+    
+    private func saveProperty() {
+        do {
+            let saved = try viewModel.addProperty(
+                context: context,
+                image: nil,
+                type: propertyType,
+                expenses: expensesViewModel.expenses
+            )
+            if saved { dismiss() }
+        } catch {
+            show(error)
+        }
+    }
+    
+    private func show(_ error: Error) {
+        errorMessage = error.localizedDescription
+        showErrorAlert = true
     }
 }
 

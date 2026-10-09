@@ -9,6 +9,7 @@ import Foundation
 import Observation
 import SwiftData
 import PhotosUI
+import PDFKit
 
 @Observable
 final class PropertiesViewModel {
@@ -16,6 +17,7 @@ final class PropertiesViewModel {
     var searchText = ""
     var filter: PropertyFilter = .todos
     var propertyDraft = PropertyDraft()
+    var contractDraft: ContractDraft?
     var property = Property()
     
     let options = PropertyListOptionsViewModel()
@@ -83,7 +85,7 @@ final class PropertiesViewModel {
         }
     }
     
-    func addProperty(context: ModelContext, image: Data?, type: PropertyType, expenses: [ExpenseFormData]) throws -> Bool {
+    func addProperty(context: ModelContext, image: Data?, type: PropertyType, expenses: [Expenses]) throws -> Bool {
         
         let cleanTitle = propertyDraft.name.trimmingCharacters(in: .whitespacesAndNewlines)
         
@@ -102,11 +104,11 @@ final class PropertiesViewModel {
         // valida as despesas existentes. caso alguma esteja errada, impede a criação do imóvel
         for data in expenses {
             
-            if data.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            if ((data.title?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty) != nil) {
                 throw ExpensesErrors.invalidTitle
             }
             
-            if Double(data.value) == nil {
+            if data.value == nil {
                 throw ExpensesErrors.invalidValue
             }
         }
@@ -129,15 +131,8 @@ final class PropertiesViewModel {
         context.insert(newProperty)
         
         // cria as despesas depois da validação e depois de criar o imóvel
-        for data in expenses {
-            
-            let validTitle = data.title.trimmingCharacters(in: .whitespacesAndNewlines)
-            
-            let validValue = Double(data.value)!
-            
-            let newExpense = Expenses(title: validTitle, value: validValue, date: data.date)
-            
-            newExpense.property = newProperty
+        for expense in expenses {
+            expense.property = newProperty
         }
         
         // adiciona o inquilino caso exista
@@ -158,8 +153,21 @@ final class PropertiesViewModel {
             newTenant.property = newProperty
         }
         
+        if let draft = contractDraft {
+            let newContract = Contract(
+                title: draft.title,
+                fileName: draft.fileName,
+                createdAt: draft.createdAt,
+                pdfData: draft.pdfData
+            )
+            
+            newContract.property = property
+            context.insert(newContract)
+        }
+        
         do {
             try context.save()
+            removeContractDraft()
             return true
         } catch {
             print("Error when trying to save a new property: \(error)")
@@ -283,6 +291,45 @@ final class PropertiesViewModel {
         } catch {
             print("Erro ao tentar salvar lote de despesas: \(error)")
             return false
+        }
+    }
+    
+    func importContract(from url: URL) throws {
+        guard url.startAccessingSecurityScopedResource() else {
+            throw ContractErrors.accessDenied
+        }
+        defer { url.stopAccessingSecurityScopedResource() }
+        
+        guard url.pathExtension.lowercased() == "pdf" else {
+            throw ContractErrors.invalidFile
+        }
+        
+        guard let data = try? Data(contentsOf: url), !data.isEmpty else {
+            throw ContractErrors.unreadableFile
+        }
+        
+        guard PDFDocument(data: data) != nil else {
+            throw ContractErrors.invalidFile
+        }
+        
+        contractDraft = ContractDraft(fileName: url.lastPathComponent, pdfData: data)
+    }
+    
+    func removeContractDraft() {
+        contractDraft = nil
+    }
+    
+    func makeContractPreviewURL() -> URL? {
+        guard let draft = contractDraft else { return nil }
+        
+        let url = URL.temporaryDirectory.appending(path: draft.fileName)
+        
+        do {
+            try draft.pdfData.write(to: url, options: .atomic)
+            return url
+        } catch {
+            print("Erro ao gerar preview do contrato: \(error)")
+            return nil
         }
     }
 }
