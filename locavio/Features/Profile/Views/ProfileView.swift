@@ -40,6 +40,12 @@ struct ProfileView: View {
                 legalSection
                 buttonsSection
             }
+            .ignoresSafeArea(.keyboard)
+            .onTapGesture {
+                #if canImport(UIKit)
+                    hideKeyboard()
+                #endif
+            }
             
             .alert("Sair da conta", isPresented: $viewModel.showLogoutAlert){
                 
