@@ -21,6 +21,9 @@ final class PropertiesViewModel {
     var contractDraft: ContractDraft?
     var property = Property()
     var errorMessage = ""
+    var touchedFields: Set<PropertyFieldType> = []
+    var didAttemptSave = false
+    
     
     let options = PropertyListOptionsViewModel()
     
