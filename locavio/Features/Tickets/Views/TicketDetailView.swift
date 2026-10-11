@@ -58,7 +58,7 @@ struct TicketDetailView: View {
 
                 propertyImage
 
-                CallTitle(
+                TicketTitle(
                     title: ticket.title ?? "Sem título",
                     callNumber: String(ticket.ticketNumber ?? 0),
                     status: status,
@@ -73,6 +73,9 @@ struct TicketDetailView: View {
                     isConcluded: ticket.isConcluded ?? false,
                     closeAction: {
                         viewModel.showCloseAlert = true
+                    },
+                    reopenAction: {
+                        viewModel.showReopenAlert = true
                     }
                 )
             }
@@ -90,17 +93,27 @@ struct TicketDetailView: View {
         }
         .alert("Fechar Chamado", isPresented: $viewModel.showCloseAlert) {
             Button("Cancelar", role: .cancel) { }
-            
             Button("Confirmar", role: .destructive) {
                 withAnimation {
                     ticket.isConcluded = true
                     ticket.conclusionDate = Date()
                 }
-                
-                closeAction()
             }
         } message: {
             Text("Tem certeza que deseja marcar este chamado como concluído? Essa ação atualizará o status e a data de encerramento.")
+        }
+        
+        .alert("Reabrir Chamado", isPresented: $viewModel.showReopenAlert) {
+            Button("Cancelar", role: .cancel) { }
+
+            Button("Confirmar") {
+                withAnimation {
+                    ticket.isConcluded = false
+                    ticket.conclusionDate = nil
+                }
+            }
+        } message: {
+            Text("Tem certeza que deseja reabrir este chamado? O status voltará para 'Aberto'.")
         }
     }
 
