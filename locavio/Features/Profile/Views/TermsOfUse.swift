@@ -54,9 +54,9 @@ struct TermsOfUseView: View {
                     
                     ListCardComponent(textList: providerRights)
                     
-                    Text("Se você acredita que um conteúdo viola estes Termos, infringe seus direitos ou é ilegal, você pode denunciá-lo ao Provedor de Serviços em [jusampa2@gmail.com](mailto:jusampa2@gmail.com). A denúncia deve incluir informações suficientes para que o Provedor de Serviços identifique o conteúdo, avalie a reclamação e entre em contato com você caso seja necessário acompanhamento.")
+                    Text("Se você acredita que um conteúdo viola estes Termos, infringe seus direitos ou é ilegal, você pode denunciá-lo ao Provedor de Serviços em [locaviodev@gmail.com](mailto:locaviodev@gmail.com). A denúncia deve incluir informações suficientes para que o Provedor de Serviços identifique o conteúdo, avalie a reclamação e entre em contato com você caso seja necessário acompanhamento.")
                     
-                    Text("O Provedor de Serviços pode revisar o conteúdo denunciado, solicitar informações adicionais quando necessário, remover ou restringir o acesso ao conteúdo e tomar medidas contra a conta responsável quando apropriado. Os usuários afetados por decisões de moderação podem entrar em contato com o Provedor de Serviços em [jusampa2@gmail.com](mailto:jusampa2@gmail.com) para solicitar uma revisão adicional. O Provedor de Serviços responderá às apelações dentro de um período razoável e fornecerá os motivos para qualquer decisão de moderação mantida, sujeito à lei aplicável.")
+                    Text("O Provedor de Serviços pode revisar o conteúdo denunciado, solicitar informações adicionais quando necessário, remover ou restringir o acesso ao conteúdo e tomar medidas contra a conta responsável quando apropriado. Os usuários afetados por decisões de moderação podem entrar em contato com o Provedor de Serviços em [locaviodev@gmail.com](mailto:locaviodev@gmail.com) para solicitar uma revisão adicional. O Provedor de Serviços responderá às apelações dentro de um período razoável e fornecerá os motivos para qualquer decisão de moderação mantida, sujeito à lei aplicável.")
                     
                     Text("Ao enviar Conteúdo Gerado pelo Usuário, você concede ao Provedor de Serviços uma licença mundial, isenta de royalties e não exclusiva para usar, reproduzir, distribuir, preparar trabalhos derivados, exibir e executar o conteúdo em conexão com o Aplicativo e os negócios do Provedor de Serviços. Esta licença não concede ao Provedor de Serviços o direito de vender ou sublicenciar seu conteúdo a terceiros de forma independente do Aplicativo. Você declara e garante que possui ou controla todos os direitos sobre o conteúdo que publica e que o uso do conteúdo não viola estes Termos ou a lei aplicável.")
                     
@@ -130,13 +130,13 @@ struct TermsOfUseView: View {
                     
                     Text("O Provedor de Serviços pode atualizar seus Termos e Condições periodicamente. Portanto, é aconselhável que você analise esta página regularmente para verificar quaisquer alterações. O Provedor de Serviços o notificará sobre quaisquer alterações publicando os novos Termos e Condições nesta página.")
                     
-                    Text("Versões anteriores destes Termos e Condições serão mantidas e disponibilizadas mediante solicitação, entrando em contato com o Provedor de Serviços \nem [jusampa2@gmail.com](mailto:jusampa2@gmail.com).")
+                    Text("Versões anteriores destes Termos e Condições serão mantidas e disponibilizadas mediante solicitação, entrando em contato com o Provedor de Serviços \nem [locaviodev@gmail.com](mailto:locaviodev@gmail.com).")
                     
                     Text("Estes termos e condições entram em vigor a partir \nde 25-09-2026.")
                     
                     sectionTitle("14. Fale Conosco")
                     
-                    Text("Se você tiver alguma dúvida ou sugestão sobre os Termos e Condições, não hesite em entrar em contato com o Provedor de Serviços em [jusampa2@gmail.com](mailto:jusampa2@gmail.com).")
+                    Text("Se você tiver alguma dúvida ou sugestão sobre os Termos e Condições, não hesite em entrar em contato com o Provedor de Serviços em [locaviodev@gmail.com](mailto:locaviodev@gmail.com).")
                 }
                 .font(.footnote)
             }
