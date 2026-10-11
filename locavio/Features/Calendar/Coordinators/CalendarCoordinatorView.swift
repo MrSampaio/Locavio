@@ -19,9 +19,14 @@ struct CalendarCoordinatorView: View {
                         case .ticketDetails(let ticket):
                             TicketDetailView(
                                 ticket: ticket,
-                                closeAction: {},
-                                editAction: {}
+                                editAction: {
+                                    calendarCoordinator.pushToEditTicket(ticket: ticket)
+                                }
+                                
                             )
+                        case .editTicket(let ticket):
+                            // 👇 Lida com a abertura da tela de edição
+                            EditTicketView(ticket: ticket)
                     }
                 }
         }

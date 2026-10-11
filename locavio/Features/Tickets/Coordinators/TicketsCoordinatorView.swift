@@ -20,9 +20,14 @@ struct TicketsCoordinatorView: View {
                         case .ticketDetails(let ticket):
                             TicketDetailView(
                                 ticket: ticket,
-                                closeAction: {},
-                                editAction: {}
-                                
+                                editAction: {
+                                    ticketsCoordinator.pushToEditTicket(ticket: ticket)
+                                }
+                            )
+                            
+                        case .editTicket(let ticket):
+                            EditTicketView(
+                                ticket: ticket
                             )
                     }
                 }

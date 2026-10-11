@@ -16,6 +16,10 @@ final class CalendarCoordinator {
         path.append(CalendarRoutes.ticketDetails(ticket: ticket))
     }
     
+    func pushToEditTicket(ticket: Ticket) {
+        path.append(CalendarRoutes.editTicket(ticket: ticket))
+    }
+    
     func pop() {
         if !path.isEmpty {
             path.removeLast()
