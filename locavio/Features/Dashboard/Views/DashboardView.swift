@@ -8,6 +8,8 @@
 import SwiftUI
 import SwiftData
 import Charts
+import TipKit
+
 
 struct DashboardView: View {
     
@@ -15,6 +17,8 @@ struct DashboardView: View {
     @Query private var properties: [Property]
     
     @State private var selectedDate: Date?
+    
+    private let segmentedTip = DashboardSegmentedTip()
     
     private var selectedItem: MonthlyTotal? {
         guard let selectedDate,
@@ -48,6 +52,7 @@ struct DashboardView: View {
                     }
                 }
                 .pickerStyle(.segmented)
+                .popoverTip(segmentedTip)
                 
                 InformationDashboardCard(totalSum: dashboardViewModel.totalSum, firstSmallCardInformation: dashboardViewModel.countReceivedRent(), secondSmallCardInformation: dashboardViewModel.countNotReceivedRent(), cardType: dashboardViewModel.currentFilter, cardPeriod: dashboardViewModel.currentDashPeriod)
                 

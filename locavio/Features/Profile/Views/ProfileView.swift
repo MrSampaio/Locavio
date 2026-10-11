@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import SwiftData
+import TipKit
 
 struct ProfileView: View {
     @State private var viewModel = ProfileViewModel()
@@ -15,6 +16,8 @@ struct ProfileView: View {
     @Environment(AppleAuthManager.self) private var authManager
     @Environment(\.modelContext) private var context
     @Query private var users: [Owner]
+    
+    private let notificationsTip = NotificationsProfileTip()
     
     // só o Owner da conta que está logada (e não "o primeiro que aparecer" no banco)
     private var user: Owner? {
@@ -33,6 +36,7 @@ struct ProfileView: View {
             VStack(spacing: 24) {
                 profileHeader
                 notificationSettings
+                    .popoverTip(notificationsTip, arrowEdge: .top)
                 legalSection
                 buttonsSection
             }
@@ -86,6 +90,7 @@ struct ProfileView: View {
                 }
             })
         }
+        
     }
     
     @ViewBuilder
