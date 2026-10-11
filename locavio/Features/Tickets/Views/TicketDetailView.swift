@@ -11,12 +11,11 @@ import UIKit
 struct TicketDetailView: View {
 
     @Environment(\.dismiss) private var dismiss
-    @State private var ticketsCoordinator = TicketsCoordinator()
+//    @Environment(TicketsCoordinator.self) private var ticketsCoordinator
     @State private var viewModel = TicketsViewModel()
     
     let ticket: Ticket
-    let closeAction: () -> Void
-    let editAction: () -> Void
+    var editAction: () -> Void
 
     private var status: String {
         ticket.isConcluded == true ? "Concluído" : "Aberto"
@@ -88,6 +87,7 @@ struct TicketDetailView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             EditToolbar(onClick: {
+//                ticketsCoordinator.pushToEditTicket(ticket: ticket)
                 editAction()
             })
         }
@@ -197,12 +197,13 @@ struct TicketDetailView: View {
 
         TicketDetailView(
             ticket: ticket,
-            closeAction: {
-                print("Chamado fechado")
-            },
+//            closeAction: {
+//                print("Chamado fechado")
+//            },
             editAction: {
                 print("Editar chamado")
             }
         )
+        .environment(TicketsCoordinator())
     }
 }

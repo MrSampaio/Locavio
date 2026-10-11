@@ -72,12 +72,12 @@ struct TicketInformationTextField: View {
                     text: formattedDate(createdAt),
                     locale: locale
                 )
-                DateCapsule(
-                    date: $createdAt,
-                    components: .hourAndMinute,
-                    text: formattedTime(createdAt),
-                    locale: locale
-                )
+//                DateCapsule(
+//                    date: $createdAt,
+//                    components: .hourAndMinute,
+//                    text: formattedTime(createdAt),
+//                    locale: locale
+//                )
             }
 
             divider

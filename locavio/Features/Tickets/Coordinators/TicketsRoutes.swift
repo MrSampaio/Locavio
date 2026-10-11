@@ -9,6 +9,7 @@ import Foundation
 
 enum TicketsRoutes: Hashable {
     case ticketDetails(ticket: Ticket)
+    case editTicket(ticket: Ticket)
 }
 // rotas de sheets
 enum TicketsSheet: String, Identifiable {

@@ -20,13 +20,7 @@ struct EditTicketView: View {
 
     let ticket: Ticket
 
-    @Environment(\.colorScheme) private var colorScheme
-
-    private var descriptionBackground: Color {
-        colorScheme == .dark
-            ? Color(red: 21 / 255, green: 45 / 255, blue: 57 / 255)
-            : .white
-    }
+    //@Environment(\.colorScheme) private var colorScheme
 
     var body: some View {
         ScrollView {
@@ -129,7 +123,7 @@ struct EditTicketView: View {
             .lineLimit(3...6)
             .padding(16)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .background(descriptionBackground)
+            .background(Color.formBg)
             .clipShape(RoundedRectangle(cornerRadius: 24))
         }
     }
@@ -139,7 +133,7 @@ struct EditTicketView: View {
             try viewModel.saveChanges(ticket: ticket, context: context)
             dismiss()
         } catch {
-            print("Erro ao editar chamado: \(error.localizedDescription)")
+            print("Error when editing ticket: \(error.localizedDescription)")
         }
     }
 }

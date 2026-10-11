@@ -19,6 +19,10 @@ final class TicketsCoordinator{
         path.append(TicketsRoutes.ticketDetails(ticket: ticket))
     }
     
+    func pushToEditTicket(ticket: Ticket) {
+        path.append(TicketsRoutes.editTicket(ticket: ticket))
+    }
+    
     func pop() {
         if !path.isEmpty {
             path.removeLast()

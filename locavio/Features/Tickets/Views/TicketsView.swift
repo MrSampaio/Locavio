@@ -60,6 +60,10 @@ struct TicketsView: View {
                                         } else {
                                             coordinator.pushToTicketDetails(ticket: ticket)
                                         }
+                                    },
+                                    onEdit: {
+                                        coordinator
+                                            .pushToEditTicket(ticket: ticket)
                                     }
                                 )
                             }
