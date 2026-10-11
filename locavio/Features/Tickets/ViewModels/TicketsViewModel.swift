@@ -21,6 +21,7 @@ final class TicketsViewModel {
 //    var maintence: [Maintence] = []
     
     var showDeleteAlert = false
+    var showCloseAlert = false
     
     var isSelectionMode = false
     var selectedTickets: Set<Ticket> = []

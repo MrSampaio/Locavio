@@ -7,11 +7,12 @@
 
 import SwiftUI
 
-struct CallDescriptionText: View {
+struct TicketDescriptionText: View {
     
     let description: String
     let items: [(name: String, value: String)]
     let total: String
+    let isConcluded: Bool
     let closeAction: () -> Void
     
     var body: some View {
@@ -41,11 +42,19 @@ struct CallDescriptionText: View {
                     total: total
                 )
                 
-                DestructiveButton(
-                    text: "Fechar chamado",
-                    action: closeAction,
-                    useGlass: false
-                )
+                if !isConcluded {
+                    DestructiveButton(
+                        text: "Fechar chamado",
+                        action: closeAction,
+                        useGlass: false
+                    )
+                }
+                
+//                DestructiveButton(
+//                    text: "Fechar chamado",
+//                    action: closeAction,
+//                    useGlass: false
+//                )
             }
 
             .frame(
@@ -61,26 +70,5 @@ struct CallDescriptionText: View {
             
         }
 
-    }
-}
-
-#Preview {
-    ZStack {
-        
-        Color(UIColor.bgForm)
-            .ignoresSafeArea()
-        
-        CallDescriptionText(
-            description: "Torneira da cozinha rachou e precisa ser trocada com urgência pois está vazando.",
-            items: [
-                ("Torneira", "R$ 350"),
-                ("Veda Rosca", "R$ 20")
-            ],
-            total: "R$ 370",
-            closeAction: {
-                print("Chamado fechado")
-            }
-        )
-        .padding(.horizontal, 11)
     }
 }

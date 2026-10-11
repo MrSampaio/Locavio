@@ -12,6 +12,7 @@ struct TicketDetailView: View {
 
     @Environment(\.dismiss) private var dismiss
     @State private var ticketsCoordinator = TicketsCoordinator()
+    @State private var viewModel = TicketsViewModel()
     
     let ticket: Ticket
     let closeAction: () -> Void
@@ -65,11 +66,14 @@ struct TicketDetailView: View {
                     date: date
                 )
 
-                CallDescriptionText(
+                TicketDescriptionText(
                     description: ticket.ticketDescription ?? "Sem descrição.",
                     items: items,
                     total: total,
-                    closeAction: closeAction
+                    isConcluded: ticket.isConcluded ?? false,
+                    closeAction: {
+                        viewModel.showCloseAlert = true
+                    }
                 )
             }
             .padding(.horizontal, 16)
@@ -83,6 +87,20 @@ struct TicketDetailView: View {
             EditToolbar(onClick: {
                 editAction()
             })
+        }
+        .alert("Fechar Chamado", isPresented: $viewModel.showCloseAlert) {
+            Button("Cancelar", role: .cancel) { }
+            
+            Button("Confirmar", role: .destructive) {
+                withAnimation {
+                    ticket.isConcluded = true
+                    ticket.conclusionDate = Date()
+                }
+                
+                closeAction()
+            }
+        } message: {
+            Text("Tem certeza que deseja marcar este chamado como concluído? Essa ação atualizará o status e a data de encerramento.")
         }
     }
 
