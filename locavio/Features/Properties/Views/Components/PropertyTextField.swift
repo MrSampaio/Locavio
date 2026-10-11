@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct PropertyTextField: View {
     
@@ -21,44 +20,38 @@ struct PropertyTextField: View {
     let propertyFieldType: PropertyFieldType
     
     @State private var textDisplayed: String = ""
-    @FocusState private var isFocused: Bool
     
     var body: some View {
         HStack(spacing: 5) {
             TextField(placeholder, text: $textDisplayed)
-                .focused($isFocused)
                 .autocorrectionDisabled(true)
-                .keyboardType(!isNumber ? .default : .decimalPad)
-                .onChange(of: isFocused) { _, isNowFocused in
-                    if !isNowFocused && propertyFieldType == .profit {
-                        var cleanText = textDisplayed.replacingOccurrences(of: ".", with: "")
-                        cleanText = cleanText.replacingOccurrences(of: ",", with: ".")
-                        cleanText = cleanText.filter { $0.isNumber || $0 == "." }
-                        
-                        if let value = Double(cleanText) {
-                            textDisplayed = value.formatted(.currency(code: "BRL").locale(Locale(identifier: "pt_BR")))
-                            viewModel.setValueToPropertyDraft(textDisplayed, propertyFieldType: propertyFieldType)
-                        }
-                    } else if isNowFocused && propertyFieldType == .profit {
-                        formatAsDouble()
-                    }
-                }
+                // todos os campos numéricos usam máscara só com dígitos, então não precisa de vírgula/ponto
+                .keyboardType(isNumber ? .numberPad : .default)
                 .onChange(of: textDisplayed) { _, newValue in
-                    var processedValue = newValue
+                    // 1. aplica a máscara do campo
+                    var processedValue = propertyFieldType.format(newValue)
                     
+                    // 2. respeita o limite de caracteres
                     if let limit = characterLimit, processedValue.count > limit {
                         processedValue = String(processedValue.prefix(limit))
-                        
-                        if processedValue != textDisplayed {
-                            textDisplayed = processedValue
-                        }
+                    }
+                    
+                    if processedValue != textDisplayed {
+                        textDisplayed = processedValue
                     }
                     
                     viewModel.setValueToPropertyDraft(processedValue, propertyFieldType: propertyFieldType)
                 }
+                // draft -> campo: quando algo de fora altera o draft (ex.: preenchimento pelo CEP),
+                // o campo acompanha. Se o valor já é igual, não faz nada (evita loop).
+                .onChange(of: viewModel.draftValue(for: propertyFieldType)) { _, newValue in
+                    if newValue != textDisplayed {
+                        textDisplayed = newValue
+                    }
+                }
                 .onAppear {
-                    if let textFieldContent = content {
-                        textDisplayed = textFieldContent
+                    if let content {
+                        textDisplayed = content
                     }
                 }
             
@@ -67,11 +60,6 @@ struct PropertyTextField: View {
                     .foregroundStyle(textDisplayed.isEmpty ? .tertiary : .primary)
             }
         }
-    }
-    
-    private func formatAsDouble() {
-        var cleaned = textDisplayed.replacingOccurrences(of: ".", with: "")
-        textDisplayed = cleaned.filter { $0.isNumber || $0 == "," }
     }
 }
 
