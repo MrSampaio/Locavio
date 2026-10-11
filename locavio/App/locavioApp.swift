@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 import AuthenticationServices
+import TipKit
 
 @main
 struct locavioApp: App {
@@ -43,6 +44,18 @@ struct locavioApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
+    
+    init() {
+        do {
+            // .immediate faz a tip aparecer assim que a tela carregar
+            try Tips.configure([
+                .displayFrequency(.immediate),
+                .datastoreLocation(.applicationDefault)
+            ])
+        } catch {
+            print("Error when configuring Tips: \(error)")
+        }
+    }
     
     var body: some Scene {
         WindowGroup {

@@ -7,14 +7,17 @@
 
 import SwiftUI
 import SwiftData
+import TipKit
 
 struct PropertiesView: View {
-    @State private var viewModel = PropertiesViewModel()
     
     @Environment(PropertiesCoordinator.self) private var coordinator
-   
-    @Query private var properties: [Property]
     
+    @State private var viewModel = PropertiesViewModel()
+    private let addPropertyTip = AddPropertyTip()
+    private let propertyStatusTip = PropertyStatusTip()
+    
+    @Query private var properties: [Property]
     @Query private var users: [Owner]
     
     private var visibleProperties: [Property] {
@@ -35,6 +38,7 @@ struct PropertiesView: View {
                     }
                 }
                 .pickerStyle(.segmented)
+                .popoverTip(propertyStatusTip)
 
                 LazyVStack(spacing: 16) {
                     ForEach(visibleProperties) { property in
@@ -47,11 +51,18 @@ struct PropertiesView: View {
                     }
                 }
             }
+            .ignoresSafeArea(.keyboard)
+            .onTapGesture {
+                #if canImport(UIKit)
+                    hideKeyboard()
+                #endif
+            }
             .toolbar {
                 AppToolbar(
                     options: viewModel.options,
                     onAdd: { coordinator.presentAddProperty() }
                 )
+                
             }
             .padding(.horizontal)
         }

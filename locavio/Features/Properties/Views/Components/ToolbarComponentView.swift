@@ -5,10 +5,14 @@
 //  Created by Guilherme Alves de Souza on 27/09/26.
 //
 import SwiftUI
+import TipKit
 
 struct AppToolbar: ToolbarContent {
     @Bindable var options: PropertyListOptionsViewModel
     var onAdd: () -> Void
+    
+    private let addPropertyTip = AddPropertyTip()
+    private let propertyStatusTip = PropertyStatusTip()
 
     var body: some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {
@@ -56,7 +60,9 @@ struct AppToolbar: ToolbarContent {
             }
             .buttonStyle(.glassProminent)
             .tint(.accentColor)
+            .popoverTip(addPropertyTip)
         }
+        
     }
 }
 

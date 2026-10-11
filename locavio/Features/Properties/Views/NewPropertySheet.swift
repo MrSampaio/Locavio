@@ -10,6 +10,7 @@ import SwiftData
 import QuickLook
 import UniformTypeIdentifiers
 import PhotosUI
+import TipKit
  
 struct NewPropertySheet: View {
     
@@ -29,6 +30,8 @@ struct NewPropertySheet: View {
     @State private var contractPreviewURL: URL?
     @State private var showErrorAlert = false
     @State private var errorMessage = ""
+    
+    private let photoTip = PropertyPhotoTip()
     
     var body: some View {
         
@@ -57,6 +60,7 @@ struct NewPropertySheet: View {
                             .background(.white)
                         }
                     }
+                    .popoverTip(photoTip)
                     .clipShape(RoundedRectangle(cornerRadius: 30))
                     .overlay(alignment: .bottomTrailing) {
                         Image(systemName: "camera.fill")
@@ -187,6 +191,12 @@ struct NewPropertySheet: View {
                             contractPreviewURL = viewModel.makeContractPreviewURL()
                         }
                 }
+            }
+            .ignoresSafeArea(.keyboard)
+            .onTapGesture {
+                #if canImport(UIKit)
+                    hideKeyboard()
+                #endif
             }
             .scrollDismissesKeyboard(.interactively)
             .onAppear { viewModel.resetValidation() }  

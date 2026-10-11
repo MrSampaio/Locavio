@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import TipKit
 
 struct PropertyDetailView: View {
     let property: Property
@@ -17,6 +18,10 @@ struct PropertyDetailView: View {
 
     @State private var viewModel: PropertyDetailViewModel
     @State private var showDeleteAlert = false
+    
+
+    private let rentTip = RentPaidTip()
+    private let ticketsTip = TicketsSectionTip()
 
     init(property: Property,
          onEdit: @escaping () -> Void = {},
@@ -96,6 +101,7 @@ struct PropertyDetailView: View {
             ExpensesCardView(property: property)
 
             ToggleComponentPayment(property: property)
+                .popoverTip(rentTip)
 
             TenantSectionView(viewModel: viewModel)
 
@@ -110,6 +116,7 @@ struct PropertyDetailView: View {
             section(viewModel.requestsSectionTitle) {
                 RequestsComponentView(property: property)
             }
+            .popoverTip(ticketsTip)
 
             actionButtons
         }
