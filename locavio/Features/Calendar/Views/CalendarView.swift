@@ -96,9 +96,15 @@ struct CalendarView: View {
                     .foregroundStyle(.secondary)
             } else {
                 ForEach(dayTickets) { ticket in
-                    TicketComponent(ticket: ticket) {
-                        coordinator.pushToTicketDetails(ticket: ticket)
-                    }
+                    TicketComponent(
+                        ticket: ticket,
+                        onTap: {
+                            coordinator.pushToTicketDetails(ticket: ticket)
+                        },
+                        onEdit: {
+                            coordinator.pushToEditTicket(ticket: ticket)
+                        }
+                    )
                 }
             }
         }

@@ -14,6 +14,7 @@ struct TicketComponent: View {
     
     let ticket: Ticket
     var onTap: () -> Void
+    var onEdit: () -> Void
     
     private var cardBackground: AnyShapeStyle {
            colorScheme == .light
@@ -70,6 +71,12 @@ struct TicketComponent: View {
         }
         
         .contextMenu {
+            Button {
+                onEdit()
+            } label: {
+                Label("Editar chamado", systemImage: "pencil")
+            }
+            
             if ticket.isConcluded == true {
                 Button {
                     viewModel.showReopenAlert = true
@@ -90,7 +97,6 @@ struct TicketComponent: View {
                 Label("Apagar", systemImage: "trash")
             }
         }
-        
         .buttonStyle(.plain)
         
         .alert("Fechar Chamado", isPresented: $viewModel.showCloseAlert) {
