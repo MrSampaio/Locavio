@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct PropertyTextField: View {
     
@@ -24,54 +23,63 @@ struct PropertyTextField: View {
     @FocusState private var isFocused: Bool
     
     var body: some View {
-        HStack(spacing: 5) {
-            TextField(placeholder, text: $textDisplayed)
-                .focused($isFocused)
-                .autocorrectionDisabled(true)
-                .keyboardType(!isNumber ? .default : .decimalPad)
-                .onChange(of: isFocused) { _, isNowFocused in
-                    if !isNowFocused && propertyFieldType == .profit {
-                        var cleanText = textDisplayed.replacingOccurrences(of: ".", with: "")
-                        cleanText = cleanText.replacingOccurrences(of: ",", with: ".")
-                        cleanText = cleanText.filter { $0.isNumber || $0 == "." }
-                        
-                        if let value = Double(cleanText) {
-                            textDisplayed = value.formatted(.currency(code: "BRL").locale(Locale(identifier: "pt_BR")))
-                            viewModel.setValueToPropertyDraft(textDisplayed, propertyFieldType: propertyFieldType)
+        let error = viewModel.visibleError(for: propertyFieldType)
+        
+        VStack(alignment: .leading, spacing: 4) {
+            HStack(spacing: 5) {
+                TextField(placeholder, text: $textDisplayed)
+                    .focused($isFocused)
+                    .autocorrectionDisabled(true)
+                    // todos os campos numéricos usam máscara só com dígitos, então não precisa de vírgula/ponto
+                    .keyboardType(isNumber ? .numberPad : .default)
+                    .onChange(of: isFocused) { _, isNowFocused in
+                        // ao sair do campo, libera a mensagem de erro dele
+                        if !isNowFocused {
+                            viewModel.markTouched(propertyFieldType)
                         }
-                    } else if isNowFocused && propertyFieldType == .profit {
-                        formatAsDouble()
                     }
-                }
-                .onChange(of: textDisplayed) { _, newValue in
-                    var processedValue = newValue
-                    
-                    if let limit = characterLimit, processedValue.count > limit {
-                        processedValue = String(processedValue.prefix(limit))
+                    .onChange(of: textDisplayed) { _, newValue in
+                        // 1. aplica a máscara do campo
+                        var processedValue = propertyFieldType.format(newValue)
+                        
+                        // 2. respeita o limite de caracteres
+                        if let limit = characterLimit, processedValue.count > limit {
+                            processedValue = String(processedValue.prefix(limit))
+                        }
                         
                         if processedValue != textDisplayed {
                             textDisplayed = processedValue
                         }
+                        
+                        viewModel.setValueToPropertyDraft(processedValue, propertyFieldType: propertyFieldType)
                     }
-                    
-                    viewModel.setValueToPropertyDraft(processedValue, propertyFieldType: propertyFieldType)
-                }
-                .onAppear {
-                    if let textFieldContent = content {
-                        textDisplayed = textFieldContent
+                    // draft -> campo: quando algo de fora altera o draft (ex.: preenchimento pelo CEP),
+                    // o campo acompanha. Se o valor já é igual, não faz nada (evita loop).
+                    .onChange(of: viewModel.draftValue(for: propertyFieldType)) { _, newValue in
+                        if newValue != textDisplayed {
+                            textDisplayed = newValue
+                        }
                     }
+                    .onAppear {
+                        if let content {
+                            textDisplayed = content
+                        }
+                    }
+                
+                if hasUnit, let unitContent = unit {
+                    Text(unitContent)
+                        .foregroundStyle(textDisplayed.isEmpty ? .tertiary : .primary)
                 }
+            }
             
-            if hasUnit, let unitContent = unit {
-                Text(unitContent)
-                    .foregroundStyle(textDisplayed.isEmpty ? .tertiary : .primary)
+            if let error {
+                Text(error)
+                    .font(.caption)
+                    .foregroundStyle(.red)
+                    .transition(.opacity)
             }
         }
-    }
-    
-    private func formatAsDouble() {
-        var cleaned = textDisplayed.replacingOccurrences(of: ".", with: "")
-        textDisplayed = cleaned.filter { $0.isNumber || $0 == "," }
+        .animation(.easeOut(duration: 0.15), value: error)
     }
 }
 

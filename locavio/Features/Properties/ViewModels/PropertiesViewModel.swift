@@ -21,6 +21,9 @@ final class PropertiesViewModel {
     var contractDraft: ContractDraft?
     var property = Property()
     var errorMessage = ""
+    var touchedFields: Set<PropertyFieldType> = []
+    var didAttemptSave = false
+    
     
     let options = PropertyListOptionsViewModel()
     
@@ -49,8 +52,16 @@ final class PropertiesViewModel {
         return Double(cleaned)
     }
     
+    //formatações
+    func fillAddress(from address: ViaCEPResponse) {
+        if let street = address.logradouro, !street.isEmpty { propertyDraft.street = street }
+        if let neighborhood = address.bairro, !neighborhood.isEmpty { propertyDraft.neighborhood = neighborhood }
+        if let city = address.localidade, !city.isEmpty { propertyDraft.city = city }
+        if let uf = address.uf, !uf.isEmpty { propertyDraft.federalUnit = uf }
+    }
+    
     #warning("Depois implementa a lógica de adicionar contrato")
-    #warning("também comenta sobre um toggle de `está alugado` ou não")
+    
     
     func setValueToPropertyDraft(_ value: String, propertyFieldType: PropertyFieldType) {
         

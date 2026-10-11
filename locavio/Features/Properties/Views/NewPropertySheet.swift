@@ -10,7 +10,7 @@ import SwiftData
 import QuickLook
 import UniformTypeIdentifiers
 import PhotosUI
-
+ 
 struct NewPropertySheet: View {
     
     @Query private var owner: [Owner]
@@ -189,6 +189,12 @@ struct NewPropertySheet: View {
                 }
             }
             .scrollDismissesKeyboard(.interactively)
+            .onAppear { viewModel.resetValidation() }  
+            // ViaCEP: quando o CEP (já com máscara) completa 8 dígitos, busca o endereço
+            .onChange(of: viewModel.propertyDraft.cep) { _, newValue in
+                guard newValue.onlyDigits.count == 8 else { return }
+                Task { await lookupCEP(newValue) }
+            }
             .fileImporter(isPresented: $isImportingContract, allowedContentTypes: [.pdf]) { result in
                 switch result {
                 case .success(let url):
@@ -219,6 +225,11 @@ struct NewPropertySheet: View {
     }
     
     private func saveProperty() {
+        guard viewModel.validateForm() else {
+            errorMessage = "Corrija os campos destacados em vermelho."
+            showErrorAlert = true
+            return
+        }
         do {
             let saved = try viewModel.addProperty(
                 context: context,
@@ -233,12 +244,27 @@ struct NewPropertySheet: View {
         }
     }
     
+   
+    private func lookupCEP(_ cep: String) async {
+        do {
+            let address = try await ViaCEPService.fetchAdress(cep: cep)
+            // se o usuário mudou o CEP durante a requisição, descarta a resposta antiga
+            guard viewModel.propertyDraft.cep.onlyDigits == cep.onlyDigits else { return }
+            viewModel.fillAddress(from: address)
+            if let code = address.uf, let found = UF(rawValue: code) {
+                uf = found
+            }
+        } catch {
+            show(error)
+        }
+    }
+    
     private func show(_ error: Error) {
         errorMessage = error.localizedDescription
         showErrorAlert = true
     }
 }
-
+ 
 #Preview {
     NewPropertySheet()
         .environment(PropertiesViewModel())
