@@ -111,21 +111,34 @@ struct ProfileView: View {
     @ViewBuilder
     var notificationSettings: some View {
         VStack(spacing: 0) {
-            OptionToggle(text: "Notificar Pagamentos", isOn: $viewModel.notifyPayments)
+            
+            // cria bindings que lêem diretamente do Owner e salvam quando alterados
+            let notifyRentBinding = Binding(
+                get: { user?.notifyDueDate ?? true },
+                set: { newValue in
+                    if let currentUser = user {
+                        viewModel.updateOwnerPreference(owner: currentUser, context: context, dueDate: newValue)
+                    }
+                }
+            )
+            
+            let notifyTicketsBinding = Binding(
+                get: { user?.notifyTickets ?? true },
+                set: { newValue in
+                    if let currentUser = user {
+                        viewModel.updateOwnerPreference(owner: currentUser, context: context, tickets: newValue)
+                    }
+                }
+            )
+            
+            OptionToggle(text: "Notificar Vencimentos", isOn: notifyRentBinding)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 12)
             
             Divider()
                 .padding(.leading, 16)
             
-            OptionToggle(text: "Notificar Vencimentos", isOn: $viewModel.notifyPendentPayments)
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
-            
-            Divider()
-                .padding(.leading, 16)
-            
-            OptionToggle(text: "Notificar Chamados", isOn: $viewModel.notifyTickets)
+            OptionToggle(text: "Notificar Chamados", isOn: notifyTicketsBinding)
                 .padding(.horizontal, 16)
                 .padding(.vertical, 12)
         }

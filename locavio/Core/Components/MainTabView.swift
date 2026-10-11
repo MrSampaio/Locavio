@@ -6,8 +6,21 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct MainTabView: View {
+    
+    @Query private var properties: [Property]
+    @Query private var tickets: [Ticket]
+    @Query private var owners: [Owner]
+    @Environment(AppleAuthManager.self) private var authManager
+    @Environment(\.scenePhase) private var scenePhase
+    
+    private var currentOwner: Owner? {
+        guard let userID = authManager.currentUserID else { return nil }
+        return owners.first { $0.appleUserID == userID }
+    }
+    
     var body: some View {
         TabView {
             Tab("Imóveis", systemImage: "house"){
@@ -29,23 +42,28 @@ struct MainTabView: View {
             Tab("Perfil", systemImage: "person"){
                 ProfileCoordinatorView()
             }
-            
-//            DashboardCoordinatorView()
-//                .tabItem{
-//                    Label("Relatório", systemImage: "chart.bar")
-//                }
-//            
-//            CalendarCoordinatorView()
-//                .tabItem{
-//                    Label("Calendário", systemImage: "calendar")
-//                }
-//            
-//            TicketsCoordinatorView()
-//                .tabItem{
-//                    Label("Chamados", systemImage: "exclamationmark.bubble")
-//                }
         }
-        
-        
+        // solicita permissão de notificação na primeira vez que a TabView aparece
+        .onAppear {
+            NotificationManager.shared.requestAuthorization()
+            syncNotifications()
+        }
+        // atualizar as notificações sempre que os dados mudarem ou o app voltar ao primeiro plano
+        .onChange(of: properties) { _, _ in syncNotifications() }
+        .onChange(of: tickets) { _, _ in syncNotifications() }
+        .onChange(of: scenePhase) { _, newPhase in
+            if newPhase == .active {
+                syncNotifications()
+            }
+        }
+    }
+    
+    // função auxiliar de sincronização
+    private func syncNotifications() {
+        NotificationManager.shared.syncNotifications(
+            properties: properties,
+            tickets: tickets,
+            owner: currentOwner
+        )
     }
 }

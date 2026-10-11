@@ -20,6 +20,23 @@ final class ProfileViewModel{
     var showDeleteAccountAlert: Bool = false
     var showDeleteErrorAlert: Bool = false
     
+    
+    func updateOwnerPreference(owner: Owner, context: ModelContext, dueDate: Bool? = nil, tickets: Bool? = nil) {
+        if let dueDate = dueDate {
+            owner.notifyDueDate = dueDate
+        }
+        if let tickets = tickets {
+            owner.notifyTickets = tickets
+        }
+        
+        do {
+            try context.save()
+        } catch {
+            print("Error when trying to save notifications preferences: \(error)")
+        }
+    }
+    
+    
     // função que mascara o documento para não ser completamente exibido na tela de perfil
     func maskDocument(_ document: String) -> String {
         let numbers = document.filter { $0.isNumber }
