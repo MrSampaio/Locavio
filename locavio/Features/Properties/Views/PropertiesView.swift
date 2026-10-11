@@ -12,6 +12,7 @@ import TipKit
 struct PropertiesView: View {
     
     @Environment(PropertiesCoordinator.self) private var coordinator
+    @Environment(\.modelContext) private var context
     
     @State private var viewModel = PropertiesViewModel()
     private let addPropertyTip = AddPropertyTip()
@@ -48,7 +49,16 @@ struct PropertiesView: View {
                             PropertyCardView(property: property)
                         }
                         .buttonStyle(.plain)
+                        .contextMenu {
+                            Button(role: .destructive) {
+                                viewModel.propertyToDelete = property
+                                viewModel.showDeleteAlert = true
+                            } label: {
+                                Label("Apagar imóvel", systemImage: "trash")
+                            }
+                        }
                     }
+                    
                 }
             }
             .ignoresSafeArea(.keyboard)
@@ -70,6 +80,17 @@ struct PropertiesView: View {
         .scrollIndicators(.hidden)
         .background(Color.appBg)
         .navigationBarTitleDisplayMode(.inline)
+        .alert("Apagar Imóvel", isPresented: $viewModel.showDeleteAlert, presenting: viewModel.propertyToDelete) { property in
+            Button("Cancelar", role: .cancel) {
+                viewModel.propertyToDelete = nil
+            }
+            Button("Apagar", role: .destructive) {
+                viewModel.deleteProperty(property: property, context: context)
+                viewModel.propertyToDelete = nil
+            }
+        } message: { property in
+            Text("Tem certeza que deseja apagar o imóvel '\(property.title ?? "Sem título")'? Todos os dados, contratos e chamados vinculados a ele serão perdidos. Essa ação não pode ser desfeita.")
+        }
     }
 }
 
