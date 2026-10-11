@@ -22,6 +22,7 @@ final class TicketsViewModel {
     
     var showDeleteAlert = false
     var showCloseAlert = false
+    var showReopenAlert = false
     
     var isSelectionMode = false
     var selectedTickets: Set<Ticket> = []

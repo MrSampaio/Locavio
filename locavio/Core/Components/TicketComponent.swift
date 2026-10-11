@@ -70,9 +70,22 @@ struct TicketComponent: View {
         }
         
         .contextMenu {
+            if ticket.isConcluded == true {
+                Button {
+                    viewModel.showReopenAlert = true
+                } label: {
+                    Label("Reabrir chamado", systemImage: "arrow.uturn.backward")
+                }
+            } else {
+                Button {
+                    viewModel.showCloseAlert = true
+                } label: {
+                    Label("Fechar chamado", systemImage: "checkmark.circle")
+                }
+            }
             
             Button(role: .destructive) {
-                viewModel.showDeleteAlert.toggle()
+                viewModel.showDeleteAlert = true
             } label: {
                 Label("Apagar", systemImage: "trash")
             }
@@ -80,14 +93,28 @@ struct TicketComponent: View {
         
         .buttonStyle(.plain)
         
-        .alert("Apagar Chamado", isPresented: $viewModel.showDeleteAlert) {
+        .alert("Fechar Chamado", isPresented: $viewModel.showCloseAlert) {
             Button("Cancelar", role: .cancel) { }
-            
-            Button("Apagar", role: .destructive) {
-                viewModel.deleteTicket(ticket: ticket, context: context)
+            Button("Confirmar") {
+                withAnimation {
+                    ticket.isConcluded = true
+                    ticket.conclusionDate = Date()
+                }
             }
         } message: {
-            Text("Tem certeza que deseja apagar este chamado? Essa ação não pode ser desfeita.")
+            Text("Tem certeza que deseja marcar este chamado como concluído?")
+        }
+        
+        .alert("Reabrir Chamado", isPresented: $viewModel.showReopenAlert) {
+            Button("Cancelar", role: .cancel) { }
+            Button("Confirmar") {
+                withAnimation {
+                    ticket.isConcluded = false
+                    ticket.conclusionDate = nil
+                }
+            }
+        } message: {
+            Text("Tem certeza que deseja reabrir este chamado? O status voltará para 'Aberto'.")
         }
     }
 

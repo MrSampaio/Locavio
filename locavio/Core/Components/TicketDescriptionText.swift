@@ -14,6 +14,7 @@ struct TicketDescriptionText: View {
     let total: String
     let isConcluded: Bool
     let closeAction: () -> Void
+    let reopenAction: () -> Void
     
     var body: some View {
         ZStack{
@@ -47,6 +48,12 @@ struct TicketDescriptionText: View {
                         text: "Fechar chamado",
                         action: closeAction,
                         useGlass: false
+                    )
+                } else {
+                    ComponentButton(
+                        textButton: "Reabrir chamado",
+                        action: reopenAction,
+                        variant: .secondary
                     )
                 }
                 

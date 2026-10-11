@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CallDescriptionField: View {
+struct TicketDescriptionField: View {
     
     @Binding var text: String
     
@@ -47,7 +47,7 @@ struct CallDescriptionField: View {
 
 struct CallDescriptionField_Previews: PreviewProvider {
     static var previews: some View {
-        CallDescriptionField(
+        TicketDescriptionField(
             text: .constant(
                 "Torneira da cozinha rachou e precisa ser trocada."
             )

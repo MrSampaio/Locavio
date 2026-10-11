@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct CallTitle: View {
+struct TicketTitle: View {
     
     let title: String
     let callNumber: String
@@ -57,7 +57,7 @@ struct CallTitle: View {
 }
 
 #Preview {
-    CallTitle(
+    TicketTitle(
         title: "Trocar torneira",
         callNumber: "121311",
         status: "Aberto",
