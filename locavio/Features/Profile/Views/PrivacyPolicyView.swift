@@ -125,7 +125,7 @@ struct PrivacyPolicyView: View {
                     
                     Text("Se Você tiver alguma dúvida sobre esta Política de Privacidade, Você pode entrar em contato conosco:")
                     
-                    ListCardComponent(textList: "**Por e-mail:** joao.cssouza1@senacsp.edu.br")
+                    ListCardComponent(textList: "**Por e-mail:** locaviodev@gmail.com")
                 }
                 .font(.footnote)
             }
