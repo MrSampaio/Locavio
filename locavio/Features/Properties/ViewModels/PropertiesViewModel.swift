@@ -60,9 +60,6 @@ final class PropertiesViewModel {
         if let uf = address.uf, !uf.isEmpty { propertyDraft.federalUnit = uf }
     }
     
-    #warning("Depois implementa a lógica de adicionar contrato")
-    
-    
     func setValueToPropertyDraft(_ value: String, propertyFieldType: PropertyFieldType) {
         
         

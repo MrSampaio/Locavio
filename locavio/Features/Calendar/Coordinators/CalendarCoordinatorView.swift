@@ -14,6 +14,16 @@ struct CalendarCoordinatorView: View {
         NavigationStack(path: $calendarCoordinator.path) {
             CalendarView()
                 .environment(calendarCoordinator)
+                .navigationDestination(for: CalendarRoutes.self) { route in
+                    switch route {
+                        case .ticketDetails(let ticket):
+                            TicketDetailView(
+                                ticket: ticket,
+                                closeAction: {},
+                                editAction: {}
+                            )
+                    }
+                }
         }
     }
 }

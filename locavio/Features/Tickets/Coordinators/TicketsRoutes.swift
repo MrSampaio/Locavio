@@ -7,9 +7,6 @@
 
 import Foundation
 
-#warning("TODO: Implementar rotas de tickets")
-
-
 enum TicketsRoutes: Hashable {
     case ticketDetails(ticket: Ticket)
 }

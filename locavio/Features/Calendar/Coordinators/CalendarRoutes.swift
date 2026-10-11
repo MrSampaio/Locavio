@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+enum CalendarRoutes: Hashable {
+    case ticketDetails(ticket: Ticket)
+}

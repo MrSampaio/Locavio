@@ -9,8 +9,12 @@ import Foundation
 import SwiftUI
 
 @Observable
-final class CalendarCoordinator{
+final class CalendarCoordinator {
     var path = NavigationPath()
+    
+    func pushToTicketDetails(ticket: Ticket) {
+        path.append(CalendarRoutes.ticketDetails(ticket: ticket))
+    }
     
     func pop() {
         if !path.isEmpty {

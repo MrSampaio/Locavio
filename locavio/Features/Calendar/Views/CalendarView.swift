@@ -12,6 +12,8 @@ import SwiftData
 struct CalendarView: View {
     @State private var viewModel = CalendarViewModel()
     @Query(sort: \Ticket.conclusionDate) private var tickets: [Ticket]
+    
+    @Environment(CalendarCoordinator.self) private var coordinator
 
     var onSelect: (Ticket) -> Void = { _ in }
 
@@ -87,18 +89,22 @@ struct CalendarView: View {
     private func list(_ dayTickets: [Ticket]) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(viewModel.listTitle).font(.title3.bold())
-
+            
             if dayTickets.isEmpty {
                 Text("Nenhum chamado neste dia.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             } else {
                 ForEach(dayTickets) { ticket in
-                    TicketComponent(ticket: ticket) { onSelect(ticket) }
+                    TicketComponent(ticket: ticket) {
+                        coordinator.pushToTicketDetails(ticket: ticket)
+                    }
                 }
             }
         }
     }
+    
+    
 }
 
 

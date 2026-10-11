@@ -200,8 +200,6 @@ struct PrivacyPolicyView: View {
     • A Empresa trata esses dados exclusivamente para viabilizar as funcionalidades do Aplicativo (gestão do contrato, comunicação, histórico de pagamentos), na qualidade de controladora dos sistemas, mas sem relação direta de conta com o inquilino.
     """
     
-    #warning("Lembrar de testar o link quando a navegação estiver funcionando!")
-    
     let storage = """
     • A Apple processa e armazena os dados exclusivamente conforme nossas instruções e para viabilizar o funcionamento do Aplicativo;
     • Os servidores utilizados podem estar localizados fora do Brasil, o que pode envolver transferência internacional de dados;
