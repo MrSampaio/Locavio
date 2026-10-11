@@ -24,7 +24,8 @@ final class PropertiesViewModel {
     var touchedFields: Set<PropertyFieldType> = []
     var didAttemptSave = false
     
-    
+    var showDeleteAlert = false
+    var propertyToDelete: Property?
     let options = PropertyListOptionsViewModel()
     
     func visibleProperties(from properties: [Property]) -> [Property] {
