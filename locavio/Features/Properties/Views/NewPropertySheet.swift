@@ -189,6 +189,7 @@ struct NewPropertySheet: View {
                 }
             }
             .scrollDismissesKeyboard(.interactively)
+            .onAppear { viewModel.resetValidation() }  
             // ViaCEP: quando o CEP (já com máscara) completa 8 dígitos, busca o endereço
             .onChange(of: viewModel.propertyDraft.cep) { _, newValue in
                 guard newValue.onlyDigits.count == 8 else { return }
@@ -224,6 +225,11 @@ struct NewPropertySheet: View {
     }
     
     private func saveProperty() {
+        guard viewModel.validateForm() else {
+            errorMessage = "Corrija os campos destacados em vermelho."
+            showErrorAlert = true
+            return
+        }
         do {
             let saved = try viewModel.addProperty(
                 context: context,
@@ -238,7 +244,7 @@ struct NewPropertySheet: View {
         }
     }
     
-    // ViaCEP: busca o endereço e preenche rua, bairro, cidade e UF
+   
     private func lookupCEP(_ cep: String) async {
         do {
             let address = try await ViaCEPService.fetchAdress(cep: cep)

@@ -20,46 +20,66 @@ struct PropertyTextField: View {
     let propertyFieldType: PropertyFieldType
     
     @State private var textDisplayed: String = ""
+    @FocusState private var isFocused: Bool
     
     var body: some View {
-        HStack(spacing: 5) {
-            TextField(placeholder, text: $textDisplayed)
-                .autocorrectionDisabled(true)
-                // todos os campos numéricos usam máscara só com dígitos, então não precisa de vírgula/ponto
-                .keyboardType(isNumber ? .numberPad : .default)
-                .onChange(of: textDisplayed) { _, newValue in
-                    // 1. aplica a máscara do campo
-                    var processedValue = propertyFieldType.format(newValue)
-                    
-                    // 2. respeita o limite de caracteres
-                    if let limit = characterLimit, processedValue.count > limit {
-                        processedValue = String(processedValue.prefix(limit))
+        let error = viewModel.visibleError(for: propertyFieldType)
+        
+        VStack(alignment: .leading, spacing: 4) {
+            HStack(spacing: 5) {
+                TextField(placeholder, text: $textDisplayed)
+                    .focused($isFocused)
+                    .autocorrectionDisabled(true)
+                    // todos os campos numéricos usam máscara só com dígitos, então não precisa de vírgula/ponto
+                    .keyboardType(isNumber ? .numberPad : .default)
+                    .onChange(of: isFocused) { _, isNowFocused in
+                        // ao sair do campo, libera a mensagem de erro dele
+                        if !isNowFocused {
+                            viewModel.markTouched(propertyFieldType)
+                        }
                     }
-                    
-                    if processedValue != textDisplayed {
-                        textDisplayed = processedValue
+                    .onChange(of: textDisplayed) { _, newValue in
+                        // 1. aplica a máscara do campo
+                        var processedValue = propertyFieldType.format(newValue)
+                        
+                        // 2. respeita o limite de caracteres
+                        if let limit = characterLimit, processedValue.count > limit {
+                            processedValue = String(processedValue.prefix(limit))
+                        }
+                        
+                        if processedValue != textDisplayed {
+                            textDisplayed = processedValue
+                        }
+                        
+                        viewModel.setValueToPropertyDraft(processedValue, propertyFieldType: propertyFieldType)
                     }
-                    
-                    viewModel.setValueToPropertyDraft(processedValue, propertyFieldType: propertyFieldType)
+                    // draft -> campo: quando algo de fora altera o draft (ex.: preenchimento pelo CEP),
+                    // o campo acompanha. Se o valor já é igual, não faz nada (evita loop).
+                    .onChange(of: viewModel.draftValue(for: propertyFieldType)) { _, newValue in
+                        if newValue != textDisplayed {
+                            textDisplayed = newValue
+                        }
+                    }
+                    .onAppear {
+                        if let content {
+                            textDisplayed = content
+                        }
+                    }
+                
+                if hasUnit, let unitContent = unit {
+                    Text(unitContent)
+                        .foregroundStyle(textDisplayed.isEmpty ? .tertiary : .primary)
                 }
-                // draft -> campo: quando algo de fora altera o draft (ex.: preenchimento pelo CEP),
-                // o campo acompanha. Se o valor já é igual, não faz nada (evita loop).
-                .onChange(of: viewModel.draftValue(for: propertyFieldType)) { _, newValue in
-                    if newValue != textDisplayed {
-                        textDisplayed = newValue
-                    }
-                }
-                .onAppear {
-                    if let content {
-                        textDisplayed = content
-                    }
-                }
+            }
             
-            if hasUnit, let unitContent = unit {
-                Text(unitContent)
-                    .foregroundStyle(textDisplayed.isEmpty ? .tertiary : .primary)
+            if let error {
+                Text(error)
+                    .font(.caption)
+                    .foregroundStyle(.red)
+                    .transition(.opacity)
             }
         }
+        .animation(.easeOut(duration: 0.15), value: error)
     }
 }
 
