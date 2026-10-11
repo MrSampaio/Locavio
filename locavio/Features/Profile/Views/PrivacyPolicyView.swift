@@ -53,13 +53,13 @@ struct PrivacyPolicyView: View {
                     
                     ListCardComponent(textList: thirdPartyData)
                     
-                    sectionTitle("4 Armazenamento dos Dados — iCloud e CloudKit")
+                    sectionTitle("4. Armazenamento dos Dados — iCloud e CloudKit")
                     
                     Text("Os dados inseridos no Aplicativo são armazenados por meio dos serviços **iCloud** e **CloudKit**, da Apple Inc., que atua como Operadora dos dados em nosso nome. Isso significa que:")
                     
                     ListCardComponent(textList: storage)
                     
-                    sectionTitle("5 Retenção dos Seus Dados Pessoais")
+                    sectionTitle("5. Retenção dos Seus Dados Pessoais")
                     
                     Text("Mantemos seus dados pessoais apenas pelo tempo necessário para as finalidades descritas nesta Política. Ao encerrar sua Conta, seus dados pessoais são excluídos imediatamente da nossa base de dados ativa.")
                     
@@ -67,7 +67,7 @@ struct PrivacyPolicyView: View {
                     
                     Text("A exclusão da Conta é definitiva e não pode ser desfeita. Recomendamos que você mantenha suas próprias cópias de documentos, contratos e comprovantes armazenados no aplicativo antes de solicitar o encerramento.")
                     
-                    sectionTitle("6 Seus Direitos como Titular de Dados")
+                    sectionTitle("6. Seus Direitos como Titular de Dados")
                     
                     Text("Nos termos do art. 18 da LGPD, você tem direito a:")
                     
@@ -79,7 +79,7 @@ struct PrivacyPolicyView: View {
                     
                     Text("Como os dados são armazenados via iCloud/CloudKit, é possível que sejam transferidos para e mantidos em servidores localizados fora do Brasil. Quando isso ocorrer, adotaremos as salvaguardas exigidas pela LGPD (art. 33), como cláusulas contratuais e garantias de proteção equivalentes às exigidas na legislação brasileira.")
                     
-                    sectionTitle("8 Exclusão dos Seus Dados Pessoais")
+                    sectionTitle("8. Exclusão dos Seus Dados Pessoais")
                     
                     Text("Você tem o direito de excluir ou solicitar que nós o ajudemos a excluir os Dados Pessoais que coletamos \nsobre Você.")
                     
@@ -105,7 +105,7 @@ struct PrivacyPolicyView: View {
                     
                     Text("Adotamos medidas técnicas e administrativas razoáveis para proteger seus Dados Pessoais, incluindo a criptografia oferecida pela infraestrutura do iCloud/CloudKit. Ainda assim, nenhum método de transmissão pela internet ou armazenamento eletrônico é 100% seguro, e não podemos garantir segurança absoluta.")
                     
-                    sectionTitle("11 Notificação de Incidentes de Segurança")
+                    sectionTitle("11. Notificação de Incidentes de Segurança")
                     
                     Text("Em caso de incidente de segurança que possa acarretar risco ou dano relevante aos titulares, comunicaremos a Autoridade Nacional de Proteção de Dados (ANPD) e os titulares afetados, conforme exigido pelo art. 48 da LGPD, informando a natureza dos dados afetados, as medidas técnicas adotadas e as providências tomadas para reverter ou mitigar os efeitos do incidente.")
                     
