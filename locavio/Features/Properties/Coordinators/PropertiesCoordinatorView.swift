@@ -56,11 +56,7 @@ struct PropertiesCoordinatorView: View {
         propertiesCoordinator.pop()
 
         DispatchQueue.main.async {
-            do {
-                try propertiesViewModel.deleteProperty(property: property, context: modelContext)
-            } catch {
-                print("Erro ao apagar imóvel: \(error)")
-            }
+            propertiesViewModel.deleteProperty(property: property, context: modelContext)
         }
     }
 }
