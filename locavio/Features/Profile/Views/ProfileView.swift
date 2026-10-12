@@ -16,6 +16,7 @@ struct ProfileView: View {
     @Environment(AppleAuthManager.self) private var authManager
     @Environment(\.modelContext) private var context
     @Query private var users: [Owner]
+
     
     private let notificationsTip = NotificationsProfileTip()
     
@@ -23,6 +24,20 @@ struct ProfileView: View {
     private var user: Owner? {
         guard let userID = authManager.currentUserID else { return nil }
         return users.first { $0.appleUserID == userID }
+    }
+    
+    private var displayName: String {
+        let parts = user?.fullName!.trimmingCharacters(in: .whitespacesAndNewlines).components(
+            separatedBy: .whitespaces
+        )
+        
+        guard let first = parts?.first, !first.isEmpty else { return "" }
+        
+        if parts!.count > 1, let last = parts?.last {
+            return "\(first) \(last)"
+        } else {
+            return first
+        }
     }
     
     
@@ -110,7 +125,7 @@ struct ProfileView: View {
         VStack(alignment: .center){
             ProfileHeader(
                 userImage: user?.profilePicture,
-                userName: "\(user?.fullName ?? "Proprietário")",
+                userName: "\(displayName)",
                 maskedDocument: "\(maskedString)",
                 numberOfProperties: viewModel
                     .calculateTotalProperties(from: user?.properties),

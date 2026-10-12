@@ -17,17 +17,14 @@ final class EditProfileViewModel{
     var selectedDocumentType: DocumentTypeModel = .pf
     var documentNumber: String = ""
     
-    
     var showErrorAlert: Bool = false
     var errorMessage = ""
     
-
     
     // função para carregar os dados do usuário com o objeto que vem  na sheet
     func loadUserData(user: Owner){
         userImageData = user.profilePicture
         
-        #warning("tratar exibição para mostrar apenas o primeiro e ultimo nome do usuário e avisar enquanto ele estiver preenchendo o nome completo")
         fullName = user.fullName ?? ""
 
         selectedDocumentType = user.documentType ?? .pf
