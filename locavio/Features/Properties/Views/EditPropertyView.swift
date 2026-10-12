@@ -10,7 +10,7 @@ import SwiftUI
 
 import SwiftData
 
-/// Editar imóvel (tela empurrada no NavigationStack, com o botão de voltar do sistema).
+
 struct EditPropertyView: View {
 
     let property: Property
