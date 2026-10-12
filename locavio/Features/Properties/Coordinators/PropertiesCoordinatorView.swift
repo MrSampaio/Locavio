@@ -1,3 +1,11 @@
+//
+//  PropertiesCoordinator.swift
+//  locavio
+//
+//  Created by Julio Sampaio on 20/09/26.
+//
+
+
 import SwiftUI
 import SwiftData
 struct PropertiesCoordinatorView: View {
@@ -21,6 +29,9 @@ struct PropertiesCoordinatorView: View {
                     case .details(let property):
                         PropertyDetailView(
                             property: property,
+                            onEdit: {
+                                propertiesCoordinator.pushToEditProperty(property: property)
+                            },
                             onShowLastPayments: {
                                 propertiesCoordinator.pushToLastPayments(property: property)
                             },
@@ -31,6 +42,15 @@ struct PropertiesCoordinatorView: View {
 
                     case .lastPayments(let property):
                         RecentPaymentsView(property: property)
+
+                    case .editProperty(let property):
+                        EditPropertyView(
+                            property: property,
+                            onEditExpenses: {
+                                // TODO: abrir a tela de despesas do imóvel
+                            }
+                        )
+                        .environment(propertiesViewModel)
                     }
                 }
             .sheet(item: $propertiesCoordinator.activeSheet) { sheet in
@@ -41,14 +61,6 @@ struct PropertiesCoordinatorView: View {
             }
         }
         
-//        .navigationBarTitleDisplayMode(.inline) // sem .navigationTitle
-//        .toolbar {
-//            AppToolbar(
-//                onMore: { viewModel.showOptions() },
-//                onAdd: { viewModel.addProperty() }
-//            )
-//        }
-
     }
     
     private func delete(_ property: Property) {

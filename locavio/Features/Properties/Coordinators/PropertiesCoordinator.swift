@@ -36,6 +36,9 @@ final class PropertiesCoordinator {
     func pushToLastPayments(property: Property) {
         path.append(PropertiesRoute.lastPayments(property: property))
     }
+    
+    func pushToEditProperty(property: Property) {
+        path.append(PropertiesRoute.editProperty(property: property))
+    }
 }
-
 
