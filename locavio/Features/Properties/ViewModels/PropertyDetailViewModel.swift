@@ -158,6 +158,22 @@ final class PropertyDetailViewModel {
         guard let date else { return "—" }
         return Self.dateFormatter.string(from: date)
     }
+    
+        func makeContractPreviewURL() -> URL? {
+        guard let data = property.contract?.pdfData else { return nil }
+
+        let name = property.contract?.fileName ?? "Contrato.pdf"
+        let fileName = name.lowercased().hasSuffix(".pdf") ? name : name + ".pdf"
+        let url = URL.temporaryDirectory.appending(path: fileName)
+
+        do {
+            try data.write(to: url, options: .atomic)
+            return url
+        } catch {
+            print("Erro ao gerar preview do contrato: \(error)")
+            return nil
+        }
+    }
 
     //Solicitações
 

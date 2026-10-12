@@ -8,29 +8,30 @@
 import SwiftUI
 import SwiftData
 import TipKit
+import QuickLook
 
 struct PropertyDetailView: View {
     let property: Property
     var onEdit: () -> Void = {}
-    var onOpenContract: () -> Void = {}
     var onShowLastPayments: () -> Void = {}
     var onDelete: () -> Void = {}
 
     @State private var viewModel: PropertyDetailViewModel
     @State private var showDeleteAlert = false
+    @State private var contractPreviewURL: URL?
     
 
     private let rentTip = RentPaidTip()
     private let ticketsTip = TicketsSectionTip()
+    
+    
 
     init(property: Property,
          onEdit: @escaping () -> Void = {},
-         onOpenContract: @escaping () -> Void = {},
          onShowLastPayments: @escaping () -> Void = {},
          onDelete: @escaping () -> Void = {}) {
         self.property = property
         self.onEdit = onEdit
-        self.onOpenContract = onOpenContract
         self.onShowLastPayments = onShowLastPayments
         self.onDelete = onDelete
         _viewModel = State(initialValue: PropertyDetailViewModel(property: property))
@@ -59,10 +60,12 @@ struct PropertyDetailView: View {
         .toolbar {
             ToolbarDetailsComponentView(onEdit: onEdit)
         }
+        .quickLookPreview($contractPreviewURL)
         .alert(viewModel.deleteAlertTitle, isPresented: $showDeleteAlert) {
             Button(viewModel.deleteButtonTitle, role: .destructive) {
                 onDelete()
             }
+            
             Button("Cancelar", role: .cancel) {}
         } message: {
             Text(viewModel.deleteAlertMessage)
@@ -109,7 +112,7 @@ struct PropertyDetailView: View {
                 ViewContractComponent(
                     contractName: viewModel.contractDisplayName,
                     attachmentDate: viewModel.contractAttachmentDate,
-                    action: onOpenContract
+                    action: { contractPreviewURL = viewModel.makeContractPreviewURL() }
                 )
             }
 
