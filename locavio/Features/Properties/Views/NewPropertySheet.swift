@@ -10,7 +10,7 @@ import SwiftUI
 import SwiftData
 import TipKit
 
-/// Adicionar imóvel (apresentada como sheet).
+
 struct NewPropertySheet: View {
 
     @Query private var owner: [Owner]
