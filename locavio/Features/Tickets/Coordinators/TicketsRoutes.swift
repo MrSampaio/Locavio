@@ -1,0 +1,19 @@
+//
+//  TicketsRoutes.swift
+//  locavio
+//
+//  Created by Julio Sampaio on 09/10/26.
+//
+
+import Foundation
+
+enum TicketsRoutes: Hashable {
+    case ticketDetails(ticket: Ticket)
+    case editTicket(ticket: Ticket)
+}
+// rotas de sheets
+enum TicketsSheet: String, Identifiable {
+    case addTicket
+    var id: String { self.rawValue }
+}
+

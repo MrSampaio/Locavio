@@ -1,0 +1,29 @@
+//
+//  Onboarding.swift
+//  locavio
+//
+//  Created by Guilherme Alves de Souza on 25/09/26.
+//
+
+import SwiftUI
+
+
+struct OnboardingView: View {
+    @State private var viewModel = TextsOnboardingViewModel()
+
+    var body: some View {
+        NavigationStack{
+            OnboardingComponent(viewModel: viewModel, screen: viewModel.currentScreen)
+                .onChange(of: viewModel.finish) { _, finish in
+                    if finish {
+                        viewModel.finishOnboarding()
+                    }
+                }
+        }
+        
+    }
+}
+
+#Preview {
+    OnboardingView()
+}

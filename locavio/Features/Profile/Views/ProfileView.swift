@@ -1,0 +1,243 @@
+//
+//  ProfileView.swift
+//  locavio
+//
+//  Created by Julio Sampaio on 28/09/26.
+//
+
+import Foundation
+import SwiftUI
+import SwiftData
+import TipKit
+
+struct ProfileView: View {
+    @State private var viewModel = ProfileViewModel()
+    @Environment(ProfileCoordinator.self) private var coordinator
+    @Environment(AppleAuthManager.self) private var authManager
+    @Environment(\.modelContext) private var context
+    @Query private var users: [Owner]
+
+    
+    private let notificationsTip = NotificationsProfileTip()
+    
+    // só o Owner da conta que está logada (e não "o primeiro que aparecer" no banco)
+    private var user: Owner? {
+        guard let userID = authManager.currentUserID else { return nil }
+        return users.first { $0.appleUserID == userID }
+    }
+    
+    private var displayName: String {
+        let parts = user?.fullName!.trimmingCharacters(in: .whitespacesAndNewlines).components(
+            separatedBy: .whitespaces
+        )
+        
+        guard let first = parts?.first, !first.isEmpty else { return "" }
+        
+        if parts!.count > 1, let last = parts?.last {
+            return "\(first) \(last)"
+        } else {
+            return first
+        }
+    }
+    
+    
+    // futuras queries
+    //    @Query private var userProfiles: [UserProfile]
+    //    @Query private var properties: [Property]
+    //    @Query private var tenants: [Tenant]
+    
+    var body: some View {
+        ScrollView {
+            VStack(spacing: 24) {
+                profileHeader
+                notificationSettings
+                    .popoverTip(notificationsTip, arrowEdge: .top)
+                legalSection
+                buttonsSection
+            }
+            .ignoresSafeArea(.keyboard)
+            .onTapGesture {
+                #if canImport(UIKit)
+                    hideKeyboard()
+                #endif
+            }
+            
+            .alert("Sair da conta", isPresented: $viewModel.showLogoutAlert){
+                
+                Button("Cancelar", role: .cancel) {
+                }
+                
+                Button("Sair", role: .destructive) {
+                    authManager.logout()
+                }
+            } message: {
+                Text("Tem certeza de que deseja sair do aplicativo?")
+            }
+            
+            .alert("Excluir Conta Permanentemente", isPresented: $viewModel.showDeleteAccountAlert) {
+                
+                Button("Cancelar", role: .cancel) { }
+                
+                Button("Excluir Tudo", role: .destructive) {
+                    if let currentUser = user {
+                        viewModel.deleteAccount(
+                            user: currentUser,
+                            context: context,
+                            authManager: authManager
+                        )
+                    }
+                }
+            } message: {
+                Text("Esta ação é irreversível. Todos os seus imóveis, inquilinos, contratos, despesas e pagamentos serão apagados permanentemente.\n\nPara desvincular também o Locavio do seu ID Apple, acesse Ajustes › seu nome › Iniciar Sessão com a Apple › Locavio › Parar de Usar.")
+            }
+            
+            .alert("Não foi possível excluir", isPresented: $viewModel.showDeleteErrorAlert) {
+                Button("Entendi", role: .cancel) { }
+            } message: {
+                Text("Ocorreu um erro ao excluir sua conta. Seus dados não foram apagados. Tente novamente.")
+            }
+            
+            .padding(.bottom, 30)
+        }
+        .background(Color(UIColor.appBg))
+        .scrollIndicators(.hidden)
+        .scrollEdgeEffectStyle(.soft, for: .bottom)
+        .navigationTitle("Perfil")
+        .navigationBarTitleDisplayMode(.large)
+        .toolbar {
+            EditToolbar(onClick: {
+                if let currentUser = user {
+                    coordinator.presentEditProfile(user: currentUser)
+                }
+            })
+        }
+        
+    }
+    
+    @ViewBuilder
+    var profileHeader: some View {
+        
+        // extrai o documento
+        let rawDoc = user?.documentNumber ?? ""
+        
+        let maskedString = rawDoc.isEmpty ? "***.***.***-**" : viewModel.maskDocument(rawDoc)
+        
+        VStack(alignment: .center){
+            ProfileHeader(
+                userImage: user?.profilePicture,
+                userName: "\(displayName)",
+                maskedDocument: "\(maskedString)",
+                numberOfProperties: viewModel
+                    .calculateTotalProperties(from: user?.properties),
+                numberOfTenants: viewModel.calculateActiveTenants(from: user?.properties)
+            )
+        }
+    }
+    
+    @ViewBuilder
+    var notificationSettings: some View {
+        VStack(spacing: 0) {
+            
+            // cria bindings que lêem diretamente do Owner e salvam quando alterados
+            let notifyRentBinding = Binding(
+                get: { user?.notifyDueDate ?? true },
+                set: { newValue in
+                    if let currentUser = user {
+                        viewModel.updateOwnerPreference(owner: currentUser, context: context, dueDate: newValue)
+                    }
+                }
+            )
+            
+            let notifyTicketsBinding = Binding(
+                get: { user?.notifyTickets ?? true },
+                set: { newValue in
+                    if let currentUser = user {
+                        viewModel.updateOwnerPreference(owner: currentUser, context: context, tickets: newValue)
+                    }
+                }
+            )
+            
+            OptionToggle(text: "Notificar Vencimentos", isOn: notifyRentBinding)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+            
+            Divider()
+                .padding(.leading, 16)
+            
+            OptionToggle(text: "Notificar Chamados", isOn: notifyTicketsBinding)
+                .padding(.horizontal, 16)
+                .padding(.vertical, 12)
+        }
+        .background(Color(.bgBox))
+        .cornerRadius(24)
+        .padding(.horizontal, 16)
+    }
+    
+    @ViewBuilder
+    var legalSection: some View {
+        VStack(spacing: 0) {
+            LegalOption(
+                text: "Termos de uso",
+                icon: "text.page.fill",
+                action: coordinator.pushToTerms
+            )
+            .padding(.horizontal, 16)
+            .padding(.vertical, 14)
+            
+            Divider()
+                .padding(.leading, 16)
+            
+            LegalOption(
+                text: "Política de privacidade",
+                icon: "lock.fill",
+                action: coordinator.pushToPrivacy
+            )
+            .padding(.horizontal, 16)
+            .padding(.vertical, 14)
+        }
+        .background(Color(.bgBox))
+        .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .padding(.horizontal, 16)
+    }
+    
+    @ViewBuilder
+    var buttonsSection: some View {
+        VStack(spacing: 16) {
+            ComponentButton(
+                textButton: "Sair",
+                action: {
+                    viewModel.showLogoutAlert.toggle()
+                },
+                variant: .secondary
+            )
+            
+            DestructiveButton(text: "Excluir Conta", action: {
+                viewModel.showDeleteAccountAlert = true
+            })
+        }
+        
+        .padding(.horizontal, 16)
+    }
+}
+
+#Preview {
+    ProfileView()
+        .environment(ProfileCoordinator())
+        .environment(AppleAuthManager())
+}
+
+
+
+//Button(action: {
+//    coordinator.path.append(.newProperty)
+//}) {
+//    Text("Adicionar Novo Imóvel")
+//}
+//
+//// Exemplo passando um parâmetro para a rota de detalhes
+//Button(action: {
+//    let idDoImovel = 1 // Isso viria do seu SwiftData
+//    coordinator.path.append(.details(id: idDoImovel))
+//}) {
+//    Text("Ver Detalhes do Imóvel 1")
+//}

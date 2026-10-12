@@ -1,0 +1,99 @@
+{
+  "fill-specializations" : [
+    {
+      "value" : {
+        "automatic-gradient" : "srgb:0.42745,0.26667,0.18039,1.00000"
+      }
+    },
+    {
+      "appearance" : "dark",
+      "value" : {
+        "automatic-gradient" : "srgb:0.08235,0.17647,0.22353,1.00000"
+      }
+    }
+  ],
+  "groups" : [
+    {
+      "blur-material" : null,
+      "layers" : [
+        {
+          "fill" : {
+            "solid" : "srgb:0.75686,0.68627,0.59216,1.00000"
+          },
+          "hidden" : true,
+          "image-name" : "Vector 6.png",
+          "name" : "Vector 6",
+          "position" : {
+            "scale" : 1.03,
+            "translation-in-points" : [
+              -424.9999999999999,
+              -81.35216216216236
+            ]
+          }
+        },
+        {
+          "blend-mode-specializations" : [
+            {
+              "appearance" : "dark",
+              "value" : "normal"
+            }
+          ],
+          "fill" : {
+            "automatic-gradient" : "srgb:0.75686,0.68627,0.59216,1.00000"
+          },
+          "glass-specializations" : [
+            {
+              "appearance" : "dark",
+              "value" : true
+            }
+          ],
+          "hidden" : false,
+          "image-name" : "Vector 8.png",
+          "name" : "Vector 8",
+          "position" : {
+            "scale" : 1.02,
+            "translation-in-points" : [
+              29.59459459459481,
+              -67.56756756756772
+            ]
+          }
+        },
+        {
+          "fill" : {
+            "automatic-gradient" : "srgb:0.75686,0.68627,0.59216,1.00000"
+          },
+          "image-name" : "Ellipse 16.png",
+          "name" : "Ellipse 16",
+          "position" : {
+            "scale" : 1,
+            "translation-in-points" : [
+              0,
+              0
+            ]
+          }
+        }
+      ],
+      "position" : {
+        "scale" : 0.37,
+        "translation-in-points" : [
+          0,
+          0
+        ]
+      },
+      "shadow" : {
+        "kind" : "neutral",
+        "opacity" : 0.5
+      },
+      "translucency" : {
+        "enabled" : true,
+        "value" : 0.3
+      }
+    }
+  ],
+  "supported-platforms" : {
+    "circles" : [
+      "watchOS"
+    ],
+    "squares" : "shared"
+  }
+}

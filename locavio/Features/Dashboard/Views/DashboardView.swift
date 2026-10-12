@@ -1,0 +1,192 @@
+//
+//  DashboardView.swift
+//  locavio
+//
+//  Created by Julio Sampaio on 20/09/26.
+//
+
+import SwiftUI
+import SwiftData
+import Charts
+import TipKit
+
+
+struct DashboardView: View {
+    
+    @Environment(DashboardViewModel.self) private var dashboardViewModel
+    @Query private var properties: [Property]
+    
+    @State private var selectedDate: Date?
+    
+    private let segmentedTip = DashboardSegmentedTip()
+    
+    private var selectedItem: MonthlyTotal? {
+        guard let selectedDate,
+              let monthStart = dashboardViewModel.getStartOfMonth(selectedDate)
+        else { return nil }
+        
+        return dashboardViewModel.monthlyChartData.first { $0.month == monthStart }
+    }
+    
+    private var filterTitle: String {
+        switch dashboardViewModel.currentDashPeriod {
+        case .oneMonth: "1 mês"
+        case .sixMonths: "6 meses"
+        case .oneYear: "1 ano"
+        }
+    }
+    
+    var body: some View {
+        
+        @Bindable var dashboardViewModelBind = dashboardViewModel
+        
+        ZStack {
+            Color.appBg
+                .ignoresSafeArea()
+            
+            VStack(spacing: 16) {
+                
+                Picker("Filtro", selection: $dashboardViewModelBind.currentFilter.animation(.easeInOut)) {
+                    ForEach(SegmentedDashboard.allCases) { filter in
+                        Text(filter.rawValue).tag(filter)
+                    }
+                }
+                .pickerStyle(.segmented)
+                .popoverTip(segmentedTip)
+                
+                InformationDashboardCard(totalSum: dashboardViewModel.totalSum, firstSmallCardInformation: dashboardViewModel.countReceivedRent(), secondSmallCardInformation: dashboardViewModel.countNotReceivedRent(), cardType: dashboardViewModel.currentFilter, cardPeriod: dashboardViewModel.currentDashPeriod)
+                
+                VStack(alignment: .leading, spacing: 24) {
+                    
+                    HStack {
+                        Text(dashboardViewModel.chartTitle)
+                            .font(.subheadline.bold())
+                            .foregroundStyle(.secondary)
+
+                        Spacer()
+
+                        if let selectedItem {
+                            Text(selectedItem.total, format: .currency(code: "BRL"))
+                                .font(.subheadline.bold())
+                        }
+                    }
+                    
+                    Chart {
+                        ForEach(dashboardViewModel.monthlyChartData) { data in
+                            BarMark(
+                                x: .value("Mês", data.month, unit: .month),
+                                y: .value("Valor", data.total),
+                            )
+                            .foregroundStyle(dashboardViewModel.currentFilter == .profits ? .profit : .redProfit)
+                            .opacity(selectedItem == nil || selectedItem?.id == data.id ? 1 : 0.4)
+                            .clipShape(
+                                UnevenRoundedRectangle(
+                                    topLeadingRadius: 18,
+                                    bottomLeadingRadius: 0,
+                                    bottomTrailingRadius: 0,
+                                    topTrailingRadius: 18
+                                )
+                            )
+                        }
+                    }
+                    .chartXSelection(value: $selectedDate)
+                    .chartYAxis {
+                        AxisMarks(position: .leading)
+                    }
+                    .chartXAxis {
+                        AxisMarks(values: .stride(by: .month)) { value in
+                            AxisValueLabel(centered: true) {
+                                if let date = value.as(Date.self) {
+                                    Text(shortMonth(date))
+                                        .font(.caption)
+                                }
+                            }
+                        }
+                    }
+                }
+                .padding()
+                .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 34))
+            }
+            .padding()
+        }
+        .toolbar {
+            ToolbarItem(placement: .topBarTrailing) {
+                Menu {
+                    Picker("Filtrar por período", selection: $dashboardViewModelBind.currentDashPeriod) {
+                        ForEach(DashboardPeriod.allCases) { filter in
+                            Text(filter.rawValue).tag(filter)
+                        }
+                    }
+                }label: {
+                    Text(filterTitle)
+                        .tint(.primary)
+                        .font(.body)
+                }
+            }
+        }
+        .onAppear {
+            dashboardViewModel.properties = properties
+        }
+        .navigationTitle("Relatório")
+    }
+    
+    private func shortMonth(_ date: Date) -> String {
+        date.formatted(.dateTime.month(.abbreviated).locale(Locale(identifier: "pt_BR")))
+            .replacingOccurrences(of: ".", with: "")
+            .capitalized
+    }
+}
+
+#Preview {
+    
+    let container = try! ModelContainer(for: Property.self, configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+    
+    func daysAgo(_ days: Int) -> Date? {
+        Calendar.current.date(byAdding: .day, value: -days, to: .now)
+    }
+    
+    let property = Property()
+    
+    let payments = [
+        Payment(date: daysAgo(3), property: property, value: 1200),
+        Payment(date: daysAgo(5), property: property, value: 3000),
+        Payment(date: daysAgo(10), property: property, value: 2500),
+        Payment(date: daysAgo(20), property: property, value: 4100)
+    ]
+    
+    let expenses = [
+        Expenses(property: property, value: 250, date: daysAgo(3)),
+        Expenses(property: property, value: 500, date: daysAgo(5)),
+        Expenses(property: property, value: 1200, date: daysAgo(10)),
+        Expenses(property: property, value: 920, date: daysAgo(20)),
+    ]
+    
+    property.payments = payments
+    property.expenses = expenses
+    
+    let property2 = Property()
+    
+    let payments2 = [
+        Payment(date: daysAgo(3), property: property, value: 1200),
+        Payment(date: daysAgo(5), property: property, value: 3000),
+        Payment(date: daysAgo(50), property: property, value: 2500),
+        Payment(date: daysAgo(50), property: property, value: 4100)
+    ]
+    
+    let expenses2 = [
+        Expenses(property: property, value: 250, date: daysAgo(3)),
+        Expenses(property: property, value: 500, date: daysAgo(5)),
+        Expenses(property: property, value: 1200, date: daysAgo(10)),
+        Expenses(property: property, value: 920, date: daysAgo(20)),
+    ]
+    
+    property2.payments = payments2
+    property2.expenses = expenses2
+    
+    container.mainContext.insert(property)
+    container.mainContext.insert(property2)
+    
+    return DashboardView()
+        .environment(DashboardViewModel())
+        .modelContainer(container)
+}

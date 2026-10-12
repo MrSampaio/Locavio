@@ -1,0 +1,52 @@
+//
+//  PropertiesCoordinator.swift
+//  locavio
+//
+//  Created by Julio Sampaio on 20/09/26.
+//
+
+import SwiftUI
+
+@Observable
+final class PropertiesCoordinator {
+    
+    // pilha de navegação principal
+    var path = NavigationPath()
+    
+    // controle das sheets
+    var activeSheet: PropertiesSheet?
+    
+    // navegação em pilha
+    func pushToDetails(property: Property) {
+        path.append(PropertiesRoute.details(property: property))
+    }
+    
+    
+    func pop() {
+        if !path.isEmpty {
+            path.removeLast()
+        }
+    }
+    
+    // navegação das sheets
+    func presentAddProperty() {
+        activeSheet = .addProperty
+    }
+    
+    func pushToLastPayments(property: Property) {
+        path.append(PropertiesRoute.lastPayments(property: property))
+    }
+    
+    func pushToEditProperty(property: Property) {
+        path.append(PropertiesRoute.editProperty(property: property))
+    }
+    
+    func pushToTicketDetails(ticket: Ticket) {
+        path.append(PropertiesRoute.ticketDetails(ticket: ticket))
+    }
+    
+    func pushToEditTicket(ticket: Ticket) {
+        path.append(PropertiesRoute.editTicket(ticket: ticket))
+    }
+}
+
