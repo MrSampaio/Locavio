@@ -48,9 +48,12 @@ struct EditPropertyView: View {
             PropertyContractSection(onError: show)
         }
         .scrollContentBackground(.hidden)
+        .toolbar(.hidden, for: .tabBar)
+        .ignoresSafeArea(edges: .bottom)
         .background(Color.appBg)
         .ignoresSafeArea(.keyboard)
         .scrollDismissesKeyboard(.interactively)
+        .scrollIndicators(.hidden)
         .navigationTitle("Editar Imóvel")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {

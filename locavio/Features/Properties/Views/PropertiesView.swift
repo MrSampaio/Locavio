@@ -50,6 +50,11 @@ struct PropertiesView: View {
                         }
                         .buttonStyle(.plain)
                         .contextMenu {
+                            Button {
+                                coordinator.pushToEditProperty(property: property)
+                            } label: {
+                                Label("Editar", systemImage: "pencil")
+                            }
                             Button(role: .destructive) {
                                 viewModel.propertyToDelete = property
                                 viewModel.showDeleteAlert = true
