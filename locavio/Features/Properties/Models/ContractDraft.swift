@@ -10,7 +10,7 @@ import Foundation
 struct ContractDraft {
     let fileName: String
     let pdfData: Data
-    let createdAt: Date = .now
+    var createdAt: Date = .now
     
     var title: String {
         (fileName as NSString).deletingPathExtension

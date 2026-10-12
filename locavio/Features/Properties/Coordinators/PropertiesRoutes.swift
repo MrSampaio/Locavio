@@ -6,13 +6,14 @@
 //
 
 import Foundation
-
+ 
 // rotas de empilhamento (NavigationStack)
 enum PropertiesRoute: Hashable {
     case details(property: Property)
     case lastPayments(property: Property)
+    case editProperty(property: Property)
 }
-
+ 
 // rotas de sheets
 enum PropertiesSheet: String, Identifiable {
     case addProperty
