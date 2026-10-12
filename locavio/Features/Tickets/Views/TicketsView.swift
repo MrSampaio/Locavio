@@ -138,11 +138,7 @@ struct TicketsView: View {
         } message: {
             Text("Tem certeza que deseja apagar os \(viewModel.selectedTickets.count) chamados selecionados? Essa ação não pode ser desfeita.")
         }
-        .onTapGesture {
-            #if canImport(UIKit)
-                hideKeyboard()
-            #endif
-        }
+        .scrollDismissesKeyboard(.interactively)
     }
 }
 

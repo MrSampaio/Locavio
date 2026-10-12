@@ -47,12 +47,9 @@ struct EditPropertyView: View {
             PropertyTenantSection()
             PropertyContractSection(onError: show)
         }
+        .scrollContentBackground(.hidden)
+        .background(Color.appBg)
         .ignoresSafeArea(.keyboard)
-        .onTapGesture {
-#if canImport(UIKit)
-            hideKeyboard()
-#endif
-        }
         .scrollDismissesKeyboard(.interactively)
         .navigationTitle("Editar Imóvel")
         .navigationBarTitleDisplayMode(.inline)
@@ -62,6 +59,7 @@ struct EditPropertyView: View {
                     save()
                 } label: {
                     Image(systemName: "checkmark")
+                        .foregroundStyle(.white)
                 }
                 .buttonStyle(.borderedProminent)
             }

@@ -43,11 +43,6 @@ struct NewPropertySheet: View {
                 PropertyContractSection(onError: show)
             }
             .ignoresSafeArea(.keyboard)
-            .onTapGesture {
-                #if canImport(UIKit)
-                    hideKeyboard()
-                #endif
-            }
             .scrollDismissesKeyboard(.interactively)
             .alert("Atenção!", isPresented: $showErrorAlert) {
                 Button("OK", role: .cancel) {}

@@ -62,11 +62,7 @@ struct PropertiesView: View {
                 }
             }
             .ignoresSafeArea(.keyboard)
-            .onTapGesture {
-                #if canImport(UIKit)
-                    hideKeyboard()
-                #endif
-            }
+            .scrollDismissesKeyboard(.interactively)
             .toolbar {
                 AppToolbar(
                     options: viewModel.options,
