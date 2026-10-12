@@ -60,11 +60,17 @@ struct PropertyTextField: View {
                             textDisplayed = newValue
                         }
                     }
+                
                     .onAppear {
-                        if let content {
-                            textDisplayed = content
-                        }
+                        textDisplayed = viewModel.draftValue(for: propertyFieldType)
                     }
+                
+
+//                    .onAppear {
+//                        if let content {
+//                            textDisplayed = content
+//                        }
+//                    }
                 
                 if hasUnit, let unitContent = unit {
                     Text(unitContent)
