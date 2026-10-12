@@ -5,24 +5,24 @@
 //  Created by Guilherme Alves de Souza on 01/10/26.
 //
 
-
-//tela para o final do projeto
-
 import SwiftUI
 import SwiftData
 
 struct RequestsComponentView: View {
     @State private var viewModel: MaintenanceRequestsViewModel
-
-    init(property: Property) {
+    var onTicketTap: (Ticket) -> Void // 👇 Nova closure
+    
+    // 👇 Valor default { _ in } para não quebrar os seus Previews
+    init(property: Property, onTicketTap: @escaping (Ticket) -> Void = { _ in }) {
         _viewModel = State(initialValue: MaintenanceRequestsViewModel(property: property))
+        self.onTicketTap = onTicketTap
     }
-
+    
     private let columns = [
         GridItem(.flexible(), spacing: 12),
         GridItem(.flexible(), spacing: 12)
     ]
-
+    
     var body: some View {
         if viewModel.isEmpty {
             Text(viewModel.emptyText)
@@ -30,20 +30,27 @@ struct RequestsComponentView: View {
         } else {
             LazyVGrid(columns: columns, spacing: 12) {
                 ForEach(viewModel.cards) { card in
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text(card.title)
-                            .font(.title3)
-                            .lineLimit(2)
-
-                        Text(card.deadlineLabel)
-                            .foregroundStyle(.secondary)
-
-                        Text(card.deadlineText)
-                            .foregroundStyle(.secondary)
+                    // 👇 Envolvemos o VStack num Button
+                    Button {
+                        // 👇 Chama a closure passando o ticket (Ajuste 'card.ticket' se o nome for diferente no seu model)
+                        onTicketTap(card.ticket)
+                    } label: {
+                        VStack(alignment: .leading, spacing: 4) {
+                            Text(card.title)
+                                .font(.title3)
+                                .lineLimit(2)
+                            
+                            Text(card.deadlineLabel)
+                                .foregroundStyle(.secondary)
+                            
+                            Text(card.deadlineText)
+                                .foregroundStyle(.secondary)
+                        }
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(20)
+                        .background(.quaternary, in: RoundedRectangle(cornerRadius: 28, style: .continuous))
                     }
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(20)
-                    .background(.quaternary, in: RoundedRectangle(cornerRadius: 28, style: .continuous))
+                    .buttonStyle(.plain) // Mantém o visual limpo sem o efeito padrão de botão azul
                 }
             }
         }

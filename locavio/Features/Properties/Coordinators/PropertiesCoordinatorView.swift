@@ -37,6 +37,9 @@ struct PropertiesCoordinatorView: View {
                             },
                             onDelete: {
                                 delete(property)
+                            },
+                            onTicketTap: { ticket in
+                                propertiesCoordinator.pushToTicketDetails(ticket: ticket)
                             }
                         )
 
@@ -51,6 +54,16 @@ struct PropertiesCoordinatorView: View {
                             }
                         )
                         .environment(propertiesViewModel)
+                            
+                    case .ticketDetails(let ticket):
+                        TicketDetailView(
+                            ticket: ticket,
+                            editAction: {
+                                propertiesCoordinator.pushToEditTicket(ticket: ticket)
+                            }
+                        )
+                    case .editTicket(let ticket):
+                        EditTicketView(ticket: ticket)
                     }
                 }
             .sheet(item: $propertiesCoordinator.activeSheet) { sheet in

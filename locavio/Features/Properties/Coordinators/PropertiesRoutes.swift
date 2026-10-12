@@ -12,6 +12,8 @@ enum PropertiesRoute: Hashable {
     case details(property: Property)
     case lastPayments(property: Property)
     case editProperty(property: Property)
+    case ticketDetails(ticket: Ticket)
+    case editTicket(ticket: Ticket)
 }
  
 // rotas de sheets

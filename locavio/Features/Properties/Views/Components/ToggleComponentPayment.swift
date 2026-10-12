@@ -139,27 +139,43 @@ struct ToggleComponentPayment: View {
         _ result: Result<[URL], Error>
     ) {
         switch result {
-        case .success(let urls):
-            guard let url = urls.first else {
-                return
-            }
-
-            do {
-                let data = try Data(contentsOf: url)
-
-                viewModel.saveProof(
-                    data,
-                    in: modelContext
-                )
-            } catch {
-                print("Erro ao ler PDF: \(error)")
-            }
-
-        case .failure(let error):
-            print("Erro ao selecionar PDF: \(error)")
+            case .success(let urls):
+                guard let url = urls.first else {
+                    return
+                }
+                
+                // solicita permissão ao iOS para ler o arquivo de fora da app
+                guard url.startAccessingSecurityScopedResource() else {
+                    print("There ir no permission to access the file.")
+                    return
+                }
+                
+                // garante que a permissão é revogada ao terminar, evitando vazamento de memória
+                defer {
+                    url.stopAccessingSecurityScopedResource()
+                }
+                
+                do {
+                    let data = try Data(contentsOf: url)
+                    
+                    viewModel.saveProof(
+                        data,
+                        in: modelContext
+                    )
+                    
+                    // força a atualização do ViewModel para a view mudar do botão "Adicionar" para o componente visual do comprovante
+                    viewModel.refresh()
+                    
+                } catch {
+                    print("Error when trying to read PDF file: \(error)")
+                }
+                
+            case .failure(let error):
+                print("Error when selecting PDF file: \(error)")
         }
     }
 }
+
 #Preview {
     let container = try! ModelContainer(
         for: Property.self, Owner.self, Tenant.self, Contract.self,

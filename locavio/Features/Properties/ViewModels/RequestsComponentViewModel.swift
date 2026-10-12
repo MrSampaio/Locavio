@@ -15,6 +15,7 @@ struct RequestsComponentViewModel: Identifiable {
     let title: String          // item(ns) da tabela Maintence
     let deadlineLabel: String  // "Resolver até"
     let deadlineText: String   // conclusionDate formatada
+    let ticket: Ticket
 }
 
 @Observable
@@ -38,7 +39,8 @@ final class MaintenanceRequestsViewModel {
                     id: ticket.persistentModelID,
                     title: title(for: ticket),
                     deadlineLabel: deadlineLabel,
-                    deadlineText: deadlineText(for: ticket)
+                    deadlineText: deadlineText(for: ticket),
+                    ticket: ticket
                 )
             }
     }

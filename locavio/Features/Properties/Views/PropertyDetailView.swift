@@ -15,6 +15,7 @@ struct PropertyDetailView: View {
     var onEdit: () -> Void = {}
     var onShowLastPayments: () -> Void = {}
     var onDelete: () -> Void = {}
+    var onTicketTap: (Ticket) -> Void = { _ in }
 
     @State private var viewModel: PropertyDetailViewModel
     @State private var showDeleteAlert = false
@@ -29,12 +30,16 @@ struct PropertyDetailView: View {
     init(property: Property,
          onEdit: @escaping () -> Void = {},
          onShowLastPayments: @escaping () -> Void = {},
-         onDelete: @escaping () -> Void = {}) {
+         onDelete: @escaping () -> Void = {},
+         onTicketTap: @escaping (Ticket) -> Void = { _ in }
+    )
+    {
         self.property = property
         self.onEdit = onEdit
         self.onShowLastPayments = onShowLastPayments
         self.onDelete = onDelete
-        _viewModel = State(initialValue: PropertyDetailViewModel(property: property))
+        self.onTicketTap = onTicketTap
+       _viewModel = State(initialValue: PropertyDetailViewModel(property: property))
     }
 
     var body: some View {
@@ -50,6 +55,8 @@ struct PropertyDetailView: View {
                     panel
                 }
             }
+            .toolbar(.hidden, for: .tabBar)
+            .ignoresSafeArea(edges: .bottom)
             .scrollIndicators(.hidden)
             .scrollBounceBehavior(.basedOnSize)
         }
@@ -117,7 +124,7 @@ struct PropertyDetailView: View {
             }
 
             section(viewModel.requestsSectionTitle) {
-                RequestsComponentView(property: property)
+                RequestsComponentView(property: property, onTicketTap: onTicketTap)
             }
             .popoverTip(ticketsTip)
 
