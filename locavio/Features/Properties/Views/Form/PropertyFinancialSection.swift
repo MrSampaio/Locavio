@@ -34,7 +34,7 @@ struct PropertyFinancialSection<ExpensesRow: View>: View {
         Section {
             expensesRow()
 
-            PropertyLabeledContent(textPropertyLabel: "Lucro", iconPropertyLabel: "chart.line.uptrend.xyaxis", textFieldPlaceholder: "Insira um valor", textFieldHasUnit: false, textFieldIsNumber: true, textFieldType: .profit)
+            PropertyLabeledContent(textPropertyLabel: "Lucro", iconPropertyLabel: "chart.line.uptrend.xyaxis", textFieldPlaceholder: "Insira um valor", textFieldHasUnit: false, textFieldIsNumber: true, textFieldType: .profit, isRequired: true)
 
             Picker(selection: paymentDay) {
                 ForEach(1..<32) { day in

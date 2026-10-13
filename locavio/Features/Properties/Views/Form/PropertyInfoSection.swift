@@ -31,7 +31,7 @@ struct PropertyInfoSection: View {
                 }
             }
 
-            PropertyLabeledContent(textPropertyLabel: "Área", iconPropertyLabel: "ruler", textFieldPlaceholder: "Ex: 32", textFieldHasUnit: true, textFieldUnit: "m²", textFieldIsNumber: true, textFieldType: .area)
+            PropertyLabeledContent(textPropertyLabel: "Área", iconPropertyLabel: "ruler", textFieldPlaceholder: "Ex: 32", textFieldHasUnit: true, textFieldUnit: "m²", textFieldIsNumber: true, textFieldType: .area, isRequired: true)
         }
     }
 }
