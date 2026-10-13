@@ -12,9 +12,15 @@ import SwiftUI
 final class DashboardCoordinator{
     var path = NavigationPath()
     
+    var activeSheet: DashboardSheet?
+    
     func pop() {
         if !path.isEmpty {
             path.removeLast()
         }
+    }
+    
+    func presentAddProperty() {
+        activeSheet = .addProperty
     }
 }
