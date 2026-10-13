@@ -10,10 +10,10 @@ import SwiftData
 import Observation
 
 struct ExpenseRow: Identifiable {
-    let id: PersistentIdentifier
+    let id = UUID()
     let title: String
     let valueText: String
-    let expense: Expenses
+    let expense: Expenses?
 }
 
 @Observable
@@ -29,10 +29,12 @@ final class ExpensesViewModel {
     var isExpanded = false
     var newTitle = ""
     var newValueText = ""
+    var profit = 0.0
     
     init(property: Property) {
         storage = .persisted(property)
         expenses = property.expenses ?? []
+        profit = property.profit ?? Double()
     }
     
     init() {
@@ -46,7 +48,6 @@ final class ExpensesViewModel {
     var rows: [ExpenseRow] {
         expenses.map { expense in
             ExpenseRow(
-                id: expense.persistentModelID,
                 title: expense.title?.trimmedOrNil ?? "Sem título",
                 valueText: Self.format(expense.value ?? 0),
                 expense: expense
@@ -54,9 +55,17 @@ final class ExpensesViewModel {
         }
     }
     
+    var profitRow: ExpenseRow {
+        ExpenseRow(title: "Lucro", valueText: Self.format(profit), expense: nil)
+    }
+    
     ///Soma de todas as despesas do imóvel
     var totalExpenses: Double {
         expenses.reduce(0) { $0 + ($1.value ?? 0) }
+    }
+    
+    var totalRentValue: Double {
+        totalExpenses + profit
     }
     
     //Adicionar / remover

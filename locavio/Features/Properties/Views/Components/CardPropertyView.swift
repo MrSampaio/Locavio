@@ -9,10 +9,12 @@ import SwiftUI
 
 struct PropertyCardView: View {
     let viewModel: PropertyCardViewModel
+    let expensesViewModel: ExpensesViewModel
     @Environment(\.colorScheme) private var colorScheme
 
     init(property: Property) {
         self.viewModel = PropertyCardViewModel(property: property)
+        self.expensesViewModel = ExpensesViewModel(property: property)
     }
 
     var body: some View {
@@ -75,7 +77,7 @@ struct PropertyCardView: View {
                         .font(.subheadline)
                         .foregroundStyle(.secondary)
 
-                    Text(viewModel.rentText)
+                    Text(expensesViewModel.totalRentValue, format: .currency(code: "BRL"))
                         .font(.title2.bold())
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
