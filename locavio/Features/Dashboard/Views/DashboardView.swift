@@ -71,37 +71,46 @@ struct DashboardView: View {
                         }
                     }
                     
-                    Chart {
-                        ForEach(dashboardViewModel.monthlyChartData) { data in
-                            BarMark(
-                                x: .value("Mês", data.month, unit: .month),
-                                y: .value("Valor", data.total),
-                            )
-                            .foregroundStyle(dashboardViewModel.currentFilter == .profits ? .profit : .redProfit)
-                            .opacity(selectedItem == nil || selectedItem?.id == data.id ? 1 : 0.4)
-                            .clipShape(
-                                UnevenRoundedRectangle(
-                                    topLeadingRadius: 18,
-                                    bottomLeadingRadius: 0,
-                                    bottomTrailingRadius: 0,
-                                    topTrailingRadius: 18
+                    if (dashboardViewModel.currentFilter == .profits && dashboardViewModel.getPayments() != []) || (dashboardViewModel.currentFilter == .expenses && dashboardViewModel.getExpenses() != []) {
+                        Chart {
+                            ForEach(dashboardViewModel.monthlyChartData) { data in
+                                BarMark(
+                                    x: .value("Mês", data.month, unit: .month),
+                                    y: .value("Valor", data.total),
                                 )
-                            )
+                                .foregroundStyle(dashboardViewModel.currentFilter == .profits ? .profit : .redProfit)
+                                .opacity(selectedItem == nil || selectedItem?.id == data.id ? 1 : 0.4)
+                                .clipShape(
+                                    UnevenRoundedRectangle(
+                                        topLeadingRadius: 18,
+                                        bottomLeadingRadius: 0,
+                                        bottomTrailingRadius: 0,
+                                        topTrailingRadius: 18
+                                    )
+                                )
+                            }
                         }
-                    }
-                    .chartXSelection(value: $selectedDate)
-                    .chartYAxis {
-                        AxisMarks(position: .leading)
-                    }
-                    .chartXAxis {
-                        AxisMarks(values: .stride(by: .month)) { value in
-                            AxisValueLabel(centered: true) {
-                                if let date = value.as(Date.self) {
-                                    Text(shortMonth(date))
-                                        .font(.caption)
+                        .chartXSelection(value: $selectedDate)
+                        .chartYAxis {
+                            AxisMarks(position: .leading)
+                        }
+                        .chartXAxis {
+                            AxisMarks(values: .stride(by: .month)) { value in
+                                AxisValueLabel(centered: true) {
+                                    if let date = value.as(Date.self) {
+                                        Text(shortMonth(date))
+                                            .font(.caption)
+                                    }
                                 }
                             }
                         }
+                    } else {
+                        VStack() {
+                            Text("Não há \(dashboardViewModel.currentFilter == .profits ? "lucros" : "despesas") registrados")
+                                .foregroundStyle(.secondary)
+                        }
+                        .frame(maxWidth: .infinity)
+                        .frame(minHeight: 300)
                     }
                 }
                 .padding()
