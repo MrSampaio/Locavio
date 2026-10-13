@@ -35,7 +35,9 @@ struct DashboardCoordinatorView: View {
         NavigationStack(path: $dashboardCoordinator.path) {
             Group {
                 if hasNoProperty {
-                    DashboardWithNoPropertyView()
+                    DashboardWithNoPropertyView(
+                        onAddProperty: dashboardCoordinator.presentAddProperty
+                    )
                 } else {
                     DashboardView()
                 }
