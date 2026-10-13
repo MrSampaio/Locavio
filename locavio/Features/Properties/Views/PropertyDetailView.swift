@@ -204,7 +204,7 @@ struct PropertyDetailView: View {
     }
 
     private func section<Content: View>(_ title: String,
-                                        @ViewBuilder content: () -> Content) -> some View {
+    @ViewBuilder content: () -> Content) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(title)
                 .font(.title3.bold())

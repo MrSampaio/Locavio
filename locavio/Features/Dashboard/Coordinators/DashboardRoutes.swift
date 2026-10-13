@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+enum DashboardSheet: String, Identifiable {
+    case addProperty
+    var id: String { rawValue }
+}
