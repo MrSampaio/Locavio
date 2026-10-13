@@ -15,7 +15,7 @@ struct PropertyInfoSection: View {
 
     var body: some View {
         Section("Informações do Imóvel") {
-            PropertyLabeledContent(textPropertyLabel: "Nome", iconPropertyLabel: "pencil.line", textFieldPlaceholder: "Ex: Casa 1", textFieldHasUnit: false, textFieldIsNumber: false, textFieldCharacterLimit: 20, textFieldType: .name)
+            PropertyLabeledContent(textPropertyLabel: "Nome", iconPropertyLabel: "pencil.line", textFieldPlaceholder: "Ex: Casa 1", textFieldHasUnit: false, textFieldIsNumber: false, textFieldCharacterLimit: 20, textFieldType: .name, isRequired: true)
 
             Picker(selection: $propertyType) {
                 ForEach(PropertyType.allCases) { type in
