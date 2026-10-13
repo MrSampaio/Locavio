@@ -50,7 +50,9 @@ struct PropertiesCoordinatorView: View {
                         EditPropertyView(
                             property: property,
                             onEditExpenses: {
-                                // TODO: abrir a tela de despesas do imóvel
+                                propertiesCoordinator.pushToEditPropertyExpenses(
+                                    property: property
+                                )
                             }
                         )
                         .environment(propertiesViewModel)
@@ -64,6 +66,9 @@ struct PropertiesCoordinatorView: View {
                         )
                     case .editTicket(let ticket):
                         EditTicketView(ticket: ticket)
+                        
+                    case .editPropertyExpenses(let property):
+                        EditPropertyExpensesView(property: property)
                     }
                 }
             .sheet(item: $propertiesCoordinator.activeSheet) { sheet in

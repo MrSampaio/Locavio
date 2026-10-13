@@ -79,7 +79,10 @@ struct EditPropertyView: View {
     
     // Linha de despesas
     private var expensesRow: some View {
-        Button(action: onEditExpenses) {
+        Button {
+            print("Botão de despesas clicado")
+            onEditExpenses()
+        } label: {
             HStack {
                 Label {
                     Text("Valor das despesas")
@@ -88,16 +91,15 @@ struct EditPropertyView: View {
                         .font(.subheadline)
                         .foregroundStyle(.accent)
                 }
-                
                 Spacer()
-                
                 Text(expensesTotal, format: .currency(code: "BRL"))
                     .foregroundStyle(.secondary)
-                
+
                 Image(systemName: "chevron.right")
                     .font(.footnote.weight(.semibold))
                     .foregroundStyle(.tertiary)
             }
+            .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
     }
@@ -134,4 +136,30 @@ struct EditPropertyView: View {
         errorMessage = error.localizedDescription
         showErrorAlert = true
     }
+}
+
+#Preview {
+    @Previewable @State var viewModel = PropertiesViewModel()
+    @Previewable @State var propertyType: PropertyType = .other
+
+    let container = try! ModelContainer(
+        for: Property.self,
+        Tenant.self,
+        Contract.self,
+        Payment.self,
+        Expenses.self,
+        Ticket.self,
+        Maintence.self,
+        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+    )
+
+    let property = Property()
+
+    NavigationStack {
+        EditPropertyView(property: property) {
+            print("Editar despesas")
+        }
+        .environment(viewModel)
+    }
+    .modelContainer(container)
 }
