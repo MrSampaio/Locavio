@@ -17,7 +17,8 @@ struct PropertyAddressSection: View {
 
     var body: some View {
         Section("Endereço") {
-            PropertyLabeledContent(textPropertyLabel: "CEP", iconPropertyLabel: "mappin.and.ellipse", textFieldPlaceholder: "Ex: 12345-678", textFieldHasUnit: false, textFieldIsNumber: true, textFieldCharacterLimit: 9, textFieldType: .cep)
+            PropertyLabeledContent(textPropertyLabel: "CEP", iconPropertyLabel: "mappin.and.ellipse", textFieldPlaceholder: "Ex: 12345-678", textFieldHasUnit: false, textFieldIsNumber: true, textFieldCharacterLimit: 9, textFieldType: .cep,isRequired: true)
+            
                 // ViaCEP: quando o CEP (já com máscara) completa 8 dígitos, busca o endereço.
                 // Fica numa linha só: num Section o modificador se repetiria em todas as linhas.
                 .onChange(of: viewModel.propertyDraft.cep) { _, newValue in
@@ -27,7 +28,7 @@ struct PropertyAddressSection: View {
 
             PropertyLabeledContent(textPropertyLabel: "Rua", iconPropertyLabel: "location", textFieldPlaceholder: "Ex: Rua Ipê Amarelo", textFieldHasUnit: false, textFieldIsNumber: false, textFieldCharacterLimit: 47, textFieldType: .street)
 
-            PropertyLabeledContent(textPropertyLabel: "Número", iconPropertyLabel: "numero.sign", textFieldPlaceholder: "Ex: 55", textFieldHasUnit: false, textFieldIsNumber: true, textFieldType: .number)
+            PropertyLabeledContent(textPropertyLabel: "Número", iconPropertyLabel: "numero.sign", textFieldPlaceholder: "Ex: 55", textFieldHasUnit: false, textFieldIsNumber: true, textFieldType: .number, isRequired: true)
 
             PropertyLabeledContent(textPropertyLabel: "Bairro", iconPropertyLabel: "map", textFieldPlaceholder: "Ex: Santo Amaro", textFieldHasUnit: false, textFieldIsNumber: false, textFieldCharacterLimit: 32, textFieldType: .neighborhood)
 
@@ -68,3 +69,5 @@ struct PropertyAddressSection: View {
         }
     }
 }
+
+
