@@ -81,7 +81,9 @@ struct LoginView: View {
                                 
                                 // cria/atualiza o Owner no SwiftData para subir pro iCloud e decide a próxima tela
                                 // passa o contexto como parâmetro pq o swift data só pode ser usado em structs
-                                loginViewModel.syncUserToSwiftData(info: info, context: context, authManager: appleAuthManager)
+                                Task { @MainActor in
+                                    await loginViewModel.syncUserToSwiftData(info: info, context: context, authManager: appleAuthManager)
+                                }
                                 
                             case .failure(let error):
                                 print("Error when trying to sign in: \(error.localizedDescription)")
