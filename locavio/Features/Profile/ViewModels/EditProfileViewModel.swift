@@ -31,6 +31,14 @@ final class EditProfileViewModel{
         documentNumber = user.documentNumber ?? ""
     }
     
+    func documentTypeDidChange(to type: DocumentTypeModel) {
+        let digits = documentNumber.filter { $0.isNumber }.count
+        let expected = (type == .pf) ? 11 : 14
+        
+        if digits != expected {
+            documentNumber = ""
+        }
+    }
     
     // função para salvar os dados do usuário
     func saveUserData(context: ModelContext, user: Owner) -> Bool{

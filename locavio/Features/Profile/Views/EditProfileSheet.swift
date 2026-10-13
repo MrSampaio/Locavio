@@ -44,11 +44,12 @@ struct EditProfileSheet: View {
                     viewModel.documentNumber = maskedText
                 }
             }
-            .onChange(of: viewModel.selectedDocumentType) { oldValue, newValue in
-                viewModel.documentNumber = ""
-            }
             .onAppear {
                 viewModel.loadUserData(user: user)
+            }
+            
+            .onChange(of: viewModel.selectedDocumentType) { _, newValue in
+                viewModel.documentTypeDidChange(to: newValue)
             }
             .toolbar {
                 SheetsToolbar(
