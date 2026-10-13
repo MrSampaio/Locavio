@@ -14,8 +14,15 @@ class DashboardViewModel {
     var currentDashPeriod: DashboardPeriod = .oneMonth
     var properties: [Property] = []
     
-    var totalSum: Double {
-        monthlyChartData.reduce(0) { $0 + $1.total }
+    func totalSum(expenseValueType: ExpensesValueType = .totalExpensePlusMaintence) -> Double {
+        monthlyChartData(expenseValueType: expenseValueType).reduce(0) { $0 + $1.total }
+    }
+    
+    var hasChartData: Bool {
+        switch currentFilter {
+        case .profits: !getPayments().isEmpty
+        case .expenses: !getExpenses().isEmpty || !getMaintenceValues().isEmpty
+        }
     }
     
     var chartTitle: String {
@@ -35,13 +42,26 @@ class DashboardViewModel {
         }
     }
     
-    var monthlyChartData: [MonthlyTotal] {
+    func monthlyChartData(expenseValueType: ExpensesValueType = .totalExpensePlusMaintence) -> [MonthlyTotal] {
         
         let months = lastMonths(monthCount)
         
         switch currentFilter {
         case .profits: return monthlyTotals(items: getPayments(), months: months)
-        case .expenses: return monthlyTotals(items: getExpenses(), months: months)
+        case .expenses:
+            switch expenseValueType {
+            case .totalExpensePlusMaintence:
+                let expenses = monthlyTotals(items: getExpenses(), months: months)
+                let maintences = monthlyTotals(items: getMaintenceValues(), months: months)
+                
+                return zip(expenses, maintences).map {
+                    MonthlyTotal(month: $0.month, total: $0.total + $1.total)
+                }
+            case .maintence:
+                return monthlyTotals(items: getMaintenceValues(), months: months)
+            case .expenses:
+                return monthlyTotals(items: getExpenses(), months: months)
+            }
         }
     }
     
@@ -120,5 +140,26 @@ class DashboardViewModel {
         }
         
         return allExpenses
+    }
+    
+    func getMaintenceValues() -> [Maintence] {
+        var allMaintence: [Maintence] = []
+        var allTickets: [Ticket] = []
+        
+        for property in properties {
+            if let tickets = property.tickets {
+                for ticket in tickets {
+                    allTickets.append(ticket)
+                }
+            }
+        }
+        
+        for ticket in allTickets {
+            for maintence in ticket.maintence ?? [] {
+                allMaintence.append(maintence)
+            }
+        }
+        
+        return allMaintence
     }
 }

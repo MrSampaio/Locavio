@@ -10,10 +10,11 @@ import SwiftUI
 struct InformationDashboardCard: View {
     
     let totalSum: Double
-    let firstSmallCardInformation: Int
-    let secondSmallCardInformation: Int
+    let firstSmallCardInformation: String
+    let secondSmallCardInformation: String
     let cardType: SegmentedDashboard
     let cardPeriod: DashboardPeriod
+    let isMaintence: Bool = false
     
     private var cardTotalTitle: String {
         switch cardType {
@@ -32,13 +33,15 @@ struct InformationDashboardCard: View {
         }
     }
     
+    private var isProfit: Bool { cardType == .profits }
+    
     var body: some View {
         Grid {
             GridRow {
                 VStack(alignment: .leading, spacing: 12) {
                     HStack {
                         Image(systemName: "dollarsign")
-                            .foregroundStyle(cardType == .profits ? .profit : .redProfit)
+                            .foregroundStyle(isProfit ? .profit : .redProfit)
                             .font(.subheadline.bold())
                         
                         Text(cardTotalTitle)
@@ -46,70 +49,72 @@ struct InformationDashboardCard: View {
                             .font(.footnote.bold())
                     }
                     
-                    Text(cardType == .profits ? totalSum : -totalSum, format: .currency(code: "BRL"))
+                    Text(isProfit ? totalSum : -totalSum, format: .currency(code: "BRL"))
                         .font(.largeTitle.bold())
-                        .foregroundStyle(cardType == .profits ? .profit : .redProfit)
+                        .foregroundStyle(isProfit ? .profit : .redProfit)
                 }
                 .padding()
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
             .gridCellColumns(2)
             
-            if (cardType == .profits) {
-                Divider()
-                    .frame(width: 380)
-                    .background(.secondary)
-                
-                GridRow {
-                    HStack {
-                        VStack(spacing: 12) {
-                            HStack {
-                                Image(systemName: "dollarsign.arrow.trianglehead.counterclockwise.rotate.90")
-                                    .foregroundStyle(cardType == .profits ? .profit : .redProfit)
-                                    .font(.subheadline.bold())
-                                
-                                Text("Aluguéis Recebidos")
-                                    .foregroundStyle(.secondary)
-                                    .font(.footnote.bold())
-                            }
-                            
-                            Text(String(firstSmallCardInformation))
-                                .font(.largeTitle.bold())
-                        }
-                        .padding(10)
-                        .frame(maxWidth: .infinity)
-                        
-                        Divider()
-                            .frame(height: 100)
-                            .background(.secondary)
-                        
-                        VStack(spacing: 12) {
-                            HStack {
-                                Image(systemName: cardType == .profits ? "clock" : "ellipsis.circle.badge")
-                                    .foregroundStyle(.redProfit)
-                                    .font(.subheadline.bold())
-                                
-                                Text(cardType == .profits ? "Aluguéis Pendentes" : "Outras despesas")
-                                    .foregroundStyle(.secondary)
-                                    .font(.footnote.bold())
-                            }
-                            
-                            Text(String(secondSmallCardInformation))
-                                .font(.largeTitle.bold())
-                                .foregroundStyle(.redProfit)
-                        }
-                        .padding(10)
-                        .frame(maxWidth: .infinity)
-                    }
+            Divider()
+                .frame(width: 380)
+                .background(.secondary)
+            
+            GridRow {
+                HStack {
+                    smallInfo(
+                        icon: isProfit ? "dollarsign.arrow.trianglehead.counterclockwise.rotate.90" : "wrench.and.screwdriver",
+                        title: isProfit ? "Aluguéis Recebidos" : "Manutenção",
+                        value: firstSmallCardInformation,
+                        iconColor: isProfit ? .profit : .redProfit,
+                        valueColor: .primary
+                    )
+                    
+                    Divider()
+                        .frame(height: 100)
+                        .background(.secondary)
+                    
+                    smallInfo(
+                        icon: isProfit ? "clock" : "ellipsis.circle.badge",
+                        title: isProfit ? "Aluguéis Pendentes" : "Outras despesas",
+                        value: secondSmallCardInformation,
+                        iconColor: .redProfit,
+                        valueColor: isProfit ? .redProfit : .primary
+                    )
                 }
-                .gridCellColumns(2)
             }
+            .gridCellColumns(2)
         }
         .frame(maxWidth: .infinity)
         .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 34))
     }
+    
+    @ViewBuilder
+    private func smallInfo(icon: String, title: String, value: String, iconColor: Color, valueColor: Color) -> some View {
+        VStack(spacing: 12) {
+            HStack {
+                Image(systemName: icon)
+                    .foregroundStyle(iconColor)
+                    .font(.subheadline.bold())
+                
+                Text(title)
+                    .foregroundStyle(.secondary)
+                    .font(.footnote.bold())
+            }
+            
+            Text(value)
+                .font(.title.bold())
+                .foregroundStyle(valueColor)
+                .lineLimit(1)
+                .minimumScaleFactor(0.5)
+        }
+        .padding(10)
+        .frame(maxWidth: .infinity)
+    }
 }
 
 #Preview {
-    InformationDashboardCard(totalSum: 2700, firstSmallCardInformation: 700, secondSmallCardInformation: 2000, cardType: .profits, cardPeriod: .oneMonth)
+    InformationDashboardCard(totalSum: 2700, firstSmallCardInformation: "R$ 700,00", secondSmallCardInformation: "R$ 2.000,00", cardType: .expenses, cardPeriod: .oneMonth)
 }
