@@ -82,7 +82,7 @@ struct locavioApp: App {
                             LoginView()
                             
                         case .loading:
-                            EmptyView()
+                            ProgressView("Carregando sua conta...")
                         }
                 }
             }
