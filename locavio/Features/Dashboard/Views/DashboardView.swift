@@ -110,11 +110,13 @@ struct DashboardView: View {
                                 .foregroundStyle(.secondary)
                         }
                         .frame(maxWidth: .infinity)
-                        .frame(minHeight: 300)
+                        .frame(minHeight: 100)
                     }
                 }
                 .padding()
                 .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 34))
+                
+                Spacer()
             }
             .padding()
         }
