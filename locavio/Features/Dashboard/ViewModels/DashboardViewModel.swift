@@ -80,11 +80,13 @@ class DashboardViewModel {
     }
     
     func countReceivedRent() -> Int {
-        properties.filter(\.isPaid).count
+        let propertyWithTenant = properties.filter{ $0.tenant != nil }
+        return propertyWithTenant.filter(\.isPaid).count
     }
     
     func countNotReceivedRent() -> Int {
-        properties.filter { !$0.isPaid }.count
+        let propertyWithTenant = properties.filter{ $0.tenant != nil }
+        return propertyWithTenant.filter { !$0.isPaid }.count
     }
     
     func getStartOfMonth(_ date: Date) -> Date? {
