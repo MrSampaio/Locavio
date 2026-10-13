@@ -13,6 +13,7 @@ struct DashboardCoordinatorView: View {
     @Environment(\.modelContext) private var modelContext
 
     @State private var dashboardCoordinator = DashboardCoordinator()
+    @State private var propertiesViewModel = PropertiesViewModel()
 
     @Query private var owners: [Owner]
 
@@ -40,6 +41,14 @@ struct DashboardCoordinatorView: View {
                 }
             }
             .environment(dashboardCoordinator)
+            .sheet(item: $dashboardCoordinator.activeSheet) { sheet in
+                switch sheet {
+                case .addProperty:
+                    NewPropertySheet()
+                        .environment(propertiesViewModel)
+                }
+            }
         }
     }
 }
+

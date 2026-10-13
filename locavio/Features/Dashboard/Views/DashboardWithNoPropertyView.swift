@@ -9,6 +9,8 @@ import SwiftUI
 
 
 struct DashboardWithNoPropertyView:View {
+    var onAddProperty: () -> Void = {}
+    
     var body: some View {
         ZStack{
             
@@ -30,7 +32,7 @@ struct DashboardWithNoPropertyView:View {
                 
                 ComponentButton(
                     textButton: "Adicionar imóvel",
-                    action: {}
+                    action: onAddProperty
                 )
                 .frame(width: 196)
                 .padding(.top, 40)
