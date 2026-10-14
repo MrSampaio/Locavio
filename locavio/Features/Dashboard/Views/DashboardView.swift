@@ -25,7 +25,7 @@ struct DashboardView: View {
               let monthStart = dashboardViewModel.getStartOfMonth(selectedDate)
         else { return nil }
         
-        return dashboardViewModel.monthlyChartData.first { $0.month == monthStart }
+        return dashboardViewModel.monthlyChartData().first { $0.month == monthStart }
     }
     
     private var filterTitle: String {
@@ -33,6 +33,23 @@ struct DashboardView: View {
         case .oneMonth: "1 mês"
         case .sixMonths: "6 meses"
         case .oneYear: "1 ano"
+        }
+    }
+    
+    private var firstSmallCardValue: String {
+        switch dashboardViewModel.currentFilter {
+        case .profits:
+            "\(dashboardViewModel.countReceivedRent())"
+        case .expenses:
+            dashboardViewModel.totalSum(expenseValueType: .maintence).formatted(.currency(code: "BRL"))
+        }
+    }
+    
+    private var secondSmallCardValue: String {
+        switch dashboardViewModel.currentFilter {
+        case .profits: "\(dashboardViewModel.countNotReceivedRent())"
+        case .expenses:
+            dashboardViewModel.totalSum(expenseValueType: .expenses).formatted(.currency(code: "BRL"))
         }
     }
     
@@ -54,7 +71,7 @@ struct DashboardView: View {
                 .pickerStyle(.segmented)
                 .popoverTip(segmentedTip)
                 
-                InformationDashboardCard(totalSum: dashboardViewModel.totalSum, firstSmallCardInformation: dashboardViewModel.countReceivedRent(), secondSmallCardInformation: dashboardViewModel.countNotReceivedRent(), cardType: dashboardViewModel.currentFilter, cardPeriod: dashboardViewModel.currentDashPeriod)
+                InformationDashboardCard(totalSum: dashboardViewModel.totalSum(), firstSmallCardInformation: firstSmallCardValue, secondSmallCardInformation: secondSmallCardValue, cardType: dashboardViewModel.currentFilter, cardPeriod: dashboardViewModel.currentDashPeriod)
                 
                 VStack(alignment: .leading, spacing: 24) {
                     
@@ -71,9 +88,9 @@ struct DashboardView: View {
                         }
                     }
                     
-                    if (dashboardViewModel.currentFilter == .profits && dashboardViewModel.getPayments() != []) || (dashboardViewModel.currentFilter == .expenses && dashboardViewModel.getExpenses() != []) {
+                    if (dashboardViewModel.hasChartData) {
                         Chart {
-                            ForEach(dashboardViewModel.monthlyChartData) { data in
+                            ForEach(dashboardViewModel.monthlyChartData()) { data in
                                 BarMark(
                                     x: .value("Mês", data.month, unit: .month),
                                     y: .value("Valor", data.total),

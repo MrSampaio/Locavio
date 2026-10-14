@@ -21,3 +21,11 @@ enum SegmentedDashboard: String, CaseIterable, Identifiable {
     
     var id: Self { self }
 }
+
+enum ExpensesValueType: CaseIterable, Identifiable {
+    case totalExpensePlusMaintence
+    case maintence
+    case expenses
+    
+    var id: Self { self }
+}

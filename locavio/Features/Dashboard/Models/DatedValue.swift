@@ -14,3 +14,8 @@ protocol DatedValue {
 
 extension Payment: DatedValue {}
 extension Expenses: DatedValue {}
+extension Maintence: DatedValue {
+    var date: Date? {
+        self.ticket?.conclusionDate
+    }
+}
