@@ -10,42 +10,33 @@ import SwiftData
 
 struct EditPropertyView: View {
 
-    let property: Property
-
     @Environment(\.dismiss) private var dismiss
-    @Environment(PropertiesViewModel.self) private var viewModel
     @Environment(\.modelContext) private var context
+    @Environment(PropertiesViewModel.self) private var propertiesViewModel
 
-    @State private var expensesViewModel = ExpensesViewModel()
-    @State private var propertyType: PropertyType
-    @State private var uf: UF
-    @State private var isLoaded = false
-    @State private var showErrorAlert = false
-    @State private var errorMessage = ""
+    @State private var viewModel: EditPropertyViewModel
 
     init(property: Property) {
-        self.property = property
-        _propertyType = State(initialValue: property.type ?? .other)
-        _uf = State(initialValue: UF(rawValue: property.uf ?? "") ?? .insert)
+        _viewModel = State(initialValue: EditPropertyViewModel(property: property))
     }
 
     var body: some View {
         Form {
-            // as seções só são criadas depois que o draft foi carregado:
-            // assim os campos já nascem preenchidos
-            if isLoaded {
+            if viewModel.isLoaded {
                 PropertyPhotoSection()
-                PropertyInfoSection(propertyType: $propertyType)
-                PropertyAddressSection(uf: $uf, onError: show)
+                PropertyInfoSection(propertyType: $viewModel.propertyType)
+                PropertyAddressSection(uf: $viewModel.uf, onError: viewModel.show)
 
-                PropertyFinancialSection(expensesTotal: expensesViewModel.totalExpenses) {
-                    ExpensesTextFieldCard(viewModel: expensesViewModel)
+                PropertyFinancialSection(expensesTotal: viewModel.expensesViewModel.totalExpenses) {
+                    ExpensesTextFieldCard(viewModel: viewModel.expensesViewModel)
                 }
 
                 PropertyTenantSection()
-                PropertyContractSection(onError: show)
+                PropertyContractSection(onError: viewModel.show)
             }
         }
+        .scrollContentBackground(.hidden)
+        .background(Color(.appBg).ignoresSafeArea())
         .ignoresSafeArea(.keyboard)
         .onTapGesture {
             #if canImport(UIKit)
@@ -61,62 +52,78 @@ struct EditPropertyView: View {
                     save()
                 } label: {
                     Image(systemName: "checkmark")
-                        .foregroundColor(.white)
+                        .foregroundStyle(.white)
                 }
                 .buttonStyle(.borderedProminent)
-                .disabled(!isLoaded)
+                .disabled(!viewModel.isLoaded)
             }
         }
-        .alert("Atenção!", isPresented: $showErrorAlert) {
+        .alert("Atenção!", isPresented: $viewModel.showErrorAlert) {
             Button("OK", role: .cancel) {}
         } message: {
-            Text(errorMessage)
+            Text(viewModel.errorMessage)
         }
-        .onAppear { load() }
+        .onAppear { viewModel.load(using: propertiesViewModel) }
     }
 
-    // Ações
-
-    private func load() {
-        guard !isLoaded else { return }
-
-        viewModel.loadDraft(from: property)
-        viewModel.resetValidation()
-
-        // a lista de despesas da tela é uma CÓPIA das despesas do imóvel:
-        // se o usuário voltar sem salvar, nada do que ele mexeu foi gravado
-        expensesViewModel.expenses = (property.expenses ?? []).map {
-            Expenses(title: $0.title ?? "", value: $0.value ?? 0, date: $0.date ?? .now)
-        }
-
-        isLoaded = true
-    }
-
+    /// Fechar a tela é assunto da view (vem do ambiente); o view model só diz se salvou.
     private func save() {
-        guard viewModel.validateForm() else {
-            errorMessage = "Corrija os campos destacados em vermelho."
-            showErrorAlert = true
-            return
+        if viewModel.save(using: propertiesViewModel, context: context) {
+            dismiss()
         }
-
-        do {
-            let saved = try viewModel.applyDraft(
-                to: property,
-                context: context,
-                type: propertyType,
-                uf: uf,
-                expenses: expensesViewModel.expenses
-            )
-            if saved { dismiss() }
-        } catch {
-            show(error)
-        }
-    }
-
-    private func show(_ error: Error) {
-        errorMessage = error.localizedDescription
-        showErrorAlert = true
     }
 }
 
+// MARK: - Preview
 
+#Preview("Editar imóvel") {
+    let container = try! ModelContainer(
+        for: Property.self, Owner.self, Tenant.self, Contract.self,
+             Payment.self, Expenses.self, Ticket.self, Maintence.self,
+        configurations: ModelConfiguration(isStoredInMemoryOnly: true)
+    )
+    let context = container.mainContext
+
+    // imóvel completo: foto, inquilino, despesas e contrato
+    let tenant = Tenant(name: "Alberto Caeiro",
+                        email: "bertinhocaeiro@fpessoa.com",
+                        cpf: "52998224725",
+                        phone: "11987654321")
+
+    let property = Property(
+        image: UIImage(named: "CasaText")?.jpegData(compressionQuality: 0.9),
+        title: "Casa 1",
+        type: .home,
+        area: 32,
+        paymentDay: 10,
+        cep: "12345678",
+        street: "Rua Ipê Amarelo",
+        neighborhood: "Santo Amaro",
+        number: "55",
+        city: "São Paulo",
+        uf: "SP",
+        profit: 500,
+        tenant: tenant
+    )
+    context.insert(property)
+
+    for item in [("IPTU", 200.0), ("Condomínio", 400.0), ("Seguro", 200.0)] {
+        context.insert(Expenses(property: property, title: item.0, value: item.1))
+    }
+
+    let pdf = UIGraphicsPDFRenderer(bounds: CGRect(x: 0, y: 0, width: 595, height: 842)).pdfData { ctx in
+        ctx.beginPage()
+        "Contrato de teste".draw(at: CGPoint(x: 40, y: 40),
+                                 withAttributes: [.font: UIFont.systemFont(ofSize: 24)])
+    }
+    let contract = Contract(title: "Contrato Casa 1", fileName: "contrato.pdf", createdAt: .now, pdfData: pdf)
+    contract.property = property
+    property.contract = contract
+    context.insert(contract)
+
+    return NavigationStack {
+        EditPropertyView(property: property)
+    }
+    .modelContainer(container)
+    .environment(PropertiesViewModel())
+}
