@@ -25,21 +25,61 @@ final class ExpensesViewModel {
     }
     
     private let storage: Storage
-    var expenses: [Expenses]
+    
+    /// Despesas e lucro do rascunho. Só são usados quando `storage == .draft`.
+    private var draftExpenses: [Expenses] = []
+    private var draftProfit = 0.0
+    
     var isExpanded = false
     var newTitle = ""
     var newValueText = ""
-    var profit = 0.0
     
     init(property: Property) {
         storage = .persisted(property)
-        expenses = property.expenses ?? []
-        profit = property.profit ?? Double()
     }
     
     init() {
         storage = .draft
-        expenses = []
+    }
+    
+    /// Despesas exibidas.
+    /// - `persisted`: lê direto do imóvel, então qualquer mudança nele (ex.: edição) aparece na hora.
+    ///   Antes o view model tirava uma "foto" da lista no init e ficava desatualizado.
+    /// - `draft`: lista local, usada enquanto o imóvel ainda não foi salvo (ou na edição, como cópia).
+    var expenses: [Expenses] {
+        get {
+            switch storage {
+            case .persisted(let property):
+                return (property.expenses ?? []).sorted {
+                    ($0.date ?? .distantPast) < ($1.date ?? .distantPast)
+                }
+            case .draft:
+                return draftExpenses
+            }
+        }
+        set {
+            // o imóvel salvo é a fonte da verdade: só o rascunho aceita atribuição direta
+            if case .draft = storage {
+                draftExpenses = newValue
+            }
+        }
+    }
+    
+    /// Lucro do imóvel (lido ao vivo quando persistido).
+    var profit: Double {
+        get {
+            switch storage {
+            case .persisted(let property):
+                return property.profit ?? 0
+            case .draft:
+                return draftProfit
+            }
+        }
+        set {
+            if case .draft = storage {
+                draftProfit = newValue
+            }
+        }
     }
     
     var totalLabel: String { "Valor total" }
@@ -82,12 +122,12 @@ final class ExpensesViewModel {
         
         switch storage {
         case .persisted(let property):
+            // o relacionamento inverso (expense.property) já coloca a despesa na lista do imóvel
             let expense = Expenses(property: property, title: title, value: value, date: Date())
             context.insert(expense)
             save(context)
-            expenses.append(expense)
         case .draft:
-            expenses.append(Expenses(title: title, value: value, date: Date()))
+            draftExpenses.append(Expenses(title: title, value: value, date: Date()))
         }
         
         newTitle = ""
@@ -95,12 +135,13 @@ final class ExpensesViewModel {
     }
     
     func delete(_ expense: Expenses, context: ModelContext) {
-        expenses.removeAll { $0 == expense }
-        
-        if case .persisted(let property) = storage {
+        switch storage {
+        case .persisted(let property):
             property.expenses?.removeAll { $0 == expense }
             context.delete(expense)
             save(context)
+        case .draft:
+            draftExpenses.removeAll { $0 == expense }
         }
     }
     
@@ -113,7 +154,7 @@ final class ExpensesViewModel {
     func assignPropertyToExpense(to property: Property, context: ModelContext) {
         guard case .draft = storage else { return }
 
-        for expense in expenses {
+        for expense in draftExpenses {
             expense.property = property
             context.insert(expense)
         }
@@ -142,10 +183,8 @@ final class ExpensesViewModel {
     }
     
     func formatAsDouble(textToFormat: String) -> String {
-        var newExpenseValueText = textToFormat
-        var cleaned = newExpenseValueText.replacingOccurrences(of: ".", with: "")
-        newExpenseValueText = cleaned.filter { $0.isNumber || $0 == "," }
-        return newExpenseValueText
+        let cleaned = textToFormat.replacingOccurrences(of: ".", with: "")
+        return cleaned.filter { $0.isNumber || $0 == "," }
     }
 }
 
