@@ -10,10 +10,13 @@ import SwiftUI
 
 struct TicketsCoordinatorView: View {
     @State private var ticketsCoordinator = TicketsCoordinator()
-        
+    
+    var onSwitchToProperties: (() -> Void)? = nil
+    
     var body: some View {
         NavigationStack(path: $ticketsCoordinator.path) {
-            TicketsView()
+            
+            TicketsView(onSwitchToPropertiesTab: onSwitchToProperties)
                 .environment(ticketsCoordinator)
                 .navigationDestination(for: TicketsRoutes.self) { route in
                     switch route {

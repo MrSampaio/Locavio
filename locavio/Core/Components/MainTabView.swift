@@ -8,6 +8,10 @@
 import SwiftUI
 import SwiftData
 
+enum AppTab: Hashable {
+    case properties, dashboard, calendar, tickets, profile
+}
+
 struct MainTabView: View {
     
     @Query private var properties: [Property]
@@ -16,39 +20,42 @@ struct MainTabView: View {
     @Environment(AppleAuthManager.self) private var authManager
     @Environment(\.scenePhase) private var scenePhase
     
+    @State private var selectedTab: AppTab = .properties
+    
     private var currentOwner: Owner? {
         guard let userID = authManager.currentUserID else { return nil }
         return owners.first { $0.appleUserID == userID }
     }
     
     var body: some View {
-        TabView {
-            Tab("Imóveis", systemImage: "house"){
+        TabView(selection: $selectedTab) {
+            
+            Tab("Imóveis", systemImage: "house", value: .properties) {
                 PropertiesCoordinatorView()
             }
             
-            Tab("Relatório", systemImage: "chart.bar") {
+            Tab("Relatório", systemImage: "chart.bar", value: .dashboard) {
                 DashboardCoordinatorView()
             }
             
-            Tab("Calendário", systemImage: "calendar"){
+            Tab("Calendário", systemImage: "calendar", value: .calendar) {
                 CalendarCoordinatorView()
             }
             
-            Tab("Chamados", systemImage: "exclamationmark.bubble"){
-                TicketsCoordinatorView()
+            Tab("Chamados", systemImage: "exclamationmark.bubble", value: .tickets) {
+                TicketsCoordinatorView(onSwitchToProperties: {
+                    selectedTab = .properties
+                })
             }
             
-            Tab("Perfil", systemImage: "person"){
+            Tab("Perfil", systemImage: "person", value: .profile) {
                 ProfileCoordinatorView()
             }
         }
-        // solicita permissão de notificação na primeira vez que a TabView aparece
         .onAppear {
             NotificationManager.shared.requestAuthorization()
             syncNotifications()
         }
-        // atualizar as notificações sempre que os dados mudarem ou o app voltar ao primeiro plano
         .onChange(of: properties) { _, _ in syncNotifications() }
         .onChange(of: tickets) { _, _ in syncNotifications() }
         .onChange(of: scenePhase) { _, newPhase in
@@ -58,7 +65,6 @@ struct MainTabView: View {
         }
     }
     
-    // função auxiliar de sincronização
     private func syncNotifications() {
         NotificationManager.shared.syncNotifications(
             properties: properties,
