@@ -47,15 +47,8 @@ struct PropertiesCoordinatorView: View {
                         RecentPaymentsView(property: property)
 
                     case .editProperty(let property):
-                        EditPropertyView(
-                            property: property,
-                            onEditExpenses: {
-                                propertiesCoordinator.pushToEditPropertyExpenses(
-                                    property: property
-                                )
-                            }
-                        )
-                        .environment(propertiesViewModel)
+                        EditPropertyView(property: property)
+                            .environment(propertiesViewModel)
                             
                     case .ticketDetails(let ticket):
                         TicketDetailView(
@@ -66,9 +59,6 @@ struct PropertiesCoordinatorView: View {
                         )
                     case .editTicket(let ticket):
                         EditTicketView(ticket: ticket)
-                        
-                    case .editPropertyExpenses(let property):
-                        EditPropertyExpensesView(property: property)
                     }
                 }
             .sheet(item: $propertiesCoordinator.activeSheet) { sheet in
