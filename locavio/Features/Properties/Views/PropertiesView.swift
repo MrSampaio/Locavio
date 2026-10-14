@@ -32,7 +32,7 @@ struct PropertiesView: View {
                     .font(.largeTitle.bold())
                 
                 SearchBarView(text: $viewModel.searchText)
-
+                
                 Picker("Filtro", selection: $viewModel.filter) {
                     ForEach(PropertyFilter.allCases) { filter in
                         Text(filter.rawValue).tag(filter)
@@ -40,30 +40,52 @@ struct PropertiesView: View {
                 }
                 .pickerStyle(.segmented)
                 .popoverTip(propertyStatusTip)
-
-                LazyVStack(spacing: 16) {
-                    ForEach(visibleProperties) { property in
-                        Button {
-                            coordinator.pushToDetails(property: property)
-                        } label: {
-                            PropertyCardView(property: property)
-                        }
-                        .buttonStyle(.plain)
-                        .contextMenu {
-                            Button {
-                                coordinator.pushToEditProperty(property: property)
-                            } label: {
-                                Label("Editar", systemImage: "pencil")
-                            }
-                            Button(role: .destructive) {
-                                viewModel.propertyToDelete = property
-                                viewModel.showDeleteAlert = true
-                            } label: {
-                                Label("Apagar imóvel", systemImage: "trash")
-                            }
-                        }
-                    }
+                
+                // 👇 AQUI ENTRA A LÓGICA DA EMPTY VIEW
+                if properties.isEmpty {
                     
+                    // Cenário 1: Não há NENHUM imóvel cadastrado no aplicativo
+                    PropertiesEmptyStateView(
+                        isSearchFilterEmpty: false,
+                        onAddProperty: { coordinator.presentAddProperty() }
+                    )
+                    .padding(.top, 60) // Empurra para o centro da tela
+                    
+                } else if visibleProperties.isEmpty {
+                    
+                    // Cenário 2: Tem imóveis, mas a busca/filtro não encontrou nada
+                    PropertiesEmptyStateView(
+                        isSearchFilterEmpty: true
+                    )
+                    .padding(.top, 60) // Empurra para o centro da tela
+                    
+                } else {
+                    
+                    // Cenário 3: Mostra a lista normalmente
+                    LazyVStack(spacing: 16) {
+                        ForEach(visibleProperties) { property in
+                            Button {
+                                coordinator.pushToDetails(property: property)
+                            } label: {
+                                PropertyCardView(property: property)
+                            }
+                            .buttonStyle(.plain)
+                            .contextMenu {
+                                Button {
+                                    coordinator.pushToEditProperty(property: property)
+                                } label: {
+                                    Label("Editar", systemImage: "pencil")
+                                }
+                                Button(role: .destructive) {
+                                    viewModel.propertyToDelete = property
+                                    viewModel.showDeleteAlert = true
+                                } label: {
+                                    Label("Apagar imóvel", systemImage: "trash")
+                                }
+                            }
+                        }
+                        
+                    }
                 }
             }
             .ignoresSafeArea(.keyboard)
@@ -148,9 +170,9 @@ enum PropertiesPreviewData {
 
 #Preview {
     NavigationStack {
-         PropertiesView()
-     }
-     .modelContainer(PropertiesPreviewData.makeContainer())
-     
-     .environment(PropertiesCoordinator())
+        PropertiesView()
+    }
+    .modelContainer(PropertiesPreviewData.makeContainer())
+    
+    .environment(PropertiesCoordinator())
 }
