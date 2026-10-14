@@ -71,7 +71,7 @@ struct locavioApp: App {
                 } else if !onboardingConcluido {
                     OnboardingView()
                 } else {
-                        switch appleAuthManager.currentAuthState {
+                    switch appleAuthManager.currentAuthState {
                         case .authenticated:
                             MainTabView()
                             
@@ -83,7 +83,7 @@ struct locavioApp: App {
                             
                         case .loading:
                             ProgressView("Carregando sua conta...")
-                        }
+                    }
                 }
             }
             .environment(appleAuthManager)
@@ -109,5 +109,3 @@ struct locavioApp: App {
         .modelContainer(sharedModelContainer)
     }
 }
-
-
