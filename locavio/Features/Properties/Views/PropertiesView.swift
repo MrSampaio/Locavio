@@ -1,5 +1,5 @@
 //
-//  ScreenPropertyView.swift
+//  PropertiesView.swift
 //  locavio
 //
 //  Created by Guilherme Alves de Souza on 26/09/26.
@@ -12,6 +12,7 @@ import TipKit
 struct PropertiesView: View {
     
     @Environment(PropertiesCoordinator.self) private var coordinator
+    @Environment(AppleAuthManager.self) private var authManager
     @Environment(\.modelContext) private var context
     
     @State private var viewModel = PropertiesViewModel()
@@ -25,11 +26,25 @@ struct PropertiesView: View {
         viewModel.visibleProperties(from: properties)
     }
     
+    // true enquanto o iCloud está trazendo dados pro aparelho
+    private var isSyncing: Bool {
+        authManager.isSyncingFromCloud
+    }
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                Text("Imóveis")
-                    .font(.largeTitle.bold())
+                
+                HStack(spacing: 12) {
+                    Text("Imóveis")
+                        .font(.largeTitle.bold())
+                    
+                    // já tem imóveis na tela e o iCloud ainda está trazendo mais: indicador discreto ao lado do título
+                    if isSyncing && !properties.isEmpty {
+                        ProgressView()
+                            .transition(.opacity)
+                    }
+                }
                 
                 SearchBarView(text: $viewModel.searchText)
                 
@@ -41,8 +56,22 @@ struct PropertiesView: View {
                 .pickerStyle(.segmented)
                 .popoverTip(propertyStatusTip)
                 
-                // 👇 AQUI ENTRA A LÓGICA DA EMPTY VIEW
-                if properties.isEmpty {
+                if properties.isEmpty && isSyncing {
+                    
+                    // Cenário 0: ainda não chegou nenhum imóvel, mas o iCloud está sincronizando.
+                    // mostra "carregando" em vez de "nenhum imóvel" pra não parecer que os dados sumiram
+                    VStack(spacing: 12) {
+                        ProgressView()
+                            .controlSize(.large)
+                        
+                        Text("Buscando seus imóveis...")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 80)
+                    
+                } else if properties.isEmpty {
                     
                     // Cenário 1: Não há NENHUM imóvel cadastrado no aplicativo
                     PropertiesEmptyStateView(
@@ -88,6 +117,7 @@ struct PropertiesView: View {
                     }
                 }
             }
+            .animation(.default, value: isSyncing)
             .ignoresSafeArea(.keyboard)
             .scrollDismissesKeyboard(.interactively)
             
@@ -175,4 +205,5 @@ enum PropertiesPreviewData {
     .modelContainer(PropertiesPreviewData.makeContainer())
     
     .environment(PropertiesCoordinator())
+    .environment(AppleAuthManager())
 }
