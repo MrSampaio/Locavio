@@ -1,5 +1,5 @@
 //
-//  ScreenPropertyView.swift
+//  PropertiesView.swift
 //  locavio
 //
 //  Created by Guilherme Alves de Souza on 26/09/26.
@@ -16,6 +16,9 @@ struct PropertiesView: View {
     @Environment(\.modelContext) private var context
     
     @State private var viewModel = PropertiesViewModel()
+    
+    // as dicas desta tela aparecem em sequência: primeiro a do botão "+", depois a do filtro.
+    // a próxima só aparece depois que a anterior for dispensada
     @State private var tipGroup = TipGroup(.ordered) {
         AddPropertyTip()
         PropertyStatusTip()
@@ -33,103 +36,35 @@ struct PropertiesView: View {
         authManager.isSyncingFromCloud
     }
     
+    // dica atual de cada elemento. ficam separadas pra não pesar o type-check do body
+    private var addTip: AddPropertyTip? {
+        tipGroup.currentTip as? AddPropertyTip
+    }
+    
+    private var statusTip: PropertyStatusTip? {
+        tipGroup.currentTip as? PropertyStatusTip
+    }
+    
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-                
-                HStack(spacing: 12) {
-                    Text("Imóveis")
-                        .font(.largeTitle.bold())
-                    
-                    // já tem imóveis na tela e o iCloud ainda está trazendo mais: indicador discreto ao lado do título
-                    if isSyncing && !properties.isEmpty {
-                        ProgressView()
-                            .transition(.opacity)
-                    }
-                }
+                header
                 
                 SearchBarView(text: $viewModel.searchText)
                 
-                Picker("Filtro", selection: $viewModel.filter) {
-                    ForEach(PropertyFilter.allCases) { filter in
-                        Text(filter.rawValue).tag(filter)
-                    }
-                }
-                .pickerStyle(.segmented)
-                .popoverTip(tipGroup.currentTip as? PropertyStatusTip)
+                filterPicker
                 
-                if properties.isEmpty && isSyncing {
-                    
-                    // Cenário 0: ainda não chegou nenhum imóvel, mas o iCloud está sincronizando.
-                    // mostra "carregando" em vez de "nenhum imóvel" pra não parecer que os dados sumiram
-                    VStack(spacing: 12) {
-                        ProgressView()
-                            .controlSize(.large)
-                        
-                        Text("Buscando seus imóveis...")
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.top, 80)
-                    
-                } else if properties.isEmpty {
-                    
-                    // Cenário 1: Não há NENHUM imóvel cadastrado no aplicativo
-                    PropertiesEmptyStateView(
-                        isSearchFilterEmpty: false,
-                        onAddProperty: { coordinator.presentAddProperty() }
-                    )
-                    .padding(.top, 60) // Empurra para o centro da tela
-                    
-                } else if visibleProperties.isEmpty {
-                    
-                    // Cenário 2: Tem imóveis, mas a busca/filtro não encontrou nada
-                    PropertiesEmptyStateView(
-                        isSearchFilterEmpty: true
-                    )
-                    .padding(.top, 60) // Empurra para o centro da tela
-                    
-                } else {
-                    
-                    // Cenário 3: Mostra a lista normalmente
-                    LazyVStack(spacing: 16) {
-                        ForEach(visibleProperties) { property in
-                            Button {
-                                coordinator.pushToDetails(property: property)
-                            } label: {
-                                PropertyCardView(property: property)
-                            }
-                            .buttonStyle(.plain)
-                            .contextMenu {
-                                Button {
-                                    coordinator.pushToEditProperty(property: property)
-                                } label: {
-                                    Label("Editar", systemImage: "pencil")
-                                }
-                                Button(role: .destructive) {
-                                    viewModel.propertyToDelete = property
-                                    viewModel.showDeleteAlert = true
-                                } label: {
-                                    Label("Apagar imóvel", systemImage: "trash")
-                                }
-                            }
-                        }
-                        
-                    }
-                }
+                content
             }
             .animation(.default, value: isSyncing)
             .ignoresSafeArea(.keyboard)
             .scrollDismissesKeyboard(.interactively)
-            
             .toolbar {
                 AppToolbar(
                     options: viewModel.options,
                     onAdd: { coordinator.presentAddProperty() },
-                    tip: tipGroup.currentTip as? AddPropertyTip
+                    tip: addTip
                 )
-                
             }
             .padding(.horizontal)
         }
@@ -147,8 +82,111 @@ struct PropertiesView: View {
                 viewModel.propertyToDelete = nil
             }
         } message: { property in
-            Text("Tem certeza que deseja apagar o imóvel '\(property.title ?? "Sem título")'? Todos os dados, contratos e chamados vinculados a ele serão perdidos. Essa ação não pode ser desfeita.")
+            Text(deleteMessage(for: property))
         }
+    }
+    
+    // MARK: - Partes da tela
+    
+    private var header: some View {
+        HStack(spacing: 12) {
+            Text("Imóveis")
+                .font(.largeTitle.bold())
+            
+            // já tem imóveis na tela e o iCloud ainda está trazendo mais: indicador discreto ao lado do título
+            if isSyncing && !properties.isEmpty {
+                ProgressView()
+                    .transition(.opacity)
+            }
+        }
+    }
+    
+    private var filterPicker: some View {
+        Picker("Filtro", selection: $viewModel.filter) {
+            ForEach(PropertyFilter.allCases) { filter in
+                Text(filter.rawValue).tag(filter)
+            }
+        }
+        .pickerStyle(.segmented)
+        .popoverTip(statusTip)
+    }
+    
+    @ViewBuilder
+    private var content: some View {
+        if properties.isEmpty && isSyncing {
+            syncingState
+            
+        } else if properties.isEmpty {
+            
+            // Cenário 1: Não há NENHUM imóvel cadastrado no aplicativo
+            PropertiesEmptyStateView(
+                isSearchFilterEmpty: false
+            )
+            .padding(.top, 60) // Empurra para o centro da tela
+            
+        } else if visibleProperties.isEmpty {
+            
+            // Cenário 2: Tem imóveis, mas a busca/filtro não encontrou nada
+            PropertiesEmptyStateView(
+                isSearchFilterEmpty: true
+            )
+            .padding(.top, 60) // Empurra para o centro da tela
+            
+        } else {
+            propertiesList
+        }
+    }
+    
+    // Cenário 0: ainda não chegou nenhum imóvel, mas o iCloud está sincronizando.
+    // mostra "carregando" em vez de "nenhum imóvel" pra não parecer que os dados sumiram
+    private var syncingState: some View {
+        VStack(spacing: 12) {
+            ProgressView()
+                .controlSize(.large)
+            
+            Text("Buscando seus imóveis...")
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.top, 80)
+    }
+    
+    // Cenário 3: Mostra a lista normalmente
+    private var propertiesList: some View {
+        LazyVStack(spacing: 16) {
+            ForEach(visibleProperties) { property in
+                propertyRow(property)
+            }
+        }
+    }
+    
+    private func propertyRow(_ property: Property) -> some View {
+        Button {
+            coordinator.pushToDetails(property: property)
+        } label: {
+            PropertyCardView(property: property)
+        }
+        .buttonStyle(.plain)
+        .contextMenu {
+            Button {
+                coordinator.pushToEditProperty(property: property)
+            } label: {
+                Label("Editar", systemImage: "pencil")
+            }
+            
+            Button(role: .destructive) {
+                viewModel.propertyToDelete = property
+                viewModel.showDeleteAlert = true
+            } label: {
+                Label("Apagar imóvel", systemImage: "trash")
+            }
+        }
+    }
+    
+    private func deleteMessage(for property: Property) -> String {
+        let title = property.title ?? "Sem título"
+        return "Tem certeza que deseja apagar o imóvel '\(title)'? Todos os dados, contratos e chamados vinculados a ele serão perdidos. Essa ação não pode ser desfeita."
     }
 }
 
@@ -172,8 +210,6 @@ enum PropertiesPreviewData {
     }
     
     private static func insertSamples(into context: ModelContext) {
-        let samplePhotoData = UIImage(systemName: "house.fill")?.pngData()
-        
         let house = Property(
             title: "Casa 1",
             type: .home,

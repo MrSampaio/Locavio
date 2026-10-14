@@ -10,7 +10,6 @@ import SwiftUI
 struct PropertiesEmptyStateView: View {
     
     var isSearchFilterEmpty: Bool
-    var onAddProperty: () -> Void = {}
     
     var body: some View {
         VStack(spacing: 16) {
@@ -35,15 +34,6 @@ struct PropertiesEmptyStateView: View {
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
             
-            // botão aparece apenas quando não é uma busca vazia
-            if !isSearchFilterEmpty {
-                ComponentButton(
-                    textButton: "Adicionar imóvel",
-                    action: onAddProperty
-                )
-                .frame(width: 196)
-                .padding(.top, 24)
-            }
         }
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity)
