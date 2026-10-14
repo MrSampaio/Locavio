@@ -61,6 +61,7 @@ struct EditPropertyView: View {
                     save()
                 } label: {
                     Image(systemName: "checkmark")
+                        .foregroundColor(.white)
                 }
                 .buttonStyle(.borderedProminent)
                 .disabled(!isLoaded)
