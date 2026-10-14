@@ -99,7 +99,7 @@ struct SignUpView: View {
                     }
                 )
                 .padding(.horizontal, 65)
-                .disabled(!signUpViewModel.isValid)
+//                .disabled(!signUpViewModel.isValid)
                 
             }
             .padding(.horizontal, 16)

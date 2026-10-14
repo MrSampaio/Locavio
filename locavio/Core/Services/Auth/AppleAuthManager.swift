@@ -30,6 +30,7 @@ final class AppleAuthManager {
     
     var currentAuthState: AppAuthState = .loading
     
+    
     // puxa o KeychainHelper pra simplificar a escrita
     private let keychainHelper = KeychainHelper.shared
     
@@ -41,6 +42,8 @@ final class AppleAuthManager {
     @ObservationIgnored private var cloudImportFinished = false
     @ObservationIgnored private var cloudObserver: NSObjectProtocol?
     @ObservationIgnored private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "locavio", category: "CloudSync")
+    @ObservationIgnored private var didCheckCredential = false
+
     
     // ID do usuário logado. é a única informação que fica no Keychain
     var currentUserID: String? {
@@ -270,6 +273,9 @@ final class AppleAuthManager {
         
         self.context = context
         
+        guard !didCheckCredential else { return }
+        didCheckCredential = true
+        
         // pega o ID do usuário salvo no Keychain
         guard let userID = currentUserID else {
             print("There is no user logged in Keychain storage.")
@@ -308,6 +314,9 @@ final class AppleAuthManager {
     @MainActor
     private func routeAuthorizedUser(userID: String, context: ModelContext) async {
         let owner = await waitForOwner(userID: userID, context: context)
+        
+        // se outro fluxo (login/cadastro) já decidiu a tela enquanto esperava, não sobrescreve
+        guard currentAuthState == .loading else { return }
         
         if let doc = owner?.documentNumber, !doc.isEmpty {
             currentAuthState = .authenticated
