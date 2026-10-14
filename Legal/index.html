@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidade — Locavio</title>
+    <title>Documentos Legais — Locavio</title>
     
     <style>
-        /* CSS Mínimo e Acessível (WCAG AA+) */
+        /* Variáveis de cor e fontes (WCAG AA+) */
         :root {
             --bg-color: #ffffff;
-            --text-color: #1a1a1a;
-            --link-color: #0056b3;
-            --link-hover: #003d82;
-            --focus-color: #0056b3;
+            --sidebar-bg: #f8f9fa;
+            --text-main: #1a1a1a;
+            --text-muted: #555555;
+            --accent-color: #0056b3;
+            --accent-hover: #003d82;
             --border-color: #e0e0e0;
         }
 
@@ -24,261 +25,276 @@
 
         body {
             font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            font-size: 1rem; /* 16px base */
+            font-size: 16px;
             line-height: 1.6;
-            color: var(--text-color);
+            color: var(--text-main);
             background-color: var(--bg-color);
             -webkit-font-smoothing: antialiased;
+            display: flex;
+            min-height: 100vh;
         }
 
-        /* Container principal limitando a largura para conforto visual */
-        main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 3rem 1.5rem;
+        /* Layout em duas colunas para Desktop */
+        .sidebar {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border-color);
+            padding: 2rem 1.5rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
         }
 
-        header {
-            margin-bottom: 3rem;
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 1.5rem;
+        .main-content {
+            flex: 1;
+            margin-left: 280px; /* Compensa a sidebar fixa */
+            padding: 3rem 4rem;
+            max-width: 900px;
+        }
+
+        /* Tipografia */
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: var(--text-main);
         }
 
         h1 {
             font-size: 2.25rem;
             line-height: 1.2;
             margin-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1rem;
         }
 
         h2 {
             font-size: 1.5rem;
-            line-height: 1.3;
             margin-top: 2.5rem;
             margin-bottom: 1rem;
-            color: #222222;
+            color: #222;
         }
 
         h3 {
             font-size: 1.25rem;
-            line-height: 1.4;
             margin-top: 1.5rem;
             margin-bottom: 0.75rem;
-            color: #333333;
+            color: #333;
         }
 
-        p {
-            margin-bottom: 1.25rem;
+        p { margin-bottom: 1.25rem; }
+        ul { margin-bottom: 1.25rem; padding-left: 1.5rem; }
+        li { margin-bottom: 0.5rem; }
+        
+        .date-update {
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
         }
 
-        ul {
-            margin-bottom: 1.25rem;
-            padding-left: 1.5rem;
+        /* Navegação da Sidebar */
+        nav ul {
+            list-style: none;
+            padding-left: 0;
         }
 
-        li {
+        nav li {
             margin-bottom: 0.5rem;
         }
 
-        /* Links acessíveis com foco claro para navegação por teclado */
-        a {
-            color: var(--link-color);
+        nav a {
+            display: block;
+            padding: 0.75rem 1rem;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: background-color 0.2s;
+        }
+
+        nav a:hover, nav a:focus-visible {
+            background-color: #e9ecef;
+            color: var(--accent-color);
+            outline: none;
+        }
+        
+        /* Links no texto */
+        .main-content a {
+            color: var(--accent-color);
             text-decoration: underline;
             text-underline-offset: 0.2em;
         }
-
-        a:hover {
-            color: var(--link-hover);
-            text-decoration-thickness: 2px;
+        .main-content a:hover {
+            color: var(--accent-hover);
+        }
+        .main-content a:focus-visible {
+            outline: 3px solid var(--accent-color);
+            outline-offset: 2px;
         }
 
-        a:focus-visible {
-            outline: 3px solid var(--focus-color);
-            outline-offset: 3px;
-            border-radius: 2px;
+        /* Seções de conteúdo */
+        .document-section {
+            margin-bottom: 5rem;
         }
 
-        .date-update {
-            font-style: italic;
-            color: #555555;
-        }
-
-        /* Ajustes para telas menores */
-        @media (max-width: 600px) {
-            main {
-                padding: 2rem 1rem;
+        /* Responsividade para Mobile */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
             }
-            
-            h1 {
-                font-size: 1.75rem;
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+                padding: 1.5rem;
+            }
+            .main-content {
+                margin-left: 0;
+                padding: 2rem 1.5rem;
+            }
+            nav ul {
+                display: flex;
+                gap: 1rem;
+                flex-wrap: wrap;
+            }
+            nav a {
+                background-color: #ffffff;
+                border: 1px solid var(--border-color);
             }
         }
     </style>
 </head>
 <body>
 
-    <main>
-        <header>
-            <h1>Política de Privacidade — Locavio</h1>
-            <p class="date-update"><strong>Última atualização:</strong> 25 de setembro de 2026</p>
-            <p>Esta Política de Privacidade descreve como o Locavio coleta, usa, armazena e protege os dados pessoais dos usuários (proprietários de imóveis) e de terceiros cujos dados sejam inseridos no aplicativo (inquilinos), em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD).</p>
-        </header>
-
-        <section aria-labelledby="interpretacao-definicoes">
-            <h2 id="interpretacao-definicoes">1. Interpretação e Definições</h2>
-            
-            <h3>1.1 Definições</h3>
-            <p>Para os fins desta Política de Privacidade:</p>
+    <!-- Navegação / Sidebar -->
+    <aside class="sidebar" aria-label="Menu de Navegação">
+        <div class="site-title">Locavio</div>
+        <nav>
             <ul>
-                <li><strong>Conta</strong> significa uma conta exclusiva criada para você acessar o Aplicativo.</li>
-                <li><strong>Aplicativo</strong> refere-se ao Locavio, o programa de software fornecido pela Empresa.</li>
-                <li><strong>Empresa/Controladora</strong> refere-se ao Locavio, responsável pelas decisões sobre o tratamento dos dados pessoais.</li>
-                <li><strong>Operador</strong> significa a pessoa (física ou jurídica) que realiza o tratamento de dados pessoais em nome da Controladora — no caso do Locavio, a Apple Inc., por meio dos serviços iCloud e CloudKit.</li>
-                <li><strong>Titular</strong> significa a pessoa natural a quem se referem os dados pessoais tratados — seja você (usuário/proprietário) ou um inquilino cujos dados sejam inseridos por um proprietário no Aplicativo.</li>
-                <li><strong>Dados Pessoais</strong> são quaisquer informações relacionadas a uma pessoa natural identificada ou identificável.</li>
-                <li><strong>Tratamento</strong> é toda operação realizada com dados pessoais (coleta, uso, armazenamento, compartilhamento, eliminação, etc.).</li>
-                <li><strong>País</strong>: Brasil.</li>
-                <li><strong>Dispositivo</strong> significa qualquer iPhone que possa baixar o Aplicativo na App Store.</li>
-                <li><strong>Serviço</strong> refere-se ao Aplicativo.</li>
-                <li><strong>Dados de Uso</strong> referem-se a dados coletados automaticamente, gerados pelo uso do Serviço ou por sua infraestrutura.</li>
-                <li><strong>Usuário</strong> significa qualquer indivíduo que acesse ou utilize o Serviço.</li>
-                <li><strong>Você</strong> significa o indivíduo (proprietário) que acessa ou utiliza o Serviço.</li>
+                <li><a href="#termos-uso">Termos de Uso</a></li>
+                <li><a href="#politica-privacidade">Política de Privacidade</a></li>
             </ul>
-        </section>
+        </nav>
+    </aside>
 
-        <section aria-labelledby="coleta-uso">
-            <h2 id="coleta-uso">2. Coleta e Uso de Suas Informações Pessoais</h2>
+    <!-- Conteúdo Principal -->
+    <main class="main-content">
+
+        <!-- ============================================== -->
+        <!-- SEÇÃO: TERMOS DE USO                           -->
+        <!-- ============================================== -->
+        <article id="termos-uso" class="document-section">
+            <h1>Termos de Uso</h1>
+            <p class="date-update">Última atualização: 25 de setembro de 2026</p>
+
+            <p>Estes termos e condições aplicam-se ao aplicativo Locavio para dispositivos móveis, juntamente com quaisquer serviços relacionados operados pelo Locavio (coletivamente, o "Aplicativo"). O Locavio é aqui referido como o "Provedor de Serviços".</p>
+            <p>Ao baixar ou usar o Aplicativo, você concorda com estes Termos e Condições. Você deve lê-los cuidadosamente antes de usar o Aplicativo.</p>
+
+            <h2>1. Licença de uso do Aplicativo</h2>
+            <p>Sujeito ao seu cumprimento destes Termos, o Provedor de Serviços concede a você uma licença limitada, não exclusiva, intransferível e revogável para instalar e usar o Aplicativo em um dispositivo móvel para fins pessoais ou comerciais internos. Você não pode reproduzir, distribuir, modificar, criar trabalhos derivados, fazer engenharia reversa, descompilar ou desmontar o Aplicativo, exceto e apenas na medida em que tal atividade seja expressamente permitida pela lei aplicável.</p>
+            <p>Esta licença restringe-se ao uso do Aplicativo exclusivamente em dispositivos com sistemas operacionais iOS (produtos da marca Apple) que o Utilizador possua ou controle legitimamente, e em estrita observância com as Regras de Uso delineadas nos Termos de Serviço da Apple Media Services.</p>
+
+            <h2>2. Propriedade Intelectual</h2>
+            <p>O Provedor de Serviços retém todos os direitos de propriedade intelectual sobre o Aplicativo, incluindo seu código, design, marcas registradas, marcas de serviço, nomes comerciais, logotipos e identidade visual (a "PI"). Nada nestes Termos concede a você qualquer licença ou direito de usar as marcas registradas, logotipos ou identidade visual do Provedor de Serviços para qualquer finalidade. Você concorda em não remover, alterar ou ocultar quaisquer avisos de direitos autorais, marcas registradas ou outros avisos de propriedade exibidos no ou dentro do Aplicativo.</p>
+
+            <h2>3. Rescisão</h2>
+            <p>O Provedor de Serviços pode suspender seu acesso ao Aplicativo ou aos serviços se você violar materialmente estes Termos. O Provedor de Serviços fornecerá um aviso por escrito sobre a violação.</p>
+            <p>O Provedor de Serviços pode suspender ou rescindir seu acesso imediatamente sem aviso prévio se você violar a lei aplicável, infringir direitos de propriedade intelectual ou se envolver em atividades que possam causar danos a outros usuários ou ao Provedor de Serviços.</p>
+            <p>Após a rescisão, seu direito de usar o Aplicativo terminará e você deverá excluir todas as cópias de seus dispositivos.</p>
+            <p>Ao acessar e usar este Aplicativo, você declara que tem permissão legal para usá-lo em sua jurisdição. Você deve ter pelo menos 18 anos de idade (a idade de consentimento digital em sua jurisdição) para usar o Aplicativo.</p>
+            <p>A cópia não autorizada, modificação do Aplicativo, qualquer parte do Aplicativo ou das marcas registradas do Provedor de Serviços é estritamente proibida. Quaisquer tentativas de extrair o código-fonte do Aplicativo, traduzir o Aplicativo para outros idiomas ou criar versões derivadas não são permitidas.</p>
+            <p>O Utilizador detém a autonomia plena para solicitar a exclusão definitiva da sua conta a qualquer momento, funcionalidade que se encontra disponível nativamente nas configurações do Aplicativo. A confirmação da exclusão de conta engatilhará a revogação automática da autenticação. Simultaneamente, será iniciado o expurgo definitivo de todos os dados (excetuando-se os registros obrigatórios pelo Marco Civil da Internet).</p>
+
+            <h2>4. Conteúdo Gerado pelo Usuário e Uso Aceitável</h2>
+            <p>Se este Aplicativo permitir que os usuários publiquem, compartilhem ou façam upload de conteúdo, você concorda em não publicar conteúdo que:</p>
+            <ul>
+                <li>Seja ilegal ou viole direitos de propriedade intelectual de terceiros.</li>
+                <li>Seja abusivo, ameaçador, assediador, difamatório ou discurso de ódio.</li>
+                <li>Contenha discriminação ou incitação à violência ou a atividades ilegais.</li>
+                <li>Seja spam, phishing ou contenha malware.</li>
+                <li>Viole a privacidade ou os direitos de dados pessoais de terceiros.</li>
+                <li>Seja enganoso, falso ou fraudulento.</li>
+                <li>Contenha violência explícita ou conteúdo sexual.</li>
+            </ul>
+
+            <p>O Provedor de Serviços reserva-se o direito de:</p>
+            <ul>
+                <li>Remover ou desativar o acesso a conteúdo que viole estas diretrizes.</li>
+                <li>Suspender ou encerrar as contas de usuários infratores.</li>
+                <li>Cooperar com as autoridades policiais caso conteúdo ilegal seja denunciado.</li>
+                <li>Moderar, filtrar ou ocultar conteúdo que viole estes Termos.</li>
+            </ul>
+
+            <p>Se você acredita que um conteúdo viola estes Termos, pode denunciá-lo em <a href="mailto:locaviodev@gmail.com">locaviodev@gmail.com</a>. O Provedor de Serviços pode revisar o conteúdo denunciado, solicitar informações adicionais e remover ou restringir o acesso quando apropriado.</p>
+            <p>Ao enviar Conteúdo Gerado pelo Usuário, você concede ao Provedor de Serviços uma licença mundial, isenta de royalties e não exclusiva para usar e exibir o conteúdo em conexão com o Aplicativo.</p>
             
-            <h3>2.1 Dados Pessoais</h3>
-            <p>Ao utilizar o nosso Serviço, poderemos solicitar que você nos forneça determinadas informações de identificação pessoal que possam ser usadas para entrar em contato ou identificá-lo. As informações de identificação pessoal podem incluir, entre outras:</p>
+            <p>O Provedor de Serviços aconselha expressamente que você <strong>não faça jailbreak ou root</strong> em seu dispositivo móvel, pois isso compromete a criptografia local do dispositivo, podendo resultar na corrupção irremediável de chaves de autenticação e na exposição indevida dos dados armazenados, isentando o Locavio de qualquer responsabilidade.</p>
+
+            <h2>5. Limitação de Responsabilidade</h2>
+            <p>Na extensão máxima permitida por lei, o Provedor de Serviços não será responsável por quaisquer danos indiretos, incidentais, especiais, consequenciais ou punitivos, incluindo lucros cessantes e perda de dados. O Provedor de Serviços não contém nenhuma responsabilidade por:</p>
+            <ul>
+                <li>Morte ou lesão corporal causada por negligência.</li>
+                <li>Fraude ou declaração falsa fraudulenta.</li>
+                <li>Qualquer outra responsabilidade que não possa ser excluída ou limitada de acordo com a lei aplicável.</li>
+            </ul>
+            <p>O Locavio assume a responsabilidade total pelo fornecimento de serviços de manutenção. O Utilizador reconhece que a Apple não tem qualquer obrigação de fornecer suporte técnico relacionado ao Aplicativo.</p>
+
+            <h2>6. Indenização</h2>
+            <p>Você concorda em indenizar e isentar o Provedor de Serviços de quaisquer reclamações decorrentes do seu uso indevido do Aplicativo.</p>
+
+            <h2>7. Atualizações do Aplicativo</h2>
+            <p>Você deve aceitar as atualizações quando forem oferecidas; caso decida não as aceitar, o Provedor de Serviços poderá deixar de oferecer suporte a versões anteriores e o Aplicativo poderá não funcionar adequadamente.</p>
+
+            <h2>8. Lei Aplicável e Jurisdição</h2>
+            <p>Estes Termos são submetidos exclusivamente à legislação do Brasil, em especial à LGPD (Lei nº 13.709/2018) e ao Marco Civil da Internet (Lei nº 12.965/2014).</p>
+        </article>
+
+        <!-- ============================================== -->
+        <!-- SEÇÃO: POLÍTICA DE PRIVACIDADE                 -->
+        <!-- ============================================== -->
+        <article id="politica-privacidade" class="document-section">
+            <h1>Política de Privacidade</h1>
+            <p class="date-update">Última atualização: 25 de setembro de 2026</p>
+
+            <p>Esta Política de Privacidade descreve como o Locavio coleta, usa, armazena e protege os dados pessoais dos usuários (proprietários de imóveis) e de terceiros cujos dados sejam inseridos no aplicativo (inquilinos), em conformidade com a Lei Geral de Proteção de Dados (LGPD).</p>
+
+            <h2>1. Coleta e Uso de Suas Informações Pessoais</h2>
+            <p>Ao utilizar o nosso Serviço, poderemos solicitar que você nos forneça determinadas informações de identificação pessoal. As informações podem incluir:</p>
             <ul>
                 <li>Nome e sobrenome</li>
                 <li>E-mail</li>
-                <li>Endereço, Estado, Província, CEP, Cidade</li>
-                <li>Dados dos imóveis cadastrados (endereço, características, fotos)</li>
-                <li>Dados de contratos de locação e valores de aluguel</li>
-                <li>Solicitações de manutenção e histórico de comunicação sobre os imóveis</li>
-                <li>Dados de calendário/agenda relacionados aos imóveis</li>
-                <li>Documentos e fotos que você anexar ao Aplicativo (ex.: contratos, comprovantes)</li>
+                <li>Endereço, Estado, CEP, Cidade</li>
+                <li>Dados dos imóveis cadastrados</li>
+                <li>Dados de contratos de locação e valores</li>
+                <li>Documentos e fotos que você anexar</li>
             </ul>
 
-            <h3>2.2 Uso dos Seus Dados Pessoais</h3>
-            <p>A Empresa poderá utilizar os Dados Pessoais para as seguintes finalidades:</p>
+            <h2>2. Armazenamento dos Dados — iCloud e CloudKit</h2>
+            <p>Os dados inseridos no Aplicativo são armazenados por meio dos serviços iCloud e CloudKit, da Apple Inc., que atua como Operadora dos dados em nosso nome. Isso significa que:</p>
             <ul>
-                <li><strong>Para fornecer e manter o nosso Serviço</strong>, incluindo o monitoramento do uso do nosso Serviço.</li>
-                <li><strong>Para gerenciar sua Conta:</strong> para gerenciar seu registro como usuário do Serviço. Os Dados Pessoais que você fornece podem lhe dar acesso a diferentes funcionalidades do Serviço disponíveis para você como Usuário registrado.</li>
-                <li><strong>Para entrar em contato com Você:</strong> para contatá-lo por e-mail ou outras formas equivalentes de comunicação eletrônica, como notificações push de aplicativos móveis, referentes a atualizações ou comunicações informativas relacionadas às funcionalidades, produtos ou serviços contratados, incluindo atualizações de segurança, quando necessário ou razoável para sua implementação.</li>
-                <li><strong>Para gerenciar suas solicitações:</strong> para atender e gerenciar suas solicitações para nós.</li>
-                <li><strong>Para outras finalidades:</strong> podemos utilizar suas informações para outras finalidades, como análise de dados, identificação de tendências de uso, determinação da eficácia de nossas campanhas promocionais, e avaliação e aprimoramento do nosso Serviço, produtos, serviços, marketing e da sua experiência.</li>
+                <li>A Apple processa e armazena os dados exclusivamente conforme nossas instruções.</li>
+                <li>A Apple aplica suas próprias medidas de segurança e criptografia sobre os dados.</li>
+                <li>Não temos acesso direto aos servidores da Apple além do que a API do CloudKit disponibiliza.</li>
             </ul>
 
-            <p>Podemos compartilhar seus Dados Pessoais nas seguintes situações:</p>
-            <ul>
-                <li><strong>Com o Seu consentimento:</strong> podemos divulgar seus Dados Pessoais para qualquer outra finalidade com o seu consentimento.</li>
-                <li><strong>Com Operadores/Prestadores de Serviços:</strong> com a Apple (iCloud/CloudKit), para armazenamento e funcionamento do Aplicativo.</li>
-                <li><strong>Com autoridades:</strong> quando exigido por lei ou por ordem de autoridade pública competente.</li>
-            </ul>
-        </section>
-
-        <section aria-labelledby="dados-terceiros">
-            <h2 id="dados-terceiros">3. Dados de Terceiros (Inquilinos)</h2>
+            <h2>3. Dados de Terceiros (Inquilinos)</h2>
             <p>Ao cadastrar um imóvel ou contrato, Você poderá inserir Dados Pessoais de terceiros (inquilinos), como nome, contato, CPF e histórico de pagamento. Nesse caso:</p>
-            <ul>
-                <li>Você é responsável por garantir que possui base legal e legitimidade para inserir esses dados no Aplicativo (em regra, a execução do contrato de locação).</li>
-                <li>Você é responsável por informar o inquilino sobre esse tratamento, conforme exigido pela LGPD.</li>
-                <li>A Empresa trata esses dados exclusivamente para viabilizar as funcionalidades do Aplicativo (gestão do contrato, comunicação, histórico de pagamentos), na qualidade de controladora dos sistemas, mas sem relação direta de conta com o inquilino.</li>
-            </ul>
-        </section>
+            <p>Você é responsável por garantir que possui base legal e legitimidade para inserir esses dados no Aplicativo (em regra, a execução do contrato de locação). A Empresa trata esses dados exclusivamente para viabilizar as funcionalidades do Aplicativo, na qualidade de controladora dos sistemas, mas sem relação direta de conta com o inquilino.</p>
 
-        <section aria-labelledby="armazenamento-dados">
-            <h2 id="armazenamento-dados">4. Armazenamento dos Dados — iCloud e CloudKit</h2>
-            <p>Os dados inseridos no Aplicativo são armazenados por meio dos serviços <strong>iCloud</strong> e <strong>CloudKit</strong>, da Apple Inc., que atua como Operadora dos dados em nosso nome. Isso significa que:</p>
-            <ul>
-                <li>A Apple processa e armazena os dados exclusivamente conforme nossas instruções e para viabilizar o funcionamento do Aplicativo.</li>
-                <li>Os servidores utilizados podem estar localizados fora do Brasil, o que pode envolver transferência internacional de dados.</li>
-                <li>A Apple aplica suas próprias medidas de segurança e criptografia sobre os dados armazenados via CloudKit; mais informações estão disponíveis na <a href="https://www.apple.com/legal/privacy/" target="_blank" rel="noopener noreferrer">Política de Privacidade da Apple</a>.</li>
-                <li>Não temos acesso direto aos servidores da Apple além do que a API do CloudKit disponibiliza para o funcionamento do Aplicativo.</li>
-            </ul>
-        </section>
-
-        <section aria-labelledby="retencao-dados">
-            <h2 id="retencao-dados">5. Retenção dos Seus Dados Pessoais</h2>
-            <p>Mantemos seus dados pessoais apenas pelo tempo necessário para as finalidades descritas nesta Política. Ao encerrar sua Conta, seus dados pessoais são excluídos imediatamente da nossa base de dados ativa.</p>
-            <p>Essa exclusão está sujeita a limitações técnicas de infraestrutura: cópias de segurança mantidas pela Apple (iCloud/CloudKit) seguem as políticas próprias de retenção da Apple e podem não ser removidas de forma instantânea de todos os sistemas de backup e replicação.</p>
+            <h2>4. Retenção e Exclusão de Dados</h2>
+            <p>Mantemos seus dados pessoais apenas pelo tempo necessário para as finalidades descritas nesta Política. Ao encerrar sua Conta nativamente pelo Aplicativo, seus dados pessoais são excluídos imediatamente da nossa base de dados ativa.</p>
             <p>A exclusão da Conta é definitiva e não pode ser desfeita. Recomendamos que você mantenha suas próprias cópias de documentos, contratos e comprovantes armazenados no aplicativo antes de solicitar o encerramento.</p>
-        </section>
 
-        <section aria-labelledby="direitos-titular">
-            <h2 id="direitos-titular">6. Seus Direitos como Titular de Dados</h2>
-            <p>Nos termos do art. 18 da LGPD, você tem direito a:</p>
-            <ul>
-                <li>Confirmação da existência de tratamento de seus dados.</li>
-                <li>Acesso aos seus dados.</li>
-                <li>Correção de dados incompletos, inexatos ou desatualizados.</li>
-                <li>Anonimização, bloqueio ou eliminação de dados desnecessários ou excessivos.</li>
-                <li>Eliminação dos dados tratados com base no seu consentimento.</li>
-            </ul>
-            <p>Para exercer qualquer um desses direitos, entre em contato conosco pelos canais indicados abaixo.</p>
-        </section>
+            <h2>5. Segurança dos Seus Dados Pessoais</h2>
+            <p>Adotamos medidas técnicas e administrativas razoáveis para proteger seus Dados Pessoais, incluindo a criptografia oferecida pela infraestrutura do iCloud/CloudKit. Ainda assim, nenhum método de transmissão pela internet ou armazenamento eletrônico é 100% seguro.</p>
 
-        <section aria-labelledby="transferencia-dados">
-            <h2 id="transferencia-dados">7. Transferência dos Seus Dados Pessoais</h2>
-            <p>Como os dados são armazenados via iCloud/CloudKit, é possível que sejam transferidos para e mantidos em servidores localizados fora do Brasil. Quando isso ocorrer, adotaremos as salvaguardas exigidas pela LGPD (art. 33), como cláusulas contratuais e garantias de proteção equivalentes às exigidas na legislação brasileira.</p>
-        </section>
+            <h2>6. Fale Conosco</h2>
+            <p>Se Você tiver alguma dúvida sobre os documentos legais aplicáveis ao serviço ou precisar exercer os seus direitos sob a LGPD, pode entrar em contato conosco:</p>
+            <p><strong>Por e-mail:</strong> <a href="mailto:locaviodev@gmail.com">locaviodev@gmail.com</a></p>
+        </article>
 
-        <section aria-labelledby="exclusao-dados">
-            <h2 id="exclusao-dados">8. Exclusão dos Seus Dados Pessoais</h2>
-            <p>Você tem o direito de excluir ou solicitar que nós o ajudemos a excluir os Dados Pessoais que coletamos sobre Você.</p>
-            <p>O nosso Serviço pode lhe dar a possibilidade de excluir determinadas informações sobre você diretamente pelo Serviço.</p>
-            <p>Você pode atualizar, corrigir ou excluir suas informações a qualquer momento, acessando sua conta, caso possua uma, e acessando a seção de configurações de conta que permite gerenciar suas informações pessoais. Você também pode entrar em contato conosco para solicitar acesso, correção ou exclusão de quaisquer Dados Pessoais que Você tenha nos fornecido.</p>
-            <p>Observe, no entanto, que podemos precisar reter determinadas informações quando tivermos uma obrigação legal ou base legal para tanto.</p>
-        </section>
-
-        <section aria-labelledby="divulgacao-dados">
-            <h2 id="divulgacao-dados">9. Divulgação dos Seus Dados Pessoais</h2>
-            
-            <h3>9.1 Autoridades Policiais</h3>
-            <p>Em certas circunstâncias, a Empresa poderá divulgar seus Dados Pessoais se exigido por lei ou em resposta a solicitações válidas de autoridades públicas (por exemplo, um tribunal ou órgão governamental).</p>
-            
-            <h3>9.2 Outras Exigências Legais</h3>
-            <p>A Empresa poderá divulgar seus Dados Pessoais na crença de boa-fé de que tal ação é necessária para:</p>
-            <ul>
-                <li>Cumprir uma obrigação legal.</li>
-                <li>Proteger e defender os direitos ou a propriedade da Empresa.</li>
-                <li>Prevenir ou investigar possível conduta indevida relacionada ao serviço.</li>
-                <li>Proteger a segurança pessoal dos usuários do serviço ou do público.</li>
-                <li>Proteger contra responsabilidade legal.</li>
-            </ul>
-        </section>
-
-        <section aria-labelledby="seguranca-dados">
-            <h2 id="seguranca-dados">10. Segurança dos Seus Dados Pessoais</h2>
-            <p>Adotamos medidas técnicas e administrativas razoáveis para proteger seus Dados Pessoais, incluindo a criptografia oferecida pela infraestrutura do iCloud/CloudKit. Ainda assim, nenhum método de transmissão pela internet ou armazenamento eletrônico é 100% seguro, e não podemos garantir segurança absoluta.</p>
-        </section>
-
-        <section aria-labelledby="notificacao-incidentes">
-            <h2 id="notificacao-incidentes">11. Notificação de Incidentes de Segurança</h2>
-            <p>Em caso de incidente de segurança que possa acarretar risco ou dano relevante aos titulares, comunicaremos a Autoridade Nacional de Proteção de Dados (ANPD) e os titulares afetados, conforme exigido pelo art. 48 da LGPD, informando a natureza dos dados afetados, as medidas técnicas adotadas e as providências tomadas para reverter ou mitigar os efeitos do incidente.</p>
-        </section>
-
-        <section aria-labelledby="privacidade-menores">
-            <h2 id="privacidade-menores">12. Privacidade de Crianças e Menores</h2>
-            <p>O Aplicativo é destinado a proprietários de imóveis maiores de 18 anos, idade mínima para celebrar contratos de locação no Brasil. Não coletamos intencionalmente dados de menores de idade. Caso identifiquemos Dados Pessoais de um menor cadastrados indevidamente, tomaremos as medidas necessárias para excluí-los.</p>
-        </section>
-
-        <section aria-labelledby="alteracoes-politica">
-            <h2 id="alteracoes-politica">13. Alterações a esta Política de Privacidade</h2>
-            <p>Podemos atualizar nossa Política de Privacidade periodicamente. Notificaremos você sobre quaisquer alterações da nova Política de Privacidade.</p>
-            <p>Informaremos Você por e-mail e/ou por aviso destacado em nosso serviço, antes que a alteração entre em vigor, e atualizaremos a data de "Última atualização" no topo desta Política de Privacidade.</p>
-            <p>Recomendamos que Você revise esta Política de Privacidade periodicamente para verificar quaisquer alterações. As alterações a esta Política de Privacidade entram em vigor quando publicadas nesta página.</p>
-        </section>
-
-        <section aria-labelledby="fale-conosco">
-            <h2 id="fale-conosco">14. Fale Conosco</h2>
-            <p>Se Você tiver alguma dúvida sobre esta Política de Privacidade, Você pode entrar em contato conosco:</p>
-            <ul>
-                <li><strong>Por e-mail:</strong> <a href="mailto:locaviodev@gmail.com">locaviodev@gmail.com</a></li>
-            </ul>
-        </section>
     </main>
 
 </body>
