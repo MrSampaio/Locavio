@@ -30,6 +30,9 @@ final class AppleAuthManager {
     
     var currentAuthState: AppAuthState = .loading
     
+    // true enquanto o iCloud está importando dados pro aparelho.
+    // as telas usam isso pra mostrar "carregando" (ex.: lista de imóveis)
+    var isSyncingFromCloud = false
     
     // puxa o KeychainHelper pra simplificar a escrita
     private let keychainHelper = KeychainHelper.shared
@@ -42,8 +45,9 @@ final class AppleAuthManager {
     @ObservationIgnored private var cloudImportFinished = false
     @ObservationIgnored private var cloudObserver: NSObjectProtocol?
     @ObservationIgnored private let logger = Logger(subsystem: Bundle.main.bundleIdentifier ?? "locavio", category: "CloudSync")
+    
+    // a checagem de credencial só roda uma vez por abertura do app
     @ObservationIgnored private var didCheckCredential = false
-
     
     // ID do usuário logado. é a única informação que fica no Keychain
     var currentUserID: String? {
@@ -73,8 +77,9 @@ final class AppleAuthManager {
     
     // MARK: - iCloud
     
-    // o SwiftData avisa por essa notificação quando o CloudKit termina de importar/exportar.
-    // serve pra saber se já dá pra concluir que a conta NÃO existe no iCloud, e pra logar erros de sincronização
+    // o SwiftData avisa por essa notificação quando o CloudKit começa e termina de importar/exportar.
+    // serve pra mostrar "carregando" enquanto importa, pra saber se já dá pra concluir que a conta
+    // NÃO existe no iCloud, e pra logar erros de sincronização
     private func observeCloudSync() {
         cloudObserver = NotificationCenter.default.addObserver(
             forName: NSPersistentCloudKitContainer.eventChangedNotification,
@@ -82,8 +87,10 @@ final class AppleAuthManager {
             queue: .main
         ) { [weak self] notification in
             guard let event = notification.userInfo?[NSPersistentCloudKitContainer.eventNotificationUserInfoKey]
-                    as? NSPersistentCloudKitContainer.Event,
-                  event.endDate != nil else { return }
+                    as? NSPersistentCloudKitContainer.Event else { return }
+            
+            // endDate nil = o evento acabou de começar. endDate preenchida = terminou
+            let finished = event.endDate != nil
             
             let kind: String
             switch event.type {
@@ -96,13 +103,22 @@ final class AppleAuthManager {
             let errorText = event.error?.localizedDescription
             
             Task { @MainActor in
-                self?.handleCloudEvent(kind: kind, succeeded: succeeded, errorText: errorText)
+                self?.handleCloudEvent(kind: kind, finished: finished, succeeded: succeeded, errorText: errorText)
             }
         }
     }
     
     @MainActor
-    private func handleCloudEvent(kind: String, succeeded: Bool, errorText: String?) {
+    private func handleCloudEvent(kind: String, finished: Bool, succeeded: Bool, errorText: String?) {
+        
+        // liga o "carregando" quando uma importação começa e desliga quando termina
+        if kind == "import" {
+            isSyncingFromCloud = !finished
+        }
+        
+        // o resto só interessa quando o evento terminou
+        guard finished else { return }
+        
         if let errorText {
             logger.error("CloudKit \(kind, privacy: .public) failed: \(errorText, privacy: .public)")
         }
@@ -273,6 +289,8 @@ final class AppleAuthManager {
         
         self.context = context
         
+        // o .task do app pode disparar de novo a cada troca de tela (login → cadastro → app).
+        // essa checagem só faz sentido uma vez por abertura do app
         guard !didCheckCredential else { return }
         didCheckCredential = true
         
