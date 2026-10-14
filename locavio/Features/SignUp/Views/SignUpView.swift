@@ -131,6 +131,7 @@ struct SignUpView: View {
             .scrollIndicators(.hidden)
             
         }
+        .dismissKeyboardOnTap()
         .alert("Erro no Cadastro", isPresented: $signUpViewModel.showAlert) {
             Button("Entendi", role: .cancel) { }
         } message: {
@@ -141,13 +142,6 @@ struct SignUpView: View {
             signUpViewModel.loadOwner(context: context, authManager: authManager)
         }
         .ignoresSafeArea(.keyboard)
-        .onTapGesture {
-            #if canImport(UIKit)
-                hideKeyboard()
-            #endif
-        }
-
-        
 
     }
 }

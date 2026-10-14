@@ -47,6 +47,7 @@ struct EditPropertyView: View {
             PropertyTenantSection()
             PropertyContractSection(onError: show)
         }
+        .dismissKeyboardOnTap()
         .scrollContentBackground(.hidden)
         .toolbar(.hidden, for: .tabBar)
         .ignoresSafeArea(edges: .bottom)

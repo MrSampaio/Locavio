@@ -68,6 +68,7 @@ struct PropertiesView: View {
             }
             .ignoresSafeArea(.keyboard)
             .scrollDismissesKeyboard(.interactively)
+            
             .toolbar {
                 AppToolbar(
                     options: viewModel.options,
@@ -77,6 +78,7 @@ struct PropertiesView: View {
             }
             .padding(.horizontal)
         }
+        .dismissKeyboardOnTap()
         .scrollEdgeEffectStyle(.soft, for: .bottom)
         .scrollIndicators(.hidden)
         .background(Color.appBg)

@@ -76,11 +76,7 @@ struct EditProfileSheet: View {
                 Text(viewModel.errorMessage)
             }
             .ignoresSafeArea(.keyboard)
-            .onTapGesture {
-                #if canImport(UIKit)
-                    hideKeyboard()
-                #endif
-            }
+            .dismissKeyboardOnTap()
 
 //            .toolbar{
 //                SheetsToolbar(

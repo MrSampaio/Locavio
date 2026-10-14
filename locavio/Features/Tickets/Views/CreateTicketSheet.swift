@@ -36,6 +36,7 @@ struct CreateTicketSheet: View {
                 .padding(.bottom, 16)
                 .padding(.top, 16)
             }
+            .dismissKeyboardOnTap()
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 SheetsToolbar(

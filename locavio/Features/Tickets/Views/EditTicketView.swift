@@ -52,6 +52,7 @@ struct EditTicketView: View {
             .padding(.bottom, 24)
             .padding(.top, 16)
         }
+        .dismissKeyboardOnTap()
         .background(Color.appBg)
         .navigationTitle("Editar chamado")
         .navigationBarTitleDisplayMode(.inline)
