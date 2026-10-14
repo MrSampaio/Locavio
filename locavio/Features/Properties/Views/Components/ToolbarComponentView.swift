@@ -11,9 +11,9 @@ struct AppToolbar: ToolbarContent {
     @Bindable var options: PropertyListOptionsViewModel
     var onAdd: () -> Void
     
-    private let addPropertyTip = AddPropertyTip()
-    private let propertyStatusTip = PropertyStatusTip()
-
+    /// dica do botão "+", entregue pela tela (que controla a sequência das dicas)
+    var tip: (any Tip)? = nil
+    
     var body: some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {
             Menu {
@@ -25,7 +25,7 @@ struct AppToolbar: ToolbarContent {
                     }
                     .pickerStyle(.inline)
                 }
-
+                
                 Section("Filtrar por") {
                     Menu("Tipo de imóvel") {
                         Picker("Tipo de imóvel", selection: $options.typeFilter) {
@@ -36,7 +36,7 @@ struct AppToolbar: ToolbarContent {
                         }
                         .pickerStyle(.inline)
                     }
-
+                    
                     Menu("Aluguel") {
                         Picker("Aluguel", selection: $options.rentFilter) {
                             ForEach(RentFilter.allCases) { filter in
@@ -50,9 +50,9 @@ struct AppToolbar: ToolbarContent {
                 Image(systemName: "ellipsis")
             }
         }
-
+        
         ToolbarSpacer(.fixed, placement: .topBarTrailing)
-
+        
         ToolbarItem(placement: .topBarTrailing) {
             Button(action: onAdd) {
                 Image(systemName: "plus")
@@ -60,7 +60,7 @@ struct AppToolbar: ToolbarContent {
             }
             .buttonStyle(.glassProminent)
             .tint(.accentColor)
-            .popoverTip(addPropertyTip)
+            .popoverTip(tip)
         }
         
     }
@@ -68,7 +68,7 @@ struct AppToolbar: ToolbarContent {
 
 #Preview {
     let options = PropertyListOptionsViewModel()
-
+    
     NavigationStack {
         Color.clear
             .navigationBarTitleDisplayMode(.inline)

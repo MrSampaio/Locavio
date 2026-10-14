@@ -1,5 +1,5 @@
 //
-//  PropertiesView.swift
+//  ScreenPropertyView.swift
 //  locavio
 //
 //  Created by Guilherme Alves de Souza on 26/09/26.
@@ -16,8 +16,10 @@ struct PropertiesView: View {
     @Environment(\.modelContext) private var context
     
     @State private var viewModel = PropertiesViewModel()
-    private let addPropertyTip = AddPropertyTip()
-    private let propertyStatusTip = PropertyStatusTip()
+    @State private var tipGroup = TipGroup(.ordered) {
+        AddPropertyTip()
+        PropertyStatusTip()
+    }
     
     @Query private var properties: [Property]
     @Query private var users: [Owner]
@@ -54,7 +56,7 @@ struct PropertiesView: View {
                     }
                 }
                 .pickerStyle(.segmented)
-                .popoverTip(propertyStatusTip)
+                .popoverTip(tipGroup.currentTip as? PropertyStatusTip)
                 
                 if properties.isEmpty && isSyncing {
                     
@@ -124,7 +126,8 @@ struct PropertiesView: View {
             .toolbar {
                 AppToolbar(
                     options: viewModel.options,
-                    onAdd: { coordinator.presentAddProperty() }
+                    onAdd: { coordinator.presentAddProperty() },
+                    tip: tipGroup.currentTip as? AddPropertyTip
                 )
                 
             }
