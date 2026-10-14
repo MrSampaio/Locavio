@@ -5,6 +5,11 @@
 //  Created by Guilherme Alves de Souza on 12/10/26.
 //
 
+//
+//  PropertiesViewModel+Edit.swift
+//  locavio
+//
+
 import Foundation
 import SwiftData
 
@@ -53,6 +58,7 @@ extension PropertiesViewModel {
 
         propertyDraft = draft
 
+        // contrato: o formulário trabalha em cima do contractDraft
         if let data = property.contract?.pdfData {
             var contract = ContractDraft(
                 fileName: property.contract?.fileName ?? "Contrato.pdf",
@@ -73,7 +79,8 @@ extension PropertiesViewModel {
     func applyDraft(to property: Property,
                     context: ModelContext,
                     type: PropertyType,
-                    uf: UF) throws -> Bool {
+                    uf: UF,
+                    expenses: [Expenses]) throws -> Bool {
 
         // 1. valida tudo antes de mexer no modelo
         let cleanTitle = propertyDraft.name.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -93,6 +100,16 @@ extension PropertiesViewModel {
             guard !propertyDraft.tenantPhone.isEmpty else { throw TenantErrors.invalidPhone }
         }
 
+        // despesas: mesma validação do addProperty
+        for expense in expenses {
+            if (expense.title ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                throw ExpensesErrors.invalidTitle
+            }
+            if expense.value == nil {
+                throw ExpensesErrors.invalidValue
+            }
+        }
+
         // 2. dados do imóvel
         property.image = propertyDraft.image
         property.title = cleanTitle
@@ -107,9 +124,10 @@ extension PropertiesViewModel {
         property.uf = uf.rawValue
         property.profit = convertedProfit
 
-        // 3. inquilino e contrato
+        // 3. inquilino, contrato e despesas
         applyTenant(named: tenantName, to: property, context: context)
         applyContract(to: property, context: context)
+        applyExpenses(expenses, to: property, context: context)
 
         do {
             try context.save()
@@ -171,6 +189,20 @@ extension PropertiesViewModel {
         case (nil, nil):
             break
         }
+    }
+
+    /// A lista editada é uma cópia: apaga as despesas antigas do imóvel e grava as novas no lugar.
+    private func applyExpenses(_ edited: [Expenses], to property: Property, context: ModelContext) {
+        for old in property.expenses ?? [] {
+            context.delete(old)
+        }
+
+        for expense in edited {
+            expense.property = property
+            context.insert(expense)
+        }
+
+        property.expenses = edited
     }
 
     private func attach(_ draft: ContractDraft, to property: Property, context: ModelContext) {
