@@ -87,6 +87,7 @@ struct TicketsView: View {
                 .frame(maxHeight: .infinity, alignment: .top)
             }
             .scrollIndicators(.hidden)
+            .dismissKeyboardOnTap()
             
             
            

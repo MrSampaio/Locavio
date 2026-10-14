@@ -46,6 +46,7 @@ struct NewPropertySheet: View {
             }
             .ignoresSafeArea(.keyboard)
             .scrollDismissesKeyboard(.interactively)
+            .dismissKeyboardOnTap()
             .alert("Atenção!", isPresented: $showErrorAlert) {
                 Button("OK", role: .cancel) {}
             } message: {
