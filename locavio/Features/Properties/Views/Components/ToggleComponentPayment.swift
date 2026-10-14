@@ -8,23 +8,25 @@
 import SwiftUI
 import SwiftData
 import UniformTypeIdentifiers
+import QuickLook
 
 struct ToggleComponentPayment: View {
     @Environment(\.modelContext) private var modelContext
     @Environment(\.scenePhase) private var scenePhase
-
+    
     @State private var viewModel: PaymentToggleViewModel
     @State private var condition: Bool
     @State private var showAlert = false
     @State private var showFileImporter = false
-
+    @State private var proofPreviewURL: URL?
+    
     init(property: Property) {
         let viewModel = PaymentToggleViewModel(property: property)
-
+        
         _viewModel = State(initialValue: viewModel)
         _condition = State(initialValue: viewModel.isPaid)
     }
-
+    
     var body: some View {
         VStack(spacing: 16) {
             OptionToggle(
@@ -42,7 +44,7 @@ struct ToggleComponentPayment: View {
                     )
                 }
             }
-
+            
             if condition {
                 proofSection
             }
@@ -65,12 +67,12 @@ struct ToggleComponentPayment: View {
                     true,
                     in: modelContext
                 )
-
+                
                 condition = true
             } label: {
                 Text("Sim")
             }
-
+            
             Button("Não", role: .cancel) {
                 condition = false
             }
@@ -82,6 +84,8 @@ struct ToggleComponentPayment: View {
         ) { result in
             handlePDF(result)
         }
+        // abre o comprovante em tela cheia (QuickLook)
+        .quickLookPreview($proofPreviewURL)
         .onChange(of: viewModel.isPaid) { _, isPaid in
             condition = isPaid
         }
@@ -98,17 +102,11 @@ struct ToggleComponentPayment: View {
             viewModel.refresh()
         }
     }
-
+    
     @ViewBuilder
     private var proofSection: some View {
         if viewModel.hasProof {
-            ViewContractComponent(
-                contractName: viewModel.proofName,
-                attachmentDate: viewModel.proofDate,
-                action: {
-                    showFileImporter = true
-                }
-            )
+            proofRow
         } else {
             Button {
                 showFileImporter = true
@@ -120,11 +118,11 @@ struct ToggleComponentPayment: View {
                         .frame(width: 24, height: 24)
                         .background(.green)
                         .clipShape(Circle())
-
+                    
                     Text("Adicionar comprovante")
                         .font(.body)
                     
-
+                    
                 }
                 .padding(.horizontal, 16)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -134,7 +132,61 @@ struct ToggleComponentPayment: View {
             .buttonStyle(.plain)
         }
     }
-
+    
+    // comprovante já anexado:
+    // - tocar no cartão visualiza o PDF
+    // - tocar no lápis (ao lado) abre o seletor pra trocar o arquivo
+    private var proofRow: some View {
+        HStack(spacing: 8) {
+            
+            Button {
+                proofPreviewURL = viewModel.makeProofPreviewURL()
+            } label: {
+                HStack(spacing: 16) {
+                    Image(systemName: "doc")
+                        .font(.title3)
+                        .foregroundStyle(Color.accentColor)
+                    
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text(viewModel.proofName)
+                            .font(.body)
+                            .foregroundStyle(.primary)
+                            .lineLimit(1)
+                        
+                        Text("Anexado em: \(viewModel.proofDate)")
+                            .font(.subheadline)
+                            .foregroundStyle(.gray)
+                    }
+                    
+                    Spacer(minLength: 0)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityHint("Abre o comprovante")
+            
+            Button {
+                showFileImporter = true
+            } label: {
+                Image(systemName: "pencil")
+                    .font(.body.weight(.semibold))
+                    .foregroundStyle(Color.accentColor)
+                    .frame(width: 44, height: 44)
+                    .contentShape(Circle())
+            }
+            .buttonStyle(.plain)
+            .accessibilityLabel("Substituir comprovante")
+        }
+        .padding(.horizontal, 16)
+        .frame(maxWidth: .infinity)
+        .frame(height: 75)
+        .background(.quaternary)
+        .clipShape(
+            RoundedRectangle(cornerRadius: 24)
+        )
+    }
+    
     private func handlePDF(
         _ result: Result<[URL], Error>
     ) {
@@ -158,6 +210,7 @@ struct ToggleComponentPayment: View {
                 do {
                     let data = try Data(contentsOf: url)
                     
+                    // se já existia um comprovante, o novo substitui o antigo
                     viewModel.saveProof(
                         data,
                         in: modelContext
@@ -179,12 +232,12 @@ struct ToggleComponentPayment: View {
 #Preview {
     let container = try! ModelContainer(
         for: Property.self, Owner.self, Tenant.self, Contract.self,
-             Payment.self, Expenses.self, Ticket.self, Maintence.self,
+        Payment.self, Expenses.self, Ticket.self, Maintence.self,
         configurations: ModelConfiguration(isStoredInMemoryOnly: true)
     )
     let property = Property(title: "Casa 1", paymentDay: 10, profit: 1200)
     container.mainContext.insert(property)
-
+    
     return ToggleComponentPayment(property: property)
         .padding()
         .modelContainer(container)
