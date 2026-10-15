@@ -9,51 +9,41 @@ import SwiftUI
 import SwiftData
 
 struct EditPropertyView: View {
-    
-    let property: Property
-    var onEditExpenses: () -> Void
-    
+
     @Environment(\.dismiss) private var dismiss
-    @Environment(PropertiesViewModel.self) private var viewModel
     @Environment(\.modelContext) private var context
-    
-    @State private var propertyType: PropertyType
-    @State private var uf: UF
-    @State private var hasLoaded = false // Controle para carregar só na primeira vez
-    @State private var showErrorAlert = false
-    @State private var errorMessage = ""
-    
-    init(property: Property, onEditExpenses: @escaping () -> Void = {}) {
-        self.property = property
-        self.onEditExpenses = onEditExpenses
-        _propertyType = State(initialValue: property.type ?? .other)
-        _uf = State(initialValue: UF(rawValue: property.uf ?? "") ?? .insert)
+    @Environment(PropertiesViewModel.self) private var propertiesViewModel
+
+    @State private var viewModel: EditPropertyViewModel
+
+    init(property: Property) {
+        _viewModel = State(initialValue: EditPropertyViewModel(property: property))
     }
-    
-    private var expensesTotal: Double {
-        (property.expenses ?? []).reduce(0) { $0 + ($1.value ?? 0) }
-    }
-    
+
     var body: some View {
         Form {
-            PropertyPhotoSection()
-            PropertyInfoSection(propertyType: $propertyType)
-            PropertyAddressSection(uf: $uf, onError: show)
-            
-            PropertyFinancialSection(expensesTotal: expensesTotal) {
-                expensesRow
+            if viewModel.isLoaded {
+                PropertyPhotoSection()
+                PropertyInfoSection(propertyType: $viewModel.propertyType)
+                PropertyAddressSection(uf: $viewModel.uf, onError: viewModel.show)
+
+                PropertyFinancialSection(expensesTotal: viewModel.expensesViewModel.totalExpenses) {
+                    ExpensesTextFieldCard(viewModel: viewModel.expensesViewModel)
+                }
+
+                PropertyTenantSection()
+                PropertyContractSection(onError: viewModel.show)
             }
-            
-            PropertyTenantSection()
-            PropertyContractSection(onError: show)
         }
         .scrollContentBackground(.hidden)
-        .toolbar(.hidden, for: .tabBar)
-        .ignoresSafeArea(edges: .bottom)
-        .background(Color.appBg)
+        .background(Color(.appBg).ignoresSafeArea())
         .ignoresSafeArea(.keyboard)
+        .onTapGesture {
+            #if canImport(UIKit)
+                hideKeyboard()
+            #endif
+        }
         .scrollDismissesKeyboard(.interactively)
-        .scrollIndicators(.hidden)
         .navigationTitle("Editar Imóvel")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
@@ -65,73 +55,22 @@ struct EditPropertyView: View {
                         .foregroundStyle(.white)
                 }
                 .buttonStyle(.borderedProminent)
+                .disabled(!viewModel.isLoaded)
             }
         }
-        .alert("Atenção!", isPresented: $showErrorAlert) {
+        .alert("Atenção!", isPresented: $viewModel.showErrorAlert) {
             Button("OK", role: .cancel) {}
         } message: {
-            Text(errorMessage)
+            Text(viewModel.errorMessage)
         }
-        .onAppear {
-            load()
-        }
+        .onAppear { viewModel.load(using: propertiesViewModel) }
     }
-    
-    // Linha de despesas
-    private var expensesRow: some View {
-        Button(action: onEditExpenses) {
-            HStack {
-                Label {
-                    Text("Valor das despesas")
-                } icon: {
-                    Image(systemName: "creditcard")
-                        .font(.subheadline)
-                        .foregroundStyle(.accent)
-                }
-                
-                Spacer()
-                
-                Text(expensesTotal, format: .currency(code: "BRL"))
-                    .foregroundStyle(.secondary)
-                
-                Image(systemName: "chevron.right")
-                    .font(.footnote.weight(.semibold))
-                    .foregroundStyle(.tertiary)
-            }
-        }
-        .buttonStyle(.plain)
-    }
-    
-    // Ações
-    
-    private func load() {
-        guard !hasLoaded else { return }
-        hasLoaded = true
-        
-        DispatchQueue.main.async {
-            viewModel.loadDraft(from: property)
-            viewModel.resetValidation()
-        }
-    }
-    
+
+    /// Fechar a tela é assunto da view (vem do ambiente); o view model só diz se salvou.
     private func save() {
-        guard viewModel.validateForm() else {
-            errorMessage = "Corrija os campos destacados em vermelho."
-            showErrorAlert = true
-            return
+        if viewModel.save(using: propertiesViewModel, context: context) {
+            dismiss()
         }
-        
-        do {
-            if try viewModel.applyDraft(to: property, context: context, type: propertyType, uf: uf) {
-                dismiss()
-            }
-        } catch {
-            show(error)
-        }
-    }
-    
-    private func show(_ error: Error) {
-        errorMessage = error.localizedDescription
-        showErrorAlert = true
     }
 }
+

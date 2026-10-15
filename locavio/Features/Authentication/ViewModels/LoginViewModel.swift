@@ -9,18 +9,23 @@ import Foundation
 import SwiftData
 
 @Observable
-final class LoginViewModel{
+final class LoginViewModel {
     
     // cria ou atualiza o Owner no SwiftData e decide pra qual tela o app vai
-    func syncUserToSwiftData(info: AppleSignInInfo, context: ModelContext, authManager: AppleAuthManager) {
+    @MainActor
+    func syncUserToSwiftData(info: AppleSignInInfo, context: ModelContext, authManager: AppleAuthManager) async {
         
         let userID = info.userID
         
-        // verifica se o usuário já existe no banco local
-        let descriptor = FetchDescriptor<Owner>(predicate: #Predicate { $0.appleUserID == userID })
+        // mostra a tela de carregamento enquanto procura a conta.
+        // depois de reinstalar, o banco local está vazio e a conta pode estar chegando do iCloud
+        authManager.currentAuthState = .loading
+        
+        // busca o Owner (juntando duplicados, sem apagar imóveis) e espera o iCloud se precisar
+        let existingOwner = await authManager.waitForOwner(userID: userID, context: context)
         
         do {
-            if let owner = try context.fetch(descriptor).first {
+            if let owner = existingOwner {
                 
                 // a Apple só manda nome e email na primeira autorização.
                 // então só preenche se estiver faltando e NUNCA sobrescreve um dado existente com nil
@@ -31,6 +36,9 @@ final class LoginViewModel{
                     owner.email = email
                 }
                 
+                try context.save()
+                
+                // decide pra qual tela vai baseado no documento
                 if let doc = owner.documentNumber, !doc.isEmpty {
                     authManager.currentAuthState = .authenticated
                 } else {
@@ -39,11 +47,12 @@ final class LoginViewModel{
                 
             } else {
                 
-                // usuário novo (ou conta que foi excluída): cria o perfil com o que a Apple mandou.
-                // se o nome vier nil, a tela de cadastro pede o nome
+                // não achou nem no banco local nem no iCloud: usuário novo (ou conta excluída).
+                // cria o perfil com o que a Apple mandou e pede o cadastro (documento).
+                //
+                // IMPORTANTE: nunca marcar como .authenticated sem documento. o Owner sem documento
+                // faz o app voltar pro cadastro no próximo login
                 let newOwner = Owner(appleUserID: userID, fullName: info.fullName, email: info.email)
-                
-                // insere no SwiftData (o iCloud vai sincronizar automaticamente hehe)
                 context.insert(newOwner)
                 try context.save()
                 

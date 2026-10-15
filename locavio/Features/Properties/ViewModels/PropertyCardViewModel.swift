@@ -69,13 +69,6 @@ final class PropertyCardViewModel {
 
     var rentLabel: String { "Aluguel" }
 
-    var rentText: String {
-        guard let profit = property.profit else { return "—" }
-        return profit.formatted(
-            .currency(code: "BRL").locale(Locale(identifier: "pt_BR"))
-        )
-    }
-
   
 
     var nextPaymentLabel: String { "Próx. Pagamento:" }

@@ -48,5 +48,7 @@ final class PropertiesCoordinator {
     func pushToEditTicket(ticket: Ticket) {
         path.append(PropertiesRoute.editTicket(ticket: ticket))
     }
+    
+   
 }
 

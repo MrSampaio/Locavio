@@ -35,6 +35,12 @@ struct PropertyStatusTip: Tip {
         Text("Você pode escolher quais imóveis quer ver de acordo com o status.")
     }
     
+    var image: Image? {
+        Image(systemName: "house.badge.exclamationmark.fill")
+    }
+    
+    
+    
     var options: [TipOption] {
         [Tips.MaxDisplayCount(1)]
     }

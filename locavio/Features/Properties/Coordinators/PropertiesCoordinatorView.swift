@@ -47,13 +47,8 @@ struct PropertiesCoordinatorView: View {
                         RecentPaymentsView(property: property)
 
                     case .editProperty(let property):
-                        EditPropertyView(
-                            property: property,
-                            onEditExpenses: {
-                                // TODO: abrir a tela de despesas do imóvel
-                            }
-                        )
-                        .environment(propertiesViewModel)
+                        EditPropertyView(property: property)
+                            .environment(propertiesViewModel)
                             
                     case .ticketDetails(let ticket):
                         TicketDetailView(

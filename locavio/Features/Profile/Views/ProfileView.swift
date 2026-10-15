@@ -15,6 +15,7 @@ struct ProfileView: View {
     @Environment(ProfileCoordinator.self) private var coordinator
     @Environment(AppleAuthManager.self) private var authManager
     @Environment(\.modelContext) private var context
+    @Environment(\.openURL) private var openURL
     @Query private var users: [Owner]
 
     
@@ -191,6 +192,21 @@ struct ProfileView: View {
                 text: "Política de privacidade",
                 icon: "lock.fill",
                 action: coordinator.pushToPrivacy
+            )
+            .padding(.horizontal, 16)
+            .padding(.vertical, 14)
+            
+            Divider()
+                .padding(.leading, 16)
+            
+            LegalOption(
+                text: "Fale Conosco",
+                icon: "envelope.fill",
+                action: {
+                    if let url = URL(string: "mailto:locaviodev@gmail.com") {
+                        openURL(url)
+                    }
+                }
             )
             .padding(.horizontal, 16)
             .padding(.vertical, 14)

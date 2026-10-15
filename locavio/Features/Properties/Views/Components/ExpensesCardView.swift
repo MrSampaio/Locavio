@@ -40,7 +40,7 @@ struct ExpensesCardView: View {
                 
                 Spacer()
                 
-                Text(viewModel.totalExpenses, format: .currency(code: "BRL"))
+                Text(viewModel.totalRentValue, format: .currency(code: "BRL"))
                     .font(.title3.weight(.semibold))
                     .foregroundStyle(.secondary)
                 
@@ -72,13 +72,14 @@ struct ExpensesCardView: View {
                 }
             }
             
-            
+            expenseRow(viewModel.profitRow)
         }
         .background(.quaternary)
     }
     
+    @ViewBuilder
     private func expenseRow(_ row: ExpenseRow) -> some View {
-        HStack {
+        let base = HStack {
             Text(row.title)
                 .font(.title3)
                 .foregroundStyle(.primary)
@@ -94,12 +95,17 @@ struct ExpensesCardView: View {
         .padding(.horizontal, 20)
         .padding(.vertical, 18)
         .contentShape(Rectangle())
-        .contextMenu {
-            Button(role: .destructive) {
-                viewModel.delete(row.expense, context: modelContext)
-            } label: {
-                Label("Remover", systemImage: "trash")
+        
+        if let expense = row.expense {
+            base.contextMenu {
+                Button(role: .destructive) {
+                    viewModel.delete(expense, context: modelContext)
+                } label: {
+                    Label("Remover", systemImage: "trash")
+                }
             }
+        } else {
+            base
         }
     }
 }
@@ -115,7 +121,7 @@ struct ExpensesCardView: View {
     let property = Property(title: "Casa 1")
     container.mainContext.insert(property)
 
-    for (title, value) in [("IPTU", 200.0), ("Condomínio", 400), ("Seguro", 200), ("Lucro", 400)] {
+    for (title, value) in [("IPTU", 200.0), ("Condomínio", 400), ("Seguro", 200)] {
         container.mainContext.insert(Expenses(property: property, title: title, value: value))
     }
 

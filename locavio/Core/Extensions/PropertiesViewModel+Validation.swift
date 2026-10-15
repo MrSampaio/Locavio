@@ -5,15 +5,13 @@
 //  Created by Guilherme Alves de Souza on 10/10/26.
 //
 
-
-
 import Foundation
 
 extension PropertiesViewModel {
 
     /// Campos do formulário de imóvel que passam pela validação ao salvar
     static let validatedFields: [PropertyFieldType] = [
-        .name, .area, .cep, .profit,
+        .name, .area, .cep, .profit,.number,
         .tenantName, .tenantEmail, .tenantCPF, .tenantPhone
     ]
 
@@ -39,6 +37,9 @@ extension PropertiesViewModel {
             let digits = propertyDraft.cep.onlyDigits
             if digits.isEmpty { return nil }
             return digits.count == 8 ? nil : "O CEP deve ter 8 dígitos"
+            
+        case .number:
+            return clean(propertyDraft.number).isEmpty ? "informe o número do imóvel" : nil
 
         case .profit:
             return parseCurrency(propertyDraft.profit) == nil ? "Informe o lucro" : nil

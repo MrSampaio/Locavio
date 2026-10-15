@@ -44,11 +44,12 @@ struct EditProfileSheet: View {
                     viewModel.documentNumber = maskedText
                 }
             }
-            .onChange(of: viewModel.selectedDocumentType) { oldValue, newValue in
-                viewModel.documentNumber = ""
-            }
             .onAppear {
                 viewModel.loadUserData(user: user)
+            }
+            
+            .onChange(of: viewModel.selectedDocumentType) { _, newValue in
+                viewModel.documentTypeDidChange(to: newValue)
             }
             .toolbar {
                 SheetsToolbar(
@@ -75,44 +76,30 @@ struct EditProfileSheet: View {
                 Text(viewModel.errorMessage)
             }
             .ignoresSafeArea(.keyboard)
-            .onTapGesture {
-                #if canImport(UIKit)
-                    hideKeyboard()
-                #endif
-            }
+            .dismissKeyboardOnTap()
 
-//            .toolbar{
-//                SheetsToolbar(
-//                    onConfirm: {},
-//                    onClose: {},
-//                    title: "Editar Perfil"
-//                )
-//            }
         }
        
     }
     
     @ViewBuilder
     var nameRow: some View {
-        HStack(spacing: 16) {
+        HStack(alignment: .top) {
             Image(systemName: "person.fill")
-                .font(.title3)
-                .foregroundColor(.accentColor)
-            
-            Text("Nome")
-                .font(.body)
-            
-            Spacer()
-            
-            TextField(
-                "Seu nome completo", text: $viewModel.fullName)
-                .multilineTextAlignment(.trailing)
-                .textContentType(.name)
-                .textInputAutocapitalization(.words)
-                .foregroundColor(.primary)
+                .foregroundStyle(.accent)
+
+            VStack(alignment: .leading) {
+                Text("Nome")
+                    .font(.subheadline.bold())
+
+                TextField("Seu nome completo", text: $viewModel.fullName)
+                    .textContentType(.name)
+                    .textInputAutocapitalization(.words)
+            }
         }
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
+
     
     @ViewBuilder
     private var documentSection: some View{
@@ -136,10 +123,7 @@ struct EditProfileSheet: View {
         
         .padding(16)
         .background(Color(.bgForm))
-        //            .overlay(
-        //                RoundedRectangle(cornerRadius: 34)
-        //                    .stroke(signUpViewModel.errorMessage != nil ? .red : .clear, lineWidth: 1.5)
-        //            )
+   
         .cornerRadius(34)
         .padding(.horizontal, 24)
         
@@ -149,14 +133,8 @@ struct EditProfileSheet: View {
         }
         .padding(.horizontal, 16)
         
-//        VStack(alignment: .center, spacing: 12){
-//
-//        }
-////        .padding(.vertical, 24)
-////        
-////        // se descomentar, vai travar
-////        .background(.bgBox, in: RoundedRectangle(cornerRadius: 38))
-////        .glassEffect(.regular, in: RoundedRectangle(cornerRadius: 38))
-////        .padding(.horizontal, 16)
+
     }
 }
+
+

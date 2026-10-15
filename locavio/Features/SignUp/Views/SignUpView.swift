@@ -26,23 +26,20 @@ struct SignUpView: View {
     
     @ViewBuilder
     var nameRow: some View {
-        HStack(spacing: 16) {
+        HStack(alignment: .top) {
             Image(systemName: "person.fill")
-                .font(.title3)
-                .foregroundColor(.accentColor)
-            
-            Text("Nome")
-                .font(.body)
-            
-            Spacer()
-            
-            TextField("Seu nome completo", text: $signUpViewModel.fullName)
-                .multilineTextAlignment(.trailing)
-                .textContentType(.name)
-                .textInputAutocapitalization(.words)
-                .foregroundColor(.primary)
+                .foregroundStyle(.accent)
+
+            VStack(alignment: .leading) {
+                Text("Nome")
+                    .font(.subheadline.bold())
+
+                TextField("Seu nome completo", text: $signUpViewModel.fullName)
+                    .textContentType(.name)
+                    .textInputAutocapitalization(.words)
+            }
         }
-        .frame(maxWidth: .infinity)
+        .frame(maxWidth: .infinity, alignment: .leading)
     }
     
     @ViewBuilder
@@ -99,7 +96,7 @@ struct SignUpView: View {
                     }
                 )
                 .padding(.horizontal, 65)
-                .disabled(!signUpViewModel.isValid)
+//                .disabled(!signUpViewModel.isValid)
                 
             }
             .padding(.horizontal, 16)
@@ -131,6 +128,7 @@ struct SignUpView: View {
             .scrollIndicators(.hidden)
             
         }
+        .dismissKeyboardOnTap()
         .alert("Erro no Cadastro", isPresented: $signUpViewModel.showAlert) {
             Button("Entendi", role: .cancel) { }
         } message: {
@@ -141,13 +139,6 @@ struct SignUpView: View {
             signUpViewModel.loadOwner(context: context, authManager: authManager)
         }
         .ignoresSafeArea(.keyboard)
-        .onTapGesture {
-            #if canImport(UIKit)
-                hideKeyboard()
-            #endif
-        }
-
-        
 
     }
 }

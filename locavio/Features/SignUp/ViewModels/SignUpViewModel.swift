@@ -37,8 +37,7 @@ final class SignUpViewModel {
     func loadOwner(context: ModelContext, authManager: AppleAuthManager) {
         guard let userID = authManager.currentUserID else { return }
         
-        let descriptor = FetchDescriptor<Owner>(predicate: #Predicate { $0.appleUserID == userID })
-        let owner = try? context.fetch(descriptor).first
+        let owner = authManager.resolveOwner(userID: userID, context: context)
         
         let existingName = owner?.fullName?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         needsFullName = existingName.isEmpty
@@ -53,19 +52,25 @@ final class SignUpViewModel {
             return
         }
         
+        // o botão não fica mais desabilitado em silêncio: cada problema vira uma mensagem
         if needsFullName && trimmedFullName.isEmpty {
             alertMessage = "Informe seu nome para continuar."
             showAlert = true
             return
         }
         
-        let descriptor = FetchDescriptor<Owner>(predicate: #Predicate { $0.appleUserID == userID })
+        guard DocumentAuth.isValidDocument(document: document, type: documentType) else {
+            alertMessage = documentType == .pf ? "O CPF informado é inválido." : "O CNPJ informado é inválido."
+            showAlert = true
+            return
+        }
         
         do {
-            // busca o Owner criado no login. se por algum motivo não existir, cria agora
+            // busca o Owner criado no login (juntando duplicados, se houver).
+            // se por algum motivo não existir, cria agora
             // (em vez de travar o cadastro com "usuário não encontrado")
             let owner: Owner
-            if let existing = try context.fetch(descriptor).first {
+            if let existing = authManager.resolveOwner(userID: userID, context: context) {
                 owner = existing
             } else {
                 owner = Owner(appleUserID: userID)
@@ -82,6 +87,7 @@ final class SignUpViewModel {
             
             try context.save()
             
+            print("SignUp completed. Going to .authenticated")
             authManager.currentAuthState = .authenticated
             
         } catch {

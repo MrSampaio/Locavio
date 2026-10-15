@@ -16,17 +16,18 @@ struct PropertyDetailView: View {
     var onShowLastPayments: () -> Void = {}
     var onDelete: () -> Void = {}
     var onTicketTap: (Ticket) -> Void = { _ in }
-
+    
     @State private var viewModel: PropertyDetailViewModel
     @State private var showDeleteAlert = false
     @State private var contractPreviewURL: URL?
     
-
-    private let rentTip = RentPaidTip()
-    private let ticketsTip = TicketsSectionTip()
+    @State private var tipGroup = TipGroup(.ordered) {
+        RentPaidTip()
+        TicketsSectionTip()
+    }
     
     
-
+    
     init(property: Property,
          onEdit: @escaping () -> Void = {},
          onShowLastPayments: @escaping () -> Void = {},
@@ -34,24 +35,24 @@ struct PropertyDetailView: View {
          onTicketTap: @escaping (Ticket) -> Void = { _ in }
     )
     {
-        self.property = property
-        self.onEdit = onEdit
-        self.onShowLastPayments = onShowLastPayments
-        self.onDelete = onDelete
-        self.onTicketTap = onTicketTap
+       self.property = property
+       self.onEdit = onEdit
+       self.onShowLastPayments = onShowLastPayments
+       self.onDelete = onDelete
+       self.onTicketTap = onTicketTap
        _viewModel = State(initialValue: PropertyDetailViewModel(property: property))
     }
-
+    
     var body: some View {
         ZStack(alignment: .top) {
             background
-
+            
             ScrollView {
                 VStack(spacing: 0) {
                     // espaço onde a foto aparece
                     Color.clear
                         .containerRelativeFrame(.vertical) { height, _ in height * 0.46 }
-
+                    
                     panel
                 }
             }
@@ -78,7 +79,7 @@ struct PropertyDetailView: View {
             Text(viewModel.deleteAlertMessage)
         }
     }
-
+    
     @ViewBuilder
     private var background: some View {
         if let uiImage = viewModel.image {
@@ -101,20 +102,20 @@ struct PropertyDetailView: View {
                 .ignoresSafeArea()
         }
     }
-
+    
     // Painel
-
+    
     private var panel: some View {
         VStack(alignment: .leading, spacing: 20) {
             header
-
+            
             ExpensesCardView(property: property)
-
+            
             ToggleComponentPayment(property: property)
-                .popoverTip(rentTip)
-
+                .popoverTip(tipGroup.currentTip as? RentPaidTip)
+            
             TenantSectionView(viewModel: viewModel)
-
+            
             section(viewModel.contractSectionTitle) {
                 ViewContractComponent(
                     contractName: viewModel.contractDisplayName,
@@ -122,12 +123,12 @@ struct PropertyDetailView: View {
                     action: { contractPreviewURL = viewModel.makeContractPreviewURL() }
                 )
             }
-
+            
             section(viewModel.requestsSectionTitle) {
                 RequestsComponentView(property: property, onTicketTap: onTicketTap)
             }
-            .popoverTip(ticketsTip)
-
+            .popoverTip(tipGroup.currentTip as? TicketsSectionTip)
+            
             actionButtons
         }
         .padding(20)
@@ -138,16 +139,16 @@ struct PropertyDetailView: View {
                 .padding(.bottom, -1000)
         }
     }
-
+    
     private var header: some View {
         VStack(alignment: .leading, spacing: 6) {
             HStack(alignment: .top) {
                 if let badge = viewModel.typeBadge {
                     TagBadgeView(badge)
                 }
-
+                
                 Spacer()
-
+                
                 VStack(alignment: .trailing, spacing: 0) {
                     Text(viewModel.nextPaymentLabel)
                     Text(viewModel.nextPaymentText).fontWeight(.semibold)
@@ -155,7 +156,7 @@ struct PropertyDetailView: View {
                 .font(.footnote)
                 .foregroundStyle(.secondary)
             }
-
+            
             HStack(spacing: 14) {
                 Text(viewModel.title)
                 if let area = viewModel.areaText {
@@ -166,16 +167,16 @@ struct PropertyDetailView: View {
             .font(.largeTitle.bold())
             .lineLimit(1)
             .minimumScaleFactor(0.7)
-
+            
             Text(viewModel.address)
                 .font(.subheadline)
-
+            
             Text(viewModel.cepText)
                 .font(.subheadline)
         }
     }
-
-
+    
+    
     private var actionButtons: some View {
         VStack(spacing: 12) {
             Button(action: onShowLastPayments) {
@@ -187,7 +188,7 @@ struct PropertyDetailView: View {
                     .background(.quaternary, in: Capsule())
             }
             .buttonStyle(.plain)
-
+            
             Button {
                 showDeleteAlert = true
             } label: {
@@ -202,7 +203,7 @@ struct PropertyDetailView: View {
         }
         .padding(.top, 4)
     }
-
+    
     private func section<Content: View>(_ title: String,
                                         @ViewBuilder content: () -> Content) -> some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -218,7 +219,7 @@ struct PropertyDetailView: View {
 #Preview {
     let container = PreviewData.makeContainer()
     let property = PreviewData.makeProperty(in: container.mainContext)
-
+    
     return NavigationStack {
         PropertyDetailView(property: property)
     }
@@ -228,34 +229,34 @@ struct PropertyDetailView: View {
 
 @MainActor
 private enum PreviewData {
-
+    
     static func makeContainer() -> ModelContainer {
         try! ModelContainer(
             for: Property.self, Owner.self, Tenant.self, Contract.self,
-                 Payment.self, Expenses.self, Ticket.self, Maintence.self,
+            Payment.self, Expenses.self, Ticket.self, Maintence.self,
             configurations: ModelConfiguration(isStoredInMemoryOnly: true)
         )
     }
-
+    
     static func makeProperty(in context: ModelContext) -> Property {
         let property = makeBaseProperty()
         context.insert(property)
-
+        
         addExpenses(to: property, in: context)
         addTickets(to: property, in: context)
-
+        
         return property
     }
-
-
-
+    
+    
+    
     private static func makeBaseProperty() -> Property {
         let tenant = Tenant(name: "Alberto Caeiro",
                             email: "bertinhocaeiro@fpessoa.com",
                             cpf: "12345678901")
-
+        
         let imageData: Data? = UIImage(named: "CasaText")?.jpegData(compressionQuality: 0.9)
-
+        
         return Property(
             image: imageData,
             title: "Casa 1",
@@ -271,7 +272,7 @@ private enum PreviewData {
             tenant: tenant
         )
     }
-
+    
     private static func addExpenses(to property: Property, in context: ModelContext) {
         let items: [(title: String, value: Double)] = [
             ("IPTU", 200),
@@ -279,13 +280,13 @@ private enum PreviewData {
             ("Seguro", 200),
             ("Lucro", 400)
         ]
-
+        
         for item in items {
             let expense = Expenses(property: property, title: item.title, value: item.value)
             context.insert(expense)
         }
     }
-
+    
     private static func addTickets(to property: Property, in context: ModelContext) {
         let ticket1 = Ticket(title: "Torneira",
                              conclusionDate: date(2026, 9, 27),
@@ -295,11 +296,11 @@ private enum PreviewData {
                              property: property)
         context.insert(ticket1)
         context.insert(ticket2)
-
+        
         context.insert(Maintence(ticket: ticket1, item: "Trocar Torneira", value: 150))
         context.insert(Maintence(ticket: ticket2, item: "Arrumar Fiação", value: 400))
     }
-
+    
     private static func date(_ year: Int, _ month: Int, _ day: Int) -> Date {
         let components = DateComponents(year: year, month: month, day: day)
         return Calendar.current.date(from: components) ?? .now
