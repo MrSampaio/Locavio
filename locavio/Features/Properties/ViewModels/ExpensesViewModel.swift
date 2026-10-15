@@ -33,6 +33,8 @@ final class ExpensesViewModel {
     var isExpanded = false
     var newTitle = ""
     var newValueText = ""
+    var errorMessage = ""
+    var showErrorAlert = false
     
     init(property: Property) {
         storage = .persisted(property)
@@ -116,9 +118,13 @@ final class ExpensesViewModel {
     
     func toggle() { isExpanded.toggle() }
     
-    func addExpense(context: ModelContext) {
+    func addExpense(context: ModelContext) throws {
         
-        guard let title = newTitle.trimmedOrNil, let value = parsedNewValue else { return }
+        guard let title = newTitle.trimmedOrNil else { return }
+        
+        guard hasOnlyNumbers(newValueText) else { throw ExpensesErrors.invalidValue }
+        
+        guard let value = parsedNewValue else { return }
         
         switch storage {
         case .persisted(let property):
@@ -132,6 +138,14 @@ final class ExpensesViewModel {
         
         newTitle = ""
         newValueText = ""
+    }
+    
+    func hasOnlyNumbers(_ text: String) -> Bool {
+        let withoutCurrency = text
+            .replacingOccurrences(of: "R$", with: "")
+            .filter { !$0.isWhitespace }
+        
+        return withoutCurrency.allSatisfy { $0.isNumber || $0 == "," || $0 == "." }
     }
     
     func delete(_ expense: Expenses, context: ModelContext) {

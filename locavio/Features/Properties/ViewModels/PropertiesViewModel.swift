@@ -118,11 +118,6 @@ final class PropertiesViewModel {
         
         // valida as despesas existentes. caso alguma esteja errada, impede a criação do imóvel
         for data in expenses {
-            
-            if (data.title ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                throw ExpensesErrors.invalidTitle
-            }
-            
             if data.value == nil {
                 throw ExpensesErrors.invalidValue
             }
@@ -278,9 +273,6 @@ final class PropertiesViewModel {
         
         // valida cada elemento do array, caso haja algum incompleto, barra o insert
         for data in formDataArray {
-            if data.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                throw ExpensesErrors.invalidTitle
-            }
             if Double(data.value) == nil {
                 throw ExpensesErrors.invalidValue
             }
