@@ -4,14 +4,13 @@
 //
 //  Created by Julio Sampaio on 20/09/26.
 //
-
-
 import SwiftUI
 import SwiftData
 
 struct CalendarView: View {
     @State private var viewModel = CalendarViewModel()
     @Query(sort: \Ticket.conclusionDate) private var tickets: [Ticket]
+    @Query private var properties: [Property]
     
     @Environment(CalendarCoordinator.self) private var coordinator
 
@@ -22,6 +21,7 @@ struct CalendarView: View {
     var body: some View {
         let markedDays = viewModel.daysWithTickets(from: tickets)
         let dayTickets = viewModel.tickets(from: tickets)
+        let dayRents = viewModel.rents(from: properties)
 
         ZStack {
             Color(.appBg).ignoresSafeArea()
@@ -37,7 +37,7 @@ struct CalendarView: View {
 
                     header
                     grid(markedDays: markedDays)
-                    list(dayTickets)
+                    list(rents: dayRents, tickets: dayTickets)
                 }
                 .padding(.horizontal)
             }
@@ -74,7 +74,8 @@ struct CalendarView: View {
                                 date: day,
                                 isSelected: viewModel.isSelected(day),
                                 isToday: viewModel.isToday(day),
-                                hasTicket: viewModel.hasTicket(on: day, in: markedDays)
+                                hasTicket: viewModel.hasTicket(on: day, in: markedDays),
+                                hasPayment: viewModel.hasRent(on: day, from: properties)
                             )
                         }
                         .buttonStyle(.plain)
@@ -86,15 +87,25 @@ struct CalendarView: View {
         }
     }
 
-    private func list(_ dayTickets: [Ticket]) -> some View {
+    private func list(rents dayRents: [RentDue], tickets dayTickets: [Ticket]) -> some View {
         VStack(alignment: .leading, spacing: 12) {
             Text(viewModel.listTitle).font(.title3.bold())
             
-            if dayTickets.isEmpty {
-                Text("Nenhum chamado neste dia.")
+            if dayRents.isEmpty && dayTickets.isEmpty {
+                Text("Nenhum aluguel ou chamado neste dia.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             } else {
+                ForEach(dayRents) { rent in
+                    RentComponent(
+                        property: rent.property,
+                        dueDate: rent.date,
+                        onTap: {
+                            coordinator.pushToPropertyDetails(property: rent.property)
+                        }
+                    )
+                }
+
                 ForEach(dayTickets) { ticket in
                     TicketComponent(
                         ticket: ticket,
@@ -109,21 +120,37 @@ struct CalendarView: View {
             }
         }
     }
-    
-    
 }
 
 
 #Preview {
     let container = try! ModelContainer(
-        for: Ticket.self, Property.self, Maintence.self,
+        for: Property.self, Owner.self, Tenant.self, Contract.self,
+             Payment.self, Expenses.self, Ticket.self, Maintence.self,
         configurations: ModelConfiguration(isStoredInMemoryOnly: true)
     )
+    let context = container.mainContext
+
+    // chamado concluído hoje
     let ticket = Ticket(title: "Trocar telha", createdAt: .now, conclusionDate: .now)
     ticket.isConcluded = true
-    container.mainContext.insert(ticket)
+    context.insert(ticket)
+
+    // imóvel alugado com vencimento hoje
+    let tenant = Tenant(name: "Alberto Caeiro",
+                        email: "bertinhocaeiro@fpessoa.com",
+                        cpf: "52998224725",
+                        phone: "11987654321")
+    let property = Property(
+        image: UIImage(named: "CasaText")?.jpegData(compressionQuality: 0.9),
+        title: "Casa 1",
+        type: .home,
+        paymentDay: Calendar.current.component(.day, from: .now),
+        tenant: tenant
+    )
+    context.insert(property)
 
     return NavigationStack { CalendarView() }
         .modelContainer(container)
+        .environment(CalendarCoordinator())
 }
-

@@ -25,4 +25,14 @@ final class CalendarCoordinator {
             path.removeLast()
         }
     }
+    
+    func pushToPropertyDetails(property: Property) {
+        path.append(CalendarRoutes.propertyDetails(property: property))
+    }
+    func pushToEditProperty(property: Property) {
+        path.append(CalendarRoutes.editProperty(property: property))
+    }
+    func pushToLastPayments(property: Property) {
+        path.append(CalendarRoutes.lastPayments(property: property))
+    }
 }

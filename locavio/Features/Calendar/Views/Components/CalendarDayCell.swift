@@ -13,6 +13,7 @@ struct CalendarDayCell: View {
     let isSelected: Bool
     let isToday: Bool
     let hasTicket: Bool
+    let hasPayment: Bool
 
     var body: some View {
         Text("\(Calendar.current.component(.day, from: date))")
@@ -23,8 +24,14 @@ struct CalendarDayCell: View {
                 ZStack {
                     if isSelected {
                         Circle().fill(Color(.accent))
-                    } else if hasTicket {
-                        Circle().fill(Color(.ticketDayBg).opacity(0.15))
+                    } else {
+                        
+                        if hasTicket {
+                            Circle().fill(Color(.ticketDayBg).opacity(0.15))
+                        }
+                        if hasPayment {
+                            Circle().fill(Color(.calendarBg).opacity(0.50))
+                        }
                     }
                     if isToday {
                         Circle().fill(Color(.accent).opacity(0.15))
