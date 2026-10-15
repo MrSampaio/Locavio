@@ -8,6 +8,14 @@
 import SwiftUI
 import Foundation
 import Observation
+import SwiftData
+
+/// Um vencimento de aluguel em uma data específica
+struct RentDue: Identifiable {
+    let property: Property
+    let date: Date
+    var id: Property.ID { property.id }
+}
 
 @Observable
 final class CalendarViewModel {
@@ -158,6 +166,46 @@ final class CalendarViewModel {
             guard let date = $0.conclusionDate else { return false }
             return calendar.isDate(date, inSameDayAs: selectedDate)
         }
+    }
+
+    // Aluguéis
+
+    /// Dia tem vencimento de aluguel?
+    func hasRent(on day: Date, from properties: [Property]) -> Bool {
+        !rents(on: day, from: properties).isEmpty
+    }
+
+    /// Vencimentos do dia selecionado
+    func rents(from properties: [Property]) -> [RentDue] {
+        guard let selectedDate else { return [] }
+        return rents(on: selectedDate, from: properties)
+    }
+
+    /// Só entram imóveis alugados (com inquilino) e com dia de pagamento definido.
+    /// A conta é feita dia a dia: na visão de semana, uma semana pode cruzar dois meses.
+    private func rents(on day: Date, from properties: [Property]) -> [RentDue] {
+        properties.compactMap { property in
+            guard property.tenant != nil,
+                  let due = dueDate(of: property, inMonthOf: day),
+                  calendar.isDate(due, inSameDayAs: day)
+            else { return nil }
+
+            return RentDue(property: property, date: due)
+        }
+    }
+
+    /// Data de vencimento do aluguel no mês de `reference`.
+    /// Em meses mais curtos (ex.: dia 31 em fevereiro) vence no último dia do mês.
+    private func dueDate(of property: Property, inMonthOf reference: Date) -> Date? {
+        guard let paymentDay = property.paymentDay, paymentDay > 0,
+              let days = calendar.range(of: .day, in: .month, for: reference),
+              let firstDay = calendar.date(
+                from: calendar.dateComponents([.year, .month], from: reference)
+              )
+        else { return nil }
+
+        let day = min(paymentDay, days.count)
+        return calendar.date(byAdding: .day, value: day - 1, to: firstDay)
     }
 
     var listTitle: String {
