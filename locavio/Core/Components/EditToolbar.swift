@@ -11,6 +11,7 @@ import SwiftUI
 struct EditToolbar: ToolbarContent {
     var onClick: () -> Void
     
+    
     var body: some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {
             Button(action: onClick) {

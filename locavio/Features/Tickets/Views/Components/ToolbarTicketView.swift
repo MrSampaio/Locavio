@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import TipKit
  
 struct ToolbarTicketView: ToolbarContent {
     var onAdd: () -> Void
+    var tip: (any Tip)? = nil
  
     var body: some ToolbarContent {
         ToolbarItem(placement: .topBarTrailing) {
@@ -16,6 +18,7 @@ struct ToolbarTicketView: ToolbarContent {
                 Image(systemName: "plus")
                     .foregroundStyle(.white)
             }
+            .popoverTip(tip)
             .accessibilityLabel("Adicionar")
             .buttonStyle(.glassProminent)
             .tint(.accentColor)

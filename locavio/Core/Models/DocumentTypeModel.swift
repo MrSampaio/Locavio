@@ -10,14 +10,14 @@ import Foundation
 enum DocumentTypeModel: String, CaseIterable, Codable {
     
     // casos possíveis
-    case pf = "PF"
-    case pj = "PJ"
+    case pf = "Física"
+    case pj = "Jurídica"
     
     // description passa a ser o nome extenso (aparece na lista aberta)
     var description: String {
         switch self {
-            case .pf: return "Pessoa Física"
-            case .pj: return "Pessoa Jurídica"
+            case .pf: return "Física"
+            case .pj: return "Jurídica"
         }
     }
 }
