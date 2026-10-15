@@ -27,7 +27,7 @@ struct PrivacyPolicyView: View {
                     
                     Text("Para os fins desta Política de Privacidade:")
                     
-                    ListCardComponent(textList: definitions)
+                    ListCardComponent(textList: definitions, hypertext: "")
                     
                     sectionTitle("2. Coleta e Uso de Suas Informações Pessoais")
                     
@@ -35,29 +35,29 @@ struct PrivacyPolicyView: View {
                     
                     Text("Ao utilizar o nosso Serviço, poderemos solicitar que você nos forneça determinadas informações de identificação pessoal que possam ser usadas para entrar em contato ou identificá-lo. As informações de identificação pessoal podem incluir, entre outras:")
                     
-                    ListCardComponent(textList: personalData)
+                    ListCardComponent(textList: personalData, hypertext: "")
                     
                     subsectionTitle("2.2 Uso dos Seus Dados Pessoais")
                     
                     Text("A Empresa poderá utilizar os Dados Pessoais para as seguintes finalidades:")
                     
-                    ListCardComponent(textList: dataUsage)
+                    ListCardComponent(textList: dataUsage, hypertext: "")
                     
                     Text("Podemos compartilhar seus Dados Pessoais nas seguintes situações:")
                     
-                    ListCardComponent(textList: dataSharing)
+                    ListCardComponent(textList: dataSharing, hypertext: "")
                     
                     sectionTitle("3 Dados de Terceiros (Inquilinos)")
                     
                     Text("Ao cadastrar um imóvel ou contrato, Você poderá inserir Dados Pessoais de terceiros (inquilinos), como nome, contato, CPF e histórico de pagamento. Nesse caso:")
                     
-                    ListCardComponent(textList: thirdPartyData)
+                    ListCardComponent(textList: thirdPartyData, hypertext: "")
                     
                     sectionTitle("4. Armazenamento dos Dados — iCloud e CloudKit")
                     
                     Text("Os dados inseridos no Aplicativo são armazenados por meio dos serviços **iCloud** e **CloudKit**, da Apple Inc., que atua como Operadora dos dados em nosso nome. Isso significa que:")
                     
-                    ListCardComponent(textList: storage)
+                    ListCardComponent(textList: storage, hypertext: "")
                     
                     sectionTitle("5. Retenção dos Seus Dados Pessoais")
                     
@@ -71,7 +71,7 @@ struct PrivacyPolicyView: View {
                     
                     Text("Nos termos do art. 18 da LGPD, você tem direito a:")
                     
-                    ListCardComponent(textList: dataSubjectRights)
+                    ListCardComponent(textList: dataSubjectRights, hypertext: "")
                     
                     Text("Para exercer qualquer um desses direitos, entre em contato conosco pelos canais indicados abaixo.")
                     
@@ -99,7 +99,7 @@ struct PrivacyPolicyView: View {
                     
                     Text("A Empresa poderá divulgar seus Dados Pessoais na crença de boa-fé de que tal ação é necessária para:")
                     
-                    ListCardComponent(textList: legalRequirements)
+                    ListCardComponent(textList: legalRequirements, hypertext: "")
                     
                     sectionTitle("10 Segurança dos Seus Dados Pessoais")
                     
@@ -125,7 +125,11 @@ struct PrivacyPolicyView: View {
                     
                     Text("Se Você tiver alguma dúvida sobre esta Política de Privacidade, Você pode entrar em contato conosco:")
                     
-                    ListCardComponent(textList: "**Por e-mail:** locaviodev@gmail.com")
+                    ListCardComponent(
+                        textList: "**Por e-mail:** ",
+                        hypertext: "[locaviodev@gmail.com](mailto:locaviodev@gmail.com)"
+                    )
+                        
                 }
                 .font(.footnote)
             }
@@ -203,8 +207,9 @@ struct PrivacyPolicyView: View {
     let storage = """
     • A Apple processa e armazena os dados exclusivamente conforme nossas instruções e para viabilizar o funcionamento do Aplicativo;
     • Os servidores utilizados podem estar localizados fora do Brasil, o que pode envolver transferência internacional de dados;
-    • A Apple aplica suas próprias medidas de segurança e criptografia sobre os dados armazenados via CloudKit; mais informações estão disponíveis na [Política de Privacidade da Apple](https://www.apple.com/legal/privacy/);
-    • Não temos acesso direto aos servidores da Apple além do que a API do CloudKit disponibiliza para o funcionamento do Aplicativo.
+    • Não temos acesso direto aos servidores da Apple além do que a API do CloudKit disponibiliza para o funcionamento do Aplicativo;
+    • A Apple aplica suas próprias medidas de segurança e criptografia sobre os dados armazenados via CloudKit; mais informações estão disponíveis na [Política de Privacidade da Apple](https://www.apple.com/legal/privacy/).
+    
     """
     
     let dataSubjectRights = """

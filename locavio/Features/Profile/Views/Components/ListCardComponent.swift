@@ -7,16 +7,25 @@
 
 import SwiftUI
 
+
 struct ListCardComponent: View {
-    
+
     let textList: String
-    
+    var hypertext: String? = nil
+
     var body: some View {
-        VStack {
-            Text(LocalizedStringKey(textList))
-                .font(.caption2)
+        VStack(alignment: .leading) {
+            HStack(spacing: 0) {
+                Text(.init(textList))
+
+                if let hypertext, !hypertext.isEmpty {
+                    Text(.init(hypertext))
+                        .underline()
+                }
+            }
+            .font(.caption2)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(10)
         .background(.listCard, in: RoundedRectangle(cornerRadius: 10))
         .overlay(
@@ -27,18 +36,18 @@ struct ListCardComponent: View {
     }
 }
 
-#Preview {
-    
-    let textList = """
-        • Nome e sobrenome
-        • E-mail
-        • Endereço, Estado, Província, CEP, Cidade
-        • Dados dos imóveis cadastrados (endereço, características, fotos)
-        • Dados de contratos de locação e valores de aluguel
-        • Solicitações de manutenção e histórico de comunicação sobre os imóveis
-        • Dados de calendário/agenda relacionados aos imóveis
-        • Documentos e fotos que você anexar ao Aplicativo (ex.: contratos, comprovantes)
-        """
-    
-    ListCardComponent(textList: textList)
-}
+//#Preview {
+//    
+//    let textList = """
+//        • Nome e sobrenome
+//        • E-mail
+//        • Endereço, Estado, Província, CEP, Cidade
+//        • Dados dos imóveis cadastrados (endereço, características, fotos)
+//        • Dados de contratos de locação e valores de aluguel
+//        • Solicitações de manutenção e histórico de comunicação sobre os imóveis
+//        • Dados de calendário/agenda relacionados aos imóveis
+//        • Documentos e fotos que você anexar ao Aplicativo (ex.: contratos, comprovantes)
+//        """
+//    
+//    ListCardComponent(textList: textList)
+//}
