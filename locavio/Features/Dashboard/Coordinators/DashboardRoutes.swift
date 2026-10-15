@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum DashboardSheet: String, Identifiable {
+enum DashboardSheets: String, Identifiable {
     case addProperty
-    var id: String { rawValue }
+    var id: String { self.rawValue }
 }
