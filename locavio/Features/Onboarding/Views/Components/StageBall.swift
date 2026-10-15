@@ -11,24 +11,15 @@ struct StageBall: View {
 
     let currentPage: Int
     let allPages: Int
-    
+
     var body: some View {
-        HStack(spacing: 7) {
-            
-            ForEach(0..<allPages, id: \.self) { index in
-                
-                Circle()
-                    .fill(
-                        index == currentPage 
-                        ? (Color.primary)
-                        : Color.gray.opacity(0.5)
-                    )
-                    .frame(width: 8, height: 8)
-            }
-        }
+        Text("\(currentPage + 1)/\(allPages)")
+            .font(.subheadline)
+            .fontWeight(.medium)
+            .foregroundStyle(.secondary)
     }
 }
 
 #Preview {
-    StageBall(currentPage: 1, allPages: 3)
+    StageBall(currentPage: 0, allPages: 3)
 }
