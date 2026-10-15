@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct DashboardWithNoPropertyView:View {
-    var onAddProperty: () -> Void = {}
+    @Environment(DashboardCoordinator.self) private var coordinator
     
     var body: some View {
         ZStack{
@@ -32,7 +32,7 @@ struct DashboardWithNoPropertyView:View {
                 
                 ComponentButton(
                     textButton: "Adicionar imóvel",
-                    action: onAddProperty
+                    action: coordinator.presentAddProperty
                 )
                 .frame(width: 196)
                 .padding(.top, 40)
@@ -43,13 +43,11 @@ struct DashboardWithNoPropertyView:View {
         }
         .navigationTitle(Text("Relatório"))
         .ignoresSafeArea(edges: .all)
-//        .background(Color.appBg)
-        
-//        .frame(maxHeight: .infinity)
-//        .frame(maxWidth: .infinity)
+
     }
 }
 
 #Preview {
     DashboardWithNoPropertyView()
+        .environment(DashboardCoordinator())
 }
