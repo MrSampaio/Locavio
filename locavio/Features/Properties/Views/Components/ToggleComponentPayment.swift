@@ -16,7 +16,8 @@ struct ToggleComponentPayment: View {
     
     @State private var viewModel: PaymentToggleViewModel
     @State private var condition: Bool
-    @State private var showAlert = false
+    @State private var showPaidAlert = false
+    @State private var showUnpaidAlert = false
     @State private var showFileImporter = false
     @State private var proofPreviewURL: URL?
     
@@ -34,14 +35,12 @@ struct ToggleComponentPayment: View {
                 isOn: $condition
             )
             .onChange(of: condition) { _, newValue in
+                guard newValue != viewModel.isPaid else { return }
+                
                 if newValue {
-                    condition = false
-                    showAlert = true
+                    showPaidAlert = true
                 } else {
-                    viewModel.setPaid(
-                        false,
-                        in: modelContext
-                    )
+                    showUnpaidAlert = true
                 }
             }
             
@@ -60,21 +59,28 @@ struct ToggleComponentPayment: View {
         )
         .alert(
             "Confirmar aluguel pago?",
-            isPresented: $showAlert
+            isPresented: $showPaidAlert
         ) {
             Button(role: .confirm) {
-                viewModel.setPaid(
-                    true,
-                    in: modelContext
-                )
-                
-                condition = true
+                viewModel.setPaid(true, in: modelContext)
             } label: {
                 Text("Sim")
             }
             
             Button("Não", role: .cancel) {
                 condition = false
+            }
+        }
+        .alert(
+            "Desmarcar aluguel como pago?",
+            isPresented: $showUnpaidAlert
+        ) {
+            Button("Desmarcar", role: .destructive) {
+                viewModel.setPaid(false, in: modelContext)
+            }
+            
+            Button("Cancelar", role: .cancel) {
+                condition = true
             }
         }
         .fileImporter(
