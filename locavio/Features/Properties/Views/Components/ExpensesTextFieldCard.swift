@@ -28,6 +28,9 @@ struct ExpensesTextFieldCard: View {
     }
     
     var body: some View {
+        
+        @Bindable var viewModelBind = viewModel
+        
         VStack(spacing: 0) {
             header
             
@@ -42,6 +45,11 @@ struct ExpensesTextFieldCard: View {
                 .padding(.top, 24)
                 .transition(.opacity)
                 .clipped()
+                .alert("Atenção!", isPresented: $viewModelBind.showErrorAlert) {
+                    Button("OK", role: .cancel) {}
+                } message: {
+                    Text(viewModel.errorMessage)
+                }
             }
         }
     }
@@ -104,10 +112,12 @@ struct ExpensesTextFieldCard: View {
                     viewModel.newTitle = newExpenseName
                     viewModel.newValueText = newExpenseValueText
                     
-                    if viewModel.canAdd {
-                        viewModel.addExpense(context: context)
+                    do {
+                        try viewModel.addExpense(context: context)
                         newExpenseName = ""
                         newExpenseValueText = ""
+                    } catch {
+                        show(error)
                     }
                 } label: {
                     circleIcon(iconName: "plus.circle.fill", color: .green)
@@ -122,6 +132,9 @@ struct ExpensesTextFieldCard: View {
                 .multilineTextAlignment(.trailing)
                 .focused($isFocused)
                 .onChange(of: isFocused) { _, isNowFocused in
+                    
+                    guard viewModel.hasOnlyNumbers(newExpenseValueText) else { return }
+                    
                     if !isNowFocused {
                         var cleanText = newExpenseValueText.replacingOccurrences(of: ".", with: "")
                         cleanText = cleanText.replacingOccurrences(of: ",", with: ".")
@@ -143,6 +156,11 @@ struct ExpensesTextFieldCard: View {
             .symbolRenderingMode(.palette)
             .foregroundStyle(.white, color)
             .frame(width: 32, height: 32)
+    }
+    
+    private func show(_ error: Error) {
+        viewModel.errorMessage = error.localizedDescription
+        viewModel.showErrorAlert = true
     }
 }
 
