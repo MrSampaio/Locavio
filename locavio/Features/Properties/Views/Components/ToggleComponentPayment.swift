@@ -35,7 +35,6 @@ struct ToggleComponentPayment: View {
             )
             .onChange(of: condition) { _, newValue in
                 if newValue {
-                    condition = false
                     showAlert = true
                 } else {
                     viewModel.setPaid(

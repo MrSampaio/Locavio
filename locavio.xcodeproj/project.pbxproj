@@ -137,7 +137,7 @@
 				CODE_SIGN_ENTITLEMENTS = locavio/locavio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4WGP579GLY;
+				DEVELOPMENT_TEAM = 85L9Y4F4UZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = locavio/Info.plist;
@@ -154,7 +154,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.guilherme.locavio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.claudio.locavio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -179,7 +179,7 @@
 				CODE_SIGN_ENTITLEMENTS = locavio/locavio.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 4WGP579GLY;
+				DEVELOPMENT_TEAM = 85L9Y4F4UZ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = locavio/Info.plist;
@@ -196,7 +196,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.2;
-				PRODUCT_BUNDLE_IDENTIFIER = com.guilherme.locavio;
+				PRODUCT_BUNDLE_IDENTIFIER = com.claudio.locavio;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
