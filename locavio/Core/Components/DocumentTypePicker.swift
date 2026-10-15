@@ -20,7 +20,7 @@ struct DocumentTypePicker: View {
                     .font(.title3)
                     .foregroundColor(.accentColor)
                 
-                Text("Natureza Jurídica")
+                Text("Sou pessoa")
                     .font(.body)
                 
                 Spacer()
