@@ -19,7 +19,7 @@ struct ExpensesTextFieldCard: View {
     
     @FocusState private var isFocused: Bool
     
-    private var isButtonDisabled: Bool {
+    private var isButtonHidden: Bool {
         if !(newExpenseName.trimmingCharacters(in: .whitespaces).isEmpty) && !(newExpenseValueText.trimmingCharacters(in: .whitespaces).isEmpty) {
             return false
         } else {
@@ -99,20 +99,21 @@ struct ExpensesTextFieldCard: View {
     @ViewBuilder
     private var newExpenseLine: some View {
         HStack(spacing: 10) {
-            Button{
-                viewModel.newTitle = newExpenseName
-                viewModel.newValueText = newExpenseValueText
-                
-                if viewModel.canAdd {
-                    viewModel.addExpense(context: context)
-                    newExpenseName = ""
-                    newExpenseValueText = ""
+            if(!isButtonHidden) {
+                Button{
+                    viewModel.newTitle = newExpenseName
+                    viewModel.newValueText = newExpenseValueText
+                    
+                    if viewModel.canAdd {
+                        viewModel.addExpense(context: context)
+                        newExpenseName = ""
+                        newExpenseValueText = ""
+                    }
+                } label: {
+                    circleIcon(iconName: "plus.circle.fill", color: .green)
                 }
-            } label: {
-                circleIcon(iconName: "plus.circle.fill", color: .green)
+                .buttonStyle(.plain)
             }
-            .buttonStyle(.plain)
-            .disabled(isButtonDisabled)
             
             TextField("Título", text: $newExpenseName)
             
