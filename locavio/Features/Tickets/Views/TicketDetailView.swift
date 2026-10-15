@@ -7,12 +7,15 @@
 
 import SwiftUI
 import UIKit
+import TipKit
 
 struct TicketDetailView: View {
 
     @Environment(\.dismiss) private var dismiss
 //    @Environment(TicketsCoordinator.self) private var ticketsCoordinator
     @State private var viewModel = TicketsViewModel()
+    
+   
     
     let ticket: Ticket
     var editAction: () -> Void
@@ -86,8 +89,8 @@ struct TicketDetailView: View {
         .navigationTitle("Detalhes do chamado")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
-            EditToolbar(onClick: {
-//                ticketsCoordinator.pushToEditTicket(ticket: ticket)
+            EditToolbar(
+                onClick: {
                 editAction()
             })
         }
