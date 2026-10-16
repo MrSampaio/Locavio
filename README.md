@@ -16,18 +16,18 @@ Locavio is a robust and intuitive mobile application designed exclusively for pr
 
 ## Table of Contents
 
-*   [Features](#-features)
-*   [Tech Stack](#%EF%B8%8F-tech-stack)
-*   [Installation](#-installation)
-*   [Usage & How to Use](#-usage--how-to-use)
+*   [Features](#features)
+*   [Tech Stack](#tech-stack)
+*   [Installation](#installation)
+*   [Usage & How to Use](#usage--how-to-use)
     *   [User Flow](#user-flow)
     *   [Key Modules](#key-modules)
 *   [Project Structure](#-project-structure)
-*   [API Reference](#-api-reference)
-*   [License](#-license)
-*   [Important Links](#-important-links)
-*   [Contact](#contact)
-*   [Agreements](#Thank-You-Apple-Developer-Academy-🍎)
+*   [API Reference](#api-reference)
+*   [License](#license)
+*   [Important Links](#important-links)
+*   [Contact](#thank-you-apple-developer-academy-)
+*   [Agreements](#thank-you-apple-developer-academy-)
 
 ## Features
 
