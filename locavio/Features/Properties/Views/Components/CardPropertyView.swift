@@ -75,29 +75,31 @@ struct PropertyCardView: View {
             HStack(alignment: .top, spacing: 12) {
                 VStack(alignment: .leading, spacing: 6) {
                     Text(viewModel.title)
-                        .foregroundStyle(viewModel.hasImage ? .white : .primary)
+                        .foregroundStyle(
+                            .primary
+                        )
                         .font(.title.bold())
                         .lineLimit(1)
                     
                     Text(viewModel.address)
                         .font(.subheadline)
-                        .foregroundStyle(viewModel.hasImage ? .white.opacity(0.8) : .secondary)
+                        .foregroundStyle(.primary)
                         .lineLimit(1)
                         .truncationMode(.tail)
                     
                     tenantLine
-                        .foregroundStyle(viewModel.hasImage ? .white : .primary.opacity(0.75))
+                        .foregroundStyle(.primary)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 VStack(alignment: .trailing, spacing: 6) {
                     Text(viewModel.rentLabel)
                         .font(.subheadline)
-                        .foregroundStyle(viewModel.hasImage ? .white.opacity(0.8) : .secondary)
+                        .foregroundStyle(.primary)
                     
                     Text(expensesViewModel.totalRentValue, format: .currency(code: "BRL"))
                         .font(.title2.bold())
-                        .foregroundStyle(viewModel.hasImage ? .white : .primary)
+                        .foregroundStyle(.primary)
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
                     
@@ -106,7 +108,7 @@ struct PropertyCardView: View {
                         Text(viewModel.nextPaymentText).fontWeight(.semibold)
                     }
                     .font(.footnote)
-                    .foregroundStyle(viewModel.hasImage ? .white.opacity(0.8) : .secondary)
+                    .foregroundStyle(.primary)
                 }
                 .fixedSize(horizontal: true, vertical: false)
             }
