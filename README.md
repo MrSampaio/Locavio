@@ -39,7 +39,7 @@ Locavio provides a rich set of features tailored for comprehensive property mana
 *   **Digital Contract Archiving**: Securely upload and store digital copies of lease agreements and other important documents directly within the application, viewable with a built-in PDF viewer.
 *   **Property Inspection Photos**: Store and categorize property inspection photos, providing a visual record of property conditions.
 *   **Maintenance Request System (Tickets)**: Efficiently create, track, and manage maintenance tickets. Assign titles, detailed descriptions, set conclusion dates, and log associated maintenance costs.
-*   **Interactive Dashboard & Reporting**: Gain insights into your properties' financial health with a dynamic dashboard displaying profit and expense reports over customizable periods (1 month, 6 months, 1 year). Track received vs. outstanding rent at a glance. 📊
+*   **Interactive Dashboard & Reporting**: Gain insights into your properties' financial health with a dynamic dashboard displaying profit and expense reports over customizable periods (1 month, 6 months, 1 year). Track received vs. outstanding rent at a glance.
 *   **Calendar View**: A dedicated calendar section to view upcoming payment due dates and maintenance ticket deadlines.
 *   **Smart Notifications**: Receive timely push notifications for impending rent due dates and critical maintenance ticket deadlines, ensuring you never miss an important event.
 *   **Secure User Authentication**: Seamless and secure sign-in experience using Apple Sign-In, enhancing user privacy and convenience.
@@ -186,12 +186,15 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 ## Important Links
 
 *   **Legal Documents (Privacy Policy & Terms of Use)**: [https://mrsampaio.github.io/Locavio/Legal/](https://mrsampaio.github.io/Locavio/Legal/)
+*   For any inquiries, feedback, or support, please reach out to: [locaviodev@gmail.com](mailto:locaviodev@gmail.com)
 
 ---
 
 ## Thank You, Apple Developer Academy 🍎
 
-Locavio were Developed by [Emily Wojtowicz](https://www.linkedin.com/in/emily-wojtowicz-zacatei-nunes/), [MrSampaio](https://github.com/MrSampaio), [snowzinn1](https://github.com/snowzinn1), [AlexeyFrens](https://github.com/AlexeyFrens) and [mirellabransford](https://github.com/mirellabransford) 
+Locavio were Developed by [Emily Wojtowicz](https://www.linkedin.com/in/emily-wojtowicz-zacatei-nunes/), [MrSampaio](https://github.com/MrSampaio), [snowzinn1](https://github.com/snowzinn1), [AlexeyFrens](https://github.com/AlexeyFrens) and [mirellabransford](https://github.com/mirellabransford).
 
-For any inquiries, feedback, or support, please reach out to: [locaviodev@gmail.com](mailto:locaviodev@gmail.com)
+Reflact about it.
+
+
 
