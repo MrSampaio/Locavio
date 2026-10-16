@@ -41,7 +41,7 @@ Locavio provides a rich set of features tailored for comprehensive property mana
 *   **Maintenance Request System (Tickets)**: Efficiently create, track, and manage maintenance tickets. Assign titles, detailed descriptions, set conclusion dates, and log associated maintenance costs.
 *   **Interactive Dashboard & Reporting**: Gain insights into your properties' financial health with a dynamic dashboard displaying profit and expense reports over customizable periods (1 month, 6 months, 1 year). Track received vs. outstanding rent at a glance. 📊
 *   **Calendar View**: A dedicated calendar section to view upcoming payment due dates and maintenance ticket deadlines.
-*   **Smart Notifications**: Receive timely push notifications for impending rent due dates and critical maintenance ticket deadlines, ensuring you never miss an important event. 🔔
+*   **Smart Notifications**: Receive timely push notifications for impending rent due dates and critical maintenance ticket deadlines, ensuring you never miss an important event.
 *   **Secure User Authentication**: Seamless and secure sign-in experience using Apple Sign-In, enhancing user privacy and convenience.
 *   **iCloud Synchronization**: All your property data, tenant information, financial records, and documents are securely stored and synchronized across your Apple devices via iCloud and CloudKit.
 *   **Onboarding Experience**: A guided onboarding process for new users to introduce them to the application's core functionalities.
@@ -79,7 +79,7 @@ Locavio is an iOS application. To set up and run the project locally, follow the
     ```
 
 3.  **Build and Run**: 
-    Select a simulator or a connected physical iOS device (iPhone) and click the "Run" button (▶️) in Xcode. Xcode will automatically handle the SwiftData model configuration and integrate with iCloud if your device is signed in with an Apple ID and CloudKit is enabled for the app.
+    Select a simulator or a connected physical iOS device (iPhone) and click the "Run" button in Xcode. Xcode will automatically handle the SwiftData model configuration and integrate with iCloud if your device is signed in with an Apple ID and CloudKit is enabled for the app.
 
 ## Usage & How to Use
 
@@ -198,7 +198,6 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 ## Important Links
 
-*   **GitHub Repository**: [https://github.com/MrSampaio/Locavio](https://github.com/MrSampaio/Locavio)
 *   **Legal Documents (Privacy Policy & Terms of Use)**: [https://mrsampaio.github.io/Locavio/Legal/](https://mrsampaio.github.io/Locavio/Legal/)
 
 ---
