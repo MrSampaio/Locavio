@@ -18,21 +18,13 @@ final class Ticket: Identifiable {
     var conclusionDate: Date?
     var property: Property?
     var isConcluded: Bool? = false
+    var previousConclusionDate: Date?
 
     @Relationship(deleteRule: .cascade, inverse: \Maintence.ticket)
     var maintence: [Maintence]?
     
     
-    init(
-        title: String? = nil,
-        ticketNumber: Int? = nil,
-        ticketDescription: String? = nil,
-        createdAt: Date? = nil,
-        conclusionDate: Date? = nil,
-        property: Property? = nil,
-        isConcluded: Bool? = nil,
-        maintence: [Maintence]? = nil
-    ) {
+    init(title: String? = nil, ticketNumber: Int? = nil, ticketDescription: String? = nil, createdAt: Date? = nil, conclusionDate: Date? = nil, property: Property? = nil, isConcluded: Bool? = nil, previousConclusionDate: Date? = nil, maintence: [Maintence]? = nil) {
         self.title = title
         self.ticketNumber = ticketNumber
         self.ticketDescription = ticketDescription
@@ -40,6 +32,7 @@ final class Ticket: Identifiable {
         self.conclusionDate = conclusionDate
         self.property = property
         self.isConcluded = isConcluded
+        self.previousConclusionDate = previousConclusionDate
         self.maintence = maintence
     }
 }

@@ -150,7 +150,7 @@ final class CalendarViewModel {
     /// Dias que têm pelo menos um chamado concluído
     func daysWithTickets(from tickets: [Ticket]) -> Set<Date> {
         Set(
-            tickets.compactMap(\.conclusionDate)
+            tickets.compactMap { calendarDate(of: $0) }
                 .map { calendar.startOfDay(for: $0) }
         )
     }
@@ -163,9 +163,15 @@ final class CalendarViewModel {
         guard let selectedDate else { return [] }
 
         return tickets.filter {
-            guard let date = $0.conclusionDate else { return false }
+            guard let date = calendarDate(of: $0) else { return false }
             return calendar.isDate(date, inSameDayAs: selectedDate)
         }
+    }
+
+    /// Data que posiciona o chamado no calendário.
+    /// Chamado sem data de conclusão (ex.: reaberto) cai na data de registro, em vez de sumir.
+    private func calendarDate(of ticket: Ticket) -> Date? {
+        ticket.conclusionDate ?? ticket.createdAt
     }
 
     // Aluguéis
