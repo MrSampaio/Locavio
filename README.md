@@ -5,7 +5,7 @@ Locavio is a robust and intuitive mobile application designed exclusively for pr
 
 ![Swift](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white) ![SwiftUI](https://img.shields.io/badge/SwiftUI-007AFF?style=for-the-badge&logo=swift&logoColor=white) ![iOS](https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white) ![Apple Sign In](https://img.shields.io/badge/Apple_Sign_In-080808?style=for-the-badge&logo=apple&logoColor=white) ![iCloud](https://img.shields.io/badge/iCloud-3694F6?style=for-the-badge&logo=icloud&logoColor=white)
 
-## App Store screenshots showcase
+## App Store Screenshots Showcase
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/55f7267c-2308-47af-9bb0-23dba95236ef" width="24%" />
