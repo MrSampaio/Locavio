@@ -11,12 +11,14 @@ struct PropertyCardView: View {
     let viewModel: PropertyCardViewModel
     let expensesViewModel: ExpensesViewModel
     @Environment(\.colorScheme) private var colorScheme
-
+    
+    @State private var textColor: Color = .white
+    
     init(property: Property) {
         self.viewModel = PropertyCardViewModel(property: property)
         self.expensesViewModel = ExpensesViewModel(property: property)
     }
-
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             background
@@ -26,10 +28,24 @@ struct PropertyCardView: View {
         .frame(height: 330)
         .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
         .contentShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
+        .task(id: viewModel.image) {
+            if let image = viewModel.image {
+                // Só a faixa inferior, onde o texto está
+                let region = CGRect(x: 0, y: 0.7, width: 1, height: 0.3)
+                
+                let luminance = await Task.detached(priority: .userInitiated) {
+                    await image.averageLuminance(in: region)
+                }.value
+                
+                if let luminance {
+                    textColor = luminance > 0.55 ? .black : .white
+                }
+            }
+        }
     }
-
+    
     // Fundo
-
+    
     @ViewBuilder
     private var background: some View {
         if let uiImage = viewModel.image {
@@ -51,47 +67,52 @@ struct PropertyCardView: View {
                 }
         }
     }
-
+    
     // Painel
-
+    
     private var infoPanel: some View {
         VStack(alignment: .leading, spacing: 16) {
             HStack(alignment: .top, spacing: 12) {
                 VStack(alignment: .leading, spacing: 6) {
                     Text(viewModel.title)
+                        .foregroundStyle(
+                            .primary
+                        )
                         .font(.title.bold())
                         .lineLimit(1)
-
+                    
                     Text(viewModel.address)
                         .font(.subheadline)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.primary)
                         .lineLimit(1)
                         .truncationMode(.tail)
-
+                    
                     tenantLine
+                        .foregroundStyle(.primary)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
-
+                
                 VStack(alignment: .trailing, spacing: 6) {
                     Text(viewModel.rentLabel)
                         .font(.subheadline)
-                        .foregroundStyle(.secondary)
-
+                        .foregroundStyle(.primary)
+                    
                     Text(expensesViewModel.totalRentValue, format: .currency(code: "BRL"))
                         .font(.title2.bold())
+                        .foregroundStyle(.primary)
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
-
+                    
                     VStack(alignment: .trailing, spacing: 0) {
                         Text(viewModel.nextPaymentLabel)
                         Text(viewModel.nextPaymentText).fontWeight(.semibold)
                     }
                     .font(.footnote)
-                    .foregroundStyle(.secondary)
+                    .foregroundStyle(.primary)
                 }
                 .fixedSize(horizontal: true, vertical: false)
             }
-
+            
             badgesRow
         }
         .foregroundStyle(.primary)
@@ -99,9 +120,9 @@ struct PropertyCardView: View {
         .frame(maxWidth: .infinity, alignment: .leading)
         .background { panelBackground }
     }
-
     
-
+    
+    
     private var badgesRow: some View {
         HStack(spacing: 8) {
             ForEach(viewModel.badges) { badge in
@@ -109,9 +130,9 @@ struct PropertyCardView: View {
             }
         }
     }
-
     
-
+    
+    
     @ViewBuilder
     private var tenantLine: some View {
         Group {
@@ -122,16 +143,16 @@ struct PropertyCardView: View {
             }
         }
         .font(.subheadline)
-        .foregroundStyle(.secondary.opacity(0.75))
+        
         .lineLimit(1)
     }
-
+    
     // Estilo do painel
-
+    
     private var panelShape: RoundedRectangle {
         RoundedRectangle(cornerRadius: 32, style: .continuous)
     }
-
+    
     @ViewBuilder
     private var panelBackground: some View {
         if viewModel.hasImage {
@@ -141,12 +162,12 @@ struct PropertyCardView: View {
                 .fill(.quaternary)
         }
     }
-
+    
     private var primaryTextColor: Color {
         if viewModel.hasImage { return .primary }
         return colorScheme == .dark ? .black : .white
     }
-
+    
     private var secondaryTextColor: Color {
         if viewModel.hasImage { return .secondary }
         return colorScheme == .dark ? .black.opacity(0.6) : .white.opacity(0.6)
@@ -176,7 +197,7 @@ private func previewPropertyWithImage() -> Property {
 }
 
 
- 
+
 
 
 

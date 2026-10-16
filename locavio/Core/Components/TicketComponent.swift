@@ -103,8 +103,7 @@ struct TicketComponent: View {
             Button("Cancelar", role: .cancel) { }
             Button("Confirmar") {
                 withAnimation {
-                    ticket.isConcluded = true
-                    ticket.conclusionDate = Date()
+                    ticket.close()
                 }
             }
         } message: {
@@ -115,8 +114,7 @@ struct TicketComponent: View {
             Button("Cancelar", role: .cancel) { }
             Button("Confirmar") {
                 withAnimation {
-                    ticket.isConcluded = false
-                    ticket.conclusionDate = nil
+                    ticket.reopen()
                 }
             }
         } message: {

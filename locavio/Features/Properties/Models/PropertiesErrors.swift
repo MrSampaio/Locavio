@@ -48,12 +48,10 @@ enum TenantErrors: LocalizedError {
 }
 
 enum ExpensesErrors: LocalizedError {
-    case invalidTitle
     case invalidValue
     
     var errorDescription: String? {
         switch self {
-            case .invalidTitle: return "Insira um título válido para a despesa."
             case .invalidValue: return "Insira um valor numérico válido na despesa."
         }
     }

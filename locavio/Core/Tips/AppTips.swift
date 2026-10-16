@@ -108,6 +108,22 @@ struct ReceiptTip: Tip {
     }
 }
 
+// tips solicitações
+struct ticketsTips: Tip {
+    var title: Text {
+        Text("Criar chamado")
+    }
+    var message: Text? {
+        Text("Ao clicar aqui, você pode adicionar um novo chamado. Os chamados vencendo serão notificados e seus valores serão contabilizados como despesas.")
+    }
+    var image: Image? {
+        Image(systemName: "hammer.fill")
+    }
+    var options: [TipOption] {
+        [Tips.MaxDisplayCount(1)]
+    }
+}
+
 // tips relatório
 struct DashboardSegmentedTip: Tip {
     var title: Text {

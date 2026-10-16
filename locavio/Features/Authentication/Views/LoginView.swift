@@ -65,8 +65,8 @@ struct LoginView: View {
                         .font(.caption)
                         .foregroundStyle(.primary)
                     
-                    Text("Veja como seus dados são gerenciados...")
-                        .font(.caption.bold())
+                    Link("Veja como seus dados são gerenciados...", destination: URL(string: "https://mrsampaio.github.io/Locavio/Legal/")!)
+                        .font(.footnote)
                         .foregroundStyle(.darkerPalette)
                     
                     SignInWithAppleButton(.continue) {

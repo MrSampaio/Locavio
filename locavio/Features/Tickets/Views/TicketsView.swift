@@ -7,6 +7,7 @@
 
 import SwiftUI
 import SwiftData
+import TipKit
 
 struct TicketsView: View {
     
@@ -19,6 +20,8 @@ struct TicketsView: View {
     
     // Query para verificar se o utilizador possui imóveis
     @Query private var properties: [Property]
+    
+    @State private var ticketsTip = ticketsTips()
     
     var onAdd: () -> Void = {}
     var onSelect: (Ticket) -> Void = { _ in }
@@ -136,6 +139,7 @@ struct TicketsView: View {
                             viewModel.selectedTickets.removeAll()
                         }
                     }
+                    
                 }
                 
                 ToolbarItem(placement: .topBarTrailing) {
@@ -162,9 +166,11 @@ struct TicketsView: View {
                 
                 // só mostra o botão de adicionar na barra se o usuário tiver propriedades
                 if !properties.isEmpty {
-                    ToolbarTicketView(onAdd: {
-                        coordinator.presentAddTicket()
-                    })
+                    ToolbarTicketView(
+                        onAdd: {
+                        coordinator.presentAddTicket()},
+                        tip: ticketsTip
+                    )
                 }
             }
         }

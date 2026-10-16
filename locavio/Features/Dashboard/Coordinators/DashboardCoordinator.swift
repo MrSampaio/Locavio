@@ -12,7 +12,7 @@ import SwiftUI
 final class DashboardCoordinator{
     var path = NavigationPath()
     
-    var activeSheet: DashboardSheet?
+    var activeSheet: DashboardSheets?
     
     func pop() {
         if !path.isEmpty {

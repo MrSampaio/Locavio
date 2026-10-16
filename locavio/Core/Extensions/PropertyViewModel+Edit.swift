@@ -102,9 +102,6 @@ extension PropertiesViewModel {
 
         // despesas: mesma validação do addProperty
         for expense in expenses {
-            if (expense.title ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                throw ExpensesErrors.invalidTitle
-            }
             if expense.value == nil {
                 throw ExpensesErrors.invalidValue
             }
