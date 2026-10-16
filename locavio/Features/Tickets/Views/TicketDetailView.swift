@@ -98,8 +98,7 @@ struct TicketDetailView: View {
             Button("Cancelar", role: .cancel) { }
             Button("Confirmar", role: .destructive) {
                 withAnimation {
-                    ticket.isConcluded = true
-                    ticket.conclusionDate = Date()
+                    ticket.close()
                 }
             }
         } message: {
@@ -108,11 +107,9 @@ struct TicketDetailView: View {
         
         .alert("Reabrir Chamado", isPresented: $viewModel.showReopenAlert) {
             Button("Cancelar", role: .cancel) { }
-
             Button("Confirmar") {
                 withAnimation {
-                    ticket.isConcluded = false
-                    ticket.conclusionDate = nil
+                    ticket.reopen()
                 }
             }
         } message: {
