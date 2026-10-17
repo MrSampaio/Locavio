@@ -35,12 +35,12 @@ struct PropertyDetailView: View {
          onTicketTap: @escaping (Ticket) -> Void = { _ in }
     )
     {
-       self.property = property
-       self.onEdit = onEdit
-       self.onShowLastPayments = onShowLastPayments
-       self.onDelete = onDelete
-       self.onTicketTap = onTicketTap
-       _viewModel = State(initialValue: PropertyDetailViewModel(property: property))
+        self.property = property
+        self.onEdit = onEdit
+        self.onShowLastPayments = onShowLastPayments
+        self.onDelete = onDelete
+        self.onTicketTap = onTicketTap
+        _viewModel = State(initialValue: PropertyDetailViewModel(property: property))
     }
     
     var body: some View {
@@ -129,6 +129,8 @@ struct PropertyDetailView: View {
             }
             .popoverTip(tipGroup.currentTip as? TicketsSectionTip)
             
+            addressInformation
+            
             actionButtons
         }
         .padding(20)
@@ -173,6 +175,90 @@ struct PropertyDetailView: View {
             
             Text(viewModel.cepText)
                 .font(.subheadline)
+        }
+    }
+    
+    @ViewBuilder
+    private var addressInformation: some View {
+        section("Endereço") {
+            VStack {
+                HStack {
+                    Text("CEP")
+                    
+                    Spacer()
+                    
+                    Text(property.cep ?? "")
+                        .foregroundStyle(.secondary)
+                }
+                
+                Divider()
+                
+                HStack {
+                    Text("Rua")
+                    
+                    Spacer()
+                    
+                    Text(property.street ?? "")
+                        .foregroundStyle(.secondary)
+                }
+                
+                Divider()
+                
+                HStack {
+                    Text("Número")
+                    
+                    Spacer()
+                    
+                    Text(property.number ?? "")
+                        .foregroundStyle(.secondary)
+                }
+                
+                Divider()
+                
+                HStack {
+                    Text("Bairro")
+                    
+                    Spacer()
+                    
+                    Text(property.neighborhood ?? "")
+                        .foregroundStyle(.secondary)
+                }
+                
+                Divider()
+                
+                HStack {
+                    Text("Cidade")
+                    
+                    Spacer()
+                    
+                    Text(property.city ?? "")
+                        .foregroundStyle(.secondary)
+                }
+                
+                Divider()
+                
+                HStack {
+                    Text("UF")
+                    
+                    Spacer()
+                    
+                    Text(property.uf ?? "")
+                        .foregroundStyle(.secondary)
+                }
+                
+                Divider()
+                
+                HStack {
+                    Text("Complemento")
+                    
+                    Spacer()
+                    
+                    Text(property.complement ?? "")
+                        .foregroundStyle(.secondary)
+                }
+            }
+            .padding()
+            .background(.quaternary, in: RoundedRectangle(cornerRadius: 28))
         }
     }
     
