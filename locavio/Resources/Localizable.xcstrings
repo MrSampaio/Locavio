@@ -1,0 +1,955 @@
+{
+  "sourceLanguage" : "pt-BR",
+  "strings" : {
+    "" : {
+
+    },
+    "·" : {
+
+    },
+    "* Campo obrigatório" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "* Required field"
+          }
+        }
+      }
+    },
+    "%@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "%@"
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "%1$@ %2$@"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%@ imóveis" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "%@ properties"
+          }
+        }
+      }
+    },
+    "%@ inquilinos" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "%@ tenants"
+          }
+        }
+      }
+    },
+    "%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "%lld/%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "%1$lld/%2$lld"
+          }
+        },
+        "pt-BR" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "A confirmação da exclusão da conta, por meio da API da Apple, irá revogar o acesso e atualização do usuário no App. Ao mesmo tempo, será feita a limpeza completa de todos os dados do usuário do banco de dado e seus respectivos arquivos em nuvem (como perfis de propriedades, cadastros de inquilinos, relatórios de despesas, contratos anexados e fotografias de vistorias), salvo apenas os registros de acesso (Endereço IP utilizado em cada acesso, Data e Hora exatas do acesso e hash do identificador do Usuário) que devem ser mantidos, sob sigilo, pelo prazo obrigatório de seis meses para cumprimento do Marco Civil da Internet (Lei nº 12.965/2014)." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Confirmation of account deletion through Apple’s API revokes the user’s access to and ability to update the App. At the same time, all user data is completely deleted from the database and associated cloud files, including property profiles, tenant records, expense reports, attached contracts, and inspection photos. The only exception is access logs—the IP address used for each access, the exact date and time of access, and a hash of the User identifier—which must be kept confidential for the mandatory six-month period to comply with the Brazilian Civil Rights Framework for the Internet (Law No. 12,965/2014)."
+          }
+        }
+      }
+    },
+    "A cópia não autorizada, modificação do Aplicativo, qualquer parte do Aplicativo ou das marcas registradas do Provedor de Serviços é estritamente proibida. Quaisquer tentativas de extrair o código-fonte do Aplicativo, traduzir o Aplicativo para outros idiomas ou criar versões derivadas não são permitidas. Todas as marcas registradas, direitos autorais, direitos de banco de dados e outros direitos de propriedade intelectual relacionados ao Aplicativo permanecem como propriedade do Provedor de Serviços." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Unauthorized copying or modification of the App, any part of the App, or the Service Provider’s trademarks is strictly prohibited. Attempts to extract the App’s source code, translate the App into other languages, or create derivative versions are not permitted. All trademarks, copyrights, database rights, and other intellectual property rights related to the App remain the property of the Service Provider."
+          }
+        }
+      }
+    },
+    "A Empresa poderá divulgar seus Dados Pessoais na crença de boa-fé de que tal ação é necessária para:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "The Company may disclose your Personal Data in the good-faith belief that doing so is necessary to:"
+          }
+        }
+      }
+    },
+    "A Empresa poderá utilizar os Dados Pessoais para as seguintes finalidades:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "The Company may use Personal Data for the following purposes:"
+          }
+        }
+      }
+    },
+    "A exclusão da Conta é definitiva e não pode ser desfeita. Recomendamos que você mantenha suas próprias cópias de documentos, contratos e comprovantes armazenados no aplicativo antes de solicitar o encerramento." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Account deletion is permanent and can’t be undone. Keep your own copies of documents, contracts, and receipts stored in the App before requesting account closure."
+          }
+        }
+      }
+    },
+    "Abre o comprovante" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Opens the receipt"
+          }
+        }
+      }
+    },
+    "Adicionar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Add"
+          }
+        }
+      }
+    },
+    "Adicionar comprovante" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Add Receipt"
+          }
+        }
+      }
+    },
+    "Adicionar contrato" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Add Contract"
+          }
+        }
+      }
+    },
+    "Adicionar Foto do Imóvel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Add Property Photo"
+          }
+        }
+      }
+    },
+    "Adicionar imóvel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Add Property"
+          }
+        }
+      }
+    },
+    "Adicionar valor" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Add Amount"
+          }
+        }
+      }
+    },
+    "Adicione seu primeiro imóvel para\ncomeçar a gerenciar." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Add your first property to\nstart managing it."
+          }
+        }
+      }
+    },
+    "Adotamos medidas técnicas e administrativas razoáveis para proteger seus Dados Pessoais, incluindo a criptografia oferecida pela infraestrutura do iCloud/CloudKit. Ainda assim, nenhum método de transmissão pela internet ou armazenamento eletrônico é 100% seguro, e não podemos garantir segurança absoluta." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Reasonable technical and administrative measures protect your Personal Data, including encryption provided by the iCloud/CloudKit infrastructure. However, no method of transmission over the internet or electronic storage is 100% secure, so absolute security can’t be guaranteed."
+          }
+        }
+      }
+    },
+    "Além disso, o Provedor de Serviços não contém nenhuma responsabilidade por:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "In addition, the Service Provider isn’t responsible for:"
+          }
+        }
+      }
+    },
+    "Algumas funções do Aplicativo exigem uma conexão ativa com a internet. O Provedor de Serviços não pode ser responsabilizado se o Aplicativo não funcionar em sua capacidade total devido à falta de acesso à rede, instabilidades de conexão ou esgotamento do seu pacote de dados móveis. O Provedor de Serviços também não assume responsabilidade caso você fique impossibilitado de acessar o Serviço devido à falta de bateria no seu dispositivo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Some App features require an active internet connection. The Service Provider isn’t responsible if the App doesn’t function fully because of unavailable network access, unstable connections, or an exhausted mobile data plan. The Service Provider also isn’t responsible if you can’t access the Service because your device’s battery is depleted."
+          }
+        }
+      }
+    },
+    "Aluguel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Rent"
+          }
+        }
+      }
+    },
+    "Anexado em: %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Attached on: %@"
+          }
+        }
+      }
+    },
+    "Ao acessar e usar este Aplicativo, você declara que tem permissão legal para usá-lo em sua jurisdição. Você deve ter pelo menos 18 anos de idade (a idade de consentimento digital em sua jurisdição) para usar o Aplicativo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "By accessing and using this App, you represent that you are legally permitted to use it in your jurisdiction. You must be at least 18 years old, the age of digital consent in your jurisdiction, to use the App."
+          }
+        }
+      }
+    },
+    "Ao baixar ou usar o Aplicativo, você concorda com estes Termos e Condições. Você deve lê-los cuidadosamente antes de usar o Aplicativo." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "By downloading or using the App, you agree to these Terms and Conditions. Read them carefully before using the App."
+          }
+        }
+      }
+    },
+    "Ao cadastrar um imóvel ou contrato, Você poderá inserir Dados Pessoais de terceiros (inquilinos), como nome, contato, CPF e histórico de pagamento. Nesse caso:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "When registering a property or contract, you may enter Personal Data of third parties, such as tenants’ names, contact information, CPF numbers, and payment histories. In this case:"
+          }
+        }
+      }
+    },
+    "Ao clicar aqui, você pode adicionar um novo chamado. Os chamados vencendo serão notificados e seus valores serão contabilizados como despesas." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Tap here to add a new ticket. You’ll be notified about tickets that are due, and their amounts will be counted as expenses."
+          }
+        }
+      }
+    },
+    "Ao clicar, você pode visualizar o comprovante de pagamento daquele mês." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Tap to view that month’s payment receipt."
+          }
+        }
+      }
+    },
+    "Ao clicar, você será redirecionado para a solicitação em aberto." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Tap to open the pending request."
+          }
+        }
+      }
+    },
+    "Ao inserir dados e documentos no Aplicativo, você mantém todos os direitos de propriedade sobre eles. Você concede ao Provedor de Serviços apenas a licença técnica estritamente necessária para processar, sincronizar e exibir essas informações exclusivamente para o seu próprio acesso dentro do Aplicativo, não havendo qualquer uso, venda ou distribuição do seu conteúdo a terceiros por parte do Provedor de Serviços." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "When you enter data and documents into the App, you retain all ownership rights to them. You grant the Service Provider only the technical license strictly necessary to process, synchronize, and display this information solely for your own access within the App. The Service Provider does not use, sell, or distribute your content to third parties."
+          }
+        }
+      }
+    },
+    "Ao utilizar o nosso Serviço, poderemos solicitar que você nos forneça determinadas informações de identificação pessoal que possam ser usadas para entrar em contato ou identificá-lo. As informações de identificação pessoal podem incluir, entre outras:" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "When you use the Service, you may be asked to provide certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to:"
+          }
+        }
+      }
+    },
+    "Apagar" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Delete"
+          }
+        }
+      }
+    },
+    "Apagar imóvel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Delete Property"
+          }
+        }
+      }
+    },
+    "Apagar Imóvel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Delete Property"
+          }
+        }
+      }
+    },
+    "Apagar Selecionados" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Delete Selected"
+          }
+        }
+      }
+    },
+    "Após a rescisão, seu direito de usar o Aplicativo terminará e você deverá excluir todas as cópias de seus dispositivos." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "After termination, your right to use the App ends, and you must delete all copies from your devices."
+          }
+        }
+      }
+    },
+    "Aqui, você pode adicionar uma foto do seu imóvel." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Add a photo of your property here."
+          }
+        }
+      }
+    },
+    "Aqui, você pode mudar o conteúdo do relatório para ”Despesa” ou ”Lucro”." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Change the report content to “Expense” or “Profit” here."
+          }
+        }
+      }
+    },
+    "Até quando resolver" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Resolve by"
+          }
+        }
+      }
+    },
+    "Atenção!" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "machine_translated",
+            "value" : "Attention!"
+          }
+        }
+      }
+    },
+    "Bairro" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "neighborhood!"
+          }
+        }
+      }
+    },
+    "Boas-Vindas!" : {
+
+    },
+    "Buscando seus imóveis..." : {
+
+    },
+    "Cadastre seu primeiro imóvel para começar a\n gerenciar seus lucros e despesas no Relatório" : {
+
+    },
+    "Calendário" : {
+
+    },
+    "Campo obrigatório" : {
+
+    },
+    "Cancelar" : {
+
+    },
+    "Carregando sua conta..." : {
+
+    },
+    "CEP" : {
+
+    },
+    "Chamado Nº %@" : {
+
+    },
+    "Chamado Nº %lld" : {
+
+    },
+    "Chamados" : {
+
+    },
+    "Cidade" : {
+
+    },
+    "Como o Locavio é uma ferramenta de uso estritamente privado, o Provedor de Serviços não realiza moderação ativa, filtragem ou análise do conteúdo que você armazena. No entanto, o Provedor de Serviços reserva-se o direito de:" : {
+
+    },
+    "Como os dados são armazenados via iCloud/CloudKit, é possível que sejam transferidos para e mantidos em servidores localizados fora do Brasil. Quando isso ocorrer, adotaremos as salvaguardas exigidas pela LGPD (art. 33), como cláusulas contratuais e garantias de proteção equivalentes às exigidas na legislação brasileira." : {
+
+    },
+    "Complemento" : {
+
+    },
+    "Confirmar" : {
+
+    },
+    "Confirmar aluguel pago?" : {
+
+    },
+    "Confirmar pagamento" : {
+
+    },
+    "Contrato" : {
+
+    },
+    "Criar chamado" : {
+
+    },
+    "Data de Registro" : {
+
+    },
+    "Descrição" : {
+
+    },
+    "Descrição do chamado" : {
+
+    },
+    "Desmarcar" : {
+
+    },
+    "Desmarcar aluguel como pago?" : {
+
+    },
+    "Detalhes do chamado" : {
+
+    },
+    "Dia de Pagamento" : {
+
+    },
+    "É de sua exclusiva responsabilidade manter a segurança de seu dispositivo móvel e o acesso ao Aplicativo. O Provedor de Serviços aconselha expressamente que você não faça jailbreak ou root em seu dispositivo móvel. Tais ações removem as restrições de software impostas pelo sistema operacional, podendo comprometer a criptografia local do dispositivo. Isso pode resultar na corrupção irremediável de chaves de autenticação e na exposição indevida dos dados contratuais e financeiros armazenados a agentes maliciosos, isentando o Locavio de qualquer responsabilidade por incidentes de segurança cibernética decorrentes destas práticas." : {
+
+    },
+    "Editar" : {
+
+    },
+    "Editar chamado" : {
+
+    },
+    "Editar Imóvel" : {
+
+    },
+    "Em caso de incidente de segurança que possa acarretar risco ou dano relevante aos titulares, comunicaremos a Autoridade Nacional de Proteção de Dados (ANPD) e os titulares afetados, conforme exigido pelo art. 48 da LGPD, informando a natureza dos dados afetados, as medidas técnicas adotadas e as providências tomadas para reverter ou mitigar os efeitos do incidente." : {
+
+    },
+    "Em certas circunstâncias, a Empresa poderá divulgar seus Dados Pessoais se exigido por lei ou em resposta a solicitações válidas de autoridades públicas (por exemplo, um tribunal ou órgão governamental)." : {
+
+    },
+    "Endereço" : {
+
+    },
+    "Entendi" : {
+
+    },
+    "Erro ao Salvar" : {
+
+    },
+    "Erro no Cadastro" : {
+
+    },
+    "Essa exclusão está sujeita a limitações técnicas de infraestrutura: cópias de segurança mantidas pela Apple (iCloud/CloudKit) seguem as políticas próprias de retenção da Apple e podem não ser removidas de forma instantânea de todos os sistemas de backup e replicação." : {
+
+    },
+    "Esta ação é irreversível. Todos os seus imóveis, inquilinos, contratos, despesas e pagamentos serão apagados permanentemente.\n\nPara desvincular também o Locavio do seu ID Apple, acesse Ajustes › seu nome › Iniciar Sessão com a Apple › Locavio › Parar de Usar." : {
+
+    },
+    "Esta indenização não se aplica a reclamações decorrentes da própria negligência do Provedor de Serviços, violação destes Termos ou violação da lei aplicável. Em jurisdições onde a indenização por parte do consumidor é restrita por lei, esta cláusula será limitada à extensão máxima permitida." : {
+
+    },
+    "Esta licença restringe-se ao uso do Aplicativo exclusivamente em dispositivos com sistemas operacionais iOS (produtos da marca Apple) que o Usuário possua ou controle legitimamente, e em estrita observância com as Regras de Uso delineadas nos Termos de Serviço da Apple Media Services." : {
+
+    },
+    "Esta Política de Privacidade descreve como o Locavio coleta, usa, armazena e protege os dados pessoais dos usuários (proprietários de imóveis) e de terceiros cujos dados sejam inseridos no aplicativo (inquilinos), em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD)." : {
+
+    },
+    "Estes termos e condições aplicam-se ao aplicativo Locavio para dispositivos móveis, juntamente com quaisquer serviços relacionados operados pelo Locavio. O Locavio é aqui referido como o \"Provedor de Serviços\"." : {
+
+    },
+    "Estes termos e condições entram em vigor a partir de 25-09-2026." : {
+
+    },
+    "Estes Termos e Condições são submetidos exclusivamente à legislação da República Federativa do Brasil, em especial à Lei Geral de Proteção de Dados Pessoais (LGPD - Lei nº 13.709/2018) e ao Marco Civil da Internet (Lei nº 12.965/2014)." : {
+
+    },
+    "Estes Termos e Condições, juntamente com a Política de Privacidade, constituem o acordo integral entre você e o Provedor de Serviços em relação ao seu uso do Aplicativo, substituindo quaisquer acordos ou entendimentos anteriores." : {
+
+    },
+    "Excluir Conta Permanentemente" : {
+
+    },
+    "Excluir Tudo" : {
+
+    },
+    "Fechar" : {
+
+    },
+    "Fechar chamado" : {
+
+    },
+    "Fechar Chamado" : {
+
+    },
+    "Filtrar por" : {
+
+    },
+    "Filtrar por período" : {
+
+    },
+    "Filtro" : {
+
+    },
+    "Financeiro" : {
+
+    },
+    "Foto do imóvel" : {
+
+    },
+    "Imóveis" : {
+
+    },
+    "Imóvel" : {
+
+    },
+    "Informações do Imóvel" : {
+
+    },
+    "Informaremos Você por e-mail e/ou por aviso destacado em nosso serviço, antes que a alteração entre em vigor, e atualizaremos a data de \"Última atualização\" no topo desta Política de Privacidade." : {
+
+    },
+    "Inquilino" : {
+
+    },
+    "Insira aqui" : {
+
+    },
+    "Item" : {
+
+    },
+    "Locatário:" : {
+
+    },
+    "Lucro e Despesa" : {
+
+    },
+    "Mantemos seus dados pessoais apenas pelo tempo necessário para as finalidades descritas nesta Política. Ao encerrar sua Conta, seus dados pessoais são excluídos imediatamente da nossa base de dados ativa." : {
+
+    },
+    "Mês" : {
+
+    },
+    "Modo" : {
+
+    },
+    "Na extensão máxima permitida por lei, o Provedor de Serviços não será responsável por quaisquer danos indiretos, incidentais, especiais, consequenciais ou punitivos, incluindo, mas não se limitando a, lucros cessantes, perda de dados ou interrupção de negócios, mesmo que avisado da possibilidade de tais danos." : {
+
+    },
+    "Na extensão máxima permitida por lei, você concorda em indenizar e isentar o Provedor de Serviços, suas afiliadas, diretores, conselheiros, funcionários e agentes de e contra quaisquer reclamações, responsabilidades, danos, perdas e despesas, incluindo honorários advocatícios razoáveis, decorrentes de ou diretamente relacionados à sua violação destes Termos ou ao seu uso indevido intencional do Aplicativo, incluindo Conteúdo Gerado pelo Usuário que você enviar em violação a estes Termos." : {
+
+    },
+    "Nada nestes Termos limitará quaisquer direitos que você tenha sob as leis de proteção ao consumidor aplicáveis que não possam ser legalmente excluídos." : {
+
+    },
+    "Não" : {
+
+    },
+    "Não foi possível abrir o comprovante" : {
+
+    },
+    "Não foi possível excluir" : {
+
+    },
+    "Não há %@ registrados" : {
+
+    },
+    "Nenhum aluguel ou chamado neste dia." : {
+
+    },
+    "Nenhum imóvel cadastrado" : {
+
+    },
+    "Nenhum imóvel encontrado" : {
+
+    },
+    "Nenhum selecionado" : {
+
+    },
+    "Nesse toggle, você confirma se o aluguel do mês foi pago ou não." : {
+
+    },
+    "Neste botão, você pode adicionar um imóvel novo." : {
+
+    },
+    "No que tange aos dados dos inquilinos, contratos de locação digitalizados, recibos financeiros e fotos de vistorias inseridas no aplicativo, o Locavio atua estritamente como Operador tecnológico da infraestrutura. O Usuário (proprietário do imóvel) assume integralmente a figura de Controlador destes dados perante os seus inquilinos, sendo o único responsável por possuir base legal válida (como a execução de contrato de locação) para cadastrar e processar essas informações sensíveis de terceiros." : {
+
+    },
+    "Nome" : {
+
+    },
+    "Nos termos do art. 18 da LGPD, você tem direito a:" : {
+
+    },
+    "Notificações" : {
+
+    },
+    "Número" : {
+
+    },
+    "O Aplicativo é destinado a proprietários de imóveis maiores de 18 anos, idade mínima para celebrar contratos de locação no Brasil. Não coletamos intencionalmente dados de menores de idade. Caso identifiquemos Dados Pessoais de um menor cadastrados indevidamente, tomaremos as medidas necessárias para excluí-los." : {
+
+    },
+    "O Aplicativo permite que você insira dados, fotografias e documentos (como contratos de locação, vistorias e comprovantes financeiros) exclusivamente para fins de gestão privada de seus imóveis. Ao utilizar essas funcionalidades, você concorda em não inserir ou armazenar no Aplicativo arquivos ou informações que:" : {
+
+    },
+    "O Locavio assume a responsabilidade total pelo fornecimento de serviços de manutenção e suporte técnico referentes ao Aplicativo. O Usuário e o Locavio reconhecem que a Apple não tem, sob nenhuma circunstância, qualquer obrigação de fornecer serviços de manutenção e suporte técnico relacionados ao Aplicativo, nem qualquer outra obrigação de garantia. Na extensão máxima permitida pela lei aplicável, recai inteiramente sobre o Locavio a responsabilidade por reivindicações, falhas de sistema e proteção ao consumidor. Em caso de alegações de terceiros de que o aplicativo infringe direitos de propriedade intelectual, a investigação, defesa e liquidação de tais reivindicações são de exclusiva responsabilidade do Locavio, e não da Apple." : {
+
+    },
+    "O Locavio é um aplicativo destinado à gestão imobiliária, que contempla a criação e manutenção de perfis de propriedades com preenchimento automático de endereços, o cadastro de inquilinos, o acompanhamento de relatórios de despesas, o armazenamento de recibos financeiros, além da anexação de contratos de locação digitalizados e fotografias de vistorias." : {
+
+    },
+    "O Locavio é um app para fazer a gestão de seus imóveis. Para uma melhor experiência, coletamos a numeração do seu documento, seu nome e email, os quais serão utilizados exclusivamente para a validação da sua identidade e não serão compartilhados com outros usuários." : {
+
+    },
+    "O nosso Serviço pode lhe dar a possibilidade de excluir determinadas informações sobre você diretamente \npelo Serviço." : {
+
+    },
+    "O preenchimento automático de endereços de propriedades imobiliárias é potencializado pela integração técnica com a API pública ViaCEP. O Aplicativo transmite exclusivamente o código numérico do CEP a esta API externa para resguardar a privacidade, fundindo a informação genérica com os dados sensíveis do imóvel apenas posteriormente e de forma encriptada. O Usuário isenta o Locavio de responsabilidade por preenchimentos incorretos ou interrupções no cadastro de imóveis decorrentes de instabilidades no serviço ViaCEP ou na conectividade mantida por terceiros." : {
+
+    },
+    "O processamento de dados dentro do Aplicativo cria papéis distintos de responsabilidade legal. O Locavio atua como Controlador de Dados exclusivamente no que se refere aos dados de cadastro do próprio proprietário do imóvel para a criação e manutenção da conta (como endereço de e-mail, nome e dados de assinatura in-app)." : {
+
+    },
+    "O processamento de dados pessoais relacionados às informações que você insere (especialmente dados de inquilinos) é regido pela nossa Política de Privacidade. O Aplicativo atua apenas como infraestrutura tecnológica para o armazenamento destes dados." : {
+
+    },
+    "O Provedor de Serviços não aceita qualquer responsabilidade por qualquer perda, direta ou indireta, que você venha a sofrer como resultado de confiar inteiramente em informações de terceiros fornecidas por meio deste Aplicativo, ou por imprecisões no conteúdo fornecido por terceiros." : {
+
+    },
+    "O Provedor de Serviços pode atualizar seus Termos e Condições periodicamente. Portanto, é aconselhável que você analise esta página regularmente para verificar quaisquer alterações. O Provedor de Serviços o notificará sobre quaisquer alterações publicando os novos Termos e Condições nesta página." : {
+
+    },
+    "O Provedor de Serviços pode desejar atualizar o aplicativo em algum momento. O aplicativo está atualmente disponível de acordo com os requisitos do sistema operacional (e de quaisquer sistemas adicionais para os quais eles decidam estender a disponibilidade do aplicativo), que podem mudar, e você precisará baixar as atualizações se quiser continuar usando o aplicativo. O Provedor de Serviços não garante que sempre atualizará o aplicativo para que ele continue relevante para você e/ou compatível com a versão específica do sistema operacional instalada em seu dispositivo. Você deve aceitar as atualizações quando forem oferecidas; caso decida não as aceitar, o Provedor de Serviços poderá deixar de oferecer suporte a versões anteriores e o Aplicativo poderá não funcionar adequadamente. O Provedor de Serviços também pode desejar parar de fornecer o aplicativo e pode encerrar o seu uso a qualquer momento sem fornecer aviso de rescisão a você. A menos que informem o contrário, mediante qualquer rescisão, (a) os direitos e licenças concedidos a você nestes termos terminarão; (b) você deve parar de usar o aplicativo e (se necessário) excluí-lo de seu dispositivo." : {
+
+    },
+    "O Provedor de Serviços pode suspender ou rescindir seu acesso imediatamente sem aviso prévio se você violar a lei aplicável, infringir direitos de propriedade intelectual ou se envolver em atividades que possam causar danos a outros usuários ou ao Provedor de Serviços." : {
+
+    },
+    "O Provedor de Serviços pode suspender seu acesso ao Aplicativo ou aos serviços se você violar estes Termos. O Provedor de Serviços fornecerá um aviso por escrito sobre a violação por email." : {
+
+    },
+    "O Provedor de Serviços retém todos os direitos de propriedade intelectual sobre o Aplicativo, incluindo seu código, design, marcas registradas, marcas de serviço, nomes comerciais, logotipos e identidade visual (a \"PI\"). Nada nestes Termos concede a você qualquer licença ou direito de usar as marcas registradas, logotipos ou identidade visual do Provedor de Serviços para qualquer finalidade. Você concorda em não remover, alterar ou ocultar quaisquer avisos de direitos autorais, marcas registradas ou outros avisos de propriedade exibidos no ou dentro do Aplicativo." : {
+
+    },
+    "O Usuário compromete-se a indenizar o Locavio contra quaisquer sanções, multas, ações judiciais ou autuações por parte da Autoridade Nacional de Proteção de Dados (ANPD) que sejam decorrentes do tratamento ilícito, abusivo ou desprovido de base legal dos dados de inquilinos e terceiros inseridos no Aplicativo pelo Usuário." : {
+
+    },
+    "O Usuário detém a autonomia plena para solicitar a exclusão definitiva da sua conta a qualquer momento, funcionalidade que se encontra disponível nativamente nas configurações do Aplicativo." : {
+
+    },
+    "O Usuário e o Locavio reconhecem e acordam expressamente que este contrato é firmado única e exclusivamente entre as referidas partes, não configurando qualquer vínculo contratual com a Apple Inc. ou as suas subsidiárias (\"Apple\"). O Locavio, e não a Apple, é o único responsável pelo Aplicativo e pelo conteúdo nele inserido. O Usuário e o Locavio reconhecem que a Apple e as suas subsidiárias são terceiros beneficiários destes Termos e que, mediante a aceitação do Usuário, a Apple terá o direito legal de executar as disposições deste contrato diretamente contra o Usuário, na qualidade de terceiro beneficiário." : {
+
+    },
+    "Observe, no entanto, que podemos precisar reter determinadas informações quando tivermos uma obrigação legal ou base legal para tanto." : {
+
+    },
+    "Ocorreu um erro ao excluir sua conta. Seus dados não foram apagados. Tente novamente." : {
+
+    },
+    "OK" : {
+
+    },
+    "Ordenar por" : {
+
+    },
+    "Os dados inseridos no Aplicativo são armazenados por meio dos serviços **iCloud** e **CloudKit**, da Apple Inc., que atua como Operadora dos dados em nosso nome. Isso significa que:" : {
+
+    },
+    "Pago" : {
+
+    },
+    "Para exercer qualquer um desses direitos, entre em contato conosco pelos canais indicados abaixo." : {
+
+    },
+    "Para os fins desta Política de Privacidade:" : {
+
+    },
+    "Pendente" : {
+
+    },
+    "Perfil" : {
+
+    },
+    "Podemos atualizar nossa Política de Privacidade periodicamente. Notificaremos você sobre quaisquer alterações da nova Política de Privacidade." : {
+
+    },
+    "Podemos compartilhar seus Dados Pessoais nas seguintes situações:" : {
+
+    },
+    "Política de Privacidade" : {
+
+    },
+    "Qualquer litígio decorrente de ou relacionado a estes Termos será submetido aos tribunais que tenham jurisdição sob a lei aplicável, ficando desde logo eleito o foro do domicílio do Usuário, sob a égide dos princípios protetivos do Código de Defesa do Consumidor, na medida do aplicável." : {
+
+    },
+    "Reabrir chamado" : {
+
+    },
+    "Reabrir Chamado" : {
+
+    },
+    "Recomendamos que Você revise esta Política de Privacidade periodicamente para verificar quaisquer alterações. As alterações a esta Política de Privacidade entram em vigor quando publicadas nesta página." : {
+
+    },
+    "Relatório" : {
+
+    },
+    "Remover" : {
+
+    },
+    "Rua" : {
+
+    },
+    "Sair" : {
+
+    },
+    "Sair da conta" : {
+
+    },
+    "Se qualquer disposição destes Termos e Condições for considerada inválida, ilegal ou inexequível por um tribunal de jurisdição competente, tal disposição será modificada na medida mínima necessária para torná-la válida e exequível, e as demais disposições destes Termos permanecerão em pleno vigor e efeito." : {
+
+    },
+    "Se você tiver alguma dúvida ou sugestão sobre os Termos e Condições, não hesite em entrar em contato com o Provedor de Serviços em [locaviodev@gmail.com](mailto:locaviodev@gmail.com)." : {
+
+    },
+    "Se Você tiver alguma dúvida sobre esta Política de Privacidade, Você pode entrar em contato conosco:" : {
+
+    },
+    "Selecionar" : {
+
+    },
+    "Selecione um imóvel" : {
+
+    },
+    "Seu nome completo" : {
+
+    },
+    "Sim" : {
+
+    },
+    "Solicitações" : {
+
+    },
+    "Sou pessoa" : {
+
+    },
+    "Status do imóvel" : {
+
+    },
+    "Substituir comprovante" : {
+
+    },
+    "Sujeito ao seu cumprimento destes Termos, o Provedor de Serviços concede a você uma licença limitada, não exclusiva, intransferível e revogável para instalar e usar o Aplicativo em um dispositivo móvel para fins pessoais ou comerciais internos. Você não pode reproduzir, distribuir, modificar, criar trabalhos derivados, fazer engenharia reversa, descompilar ou desmontar o Aplicativo, exceto e apenas na medida em que tal atividade seja expressamente permitida pela lei aplicável." : {
+
+    },
+    "Tem certeza de que deseja sair do aplicativo?" : {
+
+    },
+    "Tem certeza que deseja apagar os %lld chamados selecionados? Essa ação não pode ser desfeita." : {
+
+    },
+    "Tem certeza que deseja marcar este chamado como concluído?" : {
+
+    },
+    "Tem certeza que deseja marcar este chamado como concluído? Essa ação atualizará o status e a data de encerramento." : {
+
+    },
+    "Tem certeza que deseja reabrir este chamado? O status voltará para 'Aberto'." : {
+
+    },
+    "Tente buscar por outro nome ou mudar\no filtro atual." : {
+
+    },
+    "Termos de Uso" : {
+
+    },
+    "Tipo" : {
+
+    },
+    "Tipo de imóvel" : {
+
+    },
+    "Título" : {
+
+    },
+    "Título do chamado" : {
+
+    },
+    "Todos" : {
+
+    },
+    "Total" : {
+
+    },
+    "Total do Aluguel" : {
+
+    },
+    "UF" : {
+
+    },
+    "Última atualização: 25 de setembro de 2026" : {
+
+    },
+    "Valor" : {
+
+    },
+    "Valor das despesas" : {
+
+    },
+    "Valores" : {
+
+    },
+    "Veja como seus dados são gerenciados..." : {
+
+    },
+    "Ver comprovante" : {
+
+    },
+    "Versões anteriores destes Termos e Condições serão mantidas e disponibilizadas mediante solicitação, entrando em contato com o Provedor de Serviços em [locaviodev@gmail.com](mailto:locaviodev@gmail.com)." : {
+
+    },
+    "Visualizar o comprovante" : {
+
+    },
+    "Você ainda não tem imóveis" : {
+
+    },
+    "Você pode atualizar, corrigir ou excluir suas informações a qualquer momento, acessando sua conta, caso possua uma, e acessando a seção de configurações de conta que permite gerenciar suas informações pessoais. Você também pode entrar em contato conosco para solicitar acesso, correção ou exclusão de quaisquer Dados Pessoais que Você tenha nos fornecido." : {
+
+    },
+    "Você pode escolher quais imóveis quer ver de acordo com o status." : {
+
+    },
+    "Você pode escolher quais notificações quer receber." : {
+
+    },
+    "Você tem o direito de excluir ou solicitar que nós o ajudemos a excluir os Dados Pessoais que coletamos \nsobre Você." : {
+
+    },
+    "Voltar" : {
+
+    }
+  },
+  "version" : "1.3"
+}
