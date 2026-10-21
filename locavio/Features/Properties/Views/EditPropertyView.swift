@@ -38,11 +38,7 @@ struct EditPropertyView: View {
         .scrollContentBackground(.hidden)
         .background(Color(.appBg).ignoresSafeArea())
         .ignoresSafeArea(.keyboard)
-        .onTapGesture {
-            #if canImport(UIKit)
-                hideKeyboard()
-            #endif
-        }
+        .dismissKeyboardOnTap()
         .scrollDismissesKeyboard(.interactively)
         .navigationTitle("Editar Imóvel")
         .navigationBarTitleDisplayMode(.inline)
