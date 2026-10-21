@@ -22,7 +22,9 @@ struct DocumentTextField: View {
     }
     
     private var inputPlaceholder: String {
-        documentType == .pf ? "Ex: 000.000.000-00" : "Ex: 00.000.000/0001-00"
+        documentType == .pf
+            ? String(localized: "Ex: 000.000.000-00")
+            : String(localized: "Ex: 00.000.000/0001-00")
     }
     
     

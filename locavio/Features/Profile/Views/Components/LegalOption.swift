@@ -23,7 +23,7 @@ struct LegalOption: View {
                     .foregroundColor(Color.accentColor)
                     .font(.system(size: 28))
                 
-                Text(text)
+                Text(LocalizedStringKey(text))
                     .font(.body)
                     .fontWeight(.regular)
                 

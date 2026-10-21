@@ -24,45 +24,45 @@ extension PropertiesViewModel {
 
         switch type {
         case .name:
-            return clean(propertyDraft.name).isEmpty ? "Informe o nome do imóvel" : nil
+            return clean(propertyDraft.name).isEmpty ? String(localized: "Informe o nome do imóvel") : nil
 
         case .area:
             let area = propertyDraft.area
-            if area.isEmpty { return "Informe a área" }
-            guard let value = Int(area), value > 0 else { return "Área inválida" }
+            if area.isEmpty { return String(localized: "Informe a área") }
+            guard let value = Int(area), value > 0 else { return String(localized: "Área inválida") }
             return nil
 
         case .cep:
             // opcional, mas se foi preenchido precisa estar completo
             let digits = propertyDraft.cep.onlyDigits
             if digits.isEmpty { return nil }
-            return digits.count == 8 ? nil : "O CEP deve ter 8 dígitos"
+            return digits.count == 8 ? nil : String(localized: "O CEP deve ter 8 dígitos")
             
         case .number:
-            return clean(propertyDraft.number).isEmpty ? "informe o número do imóvel" : nil
+            return clean(propertyDraft.number).isEmpty ? String(localized: "informe o número do imóvel") : nil
 
         case .profit:
-            return parseCurrency(propertyDraft.profit) == nil ? "Informe o lucro" : nil
+            return parseCurrency(propertyDraft.profit) == nil ? String(localized: "Informe o lucro") : nil
 
         case .tenantName:
             // o addProperty ignora o inquilino se não tiver nome, então avisa antes de perder os dados
             let hasOtherTenantData = !propertyDraft.tenantCPF.isEmpty || !propertyDraft.tenantPhone.isEmpty
-            return (!tenantNameFilled && hasOtherTenantData) ? "Informe o nome do inquilino" : nil
+            return (!tenantNameFilled && hasOtherTenantData) ? String(localized: "Informe o nome do inquilino") : nil
 
         case .tenantEmail:
             let email = clean(propertyDraft.tenantEmail)
             if email.isEmpty { return nil }
-            return emailIsValid(email) ? nil : "Email inválido"
+            return emailIsValid(email) ? nil : String(localized: "Email inválido")
 
         case .tenantCPF:
             let cpf = propertyDraft.tenantCPF
-            if cpf.isEmpty { return tenantNameFilled ? "Informe o CPF do inquilino" : nil }
-            return cpf.isValidCPF ? nil : "CPF inválido"
+            if cpf.isEmpty { return tenantNameFilled ? String(localized: "Informe o CPF do inquilino") : nil }
+            return cpf.isValidCPF ? nil : String(localized: "CPF inválido")
 
         case .tenantPhone:
             let phone = propertyDraft.tenantPhone.onlyDigits
-            if phone.isEmpty { return tenantNameFilled ? "Informe o telefone do inquilino" : nil }
-            return phone.count >= 10 ? nil : "Telefone inválido"
+            if phone.isEmpty { return tenantNameFilled ? String(localized: "Informe o telefone do inquilino") : nil }
+            return phone.count >= 10 ? nil : String(localized: "Telefone inválido")
 
         default:
             return nil

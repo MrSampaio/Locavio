@@ -12,5 +12,13 @@ enum TicketsFilter: String, CaseIterable, Identifiable {
     case open = "Abertos"
     case closed = "Concluídos"
     
+    var displayTitle: String {
+        switch self {
+        case .all: return String(localized: "Todos")
+        case .open: return String(localized: "Abertos")
+        case .closed: return String(localized: "Concluídos")
+        }
+    }
+
     var id: Self { self }
 }

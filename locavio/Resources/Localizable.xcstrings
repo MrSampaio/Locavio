@@ -11,7 +11,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "* Required field"
           }
         }
@@ -21,7 +21,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "%@"
           }
         }
@@ -31,7 +31,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "%1$@ %2$@"
           }
         },
@@ -47,7 +47,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "%@ properties"
           }
         }
@@ -57,7 +57,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "%@ tenants"
           }
         }
@@ -67,7 +67,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "%lld"
           }
         }
@@ -77,7 +77,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "%1$lld/%2$lld"
           }
         },
@@ -93,8 +93,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "Confirmation of account deletion through Apple’s API revokes the user’s access to and ability to update the App. At the same time, all user data is completely deleted from the database and associated cloud files, including property profiles, tenant records, expense reports, attached contracts, and inspection photos. The only exception is access logs—the IP address used for each access, the exact date and time of access, and a hash of the User identifier—which must be kept confidential for the mandatory six-month period to comply with the Brazilian Civil Rights Framework for the Internet (Law No. 12,965/2014)."
+            "state" : "translated",
+            "value" : "Confirming account deletion through Apple's API will revoke the User's access to the App and ability to make updates within it. At the same time, all of the User's data will be completely deleted from the database, along with the corresponding cloud files (such as property profiles, tenant records, expense reports, attached contracts, and inspection photos). The only exception is access logs (the IP address used for each access, the exact date and time of access, and a hash of the User's identifier), which must be kept confidential for the mandatory period of six months to comply with the Brazilian Civil Rights Framework for the Internet (Law No. 12,965/2014)."
           }
         }
       }
@@ -103,8 +103,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "Unauthorized copying or modification of the App, any part of the App, or the Service Provider’s trademarks is strictly prohibited. Attempts to extract the App’s source code, translate the App into other languages, or create derivative versions are not permitted. All trademarks, copyrights, database rights, and other intellectual property rights related to the App remain the property of the Service Provider."
+            "state" : "translated",
+            "value" : "Unauthorized copying or modification of the App, any part of the App, or the Service Provider's trademarks is strictly prohibited. Any attempts to extract the App's source code, translate the App into other languages, or create derivative versions are not permitted. All trademarks, copyrights, database rights, and other intellectual property rights relating to the App remain the property of the Service Provider."
           }
         }
       }
@@ -113,7 +113,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "The Company may disclose your Personal Data in the good-faith belief that doing so is necessary to:"
           }
         }
@@ -123,7 +123,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "The Company may use Personal Data for the following purposes:"
           }
         }
@@ -133,8 +133,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "Account deletion is permanent and can’t be undone. Keep your own copies of documents, contracts, and receipts stored in the App before requesting account closure."
+            "state" : "translated",
+            "value" : "Account deletion is permanent and cannot be undone. We recommend keeping your own copies of documents, contracts, and receipts stored in the App before requesting account closure."
           }
         }
       }
@@ -143,7 +143,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "Opens the receipt"
           }
         }
@@ -153,7 +153,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "Add"
           }
         }
@@ -163,7 +163,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "Add Receipt"
           }
         }
@@ -173,7 +173,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "Add Contract"
           }
         }
@@ -183,7 +183,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "Add Property Photo"
           }
         }
@@ -193,7 +193,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "Add Property"
           }
         }
@@ -203,7 +203,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "Add Amount"
           }
         }
@@ -213,7 +213,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "Add your first property to\nstart managing it."
           }
         }
@@ -223,8 +223,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "Reasonable technical and administrative measures protect your Personal Data, including encryption provided by the iCloud/CloudKit infrastructure. However, no method of transmission over the internet or electronic storage is 100% secure, so absolute security can’t be guaranteed."
+            "state" : "translated",
+            "value" : "We take reasonable technical and administrative measures to protect your Personal Data, including the encryption provided by the iCloud/CloudKit infrastructure. However, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security."
           }
         }
       }
@@ -233,8 +233,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "In addition, the Service Provider isn’t responsible for:"
+            "state" : "translated",
+            "value" : "In addition, the Service Provider is not liable for:"
           }
         }
       }
@@ -243,8 +243,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "Some App features require an active internet connection. The Service Provider isn’t responsible if the App doesn’t function fully because of unavailable network access, unstable connections, or an exhausted mobile data plan. The Service Provider also isn’t responsible if you can’t access the Service because your device’s battery is depleted."
+            "state" : "translated",
+            "value" : "Some App features require an active internet connection. The Service Provider cannot be held responsible if the App does not function to its full capacity because of a lack of network access, connection instability, or the exhaustion of your mobile data allowance. The Service Provider also accepts no responsibility if you are unable to access the Service because your device's battery has run out."
           }
         }
       }
@@ -253,7 +253,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "Rent"
           }
         }
@@ -263,7 +263,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "Attached on: %@"
           }
         }
@@ -273,8 +273,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "By accessing and using this App, you represent that you are legally permitted to use it in your jurisdiction. You must be at least 18 years old, the age of digital consent in your jurisdiction, to use the App."
+            "state" : "translated",
+            "value" : "By accessing and using this App, you represent that you are legally permitted to use it in your jurisdiction. You must be at least 18 years old (the age of digital consent in your jurisdiction) to use the App."
           }
         }
       }
@@ -283,8 +283,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "By downloading or using the App, you agree to these Terms and Conditions. Read them carefully before using the App."
+            "state" : "translated",
+            "value" : "By downloading or using the App, you agree to these Terms and Conditions. You should read them carefully before using the App."
           }
         }
       }
@@ -293,8 +293,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "When registering a property or contract, you may enter Personal Data of third parties, such as tenants’ names, contact information, CPF numbers, and payment histories. In this case:"
+            "state" : "translated",
+            "value" : "When adding a property or contract, you may enter third parties' Personal Data, such as tenants' names, contact details, CPF numbers (Brazilian individual taxpayer IDs), and payment histories. In this case:"
           }
         }
       }
@@ -303,8 +303,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "Tap here to add a new ticket. You’ll be notified about tickets that are due, and their amounts will be counted as expenses."
+            "state" : "translated",
+            "value" : "Tap here to add a maintenance request. You'll receive notifications when requests are due, and their costs will be included in your expenses."
           }
         }
       }
@@ -313,8 +313,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "Tap to view that month’s payment receipt."
+            "state" : "translated",
+            "value" : "Tap to view the payment receipt for that month."
           }
         }
       }
@@ -323,8 +323,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "Tap to open the pending request."
+            "state" : "translated",
+            "value" : "Tap to view the open maintenance request."
           }
         }
       }
@@ -333,8 +333,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "When you enter data and documents into the App, you retain all ownership rights to them. You grant the Service Provider only the technical license strictly necessary to process, synchronize, and display this information solely for your own access within the App. The Service Provider does not use, sell, or distribute your content to third parties."
+            "state" : "translated",
+            "value" : "When you enter data and documents into the App, you retain all ownership rights to them. You grant the Service Provider only the technical license strictly necessary to process, synchronize, and display this information exclusively for your own access within the App. The Service Provider does not use, sell, or distribute your content to third parties."
           }
         }
       }
@@ -343,8 +343,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "When you use the Service, you may be asked to provide certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to:"
+            "state" : "translated",
+            "value" : "When you use our Service, we may ask you to provide certain personally identifiable information that can be used to contact or identify you. Personally identifiable information may include, but is not limited to:"
           }
         }
       }
@@ -353,7 +353,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "Delete"
           }
         }
@@ -363,7 +363,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "Delete Property"
           }
         }
@@ -373,7 +373,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "Delete Property"
           }
         }
@@ -383,7 +383,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "Delete Selected"
           }
         }
@@ -393,8 +393,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "After termination, your right to use the App ends, and you must delete all copies from your devices."
+            "state" : "translated",
+            "value" : "Upon termination, your right to use the App will end, and you must delete all copies from your devices."
           }
         }
       }
@@ -403,7 +403,7 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
+            "state" : "translated",
             "value" : "Add a photo of your property here."
           }
         }
@@ -413,8 +413,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "Change the report content to “Expense” or “Profit” here."
+            "state" : "translated",
+            "value" : "Switch the report between “Expenses” and “Profit” here."
           }
         }
       }
@@ -423,8 +423,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "Resolve by"
+            "state" : "translated",
+            "value" : "Resolve By"
           }
         }
       }
@@ -433,8 +433,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "machine_translated",
-            "value" : "Attention!"
+            "state" : "translated",
+            "value" : "Warning!"
           }
         }
       }
@@ -444,511 +444,4258 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "neighborhood!"
+            "value" : "Neighborhood"
           }
         }
       }
     },
     "Boas-Vindas!" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome!"
+          }
+        }
+      }
     },
     "Buscando seus imóveis..." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading your properties..."
+          }
+        }
+      }
     },
     "Cadastre seu primeiro imóvel para começar a\n gerenciar seus lucros e despesas no Relatório" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add your first property to start\ntracking your profit and expenses in the Report"
+          }
+        }
+      }
     },
     "Calendário" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calendar"
+          }
+        }
+      }
     },
     "Campo obrigatório" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Required field"
+          }
+        }
+      }
     },
     "Cancelar" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
     },
     "Carregando sua conta..." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loading your account..."
+          }
+        }
+      }
     },
     "CEP" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postal Code (CEP)"
+          }
+        }
+      }
     },
     "Chamado Nº %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request #%@"
+          }
+        }
+      }
     },
     "Chamado Nº %lld" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request #%lld"
+          }
+        }
+      }
     },
     "Chamados" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Requests"
+          }
+        }
+      }
     },
     "Cidade" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "City"
+          }
+        }
+      }
     },
     "Como o Locavio é uma ferramenta de uso estritamente privado, o Provedor de Serviços não realiza moderação ativa, filtragem ou análise do conteúdo que você armazena. No entanto, o Provedor de Serviços reserva-se o direito de:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Because Locavio is a tool for strictly private use, the Service Provider does not actively moderate, filter, or analyze the content you store. However, the Service Provider reserves the right to:"
+          }
+        }
+      }
     },
     "Como os dados são armazenados via iCloud/CloudKit, é possível que sejam transferidos para e mantidos em servidores localizados fora do Brasil. Quando isso ocorrer, adotaremos as salvaguardas exigidas pela LGPD (art. 33), como cláusulas contratuais e garantias de proteção equivalentes às exigidas na legislação brasileira." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Because data is stored through iCloud/CloudKit, it may be transferred to and held on servers located outside Brazil. When this occurs, we will adopt the safeguards required by Brazil's General Data Protection Law (LGPD, Article 33), such as contractual clauses and guarantees of protection equivalent to those required under Brazilian law."
+          }
+        }
+      }
     },
     "Complemento" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apartment, Suite, etc."
+          }
+        }
+      }
     },
     "Confirmar" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm"
+          }
+        }
+      }
     },
     "Confirmar aluguel pago?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mark rent as paid?"
+          }
+        }
+      }
     },
     "Confirmar pagamento" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm Payment"
+          }
+        }
+      }
     },
     "Contrato" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contract"
+          }
+        }
+      }
     },
     "Criar chamado" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create Request"
+          }
+        }
+      }
     },
     "Data de Registro" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date Created"
+          }
+        }
+      }
     },
     "Descrição" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
+          }
+        }
+      }
     },
     "Descrição do chamado" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request Description"
+          }
+        }
+      }
     },
     "Desmarcar" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mark as Unpaid"
+          }
+        }
+      }
     },
     "Desmarcar aluguel como pago?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mark rent as unpaid?"
+          }
+        }
+      }
     },
     "Detalhes do chamado" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request Details"
+          }
+        }
+      }
     },
     "Dia de Pagamento" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rent Due Day"
+          }
+        }
+      }
     },
     "É de sua exclusiva responsabilidade manter a segurança de seu dispositivo móvel e o acesso ao Aplicativo. O Provedor de Serviços aconselha expressamente que você não faça jailbreak ou root em seu dispositivo móvel. Tais ações removem as restrições de software impostas pelo sistema operacional, podendo comprometer a criptografia local do dispositivo. Isso pode resultar na corrupção irremediável de chaves de autenticação e na exposição indevida dos dados contratuais e financeiros armazenados a agentes maliciosos, isentando o Locavio de qualquer responsabilidade por incidentes de segurança cibernética decorrentes destas práticas." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You are solely responsible for keeping your mobile device and access to the App secure. The Service Provider expressly advises you not to jailbreak or root your mobile device. These actions remove software restrictions imposed by the operating system and may compromise the device's local encryption. This may result in irreversible corruption of authentication keys and improper exposure of stored contractual and financial data to malicious actors, releasing Locavio from any liability for cybersecurity incidents arising from these practices."
+          }
+        }
+      }
     },
     "Editar" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        }
+      }
     },
     "Editar chamado" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Request"
+          }
+        }
+      }
     },
     "Editar Imóvel" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Property"
+          }
+        }
+      }
     },
     "Em caso de incidente de segurança que possa acarretar risco ou dano relevante aos titulares, comunicaremos a Autoridade Nacional de Proteção de Dados (ANPD) e os titulares afetados, conforme exigido pelo art. 48 da LGPD, informando a natureza dos dados afetados, as medidas técnicas adotadas e as providências tomadas para reverter ou mitigar os efeitos do incidente." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In the event of a security incident that may pose a significant risk to or cause significant harm to data subjects, we will notify the Brazilian National Data Protection Authority (ANPD) and the affected data subjects, as required by Article 48 of Brazil's General Data Protection Law (LGPD). We will provide information about the nature of the affected data, the technical measures adopted, and the steps taken to reverse or mitigate the effects of the incident."
+          }
+        }
+      }
     },
     "Em certas circunstâncias, a Empresa poderá divulgar seus Dados Pessoais se exigido por lei ou em resposta a solicitações válidas de autoridades públicas (por exemplo, um tribunal ou órgão governamental)." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In certain circumstances, the Company may disclose your Personal Data if required by law or in response to valid requests from public authorities (such as a court or government agency)."
+          }
+        }
+      }
     },
     "Endereço" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Address"
+          }
+        }
+      }
     },
     "Entendi" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Got It"
+          }
+        }
+      }
     },
     "Erro ao Salvar" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to Save"
+          }
+        }
+      }
     },
     "Erro no Cadastro" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to Sign Up"
+          }
+        }
+      }
     },
     "Essa exclusão está sujeita a limitações técnicas de infraestrutura: cópias de segurança mantidas pela Apple (iCloud/CloudKit) seguem as políticas próprias de retenção da Apple e podem não ser removidas de forma instantânea de todos os sistemas de backup e replicação." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This deletion is subject to technical infrastructure limitations: backups maintained by Apple (iCloud/CloudKit) follow Apple's own retention policies and may not be removed immediately from all backup and replication systems."
+          }
+        }
+      }
     },
     "Esta ação é irreversível. Todos os seus imóveis, inquilinos, contratos, despesas e pagamentos serão apagados permanentemente.\n\nPara desvincular também o Locavio do seu ID Apple, acesse Ajustes › seu nome › Iniciar Sessão com a Apple › Locavio › Parar de Usar." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This action is irreversible. All your properties, tenants, contracts, expenses, and payments will be permanently deleted.\n\nTo also disconnect Locavio from your Apple ID, go to Settings › your name › Sign in with Apple › Locavio › Stop Using."
+          }
+        }
+      }
     },
     "Esta indenização não se aplica a reclamações decorrentes da própria negligência do Provedor de Serviços, violação destes Termos ou violação da lei aplicável. Em jurisdições onde a indenização por parte do consumidor é restrita por lei, esta cláusula será limitada à extensão máxima permitida." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This indemnification does not apply to claims arising from the Service Provider's own negligence, breach of these Terms, or violation of applicable law. In jurisdictions where indemnification by consumers is restricted by law, this clause will be limited to the maximum extent permitted."
+          }
+        }
+      }
     },
     "Esta licença restringe-se ao uso do Aplicativo exclusivamente em dispositivos com sistemas operacionais iOS (produtos da marca Apple) que o Usuário possua ou controle legitimamente, e em estrita observância com as Regras de Uso delineadas nos Termos de Serviço da Apple Media Services." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This license is restricted to use of the App exclusively on devices running iOS (Apple-branded products) that the User lawfully owns or controls, and in strict compliance with the Usage Rules set out in the Apple Media Services Terms and Conditions."
+          }
+        }
+      }
     },
     "Esta Política de Privacidade descreve como o Locavio coleta, usa, armazena e protege os dados pessoais dos usuários (proprietários de imóveis) e de terceiros cujos dados sejam inseridos no aplicativo (inquilinos), em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD)." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This Privacy Policy describes how Locavio collects, uses, stores, and protects the Personal Data of users (property owners) and third parties whose data is entered into the App (tenants), in accordance with Brazil's General Data Protection Law (Law No. 13,709/2018 — LGPD)."
+          }
+        }
+      }
     },
     "Estes termos e condições aplicam-se ao aplicativo Locavio para dispositivos móveis, juntamente com quaisquer serviços relacionados operados pelo Locavio. O Locavio é aqui referido como o \"Provedor de Serviços\"." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "These Terms and Conditions apply to the Locavio mobile app and any related services operated by Locavio. Locavio is referred to herein as the “Service Provider.”"
+          }
+        }
+      }
     },
     "Estes termos e condições entram em vigor a partir de 25-09-2026." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "These Terms and Conditions take effect on September 25, 2026."
+          }
+        }
+      }
     },
     "Estes Termos e Condições são submetidos exclusivamente à legislação da República Federativa do Brasil, em especial à Lei Geral de Proteção de Dados Pessoais (LGPD - Lei nº 13.709/2018) e ao Marco Civil da Internet (Lei nº 12.965/2014)." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "These Terms and Conditions are governed exclusively by the laws of the Federative Republic of Brazil, particularly the General Data Protection Law (LGPD — Law No. 13,709/2018) and the Brazilian Civil Rights Framework for the Internet (Law No. 12,965/2014)."
+          }
+        }
+      }
     },
     "Estes Termos e Condições, juntamente com a Política de Privacidade, constituem o acordo integral entre você e o Provedor de Serviços em relação ao seu uso do Aplicativo, substituindo quaisquer acordos ou entendimentos anteriores." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "These Terms and Conditions, together with the Privacy Policy, constitute the entire agreement between you and the Service Provider regarding your use of the App, superseding any previous agreements or understandings."
+          }
+        }
+      }
     },
     "Excluir Conta Permanentemente" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Permanently Delete Account"
+          }
+        }
+      }
     },
     "Excluir Tudo" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Everything"
+          }
+        }
+      }
     },
     "Fechar" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        }
+      }
     },
     "Fechar chamado" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close Request"
+          }
+        }
+      }
     },
     "Fechar Chamado" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close Request"
+          }
+        }
+      }
     },
     "Filtrar por" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter By"
+          }
+        }
+      }
     },
     "Filtrar por período" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter by Date Range"
+          }
+        }
+      }
     },
     "Filtro" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter"
+          }
+        }
+      }
     },
     "Financeiro" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Financial Details"
+          }
+        }
+      }
     },
     "Foto do imóvel" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Property Photo"
+          }
+        }
+      }
     },
     "Imóveis" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Properties"
+          }
+        }
+      }
     },
     "Imóvel" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Property"
+          }
+        }
+      }
     },
     "Informações do Imóvel" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Property Details"
+          }
+        }
+      }
     },
     "Informaremos Você por e-mail e/ou por aviso destacado em nosso serviço, antes que a alteração entre em vigor, e atualizaremos a data de \"Última atualização\" no topo desta Política de Privacidade." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We will notify you by email and/or through a prominent notice on our Service before the change takes effect, and we will update the “Last updated” date at the top of this Privacy Policy."
+          }
+        }
+      }
     },
     "Inquilino" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tenant"
+          }
+        }
+      }
     },
     "Insira aqui" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter here"
+          }
+        }
+      }
     },
     "Item" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Item"
+          }
+        }
+      }
     },
     "Locatário:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tenant:"
+          }
+        }
+      }
     },
     "Lucro e Despesa" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profit and Expenses"
+          }
+        }
+      }
     },
     "Mantemos seus dados pessoais apenas pelo tempo necessário para as finalidades descritas nesta Política. Ao encerrar sua Conta, seus dados pessoais são excluídos imediatamente da nossa base de dados ativa." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We retain your Personal Data only for as long as necessary for the purposes described in this Policy. When you close your Account, your Personal Data is immediately deleted from our active database."
+          }
+        }
+      }
     },
     "Mês" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Month"
+          }
+        }
+      }
     },
     "Modo" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode"
+          }
+        }
+      }
     },
     "Na extensão máxima permitida por lei, o Provedor de Serviços não será responsável por quaisquer danos indiretos, incidentais, especiais, consequenciais ou punitivos, incluindo, mas não se limitando a, lucros cessantes, perda de dados ou interrupção de negócios, mesmo que avisado da possibilidade de tais danos." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To the maximum extent permitted by law, the Service Provider will not be liable for any indirect, incidental, special, consequential, or punitive damages, including, but not limited to, lost profits, loss of data, or business interruption, even if advised of the possibility of such damages."
+          }
+        }
+      }
     },
     "Na extensão máxima permitida por lei, você concorda em indenizar e isentar o Provedor de Serviços, suas afiliadas, diretores, conselheiros, funcionários e agentes de e contra quaisquer reclamações, responsabilidades, danos, perdas e despesas, incluindo honorários advocatícios razoáveis, decorrentes de ou diretamente relacionados à sua violação destes Termos ou ao seu uso indevido intencional do Aplicativo, incluindo Conteúdo Gerado pelo Usuário que você enviar em violação a estes Termos." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To the maximum extent permitted by law, you agree to indemnify and hold harmless the Service Provider, its affiliates, directors, board members, employees, and agents from and against any claims, liabilities, damages, losses, and expenses, including reasonable attorneys' fees, arising from or directly related to your breach of these Terms or your intentional misuse of the App, including User-Generated Content that you submit in violation of these Terms."
+          }
+        }
+      }
     },
     "Nada nestes Termos limitará quaisquer direitos que você tenha sob as leis de proteção ao consumidor aplicáveis que não possam ser legalmente excluídos." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing in these Terms limits any rights you have under applicable consumer protection laws that cannot be legally excluded."
+          }
+        }
+      }
     },
     "Não" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No"
+          }
+        }
+      }
     },
     "Não foi possível abrir o comprovante" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to Open Receipt"
+          }
+        }
+      }
     },
     "Não foi possível excluir" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to Delete"
+          }
+        }
+      }
     },
-    "Não há %@ registrados" : {
-
+    "Não há despesas registradas" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No expenses recorded"
+          }
+        }
+      }
+    },
+    "Não há lucros registrados" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No profits recorded"
+          }
+        }
+      }
     },
     "Nenhum aluguel ou chamado neste dia." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No rent payments or maintenance requests on this day."
+          }
+        }
+      }
     },
     "Nenhum imóvel cadastrado" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No properties added"
+          }
+        }
+      }
     },
     "Nenhum imóvel encontrado" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No properties found"
+          }
+        }
+      }
     },
     "Nenhum selecionado" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "None selected"
+          }
+        }
+      }
     },
     "Nesse toggle, você confirma se o aluguel do mês foi pago ou não." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use this switch to mark this month's rent as paid or unpaid."
+          }
+        }
+      }
     },
     "Neste botão, você pode adicionar um imóvel novo." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap this button to add a property."
+          }
+        }
+      }
     },
     "No que tange aos dados dos inquilinos, contratos de locação digitalizados, recibos financeiros e fotos de vistorias inseridas no aplicativo, o Locavio atua estritamente como Operador tecnológico da infraestrutura. O Usuário (proprietário do imóvel) assume integralmente a figura de Controlador destes dados perante os seus inquilinos, sendo o único responsável por possuir base legal válida (como a execução de contrato de locação) para cadastrar e processar essas informações sensíveis de terceiros." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "With respect to tenant data, scanned rental agreements, financial receipts, and inspection photos entered into the App, Locavio acts strictly as the Data Processor providing the technological infrastructure. The User (the property owner) assumes full responsibility as the Data Controller for this data in relation to their tenants and is solely responsible for having a valid legal basis (such as the performance of a rental agreement) to record and process this sensitive third-party information."
+          }
+        }
+      }
     },
     "Nome" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        }
+      }
     },
     "Nos termos do art. 18 da LGPD, você tem direito a:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Under Article 18 of Brazil's General Data Protection Law (LGPD), you have the right to:"
+          }
+        }
+      }
     },
     "Notificações" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications"
+          }
+        }
+      }
     },
     "Número" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Number"
+          }
+        }
+      }
     },
     "O Aplicativo é destinado a proprietários de imóveis maiores de 18 anos, idade mínima para celebrar contratos de locação no Brasil. Não coletamos intencionalmente dados de menores de idade. Caso identifiquemos Dados Pessoais de um menor cadastrados indevidamente, tomaremos as medidas necessárias para excluí-los." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The App is intended for property owners aged 18 or older, the minimum age for entering into rental agreements in Brazil. We do not knowingly collect data from minors. If we identify Personal Data of a minor that has been improperly entered, we will take the necessary steps to delete it."
+          }
+        }
+      }
     },
     "O Aplicativo permite que você insira dados, fotografias e documentos (como contratos de locação, vistorias e comprovantes financeiros) exclusivamente para fins de gestão privada de seus imóveis. Ao utilizar essas funcionalidades, você concorda em não inserir ou armazenar no Aplicativo arquivos ou informações que:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The App allows you to enter data, photographs, and documents (such as rental agreements, inspection reports, and financial supporting documents) exclusively for the private management of your properties. By using these features, you agree not to enter or store files or information in the App that:"
+          }
+        }
+      }
     },
     "O Locavio assume a responsabilidade total pelo fornecimento de serviços de manutenção e suporte técnico referentes ao Aplicativo. O Usuário e o Locavio reconhecem que a Apple não tem, sob nenhuma circunstância, qualquer obrigação de fornecer serviços de manutenção e suporte técnico relacionados ao Aplicativo, nem qualquer outra obrigação de garantia. Na extensão máxima permitida pela lei aplicável, recai inteiramente sobre o Locavio a responsabilidade por reivindicações, falhas de sistema e proteção ao consumidor. Em caso de alegações de terceiros de que o aplicativo infringe direitos de propriedade intelectual, a investigação, defesa e liquidação de tais reivindicações são de exclusiva responsabilidade do Locavio, e não da Apple." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locavio assumes full responsibility for providing maintenance and technical support services for the App. The User and Locavio acknowledge that Apple has no obligation under any circumstances to provide maintenance and technical support services relating to the App and has no other warranty obligations. To the maximum extent permitted by applicable law, responsibility for claims, system failures, and consumer protection rests entirely with Locavio. If a third party alleges that the App infringes intellectual property rights, the investigation, defense, and settlement of such claims are the sole responsibility of Locavio, and not Apple."
+          }
+        }
+      }
     },
     "O Locavio é um aplicativo destinado à gestão imobiliária, que contempla a criação e manutenção de perfis de propriedades com preenchimento automático de endereços, o cadastro de inquilinos, o acompanhamento de relatórios de despesas, o armazenamento de recibos financeiros, além da anexação de contratos de locação digitalizados e fotografias de vistorias." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locavio is an App for property management. Its features include creating and maintaining property profiles with automatic address completion, registering tenants, tracking expense reports, storing financial receipts, and attaching scanned rental agreements and inspection photos."
+          }
+        }
+      }
     },
     "O Locavio é um app para fazer a gestão de seus imóveis. Para uma melhor experiência, coletamos a numeração do seu documento, seu nome e email, os quais serão utilizados exclusivamente para a validação da sua identidade e não serão compartilhados com outros usuários." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Locavio is an App for managing your properties. To provide a better experience, we collect your identification document number, name, and email address. This information will be used exclusively to verify your identity and will not be shared with other users."
+          }
+        }
+      }
     },
     "O nosso Serviço pode lhe dar a possibilidade de excluir determinadas informações sobre você diretamente \npelo Serviço." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Our Service may allow you to delete certain information about yourself directly\nthrough the Service."
+          }
+        }
+      }
     },
     "O preenchimento automático de endereços de propriedades imobiliárias é potencializado pela integração técnica com a API pública ViaCEP. O Aplicativo transmite exclusivamente o código numérico do CEP a esta API externa para resguardar a privacidade, fundindo a informação genérica com os dados sensíveis do imóvel apenas posteriormente e de forma encriptada. O Usuário isenta o Locavio de responsabilidade por preenchimentos incorretos ou interrupções no cadastro de imóveis decorrentes de instabilidades no serviço ViaCEP ou na conectividade mantida por terceiros." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatic completion of property addresses is powered by technical integration with the public ViaCEP API. To protect your privacy, the App sends only the numeric Brazilian postal code (CEP) to this external API, combining the general information with the property's sensitive data only afterward and in encrypted form. The User releases Locavio from liability for incorrectly completed information or interruptions in property registration resulting from instability in the ViaCEP service or connectivity provided by third parties."
+          }
+        }
+      }
     },
     "O processamento de dados dentro do Aplicativo cria papéis distintos de responsabilidade legal. O Locavio atua como Controlador de Dados exclusivamente no que se refere aos dados de cadastro do próprio proprietário do imóvel para a criação e manutenção da conta (como endereço de e-mail, nome e dados de assinatura in-app)." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data processing within the App creates distinct roles with different legal responsibilities. Locavio acts as the Data Controller exclusively for the property owner's own registration data used to create and maintain the account (such as email address, name, and in-app subscription data)."
+          }
+        }
+      }
     },
     "O processamento de dados pessoais relacionados às informações que você insere (especialmente dados de inquilinos) é regido pela nossa Política de Privacidade. O Aplicativo atua apenas como infraestrutura tecnológica para o armazenamento destes dados." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The processing of Personal Data relating to the information you enter (particularly tenant data) is governed by our Privacy Policy. The App acts solely as the technological infrastructure for storing this data."
+          }
+        }
+      }
     },
     "O Provedor de Serviços não aceita qualquer responsabilidade por qualquer perda, direta ou indireta, que você venha a sofrer como resultado de confiar inteiramente em informações de terceiros fornecidas por meio deste Aplicativo, ou por imprecisões no conteúdo fornecido por terceiros." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Service Provider accepts no responsibility for any direct or indirect loss you may suffer as a result of relying entirely on third-party information provided through this App or as a result of inaccuracies in content provided by third parties."
+          }
+        }
+      }
     },
     "O Provedor de Serviços pode atualizar seus Termos e Condições periodicamente. Portanto, é aconselhável que você analise esta página regularmente para verificar quaisquer alterações. O Provedor de Serviços o notificará sobre quaisquer alterações publicando os novos Termos e Condições nesta página." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Service Provider may update its Terms and Conditions from time to time. You are therefore advised to review this page regularly for any changes. The Service Provider will notify you of any changes by posting the new Terms and Conditions on this page."
+          }
+        }
+      }
     },
     "O Provedor de Serviços pode desejar atualizar o aplicativo em algum momento. O aplicativo está atualmente disponível de acordo com os requisitos do sistema operacional (e de quaisquer sistemas adicionais para os quais eles decidam estender a disponibilidade do aplicativo), que podem mudar, e você precisará baixar as atualizações se quiser continuar usando o aplicativo. O Provedor de Serviços não garante que sempre atualizará o aplicativo para que ele continue relevante para você e/ou compatível com a versão específica do sistema operacional instalada em seu dispositivo. Você deve aceitar as atualizações quando forem oferecidas; caso decida não as aceitar, o Provedor de Serviços poderá deixar de oferecer suporte a versões anteriores e o Aplicativo poderá não funcionar adequadamente. O Provedor de Serviços também pode desejar parar de fornecer o aplicativo e pode encerrar o seu uso a qualquer momento sem fornecer aviso de rescisão a você. A menos que informem o contrário, mediante qualquer rescisão, (a) os direitos e licenças concedidos a você nestes termos terminarão; (b) você deve parar de usar o aplicativo e (se necessário) excluí-lo de seu dispositivo." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Service Provider may wish to update the App at some point. The App is currently available subject to the requirements of the operating system (and any additional systems to which the Service Provider decides to extend the App's availability). These requirements may change, and you will need to download updates if you wish to continue using the App. The Service Provider does not guarantee that it will always update the App to keep it relevant to you and/or compatible with the specific version of the operating system installed on your device. You must accept updates when they are offered; if you choose not to accept them, the Service Provider may stop supporting earlier versions, and the App may not function properly. The Service Provider may also wish to stop providing the App and may terminate your use of it at any time without giving you notice of termination. Unless the Service Provider tells you otherwise, upon any termination, (a) the rights and licenses granted to you under these Terms will end; (b) you must stop using the App and, if necessary, delete it from your device."
+          }
+        }
+      }
     },
     "O Provedor de Serviços pode suspender ou rescindir seu acesso imediatamente sem aviso prévio se você violar a lei aplicável, infringir direitos de propriedade intelectual ou se envolver em atividades que possam causar danos a outros usuários ou ao Provedor de Serviços." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Service Provider may suspend or terminate your access immediately without prior notice if you violate applicable law, infringe intellectual property rights, or engage in activities that may cause harm to other users or the Service Provider."
+          }
+        }
+      }
     },
     "O Provedor de Serviços pode suspender seu acesso ao Aplicativo ou aos serviços se você violar estes Termos. O Provedor de Serviços fornecerá um aviso por escrito sobre a violação por email." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Service Provider may suspend your access to the App or services if you violate these Terms. The Service Provider will give you written notice of the violation by email."
+          }
+        }
+      }
     },
     "O Provedor de Serviços retém todos os direitos de propriedade intelectual sobre o Aplicativo, incluindo seu código, design, marcas registradas, marcas de serviço, nomes comerciais, logotipos e identidade visual (a \"PI\"). Nada nestes Termos concede a você qualquer licença ou direito de usar as marcas registradas, logotipos ou identidade visual do Provedor de Serviços para qualquer finalidade. Você concorda em não remover, alterar ou ocultar quaisquer avisos de direitos autorais, marcas registradas ou outros avisos de propriedade exibidos no ou dentro do Aplicativo." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Service Provider retains all intellectual property rights in the App, including its code, design, trademarks, service marks, trade names, logos, and visual identity (the \"IP\"). Nothing in these Terms grants you any license or right to use the Service Provider's trademarks, logos, or visual identity for any purpose. You agree not to remove, alter, or obscure any copyright, trademark, or other proprietary notices displayed on or within the App."
+          }
+        }
+      }
     },
     "O Usuário compromete-se a indenizar o Locavio contra quaisquer sanções, multas, ações judiciais ou autuações por parte da Autoridade Nacional de Proteção de Dados (ANPD) que sejam decorrentes do tratamento ilícito, abusivo ou desprovido de base legal dos dados de inquilinos e terceiros inseridos no Aplicativo pelo Usuário." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The User agrees to indemnify Locavio against any sanctions, fines, lawsuits, or enforcement actions by the Brazilian National Data Protection Authority (ANPD) arising from unlawful or abusive processing, or processing without a legal basis, of tenant and third-party data entered into the App by the User."
+          }
+        }
+      }
     },
     "O Usuário detém a autonomia plena para solicitar a exclusão definitiva da sua conta a qualquer momento, funcionalidade que se encontra disponível nativamente nas configurações do Aplicativo." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The User may request permanent deletion of their account at any time using the feature built into the App's settings."
+          }
+        }
+      }
     },
     "O Usuário e o Locavio reconhecem e acordam expressamente que este contrato é firmado única e exclusivamente entre as referidas partes, não configurando qualquer vínculo contratual com a Apple Inc. ou as suas subsidiárias (\"Apple\"). O Locavio, e não a Apple, é o único responsável pelo Aplicativo e pelo conteúdo nele inserido. O Usuário e o Locavio reconhecem que a Apple e as suas subsidiárias são terceiros beneficiários destes Termos e que, mediante a aceitação do Usuário, a Apple terá o direito legal de executar as disposições deste contrato diretamente contra o Usuário, na qualidade de terceiro beneficiário." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The User and Locavio expressly acknowledge and agree that this agreement is entered into solely and exclusively between them and does not establish any contractual relationship with Apple Inc. or its subsidiaries (\"Apple\"). Locavio, and not Apple, is solely responsible for the App and the content entered into it. The User and Locavio acknowledge that Apple and its subsidiaries are third-party beneficiaries of these Terms and that, upon the User's acceptance, Apple will have the legal right, as a third-party beneficiary, to enforce the provisions of this agreement directly against the User."
+          }
+        }
+      }
     },
     "Observe, no entanto, que podemos precisar reter determinadas informações quando tivermos uma obrigação legal ou base legal para tanto." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please note, however, that we may need to retain certain information when we have a legal obligation or legal basis to do so."
+          }
+        }
+      }
     },
     "Ocorreu um erro ao excluir sua conta. Seus dados não foram apagados. Tente novamente." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An error occurred while deleting your account. Your data has not been deleted. Please try again."
+          }
+        }
+      }
     },
     "OK" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OK"
+          }
+        }
+      }
     },
     "Ordenar por" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sort By"
+          }
+        }
+      }
     },
     "Os dados inseridos no Aplicativo são armazenados por meio dos serviços **iCloud** e **CloudKit**, da Apple Inc., que atua como Operadora dos dados em nosso nome. Isso significa que:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Data entered into the App is stored using Apple Inc.'s **iCloud** and **CloudKit** services. Apple acts as a Data Processor on our behalf. This means that:"
+          }
+        }
+      }
     },
     "Pago" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paid"
+          }
+        }
+      }
     },
     "Para exercer qualquer um desses direitos, entre em contato conosco pelos canais indicados abaixo." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "To exercise any of these rights, contact us through the channels listed below."
+          }
+        }
+      }
     },
     "Para os fins desta Política de Privacidade:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For the purposes of this Privacy Policy:"
+          }
+        }
+      }
     },
     "Pendente" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pending"
+          }
+        }
+      }
     },
     "Perfil" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
+          }
+        }
+      }
     },
     "Podemos atualizar nossa Política de Privacidade periodicamente. Notificaremos você sobre quaisquer alterações da nova Política de Privacidade." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We may update our Privacy Policy from time to time. We will notify you of any changes to the Privacy Policy."
+          }
+        }
+      }
     },
     "Podemos compartilhar seus Dados Pessoais nas seguintes situações:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We may share your Personal Data in the following situations:"
+          }
+        }
+      }
     },
     "Política de Privacidade" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        }
+      }
     },
     "Qualquer litígio decorrente de ou relacionado a estes Termos será submetido aos tribunais que tenham jurisdição sob a lei aplicável, ficando desde logo eleito o foro do domicílio do Usuário, sob a égide dos princípios protetivos do Código de Defesa do Consumidor, na medida do aplicável." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Any dispute arising out of or relating to these Terms will be submitted to the courts with jurisdiction under applicable law. The courts of the User's place of residence are hereby designated as the agreed venue, subject to the protective principles of the Brazilian Consumer Protection Code, to the extent applicable."
+          }
+        }
+      }
     },
     "Reabrir chamado" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reopen Request"
+          }
+        }
+      }
     },
     "Reabrir Chamado" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reopen Request"
+          }
+        }
+      }
     },
     "Recomendamos que Você revise esta Política de Privacidade periodicamente para verificar quaisquer alterações. As alterações a esta Política de Privacidade entram em vigor quando publicadas nesta página." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We recommend reviewing this Privacy Policy periodically for changes. Changes to this Privacy Policy take effect when posted on this page."
+          }
+        }
+      }
     },
     "Relatório" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Report"
+          }
+        }
+      }
     },
     "Remover" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove"
+          }
+        }
+      }
     },
     "Rua" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Street"
+          }
+        }
+      }
     },
     "Sair" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign Out"
+          }
+        }
+      }
     },
     "Sair da conta" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sign Out"
+          }
+        }
+      }
     },
     "Se qualquer disposição destes Termos e Condições for considerada inválida, ilegal ou inexequível por um tribunal de jurisdição competente, tal disposição será modificada na medida mínima necessária para torná-la válida e exequível, e as demais disposições destes Termos permanecerão em pleno vigor e efeito." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If any provision of these Terms and Conditions is found to be invalid, unlawful, or unenforceable by a court of competent jurisdiction, that provision will be modified to the minimum extent necessary to make it valid and enforceable, and the remaining provisions of these Terms will remain in full force and effect."
+          }
+        }
+      }
     },
     "Se você tiver alguma dúvida ou sugestão sobre os Termos e Condições, não hesite em entrar em contato com o Provedor de Serviços em [locaviodev@gmail.com](mailto:locaviodev@gmail.com)." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you have any questions or suggestions about these Terms and Conditions, please contact the Service Provider at [locaviodev@gmail.com](mailto:locaviodev@gmail.com)."
+          }
+        }
+      }
     },
     "Se Você tiver alguma dúvida sobre esta Política de Privacidade, Você pode entrar em contato conosco:" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you have any questions about this Privacy Policy, you can contact us:"
+          }
+        }
+      }
     },
     "Selecionar" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select"
+          }
+        }
+      }
     },
     "Selecione um imóvel" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a Property"
+          }
+        }
+      }
     },
     "Seu nome completo" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your full name"
+          }
+        }
+      }
     },
     "Sim" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yes"
+          }
+        }
+      }
     },
     "Solicitações" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Requests"
+          }
+        }
+      }
     },
     "Sou pessoa" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Account Type"
+          }
+        }
+      }
     },
     "Status do imóvel" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Property Status"
+          }
+        }
+      }
     },
     "Substituir comprovante" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Replace Receipt"
+          }
+        }
+      }
     },
     "Sujeito ao seu cumprimento destes Termos, o Provedor de Serviços concede a você uma licença limitada, não exclusiva, intransferível e revogável para instalar e usar o Aplicativo em um dispositivo móvel para fins pessoais ou comerciais internos. Você não pode reproduzir, distribuir, modificar, criar trabalhos derivados, fazer engenharia reversa, descompilar ou desmontar o Aplicativo, exceto e apenas na medida em que tal atividade seja expressamente permitida pela lei aplicável." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Subject to your compliance with these Terms, the Service Provider grants you a limited, non-exclusive, non-transferable, and revocable license to install and use the App on a mobile device for personal or internal business purposes. You may not reproduce, distribute, modify, create derivative works from, reverse engineer, decompile, or disassemble the App, except and only to the extent that such activity is expressly permitted by applicable law."
+          }
+        }
+      }
     },
     "Tem certeza de que deseja sair do aplicativo?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to sign out?"
+          }
+        }
+      }
     },
     "Tem certeza que deseja apagar os %lld chamados selecionados? Essa ação não pode ser desfeita." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete the %lld selected requests? This action cannot be undone."
+          }
+        }
+      }
     },
     "Tem certeza que deseja marcar este chamado como concluído?" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to mark this request as completed?"
+          }
+        }
+      }
     },
     "Tem certeza que deseja marcar este chamado como concluído? Essa ação atualizará o status e a data de encerramento." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to mark this request as completed? This will update its status and completion date."
+          }
+        }
+      }
     },
     "Tem certeza que deseja reabrir este chamado? O status voltará para 'Aberto'." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to reopen this request? Its status will change back to 'Open'."
+          }
+        }
+      }
     },
     "Tente buscar por outro nome ou mudar\no filtro atual." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try searching for a different name or changing\nthe current filter."
+          }
+        }
+      }
     },
     "Termos de Uso" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms of Use"
+          }
+        }
+      }
     },
     "Tipo" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type"
+          }
+        }
+      }
     },
     "Tipo de imóvel" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Property Type"
+          }
+        }
+      }
     },
     "Título" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Title"
+          }
+        }
+      }
     },
     "Título do chamado" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request Title"
+          }
+        }
+      }
     },
     "Todos" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All"
+          }
+        }
+      }
     },
     "Total" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total"
+          }
+        }
+      }
     },
     "Total do Aluguel" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Rent"
+          }
+        }
+      }
     },
     "UF" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "State"
+          }
+        }
+      }
     },
     "Última atualização: 25 de setembro de 2026" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last updated: September 25, 2026"
+          }
+        }
+      }
     },
     "Valor" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amount"
+          }
+        }
+      }
     },
     "Valor das despesas" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expense Amount"
+          }
+        }
+      }
     },
     "Valores" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amounts"
+          }
+        }
+      }
     },
     "Veja como seus dados são gerenciados..." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See how your data is managed..."
+          }
+        }
+      }
     },
     "Ver comprovante" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View Receipt"
+          }
+        }
+      }
     },
     "Versões anteriores destes Termos e Condições serão mantidas e disponibilizadas mediante solicitação, entrando em contato com o Provedor de Serviços em [locaviodev@gmail.com](mailto:locaviodev@gmail.com)." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Previous versions of these Terms and Conditions will be retained and made available upon request. To request a copy, contact the Service Provider at [locaviodev@gmail.com](mailto:locaviodev@gmail.com)."
+          }
+        }
+      }
     },
     "Visualizar o comprovante" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View Receipt"
+          }
+        }
+      }
     },
     "Você ainda não tem imóveis" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You don't have any properties yet"
+          }
+        }
+      }
     },
     "Você pode atualizar, corrigir ou excluir suas informações a qualquer momento, acessando sua conta, caso possua uma, e acessando a seção de configurações de conta que permite gerenciar suas informações pessoais. Você também pode entrar em contato conosco para solicitar acesso, correção ou exclusão de quaisquer Dados Pessoais que Você tenha nos fornecido." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You may update, correct, or delete your information at any time by signing in to your account, if you have one, and accessing the account settings section that allows you to manage your personal information. You may also contact us to request access to, correction of, or deletion of any Personal Data you have provided to us."
+          }
+        }
+      }
     },
     "Você pode escolher quais imóveis quer ver de acordo com o status." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose which properties to display based on their status."
+          }
+        }
+      }
     },
     "Você pode escolher quais notificações quer receber." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose which notifications you want to receive."
+          }
+        }
+      }
     },
     "Você tem o direito de excluir ou solicitar que nós o ajudemos a excluir os Dados Pessoais que coletamos \nsobre Você." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You have the right to delete, or ask us to help you delete, the Personal Data we collect\nabout you."
+          }
+        }
+      }
     },
     "Voltar" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
+          }
+        }
+      }
+    },
+    "Gerencie\nseus imóveis" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage\nyour properties"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Cadastre seus imóveis e tenha tudo\norganizado em um só lugar." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add your properties and keep everything\norganized in one place."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Acompanhe\ncada Solicitação" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Track\nevery request"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Registre manutenções e acompanhe o\nandamento de tudo." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create maintenance requests and track\ntheir progress."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Tenha uma\n visão do seu negócio" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get a clear view\nof your business"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Acompanhe aluguéis, lucros e despesas\nem um único dashboard." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Track rent, profit, and expenses\nin a single dashboard."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Informações Pessoais" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personal Information"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Precisamos de algumas informações para configurar seu perfil. Você poderá revisar essas informações depois nas configurações da conta." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We need a few details to set up your profile. You can review this information later in your account settings."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Utilizamos seu documento exclusivamente para sua identificação e ele não será compartilhado com outros usuários." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We use your document number only to verify your identity. It will not be shared with other users."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Começar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get Started"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Continuar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Erro de autenticação. Por favor, faça login novamente." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Authentication failed. Please sign in again."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Informe seu nome para continuar." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter your name to continue."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "O CPF informado é inválido." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The CPF number you entered is invalid."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "O CNPJ informado é inválido." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The CNPJ number you entered is invalid."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Ocorreu um erro inesperado ao salvar seus dados. Tente novamente." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An unexpected error occurred while saving your information. Please try again."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "CEP inválido. Verifique se o CEP contém apenas números e 8 dígitos." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid postal code. Make sure your Brazilian postal code (CEP) contains exactly 8 digits."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Resposta inválida. Verifique a sua conexão de internet." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid response. Please check your internet connection."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "CEP não encontrado. Verifique se o CEP é válido." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postal code not found. Check that your Brazilian postal code (CEP) is valid."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Erro de decodificação. Tente novamente mais tarde." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to read the response. Please try again later."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Aluguel próximo ao vencimento" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rent Due Soon"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "O aluguel do imóvel '%@' vence amanhã." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rent for '%@' is due tomorrow."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Vencimento do Aluguel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rent Due Today"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "O aluguel do imóvel '%@' vence hoje." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rent for '%@' is due today."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Chamado prestes a vencer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request Due Soon"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "O chamado '%@' deve ser resolvido em 3 dias." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The request '%@' is due in 3 days."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Prazo final do Chamado" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request Due Today"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "O prazo para concluir o chamado '%@' é hoje." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The request '%@' must be completed today."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "1 mês" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 month"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "6 meses" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6 months"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "1 ano" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 year"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Lucro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profit"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Despesa" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expenses"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Lucro mensal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly profit"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Lucro semestral" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Six-month profit"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Lucro anual" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annual profit"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Despesa mensal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly expenses"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Despesa semestral" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Six-month expenses"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Despesa anual" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annual expenses"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Lucro Total Mensal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Monthly Profit"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Lucro Total Semestral" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Six-Month Profit"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Lucro Total Anual" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Annual Profit"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Despesa Total Mensal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Monthly Expenses"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Despesa Total Semestral" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Six-Month Expenses"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Despesa Total Anual" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Annual Expenses"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Aluguéis Recebidos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rent Received"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Aluguéis Pendentes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pending Rent"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Manutenção" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maintenance"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Outras despesas" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other expenses"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Semana" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Week"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Para Hoje" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For Today"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Sem título" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Untitled"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Vence em %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due on %@"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Endereço não informado" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Address not provided"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Nenhum locatário" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No tenant"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Próx. Pagamento:" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next Payment:"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "CEP não informado" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postal code not provided"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Nenhum contrato anexado" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No contract attached"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Últimos Pagamentos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent Payments"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Apagar imóvel?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete property?"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Essa ação não pode ser desfeita. Pagamentos, despesas e chamados deste imóvel também serão apagados." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This action cannot be undone. Payments, expenses, and requests associated with this property will also be deleted."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Últimos pagamentos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent Payments"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Nenhum pagamento registrado" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No payments recorded"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Resolver até" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resolve By"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Nenhuma solicitação" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No requests"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Sem item" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No item"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Sem prazo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No deadline"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Aluguel pago?" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rent paid?"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Valor total" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Amount"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Nenhuma despesa adicionada" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No expenses added"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Corrija os campos destacados em vermelho." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correct the fields highlighted in red."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Não foi possível carregar a imagem" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to load the image"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Insira um título válido." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a valid title."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Insira uma área válida." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a valid area."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Insira um número válido." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a valid number."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Insira um lucro válido." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a valid profit amount."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Problema na autenticação. Entre em contato com o administrador do sistema" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There was an authentication problem. Contact the system administrator."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Insira um nome válido." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a valid name."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Insira um CPF válido." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a valid CPF number."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Insira um telefone válido." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a valid phone number."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Insira um valor numérico válido na despesa." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a valid numeric amount for the expense."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Não foi possível acessar o arquivo selecionado." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to access the selected file."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "O arquivo selecionado não é um PDF válido." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected file is not a valid PDF."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Não foi possível ler o conteúdo do arquivo." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to read the file contents."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Informe o nome do imóvel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the property name"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Informe a área" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the area"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Área inválida" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid area"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "O CEP deve ter 8 dígitos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The postal code (CEP) must contain 8 digits"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "informe o número do imóvel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the property number"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Informe o lucro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the profit amount"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Informe o nome do inquilino" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the tenant's name"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Email inválido" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid email address"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Informe o CPF do inquilino" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the tenant's CPF number"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "CPF inválido" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid CPF number"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Informe o telefone do inquilino" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the tenant's phone number"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Telefone inválido" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid phone number"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Insira um título para o chamado." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a title for the request."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Erro ao salvar ticket. Verifique os campos e tente novamente." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to save the request. Check the fields and try again."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Erro ao gerar o número do ticket. Tente novamente." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to generate the request number. Please try again."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Erro ao editar ticket. Tente novamente." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to edit the request. Please try again."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Concluído" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completed"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Aberto" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Imóvel não informado" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Property not provided"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Sem descrição." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No description."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Data não informada" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date not provided"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Nenhum chamado aberto" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No open requests"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Nenhum chamado encontrado" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No requests found"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Você precisa de um imóvel para\npoder criar um chamado." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add a property before\ncreating a request."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Crie seu primeiro chamado de manutenção\npara começar a acompanhar os reparos." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create your first maintenance request\nto start tracking repairs."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Ir para Imóveis" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to Properties"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Adicionar chamado" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Request"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Alugados" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rented"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Não Alugados" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vacant"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Abertos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Concluídos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completed"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Por preço" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By Price"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Ordem alfabética" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alphabetical"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Mais antigos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oldest First"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Mais recentes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Newest First"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Tem certeza que deseja apagar o imóvel '%@'? Todos os dados, contratos e chamados vinculados a ele serão perdidos. Essa ação não pode ser desfeita." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete the property '%@'? All associated data, contracts, and requests will be lost. This action cannot be undone."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "CEP: %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postal Code (CEP): %@"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Adicionar Imóvel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Property"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Adicionar Chamado" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Request"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Data de registro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date Created"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Insira um valor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter an amount"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Email" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "CPF" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPF"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Telefone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phone"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Área" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Area"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Ex: Casa 1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. House 1"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Ex: 32" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. 32"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Ex: 12345-678" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. 12345-678"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Ex: Rua Ipê Amarelo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. Ipê Amarelo Street"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Ex: 55" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. 55"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Ex: Santo Amaro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. Santo Amaro"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Ex: São Paulo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. São Paulo"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Ex: Apartamento 21" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. Apartment 21"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Ex: Júlio Almeida Santos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. Júlio Almeida Santos"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Ex: email@email.com" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. email@example.com"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Ex: 000.000.000-00" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. 000.000.000-00"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Ex: (99) 99999-9999" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. (99) 99999-9999"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Apartamento" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apartment"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Casa" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "House"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Galpão" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warehouse"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Kitnet" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Small Studio Apartment"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Loja" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retail Space"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Loft" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loft"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Studio" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Studio"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Outro" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Selecione" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Contrato.pdf" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contract.pdf"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Pesquise seus chamados aqui" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search your requests"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Ex: 00.000.000/0001-00" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. 00.000.000/0001-00"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Física" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Individual"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Jurídica" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legal Entity"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Alugado" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rented"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Não alugado" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not Rented"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Sem propriedade" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Property"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Em %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On %@"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "O documento informado é inválido." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The document number you entered is invalid."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Não foi possível salvar as alterações. Verifique os dados e tente novamente." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to save your changes. Check the information and try again."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Documento Inválido" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid Document"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Toque para alterar sua foto de perfil" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap to change your profile photo"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Editar Perfil" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Profile"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Notificar Vencimentos" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rent Due Reminders"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Notificar Chamados" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request Reminders"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Termos de uso" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms of Use"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Política de privacidade" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Fale Conosco" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact Us"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "Excluir Conta" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Account"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "**Por e-mail:** " : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**By email:** "
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "1. Interpretação e Definições" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Interpretation and Definitions"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "1.1 Definições" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1.1 Definitions"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "2. Coleta e Uso de Suas Informações Pessoais" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Collection and Use of Your Personal Information"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "2.1 Dados Pessoais" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2.1 Personal Data"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "2.2 Uso dos Seus Dados Pessoais" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2.2 Use of Your Personal Data"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "3 Dados de Terceiros (Inquilinos)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3 Third-Party Data (Tenants)"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "4. Armazenamento dos Dados — iCloud e CloudKit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Data Storage — iCloud and CloudKit"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "5. Retenção dos Seus Dados Pessoais" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. Retention of Your Personal Data"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "6. Seus Direitos como Titular de Dados" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6. Your Rights as a Data Subject"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "7 Transferência dos Seus Dados Pessoais" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7 Transfer of Your Personal Data"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "8. Exclusão dos Seus Dados Pessoais" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8. Deletion of Your Personal Data"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "9 Divulgação dos Seus Dados Pessoais" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9 Disclosure of Your Personal Data"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "9.1 Autoridades Policiais" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9.1 Law Enforcement"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "9.2 Outras Exigências Legais" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9.2 Other Legal Requirements"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "10 Segurança dos Seus Dados Pessoais" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10 Security of Your Personal Data"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "11. Notificação de Incidentes de Segurança" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "11. Notification of Security Incidents"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "12. Privacidade de Crianças e Menores" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12. Privacy of Children and Minors"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "13. Alterações a esta Política de Privacidade" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "13. Changes to This Privacy Policy"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "14. Fale Conosco" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14. Contact Us"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "1. Licença de uso do Aplicativo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. License to Use the App"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "2. Propriedade Intelectual" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Intellectual Property"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "3. Rescisão" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Termination"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "4. Inserção de Dados, Documentos e Uso Aceitável" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Entering Data and Documents; Acceptable Use"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "5. Limitação de Responsabilidade" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. Limitation of Liability"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "6. Indenização" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6. Indemnification"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "7. Atualizações do Aplicativo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7. App Updates"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "8. Lei Aplicável e Jurisdição" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8. Governing Law and Jurisdiction"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "9. Conformidade com a App Store e Posição da Apple" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9. App Store Compliance and Apple's Role"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "10. Regimes de Tratamento de Dados e Privacidade (LGPD)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10. Data Processing Roles and Privacy (LGPD)"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "11. Independência das Disposições (Separabilidade)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "11. Independence of Provisions (Severability)"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "12. Acordo Integral" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12. Entire Agreement"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "13. Alterações nestes Termos e Condições" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "13. Changes to These Terms and Conditions"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "• **Conta** significa uma conta exclusiva criada para você acessar o Aplicativo.\n• **Aplicativo** refere-se ao Locavio, o programa de software fornecido pela Empresa.\n• **Empresa/Controladora** refere-se ao Locavio, responsável pelas decisões sobre o tratamento dos dados pessoais.\n• **Operador** significa a pessoa (física ou jurídica) que realiza o tratamento de dados pessoais em nome da Controladora — no caso do Locavio, a Apple Inc., por meio dos serviços iCloud e CloudKit.\n• **Titular** significa a pessoa natural a quem se referem os dados pessoais tratados — seja você (usuário/proprietário) ou um inquilino cujos dados sejam inseridos por um proprietário no Aplicativo.\n• **Dados Pessoais** são quaisquer informações relacionadas a uma pessoa natural identificada \nou identificável.\n• **Tratamento** é toda operação realizada com dados pessoais (coleta, uso, armazenamento, compartilhamento, eliminação, etc.).\n• **País**: Brasil.\n• **Dispositivo** significa qualquer iPhone que possa baixar o Aplicativo na AppStore.\n• **Serviço** refere-se ao Aplicativo.\n• **Dados de Uso** referem-se a dados coletados automaticamente, gerados pelo uso do Serviço ou por sua infraestrutura.\n• **Usuário** significa qualquer indivíduo que acesse ou utilize o Serviço.\n• **Você** significa o indivíduo (proprietário) que acessa ou utiliza o Serviço." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• **Account** means a unique account created for you to access the App.\n• **App** refers to Locavio, the software program provided by the Company.\n• **Company/Data Controller** refers to Locavio, which is responsible for decisions about the processing of Personal Data.\n• **Data Processor** means the individual or legal entity that processes Personal Data on behalf of the Data Controller — in Locavio's case, Apple Inc., through its iCloud and CloudKit services.\n• **Data Subject** means the individual to whom the processed Personal Data relates — either you (the user/property owner) or a tenant whose data is entered into the App by a property owner.\n• **Personal Data** means any information relating to an identified\nor identifiable individual.\n• **Processing** means any operation performed on Personal Data (collection, use, storage, sharing, deletion, etc.).\n• **Country**: Brazil.\n• **Device** means any iPhone that can download the App from the App Store.\n• **Service** refers to the App.\n• **Usage Data** refers to automatically collected data generated by use of the Service or its infrastructure.\n• **User** means any individual who accesses or uses the Service.\n• **You** means the individual (property owner) who accesses or uses the Service."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "• Nome e sobrenome\n• E-mail\n• Endereço, Estado, Província, CEP, Cidade\n• Dados dos imóveis cadastrados (endereço, características, fotos)\n• Dados de contratos de locação e valores de aluguel\n• Solicitações de manutenção e histórico de comunicação sobre os imóveis\n• Dados de calendário/agenda relacionados aos imóveis\n• Documentos e fotos que você anexar ao Aplicativo (ex.: contratos, comprovantes)" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• First and last name\n• Email address\n• Address, state, province, postal code (CEP), city\n• Registered property data (address, features, photos)\n• Rental agreement details and rent amounts\n• Maintenance requests and communication history relating to properties\n• Calendar/schedule data relating to properties\n• Documents and photos you attach to the App (e.g. contracts, supporting documents)"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "• **Para fornecer e manter o nosso Serviço**, incluindo o monitoramento do uso do nosso Serviço.\n• **Para gerenciar sua Conta:** para gerenciar seu registro como usuário do Serviço. Os Dados Pessoais que você fornece podem lhe dar acesso a diferentes funcionalidades do Serviço disponíveis para você como Usuário registrado.\n• **Para entrar em contato com Você:** para contatá-lo por e-mail ou outras formas equivalentes de comunicação eletrônica, como notificações push de aplicativos móveis, referentes a atualizações ou comunicações informativas relacionadas às funcionalidades, produtos ou serviços contratados, incluindo atualizações de segurança, quando necessário ou razoável para sua implementação.\n• **Para gerenciar suas solicitações:** para atender e gerenciar suas solicitações para nós.\n• **Para outras finalidades:** podemos utilizar suas informações para outras finalidades, como análise de dados, identificação de tendências de uso, determinação da eficácia de nossas campanhas promocionais, e avaliação e aprimoramento do nosso Serviço, produtos, serviços, marketing e da \nsua experiência." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• **To provide and maintain our Service**, including monitoring the use of our Service.\n• **To manage your Account:** to manage your registration as a user of the Service. The Personal Data you provide may give you access to different features of the Service available to you as a registered User.\n• **To contact You:** to contact you by email or equivalent forms of electronic communication, such as mobile app push notifications, about updates or information relating to the features, products, or services you have purchased, including security updates, when necessary or reasonable for their implementation.\n• **To manage your requests:** to address and manage your requests to us.\n• **For other purposes:** we may use your information for other purposes, such as data analysis, identifying usage trends, determining the effectiveness of our promotional campaigns, and evaluating and improving our Service, products, services, marketing, and\nyour experience."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "• **Com o Seu consentimento:** podemos divulgar seus Dados Pessoais para qualquer outra finalidade com o seu consentimento.\n• **Com Operadores/Prestadores de Serviços:** com a Apple (iCloud/CloudKit), para armazenamento e funcionamento do Aplicativo;\n• **Com autoridades:** quando exigido por lei ou por ordem de autoridade pública competente;" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• **With Your consent:** we may disclose your Personal Data for any other purpose with your consent.\n• **With Data Processors/Service Providers:** with Apple (iCloud/CloudKit), for storage and operation of the App;\n• **With authorities:** when required by law or by an order from a competent public authority;"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "• Você é responsável por garantir que possui base legal e legitimidade para inserir esses dados no Aplicativo (em regra, a execução do contrato de locação);\n• Você é responsável por informar o inquilino sobre esse tratamento, conforme exigido pela LGPD;\n• A Empresa trata esses dados exclusivamente para viabilizar as funcionalidades do Aplicativo (gestão do contrato, comunicação, histórico de pagamentos), na qualidade de controladora dos sistemas, mas sem relação direta de conta com o inquilino." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• You are responsible for ensuring that you have a legal basis and lawful authority to enter this data into the App (generally, the performance of the rental agreement);\n• You are responsible for informing the tenant about this processing, as required by Brazil's General Data Protection Law (LGPD);\n• The Company processes this data exclusively to enable the App's features (contract management, communication, payment history), as the controller of the systems, but without a direct account relationship with the tenant."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "• A Apple processa e armazena os dados exclusivamente conforme nossas instruções e para viabilizar o funcionamento do Aplicativo;\n• Os servidores utilizados podem estar localizados fora do Brasil, o que pode envolver transferência internacional de dados;\n• Não temos acesso direto aos servidores da Apple além do que a API do CloudKit disponibiliza para o funcionamento do Aplicativo;\n• A Apple aplica suas próprias medidas de segurança e criptografia sobre os dados armazenados via CloudKit; mais informações estão disponíveis na [Política de Privacidade da Apple](https://www.apple.com/legal/privacy/).\n" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• Apple processes and stores data exclusively in accordance with our instructions and to enable the App to function;\n• The servers used may be located outside Brazil, which may involve international data transfers;\n• We do not have direct access to Apple's servers beyond what the CloudKit API makes available for the App to function;\n• Apple applies its own security and encryption measures to data stored through CloudKit; more information is available in [Apple's Privacy Policy](https://www.apple.com/legal/privacy/).\n"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "• Confirmação da existência de tratamento de seus dados;\n• Acesso aos seus dados;\n• Correção de dados incompletos, inexatos \nou desatualizados;\n• Anonimização, bloqueio ou eliminação de dados desnecessários ou excessivos;\n• Eliminação dos dados tratados com base no seu consentimento;" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• Confirmation of whether your data is being processed;\n• Access to your data;\n• Correction of incomplete, inaccurate,\nor outdated data;\n• Anonymization, blocking, or deletion of unnecessary or excessive data;\n• Deletion of data processed on the basis of your consent;"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "• Cumprir uma obrigação legal\n• Proteger e defender os direitos ou a propriedade da Empresa\n• Prevenir ou investigar possível conduta indevida relacionada ao serviço\n• Proteger a segurança pessoal dos usuários do serviço ou do público\n• Proteger contra responsabilidade legal" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• Comply with a legal obligation\n• Protect and defend the Company's rights or property\n• Prevent or investigate possible misconduct relating to the Service\n• Protect the personal safety of users of the Service or the public\n• Protect against legal liability"
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "-    Sejam ilegais, fraudulentos, falsificados ou violem direitos de propriedade intelectual de terceiros;\n-    Violem a privacidade ou os direitos de dados pessoais de terceiros (como inserir dados sensíveis de inquilinos sem possuir uma base legal válida para tal, conforme a LGPD);\n-    Contenham vírus, malware ou códigos maliciosos que possam comprometer a segurança do seu dispositivo, do Aplicativo ou da infraestrutura em nuvem." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-    Are illegal, fraudulent, counterfeit, or infringe third parties' intellectual property rights;\n-    Violate third parties' privacy or Personal Data rights (such as entering sensitive tenant data without a valid legal basis, as required by Brazil's General Data Protection Law, or LGPD);\n-    Contain viruses, malware, or malicious code that could compromise the security of your device, the App, or the cloud infrastructure."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "-    Suspender ou encerrar o acesso de contas que utilizem o Aplicativo de forma comprovadamente ilícita (como para fraudes imobiliárias ou lavagem de dinheiro);\n-    Cooperar com autoridades policiais ou judiciais caso seja legalmente exigido." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-    Suspend or terminate access to accounts that demonstrably use the App unlawfully (such as for real estate fraud or money laundering);\n-    Cooperate with law enforcement or judicial authorities when legally required."
+          }
+        }
+      },
+      "generatesSymbol" : false
+    },
+    "-    Morte ou lesão corporal causada por negligência\n-    Fraude ou declaração falsa fraudulenta\n-    Qualquer outra responsabilidade que não possa ser excluída ou limitada de acordo com a lei aplicável" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-    Death or personal injury caused by negligence\n-    Fraud or fraudulent misrepresentation\n-    Any other liability that cannot be excluded or limited under applicable law"
+          }
+        }
+      },
+      "generatesSymbol" : false
     }
   },
   "version" : "1.3"

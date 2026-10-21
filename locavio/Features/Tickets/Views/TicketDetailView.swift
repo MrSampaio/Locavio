@@ -21,7 +21,7 @@ struct TicketDetailView: View {
     var editAction: () -> Void
 
     private var status: String {
-        ticket.isConcluded == true ? "Concluído" : "Aberto"
+        ticket.isConcluded == true ? String(localized: "Concluído") : String(localized: "Aberto")
     }
 
     private var items: [(name: String, value: String)] {
@@ -47,7 +47,7 @@ struct TicketDetailView: View {
     }
 
     private var propertyName: String {
-        ticket.property?.title ?? "Imóvel não informado"
+        ticket.property?.title ?? String(localized: "Imóvel não informado")
     }
 
     private var date: String {
@@ -61,7 +61,7 @@ struct TicketDetailView: View {
                 propertyImage
 
                 TicketTitle(
-                    title: ticket.title ?? "Sem título",
+                    title: ticket.title ?? String(localized: "Sem título"),
                     callNumber: String(ticket.ticketNumber ?? 0),
                     status: status,
                     propertyName: propertyName,
@@ -69,7 +69,7 @@ struct TicketDetailView: View {
                 )
 
                 TicketDescriptionText(
-                    description: ticket.ticketDescription ?? "Sem descrição.",
+                    description: ticket.ticketDescription ?? String(localized: "Sem descrição."),
                     items: items,
                     total: total,
                     isConcluded: ticket.isConcluded ?? false,
@@ -145,12 +145,13 @@ struct TicketDetailView: View {
     private func formatDate(_ date: Date?) -> String {
 
         guard let date else {
-            return "Data não informada"
+            return String(localized: "Data não informada")
         }
 
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "pt_BR")
-        formatter.dateFormat = "dd/MM/yyyy 'às' HH:mm"
+        formatter.locale = .current
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
 
         return formatter.string(from: date)
     }

@@ -36,7 +36,7 @@ struct PropertyAddressSection: View {
 
             Picker(selection: $uf) {
                 ForEach(UF.allCases) { uf in
-                    Text(uf.rawValue).tag(uf)
+                    Text(uf.displayTitle).tag(uf)
                 }
             } label: {
                 Label {

@@ -32,14 +32,14 @@ extension Property {
     
     var tenantBadge: TagBadgeItem {
         tenant != nil
-            ? TagBadgeItem(text: "Alugado", color: BadgeColor.rented)
-            : TagBadgeItem(text: "Não alugado", color: BadgeColor.notRented)
+            ? TagBadgeItem(text: String(localized: "Alugado"), color: BadgeColor.rented)
+            : TagBadgeItem(text: String(localized: "Não alugado"), color: BadgeColor.notRented)
     }
  
     
     var typeBadge: TagBadgeItem? {
         guard let type else { return nil }
-        return TagBadgeItem(text: type.rawValue, color: type.badgeColor)
+        return TagBadgeItem(text: type.displayTitle, color: type.badgeColor)
     }
  
     
@@ -52,7 +52,7 @@ extension Property {
 //ticket
 extension Ticket {
     var badgeText: String {
-        isConcluded == true ? "Concluído" : "Aberto"
+        isConcluded == true ? String(localized: "Concluído") : String(localized: "Aberto")
     }
 
     var badgeColor: Color {

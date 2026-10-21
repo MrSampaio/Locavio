@@ -10,13 +10,13 @@ import SwiftUI
 
 struct ListCardComponent: View {
 
-    let textList: String
+    let textList: LocalizedStringKey
     var hypertext: String? = nil
 
     var body: some View {
         VStack(alignment: .leading) {
             HStack(spacing: 0) {
-                Text(.init(textList))
+                Text(textList)
 
                 if let hypertext, !hypertext.isEmpty {
                     Text(.init(hypertext))

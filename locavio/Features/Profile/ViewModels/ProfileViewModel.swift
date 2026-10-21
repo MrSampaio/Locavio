@@ -56,7 +56,7 @@ final class ProfileViewModel{
             return "\(start).•••.•••/••••-\(end)"
             
         }
-        return "Documento Inválido"
+        return String(localized: "Documento Inválido")
     }
     
     // função de contagem de inquilinos

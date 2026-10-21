@@ -314,14 +314,14 @@ final class PropertiesViewModel {
         
         do {
             guard let imageData = try await item.loadTransferable(type: Data.self) else {
-                errorMessage = "Não foi possível carregar a imagem"
+                errorMessage = String(localized: "Não foi possível carregar a imagem")
                 return nil
             }
             
             propertyDraft.image = imageData
             return imageData
         } catch {
-            errorMessage = "Não foi possível carregar a imagem"
+            errorMessage = String(localized: "Não foi possível carregar a imagem")
             return nil
         }
     }

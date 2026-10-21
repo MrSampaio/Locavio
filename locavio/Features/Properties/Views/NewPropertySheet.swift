@@ -72,7 +72,7 @@ struct NewPropertySheet: View {
     
     private func save() {
         guard viewModel.validateForm() else {
-            errorMessage = "Corrija os campos destacados em vermelho."
+            errorMessage = String(localized: "Corrija os campos destacados em vermelho.")
             showErrorAlert = true
             return
         }

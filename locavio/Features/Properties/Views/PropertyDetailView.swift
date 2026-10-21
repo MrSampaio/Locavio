@@ -180,7 +180,7 @@ struct PropertyDetailView: View {
     
     @ViewBuilder
     private var addressInformation: some View {
-        section("Endereço") {
+        section(String(localized: "Endereço")) {
             VStack {
                 HStack {
                     Text("CEP")
