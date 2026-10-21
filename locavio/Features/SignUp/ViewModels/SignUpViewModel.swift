@@ -46,7 +46,7 @@ final class SignUpViewModel {
     func saveDocument(document: String, documentType: DocumentTypeModel, context: ModelContext, authManager: AppleAuthManager) {
         
         guard let userID = authManager.currentUserID else {
-            alertMessage = "Erro de autenticação. Por favor, faça login novamente."
+            alertMessage = String(localized: "Erro de autenticação. Por favor, faça login novamente.")
             showAlert = true
             print("Error: User ID not found in Keychain Storage.")
             return
@@ -54,13 +54,15 @@ final class SignUpViewModel {
         
         // o botão não fica mais desabilitado em silêncio: cada problema vira uma mensagem
         if needsFullName && trimmedFullName.isEmpty {
-            alertMessage = "Informe seu nome para continuar."
+            alertMessage = String(localized: "Informe seu nome para continuar.")
             showAlert = true
             return
         }
         
         guard DocumentAuth.isValidDocument(document: document, type: documentType) else {
-            alertMessage = documentType == .pf ? "O CPF informado é inválido." : "O CNPJ informado é inválido."
+            alertMessage = documentType == .pf
+                ? String(localized: "O CPF informado é inválido.")
+                : String(localized: "O CNPJ informado é inválido.")
             showAlert = true
             return
         }
@@ -91,7 +93,7 @@ final class SignUpViewModel {
             authManager.currentAuthState = .authenticated
             
         } catch {
-            alertMessage = "Ocorreu um erro inesperado ao salvar seus dados. Tente novamente."
+            alertMessage = String(localized: "Ocorreu um erro inesperado ao salvar seus dados. Tente novamente.")
             showAlert = true
             print("Error when trying to fetch/save user into database: \(error.localizedDescription)")
         }

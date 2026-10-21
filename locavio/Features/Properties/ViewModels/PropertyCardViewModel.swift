@@ -34,7 +34,7 @@ final class PropertyCardViewModel {
     
 
     var title: String {
-        property.title?.trimmedOrNil ?? "Sem título"
+        property.title?.trimmedOrNil ?? String(localized: "Sem título")
     }
 
    
@@ -49,7 +49,7 @@ final class PropertyCardViewModel {
         let parts = [streetPart.trimmedOrNil, property.city?.trimmedOrNil]
             .compactMap { $0 }
 
-        return parts.isEmpty ? "Endereço não informado" : parts.joined(separator: " - ")
+        return parts.isEmpty ? String(localized: "Endereço não informado") : parts.joined(separator: " - ")
     }
     
 
@@ -63,15 +63,15 @@ final class PropertyCardViewModel {
         return rawName?.trimmedOrNil
     }
 
-    var noTenantText: String { "Nenhum locatário" }
+    var noTenantText: String { String(localized: "Nenhum locatário") }
 
 
 
-    var rentLabel: String { "Aluguel" }
+    var rentLabel: String { String(localized: "Aluguel") }
 
   
 
-    var nextPaymentLabel: String { "Próx. Pagamento:" }
+    var nextPaymentLabel: String { String(localized: "Próx. Pagamento:") }
 
     var nextPaymentText: String {
         guard let date = nextPaymentDate else { return "—" }
@@ -101,8 +101,8 @@ final class PropertyCardViewModel {
 
     private static let dateFormatter: DateFormatter = {
         let f = DateFormatter()
-        f.locale = Locale(identifier: "pt_BR")
-        f.dateFormat = "dd/MM/yyyy"
+        f.locale = .current
+        f.setLocalizedDateFormatFromTemplate("yMd")
         return f
     }()
 }

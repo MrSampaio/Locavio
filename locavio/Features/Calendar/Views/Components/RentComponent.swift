@@ -12,6 +12,7 @@ import SwiftData
 /// mas no contexto do imóvel: foto do imóvel, nome e data de vencimento.
 struct RentComponent: View {
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.locale) private var locale
 
     let property: Property
     let dueDate: Date
@@ -45,10 +46,10 @@ struct RentComponent: View {
                     }
 
                     infoRow(icon: "house.fill",
-                            text: property.title ?? "Sem título")
+                            text: property.title ?? String(localized: "Sem título", locale: locale))
 
                     infoRow(icon: "calendar",
-                            text: "Vence em \(dueDate.formatted(date: .numeric, time: .omitted))")
+                            text: String(localized: "Vence em \(dueDate.formatted(Date.FormatStyle(date: .numeric, time: .omitted).locale(locale)))", locale: locale))
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
 
@@ -98,7 +99,7 @@ struct RentComponent: View {
     }
 
     private var badge: some View {
-        Text(isPaid ? "Pago" : "Pendente")
+        Text(isPaid ? LocalizedStringKey("Pago") : LocalizedStringKey("Pendente"))
             .font(.footnote.weight(.semibold))
             .foregroundStyle(.white)
             .padding(.horizontal, 12)

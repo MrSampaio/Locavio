@@ -16,8 +16,8 @@ enum DocumentTypeModel: String, CaseIterable, Codable {
     // description passa a ser o nome extenso (aparece na lista aberta)
     var description: String {
         switch self {
-            case .pf: return "Física"
-            case .pj: return "Jurídica"
+            case .pf: return String(localized: "Física")
+            case .pj: return String(localized: "Jurídica")
         }
     }
 }

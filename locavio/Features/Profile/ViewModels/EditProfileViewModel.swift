@@ -44,7 +44,7 @@ final class EditProfileViewModel{
     func saveUserData(context: ModelContext, user: Owner) -> Bool{
         
         guard DocumentAuth.isValidDocument(document: documentNumber, type: selectedDocumentType) else {
-            errorMessage = "O documento informado é inválido."
+            errorMessage = String(localized: "O documento informado é inválido.")
             showErrorAlert = true
             return false
         }
@@ -66,7 +66,7 @@ final class EditProfileViewModel{
             return true
             
         } catch {
-            errorMessage = "Não foi possível salvar as alterações. Verifique os dados e tente novamente."
+            errorMessage = String(localized: "Não foi possível salvar as alterações. Verifique os dados e tente novamente.")
             showErrorAlert = true
             
             print("Error when trying to save data from EditProfileView: \(error.localizedDescription)")

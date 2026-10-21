@@ -13,7 +13,7 @@ struct OptionToggle: View {
 
     var body: some View {
         HStack {
-            Text(text)
+            Text(LocalizedStringKey(text))
 
             Spacer()
 

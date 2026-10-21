@@ -66,24 +66,24 @@ struct TicketsEmptyStateView: View {
     
     private var titleText: String {
         switch stateType {
-        case .noProperties: return "Nenhum imóvel cadastrado"
-        case .noTickets: return "Nenhum chamado aberto"
-        case .searchEmpty: return "Nenhum chamado encontrado"
+        case .noProperties: return String(localized: "Nenhum imóvel cadastrado")
+        case .noTickets: return String(localized: "Nenhum chamado aberto")
+        case .searchEmpty: return String(localized: "Nenhum chamado encontrado")
         }
     }
     
     private var subtitleText: String {
         switch stateType {
-        case .noProperties: return "Você precisa de um imóvel para\npoder criar um chamado."
-        case .noTickets: return "Crie seu primeiro chamado de manutenção\npara começar a acompanhar os reparos."
-        case .searchEmpty: return "Tente buscar por outro nome ou mudar\no filtro atual."
+        case .noProperties: return String(localized: "Você precisa de um imóvel para\npoder criar um chamado.")
+        case .noTickets: return String(localized: "Crie seu primeiro chamado de manutenção\npara começar a acompanhar os reparos.")
+        case .searchEmpty: return String(localized: "Tente buscar por outro nome ou mudar\no filtro atual.")
         }
     }
     
     private var buttonText: String {
         switch stateType {
-        case .noProperties: return "Ir para Imóveis"
-        case .noTickets: return "Adicionar chamado"
+        case .noProperties: return String(localized: "Ir para Imóveis")
+        case .noTickets: return String(localized: "Adicionar chamado")
         case .searchEmpty: return ""
         }
     }

@@ -28,7 +28,7 @@ struct DestructiveButton: View {
     var body: some View {
         if useGlass {
             Button(role: .destructive, action: action) {
-                Text(text)
+                Text(LocalizedStringKey(text))
                     .font(.headline)
                     .fontWeight(.medium)
                     .frame(maxWidth: .infinity)
@@ -42,7 +42,7 @@ struct DestructiveButton: View {
             
         } else {
             Button(role: .destructive, action: action) {
-                Text(text)
+                Text(LocalizedStringKey(text))
                     .font(.headline)
                     .fontWeight(.medium)
                     .foregroundStyle(

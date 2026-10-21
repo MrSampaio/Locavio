@@ -14,6 +14,7 @@ import TipKit
 struct DashboardView: View {
     
     @Environment(DashboardViewModel.self) private var dashboardViewModel
+    @Environment(\.locale) private var locale
     @Query private var properties: [Property]
     
     @State private var selectedDate: Date?
@@ -29,11 +30,7 @@ struct DashboardView: View {
     }
     
     private var filterTitle: String {
-        switch dashboardViewModel.currentDashPeriod {
-        case .oneMonth: "1 mês"
-        case .sixMonths: "6 meses"
-        case .oneYear: "1 ano"
-        }
+        dashboardViewModel.currentDashPeriod.displayTitle
     }
     
     private var firstSmallCardValue: String {
@@ -65,7 +62,7 @@ struct DashboardView: View {
                 
                 Picker("Filtro", selection: $dashboardViewModelBind.currentFilter.animation(.easeInOut)) {
                     ForEach(SegmentedDashboard.allCases) { filter in
-                        Text(filter.rawValue).tag(filter)
+                        Text(filter.displayTitle).tag(filter)
                     }
                 }
                 .pickerStyle(.segmented)
@@ -123,9 +120,13 @@ struct DashboardView: View {
                         }
                     } else {
                         VStack() {
-                            Text("Não há \(dashboardViewModel.currentFilter == .profits ? "lucros" : "despesas") registrados")
-                                .foregroundStyle(.secondary)
+                            if dashboardViewModel.currentFilter == .profits {
+                                Text("Não há lucros registrados")
+                            } else {
+                                Text("Não há despesas registradas")
+                            }
                         }
+                        .foregroundStyle(.secondary)
                         .frame(maxWidth: .infinity)
                         .frame(minHeight: 100)
                     }
@@ -142,7 +143,7 @@ struct DashboardView: View {
                 Menu {
                     Picker("Filtrar por período", selection: $dashboardViewModelBind.currentDashPeriod) {
                         ForEach(DashboardPeriod.allCases) { filter in
-                            Text(filter.rawValue).tag(filter)
+                            Text(filter.displayTitle).tag(filter)
                         }
                     }
                 }label: {
@@ -159,7 +160,7 @@ struct DashboardView: View {
     }
     
     private func shortMonth(_ date: Date) -> String {
-        date.formatted(.dateTime.month(.abbreviated).locale(Locale(identifier: "pt_BR")))
+        date.formatted(.dateTime.month(.abbreviated).locale(locale))
             .replacingOccurrences(of: ".", with: "")
             .capitalized
     }

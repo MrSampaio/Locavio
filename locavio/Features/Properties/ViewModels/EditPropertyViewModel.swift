@@ -50,7 +50,7 @@ final class EditPropertyViewModel {
     /// Valida e grava. Devolve `true` se salvou (a view decide fechar a tela).
     func save(using form: PropertiesViewModel, context: ModelContext) -> Bool {
         guard form.validateForm() else {
-            present("Corrija os campos destacados em vermelho.")
+            present(String(localized: "Corrija os campos destacados em vermelho."))
             return false
         }
 

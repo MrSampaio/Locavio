@@ -140,24 +140,24 @@ struct TermsOfUseView: View {
         .ignoresSafeArea(edges: .bottom)
     }
     
-    private func sectionTitle(_ text: String) -> some View {
+    private func sectionTitle(_ text: LocalizedStringKey) -> some View {
         Text(text)
             .font(.headline)
             .padding(.top, 8)
     }
     
-    let prohibitedContent = """
+    let prohibitedContent: LocalizedStringKey = """
     -    Sejam ilegais, fraudulentos, falsificados ou violem direitos de propriedade intelectual de terceiros;
     -    Violem a privacidade ou os direitos de dados pessoais de terceiros (como inserir dados sensíveis de inquilinos sem possuir uma base legal válida para tal, conforme a LGPD);
     -    Contenham vírus, malware ou códigos maliciosos que possam comprometer a segurança do seu dispositivo, do Aplicativo ou da infraestrutura em nuvem.
     """
     
-    let providerRights = """
+    let providerRights: LocalizedStringKey = """
     -    Suspender ou encerrar o acesso de contas que utilizem o Aplicativo de forma comprovadamente ilícita (como para fraudes imobiliárias ou lavagem de dinheiro);
     -    Cooperar com autoridades policiais ou judiciais caso seja legalmente exigido.
     """
     
-    let liabilityExclusions = """
+    let liabilityExclusions: LocalizedStringKey = """
     -    Morte ou lesão corporal causada por negligência
     -    Fraude ou declaração falsa fraudulenta
     -    Qualquer outra responsabilidade que não possa ser excluída ou limitada de acordo com a lei aplicável
