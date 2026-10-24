@@ -14,7 +14,7 @@ Locavio is a robust and intuitive mobile application designed exclusively for pr
   <img src="https://github.com/user-attachments/assets/47f10d7f-2a16-42e6-b5d4-e68f5ec3673e" width="24%" />
 
   <p align="center">
-    <a target="_blank" href="https://apps.apple.com/br/app/locavio/id6813623367?l=en-GB">
+    <a href="https://apps.apple.com/br/app/locavio/id6813623367?l=en-GB" target="_blank" >
       <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" width="180"/>
     </a>
   </p>
