@@ -14,7 +14,7 @@ import SwiftData
 @Observable
 final class EditPropertyViewModel {
 
-    let property: Property
+    var property: Property
 
 
     let expensesViewModel = ExpensesViewModel()

@@ -4,6 +4,42 @@
     "" : {
 
     },
+    "-    Morte ou lesão corporal causada por negligência\n-    Fraude ou declaração falsa fraudulenta\n-    Qualquer outra responsabilidade que não possa ser excluída ou limitada de acordo com a lei aplicável" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-    Death or personal injury caused by negligence\n-    Fraud or fraudulent misrepresentation\n-    Any other liability that cannot be excluded or limited under applicable law"
+          }
+        }
+      }
+    },
+    "-    Sejam ilegais, fraudulentos, falsificados ou violem direitos de propriedade intelectual de terceiros;\n-    Violem a privacidade ou os direitos de dados pessoais de terceiros (como inserir dados sensíveis de inquilinos sem possuir uma base legal válida para tal, conforme a LGPD);\n-    Contenham vírus, malware ou códigos maliciosos que possam comprometer a segurança do seu dispositivo, do Aplicativo ou da infraestrutura em nuvem." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-    Are illegal, fraudulent, counterfeit, or infringe third parties' intellectual property rights;\n-    Violate third parties' privacy or Personal Data rights (such as entering sensitive tenant data without a valid legal basis, as required by Brazil's General Data Protection Law, or LGPD);\n-    Contain viruses, malware, or malicious code that could compromise the security of your device, the App, or the cloud infrastructure."
+          }
+        }
+      }
+    },
+    "-    Suspender ou encerrar o acesso de contas que utilizem o Aplicativo de forma comprovadamente ilícita (como para fraudes imobiliárias ou lavagem de dinheiro);\n-    Cooperar com autoridades policiais ou judiciais caso seja legalmente exigido." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-    Suspend or terminate access to accounts that demonstrably use the App unlawfully (such as for real estate fraud or money laundering);\n-    Cooperate with law enforcement or judicial authorities when legally required."
+          }
+        }
+      }
+    },
     "·" : {
 
     },
@@ -17,7 +53,20 @@
         }
       }
     },
+    "**Por e-mail:** " : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "**By email:** "
+          }
+        }
+      }
+    },
     "%@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -89,6 +138,522 @@
         }
       }
     },
+    "• **Com o Seu consentimento:** podemos divulgar seus Dados Pessoais para qualquer outra finalidade com o seu consentimento.\n• **Com Operadores/Prestadores de Serviços:** com a Apple (iCloud/CloudKit), para armazenamento e funcionamento do Aplicativo;\n• **Com autoridades:** quando exigido por lei ou por ordem de autoridade pública competente;" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• **With Your consent:** we may disclose your Personal Data for any other purpose with your consent.\n• **With Data Processors/Service Providers:** with Apple (iCloud/CloudKit), for storage and operation of the App;\n• **With authorities:** when required by law or by an order from a competent public authority;"
+          }
+        }
+      }
+    },
+    "• **Conta** significa uma conta exclusiva criada para você acessar o Aplicativo.\n• **Aplicativo** refere-se ao Locavio, o programa de software fornecido pela Empresa.\n• **Empresa/Controladora** refere-se ao Locavio, responsável pelas decisões sobre o tratamento dos dados pessoais.\n• **Operador** significa a pessoa (física ou jurídica) que realiza o tratamento de dados pessoais em nome da Controladora — no caso do Locavio, a Apple Inc., por meio dos serviços iCloud e CloudKit.\n• **Titular** significa a pessoa natural a quem se referem os dados pessoais tratados — seja você (usuário/proprietário) ou um inquilino cujos dados sejam inseridos por um proprietário no Aplicativo.\n• **Dados Pessoais** são quaisquer informações relacionadas a uma pessoa natural identificada \nou identificável.\n• **Tratamento** é toda operação realizada com dados pessoais (coleta, uso, armazenamento, compartilhamento, eliminação, etc.).\n• **País**: Brasil.\n• **Dispositivo** significa qualquer iPhone que possa baixar o Aplicativo na AppStore.\n• **Serviço** refere-se ao Aplicativo.\n• **Dados de Uso** referem-se a dados coletados automaticamente, gerados pelo uso do Serviço ou por sua infraestrutura.\n• **Usuário** significa qualquer indivíduo que acesse ou utilize o Serviço.\n• **Você** significa o indivíduo (proprietário) que acessa ou utiliza o Serviço." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• **Account** means a unique account created for you to access the App.\n• **App** refers to Locavio, the software program provided by the Company.\n• **Company/Data Controller** refers to Locavio, which is responsible for decisions about the processing of Personal Data.\n• **Data Processor** means the individual or legal entity that processes Personal Data on behalf of the Data Controller — in Locavio's case, Apple Inc., through its iCloud and CloudKit services.\n• **Data Subject** means the individual to whom the processed Personal Data relates — either you (the user/property owner) or a tenant whose data is entered into the App by a property owner.\n• **Personal Data** means any information relating to an identified\nor identifiable individual.\n• **Processing** means any operation performed on Personal Data (collection, use, storage, sharing, deletion, etc.).\n• **Country**: Brazil.\n• **Device** means any iPhone that can download the App from the App Store.\n• **Service** refers to the App.\n• **Usage Data** refers to automatically collected data generated by use of the Service or its infrastructure.\n• **User** means any individual who accesses or uses the Service.\n• **You** means the individual (property owner) who accesses or uses the Service."
+          }
+        }
+      }
+    },
+    "• **Para fornecer e manter o nosso Serviço**, incluindo o monitoramento do uso do nosso Serviço.\n• **Para gerenciar sua Conta:** para gerenciar seu registro como usuário do Serviço. Os Dados Pessoais que você fornece podem lhe dar acesso a diferentes funcionalidades do Serviço disponíveis para você como Usuário registrado.\n• **Para entrar em contato com Você:** para contatá-lo por e-mail ou outras formas equivalentes de comunicação eletrônica, como notificações push de aplicativos móveis, referentes a atualizações ou comunicações informativas relacionadas às funcionalidades, produtos ou serviços contratados, incluindo atualizações de segurança, quando necessário ou razoável para sua implementação.\n• **Para gerenciar suas solicitações:** para atender e gerenciar suas solicitações para nós.\n• **Para outras finalidades:** podemos utilizar suas informações para outras finalidades, como análise de dados, identificação de tendências de uso, determinação da eficácia de nossas campanhas promocionais, e avaliação e aprimoramento do nosso Serviço, produtos, serviços, marketing e da \nsua experiência." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• **To provide and maintain our Service**, including monitoring the use of our Service.\n• **To manage your Account:** to manage your registration as a user of the Service. The Personal Data you provide may give you access to different features of the Service available to you as a registered User.\n• **To contact You:** to contact you by email or equivalent forms of electronic communication, such as mobile app push notifications, about updates or information relating to the features, products, or services you have purchased, including security updates, when necessary or reasonable for their implementation.\n• **To manage your requests:** to address and manage your requests to us.\n• **For other purposes:** we may use your information for other purposes, such as data analysis, identifying usage trends, determining the effectiveness of our promotional campaigns, and evaluating and improving our Service, products, services, marketing, and\nyour experience."
+          }
+        }
+      }
+    },
+    "• A Apple processa e armazena os dados exclusivamente conforme nossas instruções e para viabilizar o funcionamento do Aplicativo;\n• Os servidores utilizados podem estar localizados fora do Brasil, o que pode envolver transferência internacional de dados;\n• Não temos acesso direto aos servidores da Apple além do que a API do CloudKit disponibiliza para o funcionamento do Aplicativo;\n• A Apple aplica suas próprias medidas de segurança e criptografia sobre os dados armazenados via CloudKit; mais informações estão disponíveis na [Política de Privacidade da Apple](https://www.apple.com/legal/privacy/).\n" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• Apple processes and stores data exclusively in accordance with our instructions and to enable the App to function;\n• The servers used may be located outside Brazil, which may involve international data transfers;\n• We do not have direct access to Apple's servers beyond what the CloudKit API makes available for the App to function;\n• Apple applies its own security and encryption measures to data stored through CloudKit; more information is available in [Apple's Privacy Policy](https://www.apple.com/legal/privacy/).\n"
+          }
+        }
+      }
+    },
+    "• Confirmação da existência de tratamento de seus dados;\n• Acesso aos seus dados;\n• Correção de dados incompletos, inexatos \nou desatualizados;\n• Anonimização, bloqueio ou eliminação de dados desnecessários ou excessivos;\n• Eliminação dos dados tratados com base no seu consentimento;" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• Confirmation of whether your data is being processed;\n• Access to your data;\n• Correction of incomplete, inaccurate,\nor outdated data;\n• Anonymization, blocking, or deletion of unnecessary or excessive data;\n• Deletion of data processed on the basis of your consent;"
+          }
+        }
+      }
+    },
+    "• Cumprir uma obrigação legal\n• Proteger e defender os direitos ou a propriedade da Empresa\n• Prevenir ou investigar possível conduta indevida relacionada ao serviço\n• Proteger a segurança pessoal dos usuários do serviço ou do público\n• Proteger contra responsabilidade legal" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• Comply with a legal obligation\n• Protect and defend the Company's rights or property\n• Prevent or investigate possible misconduct relating to the Service\n• Protect the personal safety of users of the Service or the public\n• Protect against legal liability"
+          }
+        }
+      }
+    },
+    "• Nome e sobrenome\n• E-mail\n• Endereço, Estado, Província, CEP, Cidade\n• Dados dos imóveis cadastrados (endereço, características, fotos)\n• Dados de contratos de locação e valores de aluguel\n• Solicitações de manutenção e histórico de comunicação sobre os imóveis\n• Dados de calendário/agenda relacionados aos imóveis\n• Documentos e fotos que você anexar ao Aplicativo (ex.: contratos, comprovantes)" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• First and last name\n• Email address\n• Address, state, province, postal code (CEP), city\n• Registered property data (address, features, photos)\n• Rental agreement details and rent amounts\n• Maintenance requests and communication history relating to properties\n• Calendar/schedule data relating to properties\n• Documents and photos you attach to the App (e.g. contracts, supporting documents)"
+          }
+        }
+      }
+    },
+    "• Você é responsável por garantir que possui base legal e legitimidade para inserir esses dados no Aplicativo (em regra, a execução do contrato de locação);\n• Você é responsável por informar o inquilino sobre esse tratamento, conforme exigido pela LGPD;\n• A Empresa trata esses dados exclusivamente para viabilizar as funcionalidades do Aplicativo (gestão do contrato, comunicação, histórico de pagamentos), na qualidade de controladora dos sistemas, mas sem relação direta de conta com o inquilino." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "• You are responsible for ensuring that you have a legal basis and lawful authority to enter this data into the App (generally, the performance of the rental agreement);\n• You are responsible for informing the tenant about this processing, as required by Brazil's General Data Protection Law (LGPD);\n• The Company processes this data exclusively to enable the App's features (contract management, communication, payment history), as the controller of the systems, but without a direct account relationship with the tenant."
+          }
+        }
+      }
+    },
+    "1 ano" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 year"
+          }
+        }
+      }
+    },
+    "1 mês" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1 month"
+          }
+        }
+      }
+    },
+    "1. Interpretação e Definições" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. Interpretation and Definitions"
+          }
+        }
+      }
+    },
+    "1. Licença de uso do Aplicativo" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1. License to Use the App"
+          }
+        }
+      }
+    },
+    "1.1 Definições" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "1.1 Definitions"
+          }
+        }
+      }
+    },
+    "2. Coleta e Uso de Suas Informações Pessoais" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Collection and Use of Your Personal Information"
+          }
+        }
+      }
+    },
+    "2. Propriedade Intelectual" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2. Intellectual Property"
+          }
+        }
+      }
+    },
+    "2.1 Dados Pessoais" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2.1 Personal Data"
+          }
+        }
+      }
+    },
+    "2.2 Uso dos Seus Dados Pessoais" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "2.2 Use of Your Personal Data"
+          }
+        }
+      }
+    },
+    "3 Dados de Terceiros (Inquilinos)" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3 Third-Party Data (Tenants)"
+          }
+        }
+      }
+    },
+    "3. Rescisão" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3. Termination"
+          }
+        }
+      }
+    },
+    "4. Armazenamento dos Dados — iCloud e CloudKit" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Data Storage — iCloud and CloudKit"
+          }
+        }
+      }
+    },
+    "4. Inserção de Dados, Documentos e Uso Aceitável" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "4. Entering Data and Documents; Acceptable Use"
+          }
+        }
+      }
+    },
+    "5. Limitação de Responsabilidade" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. Limitation of Liability"
+          }
+        }
+      }
+    },
+    "5. Retenção dos Seus Dados Pessoais" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "5. Retention of Your Personal Data"
+          }
+        }
+      }
+    },
+    "6 meses" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6 months"
+          }
+        }
+      }
+    },
+    "6. Indenização" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6. Indemnification"
+          }
+        }
+      }
+    },
+    "6. Seus Direitos como Titular de Dados" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "6. Your Rights as a Data Subject"
+          }
+        }
+      }
+    },
+    "7 Transferência dos Seus Dados Pessoais" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7 Transfer of Your Personal Data"
+          }
+        }
+      }
+    },
+    "7. Atualizações do Aplicativo" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7. App Updates"
+          }
+        }
+      }
+    },
+    "8. Exclusão dos Seus Dados Pessoais" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8. Deletion of Your Personal Data"
+          }
+        }
+      }
+    },
+    "8. Lei Aplicável e Jurisdição" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "8. Governing Law and Jurisdiction"
+          }
+        }
+      }
+    },
+    "9 Divulgação dos Seus Dados Pessoais" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9 Disclosure of Your Personal Data"
+          }
+        }
+      }
+    },
+    "9. Conformidade com a App Store e Posição da Apple" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9. App Store Compliance and Apple's Role"
+          }
+        }
+      }
+    },
+    "9.1 Autoridades Policiais" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9.1 Law Enforcement"
+          }
+        }
+      }
+    },
+    "9.2 Outras Exigências Legais" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "9.2 Other Legal Requirements"
+          }
+        }
+      }
+    },
+    "10 Segurança dos Seus Dados Pessoais" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10 Security of Your Personal Data"
+          }
+        }
+      }
+    },
+    "10. Regimes de Tratamento de Dados e Privacidade (LGPD)" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "10. Data Processing Roles and Privacy (LGPD)"
+          }
+        }
+      }
+    },
+    "11. Independência das Disposições (Separabilidade)" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "11. Independence of Provisions (Severability)"
+          }
+        }
+      }
+    },
+    "11. Notificação de Incidentes de Segurança" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "11. Notification of Security Incidents"
+          }
+        }
+      }
+    },
+    "12. Acordo Integral" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12. Entire Agreement"
+          }
+        }
+      }
+    },
+    "12. Privacidade de Crianças e Menores" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "12. Privacy of Children and Minors"
+          }
+        }
+      }
+    },
+    "13. Alterações a esta Política de Privacidade" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "13. Changes to This Privacy Policy"
+          }
+        }
+      }
+    },
+    "13. Alterações nestes Termos e Condições" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "13. Changes to These Terms and Conditions"
+          }
+        }
+      }
+    },
+    "14. Fale Conosco" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "14. Contact Us"
+          }
+        }
+      }
+    },
     "A confirmação da exclusão da conta, por meio da API da Apple, irá revogar o acesso e atualização do usuário no App. Ao mesmo tempo, será feita a limpeza completa de todos os dados do usuário do banco de dado e seus respectivos arquivos em nuvem (como perfis de propriedades, cadastros de inquilinos, relatórios de despesas, contratos anexados e fotografias de vistorias), salvo apenas os registros de acesso (Endereço IP utilizado em cada acesso, Data e Hora exatas do acesso e hash do identificador do Usuário) que devem ser mantidos, sob sigilo, pelo prazo obrigatório de seis meses para cumprimento do Marco Civil da Internet (Lei nº 12.965/2014)." : {
       "localizations" : {
         "en" : {
@@ -139,6 +704,30 @@
         }
       }
     },
+    "Aberto" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open"
+          }
+        }
+      }
+    },
+    "Abertos" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open"
+          }
+        }
+      }
+    },
     "Abre o comprovante" : {
       "localizations" : {
         "en" : {
@@ -149,12 +738,60 @@
         }
       }
     },
+    "Acompanhe\ncada Solicitação" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Track\nevery request"
+          }
+        }
+      }
+    },
+    "Acompanhe aluguéis, lucros e despesas\nem um único dashboard." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Track rent, profit, and expenses\nin a single dashboard."
+          }
+        }
+      }
+    },
     "Adicionar" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Add"
+          }
+        }
+      }
+    },
+    "Adicionar chamado" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Request"
+          }
+        }
+      }
+    },
+    "Adicionar Chamado" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Request"
           }
         }
       }
@@ -190,6 +827,18 @@
       }
     },
     "Adicionar imóvel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add Property"
+          }
+        }
+      }
+    },
+    "Adicionar Imóvel" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -249,12 +898,84 @@
         }
       }
     },
+    "Alugado" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rented"
+          }
+        }
+      }
+    },
+    "Alugados" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rented"
+          }
+        }
+      }
+    },
+    "Aluguéis Pendentes" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pending Rent"
+          }
+        }
+      }
+    },
+    "Aluguéis Recebidos" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rent Received"
+          }
+        }
+      }
+    },
     "Aluguel" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rent"
+          }
+        }
+      }
+    },
+    "Aluguel pago?" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rent paid?"
+          }
+        }
+      }
+    },
+    "Aluguel próximo ao vencimento" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rent Due Soon"
           }
         }
       }
@@ -379,12 +1100,36 @@
         }
       }
     },
+    "Apagar imóvel?" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete property?"
+          }
+        }
+      }
+    },
     "Apagar Selecionados" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete Selected"
+          }
+        }
+      }
+    },
+    "Apartamento" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apartment"
           }
         }
       }
@@ -415,6 +1160,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Switch the report between “Expenses” and “Profit” here."
+          }
+        }
+      }
+    },
+    "Área" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Area"
+          }
+        }
+      }
+    },
+    "Área inválida" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid area"
           }
         }
       }
@@ -479,6 +1248,18 @@
         }
       }
     },
+    "Cadastre seus imóveis e tenha tudo\norganizado em um só lugar." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add your properties and keep everything\norganized in one place."
+          }
+        }
+      }
+    },
     "Calendário" : {
       "localizations" : {
         "en" : {
@@ -519,12 +1300,72 @@
         }
       }
     },
+    "Casa" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "House"
+          }
+        }
+      }
+    },
     "CEP" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Postal Code (CEP)"
+          }
+        }
+      }
+    },
+    "CEP inválido. Verifique se o CEP contém apenas números e 8 dígitos." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid postal code. Make sure your Brazilian postal code (CEP) contains exactly 8 digits."
+          }
+        }
+      }
+    },
+    "CEP não encontrado. Verifique se o CEP é válido." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postal code not found. Check that your Brazilian postal code (CEP) is valid."
+          }
+        }
+      }
+    },
+    "CEP não informado" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postal code not provided"
+          }
+        }
+      }
+    },
+    "CEP: %@" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Postal Code (CEP): %@"
           }
         }
       }
@@ -549,6 +1390,18 @@
         }
       }
     },
+    "Chamado prestes a vencer" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request Due Soon"
+          }
+        }
+      }
+    },
     "Chamados" : {
       "localizations" : {
         "en" : {
@@ -565,6 +1418,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "City"
+          }
+        }
+      }
+    },
+    "Começar" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get Started"
           }
         }
       }
@@ -599,6 +1464,30 @@
         }
       }
     },
+    "Concluído" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completed"
+          }
+        }
+      }
+    },
+    "Concluídos" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Completed"
+          }
+        }
+      }
+    },
     "Confirmar" : {
       "localizations" : {
         "en" : {
@@ -629,12 +1518,72 @@
         }
       }
     },
+    "Continuar" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        }
+      }
+    },
     "Contrato" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Contract"
+          }
+        }
+      }
+    },
+    "Contrato.pdf" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contract.pdf"
+          }
+        }
+      }
+    },
+    "Corrija os campos destacados em vermelho." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correct the fields highlighted in red."
+          }
+        }
+      }
+    },
+    "CPF" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CPF"
+          }
+        }
+      }
+    },
+    "CPF inválido" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid CPF number"
           }
         }
       }
@@ -649,12 +1598,48 @@
         }
       }
     },
+    "Crie seu primeiro chamado de manutenção\npara começar a acompanhar os reparos." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create your first maintenance request\nto start tracking repairs."
+          }
+        }
+      }
+    },
+    "Data de registro" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date Created"
+          }
+        }
+      }
+    },
     "Data de Registro" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Date Created"
+          }
+        }
+      }
+    },
+    "Data não informada" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Date not provided"
           }
         }
       }
@@ -699,6 +1684,90 @@
         }
       }
     },
+    "Despesa" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Expenses"
+          }
+        }
+      }
+    },
+    "Despesa anual" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annual expenses"
+          }
+        }
+      }
+    },
+    "Despesa mensal" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly expenses"
+          }
+        }
+      }
+    },
+    "Despesa semestral" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Six-month expenses"
+          }
+        }
+      }
+    },
+    "Despesa Total Anual" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Annual Expenses"
+          }
+        }
+      }
+    },
+    "Despesa Total Mensal" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Monthly Expenses"
+          }
+        }
+      }
+    },
+    "Despesa Total Semestral" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Six-Month Expenses"
+          }
+        }
+      }
+    },
     "Detalhes do chamado" : {
       "localizations" : {
         "en" : {
@@ -715,6 +1784,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rent Due Day"
+          }
+        }
+      }
+    },
+    "Documento Inválido" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid Document"
           }
         }
       }
@@ -759,6 +1840,30 @@
         }
       }
     },
+    "Editar Perfil" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Profile"
+          }
+        }
+      }
+    },
+    "Em %@" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On %@"
+          }
+        }
+      }
+    },
     "Em caso de incidente de segurança que possa acarretar risco ou dano relevante aos titulares, comunicaremos a Autoridade Nacional de Proteção de Dados (ANPD) e os titulares afetados, conforme exigido pelo art. 48 da LGPD, informando a natureza dos dados afetados, as medidas técnicas adotadas e as providências tomadas para reverter ou mitigar os efeitos do incidente." : {
       "localizations" : {
         "en" : {
@@ -779,12 +1884,48 @@
         }
       }
     },
+    "Email" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email"
+          }
+        }
+      }
+    },
+    "Email inválido" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid email address"
+          }
+        }
+      }
+    },
     "Endereço" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Address"
+          }
+        }
+      }
+    },
+    "Endereço não informado" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Address not provided"
           }
         }
       }
@@ -799,6 +1940,30 @@
         }
       }
     },
+    "Erro ao editar ticket. Tente novamente." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to edit the request. Please try again."
+          }
+        }
+      }
+    },
+    "Erro ao gerar o número do ticket. Tente novamente." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to generate the request number. Please try again."
+          }
+        }
+      }
+    },
     "Erro ao Salvar" : {
       "localizations" : {
         "en" : {
@@ -809,12 +1974,60 @@
         }
       }
     },
+    "Erro ao salvar ticket. Verifique os campos e tente novamente." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to save the request. Check the fields and try again."
+          }
+        }
+      }
+    },
+    "Erro de autenticação. Por favor, faça login novamente." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Authentication failed. Please sign in again."
+          }
+        }
+      }
+    },
+    "Erro de decodificação. Tente novamente mais tarde." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to read the response. Please try again later."
+          }
+        }
+      }
+    },
     "Erro no Cadastro" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Unable to Sign Up"
+          }
+        }
+      }
+    },
+    "Essa ação não pode ser desfeita. Pagamentos, despesas e chamados deste imóvel também serão apagados." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This action cannot be undone. Payments, expenses, and requests associated with this property will also be deleted."
           }
         }
       }
@@ -909,6 +2122,184 @@
         }
       }
     },
+    "Ex: (99) 99999-9999" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. (99) 99999-9999"
+          }
+        }
+      }
+    },
+    "Ex: 000.000.000-00" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. 000.000.000-00"
+          }
+        }
+      }
+    },
+    "Ex: 00.000.000/0001-00" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. 00.000.000/0001-00"
+          }
+        }
+      }
+    },
+    "Ex: 32" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. 32"
+          }
+        }
+      }
+    },
+    "Ex: 55" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. 55"
+          }
+        }
+      }
+    },
+    "Ex: 12345-678" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. 12345-678"
+          }
+        }
+      }
+    },
+    "Ex: Apartamento 21" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. Apartment 21"
+          }
+        }
+      }
+    },
+    "Ex: Casa 1" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. House 1"
+          }
+        }
+      }
+    },
+    "Ex: email@email.com" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. email@example.com"
+          }
+        }
+      }
+    },
+    "Ex: Júlio Almeida Santos" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. Júlio Almeida Santos"
+          }
+        }
+      }
+    },
+    "Ex: Rua Ipê Amarelo" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. Ipê Amarelo Street"
+          }
+        }
+      }
+    },
+    "Ex: Santo Amaro" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. Santo Amaro"
+          }
+        }
+      }
+    },
+    "Ex: São Paulo" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "e.g. São Paulo"
+          }
+        }
+      }
+    },
+    "Excluir" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        }
+      }
+    },
+    "Excluir Conta" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Account"
+          }
+        }
+      }
+    },
     "Excluir Conta Permanentemente" : {
       "localizations" : {
         "en" : {
@@ -919,12 +2310,34 @@
         }
       }
     },
+    "Excluir Inquilino" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Tenant"
+          }
+        }
+      }
+    },
     "Excluir Tudo" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Delete Everything"
+          }
+        }
+      }
+    },
+    "Fale Conosco" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contact Us"
           }
         }
       }
@@ -999,12 +2412,48 @@
         }
       }
     },
+    "Física" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Individual"
+          }
+        }
+      }
+    },
     "Foto do imóvel" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Property Photo"
+          }
+        }
+      }
+    },
+    "Galpão" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Warehouse"
+          }
+        }
+      }
+    },
+    "Gerencie\nseus imóveis" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Manage\nyour properties"
           }
         }
       }
@@ -1029,6 +2478,18 @@
         }
       }
     },
+    "Imóvel não informado" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Property not provided"
+          }
+        }
+      }
+    },
     "Informações do Imóvel" : {
       "localizations" : {
         "en" : {
@@ -1039,12 +2500,120 @@
         }
       }
     },
+    "Informações Pessoais" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Personal Information"
+          }
+        }
+      }
+    },
     "Informaremos Você por e-mail e/ou por aviso destacado em nosso serviço, antes que a alteração entre em vigor, e atualizaremos a data de \"Última atualização\" no topo desta Política de Privacidade." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "We will notify you by email and/or through a prominent notice on our Service before the change takes effect, and we will update the “Last updated” date at the top of this Privacy Policy."
+          }
+        }
+      }
+    },
+    "Informe a área" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the area"
+          }
+        }
+      }
+    },
+    "Informe o CPF do inquilino" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the tenant's CPF number"
+          }
+        }
+      }
+    },
+    "Informe o lucro" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the profit amount"
+          }
+        }
+      }
+    },
+    "Informe o nome do imóvel" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the property name"
+          }
+        }
+      }
+    },
+    "Informe o nome do inquilino" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the tenant's name"
+          }
+        }
+      }
+    },
+    "informe o número do imóvel" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the property number"
+          }
+        }
+      }
+    },
+    "Informe o telefone do inquilino" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the tenant's phone number"
+          }
+        }
+      }
+    },
+    "Informe seu nome para continuar." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter your name to continue."
           }
         }
       }
@@ -1069,12 +2638,168 @@
         }
       }
     },
+    "Insira um CPF válido." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a valid CPF number."
+          }
+        }
+      }
+    },
+    "Insira um lucro válido." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a valid profit amount."
+          }
+        }
+      }
+    },
+    "Insira um nome válido." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a valid name."
+          }
+        }
+      }
+    },
+    "Insira um número válido." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a valid number."
+          }
+        }
+      }
+    },
+    "Insira um telefone válido." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a valid phone number."
+          }
+        }
+      }
+    },
+    "Insira um título para o chamado." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a title for the request."
+          }
+        }
+      }
+    },
+    "Insira um título válido." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a valid title."
+          }
+        }
+      }
+    },
+    "Insira um valor" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter an amount"
+          }
+        }
+      }
+    },
+    "Insira um valor numérico válido na despesa." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a valid numeric amount for the expense."
+          }
+        }
+      }
+    },
+    "Insira uma área válida." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter a valid area."
+          }
+        }
+      }
+    },
+    "Ir para Imóveis" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Go to Properties"
+          }
+        }
+      }
+    },
     "Item" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Item"
+          }
+        }
+      }
+    },
+    "Jurídica" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Legal Entity"
+          }
+        }
+      }
+    },
+    "Kitnet" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Small Studio Apartment"
           }
         }
       }
@@ -1089,6 +2814,54 @@
         }
       }
     },
+    "Loft" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Loft"
+          }
+        }
+      }
+    },
+    "Loja" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Retail Space"
+          }
+        }
+      }
+    },
+    "Lucro" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profit"
+          }
+        }
+      }
+    },
+    "Lucro anual" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annual profit"
+          }
+        }
+      }
+    },
     "Lucro e Despesa" : {
       "localizations" : {
         "en" : {
@@ -1099,12 +2872,108 @@
         }
       }
     },
+    "Lucro mensal" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Monthly profit"
+          }
+        }
+      }
+    },
+    "Lucro semestral" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Six-month profit"
+          }
+        }
+      }
+    },
+    "Lucro Total Anual" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Annual Profit"
+          }
+        }
+      }
+    },
+    "Lucro Total Mensal" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Monthly Profit"
+          }
+        }
+      }
+    },
+    "Lucro Total Semestral" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Six-Month Profit"
+          }
+        }
+      }
+    },
+    "Mais antigos" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Oldest First"
+          }
+        }
+      }
+    },
+    "Mais recentes" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Newest First"
+          }
+        }
+      }
+    },
     "Mantemos seus dados pessoais apenas pelo tempo necessário para as finalidades descritas nesta Política. Ao encerrar sua Conta, seus dados pessoais são excluídos imediatamente da nossa base de dados ativa." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "We retain your Personal Data only for as long as necessary for the purposes described in this Policy. When you close your Account, your Personal Data is immediately deleted from our active database."
+          }
+        }
+      }
+    },
+    "Manutenção" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maintenance"
           }
         }
       }
@@ -1169,6 +3038,30 @@
         }
       }
     },
+    "Não alugado" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not Rented"
+          }
+        }
+      }
+    },
+    "Não Alugados" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vacant"
+          }
+        }
+      }
+    },
     "Não foi possível abrir o comprovante" : {
       "localizations" : {
         "en" : {
@@ -1179,12 +3072,60 @@
         }
       }
     },
+    "Não foi possível acessar o arquivo selecionado." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to access the selected file."
+          }
+        }
+      }
+    },
+    "Não foi possível carregar a imagem" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to load the image"
+          }
+        }
+      }
+    },
     "Não foi possível excluir" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Unable to Delete"
+          }
+        }
+      }
+    },
+    "Não foi possível ler o conteúdo do arquivo." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to read the file contents."
+          }
+        }
+      }
+    },
+    "Não foi possível salvar as alterações. Verifique os dados e tente novamente." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to save your changes. Check the information and try again."
           }
         }
       }
@@ -1219,6 +3160,42 @@
         }
       }
     },
+    "Nenhum chamado aberto" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No open requests"
+          }
+        }
+      }
+    },
+    "Nenhum chamado encontrado" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No requests found"
+          }
+        }
+      }
+    },
+    "Nenhum contrato anexado" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No contract attached"
+          }
+        }
+      }
+    },
     "Nenhum imóvel cadastrado" : {
       "localizations" : {
         "en" : {
@@ -1239,12 +3216,60 @@
         }
       }
     },
+    "Nenhum locatário" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No tenant"
+          }
+        }
+      }
+    },
+    "Nenhum pagamento registrado" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No payments recorded"
+          }
+        }
+      }
+    },
     "Nenhum selecionado" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "None selected"
+          }
+        }
+      }
+    },
+    "Nenhuma despesa adicionada" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No expenses added"
+          }
+        }
+      }
+    },
+    "Nenhuma solicitação" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No requests"
           }
         }
       }
@@ -1309,12 +3334,60 @@
         }
       }
     },
+    "Notificar Chamados" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request Reminders"
+          }
+        }
+      }
+    },
+    "Notificar Vencimentos" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rent Due Reminders"
+          }
+        }
+      }
+    },
     "Número" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Number"
+          }
+        }
+      }
+    },
+    "O aluguel do imóvel '%@' vence amanhã." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rent for '%@' is due tomorrow."
+          }
+        }
+      }
+    },
+    "O aluguel do imóvel '%@' vence hoje." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rent for '%@' is due today."
           }
         }
       }
@@ -1335,6 +3408,78 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "The App allows you to enter data, photographs, and documents (such as rental agreements, inspection reports, and financial supporting documents) exclusively for the private management of your properties. By using these features, you agree not to enter or store files or information in the App that:"
+          }
+        }
+      }
+    },
+    "O arquivo selecionado não é um PDF válido." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The selected file is not a valid PDF."
+          }
+        }
+      }
+    },
+    "O CEP deve ter 8 dígitos" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The postal code (CEP) must contain 8 digits"
+          }
+        }
+      }
+    },
+    "O chamado '%@' deve ser resolvido em 3 dias." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The request '%@' is due in 3 days."
+          }
+        }
+      }
+    },
+    "O CNPJ informado é inválido." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The CNPJ number you entered is invalid."
+          }
+        }
+      }
+    },
+    "O CPF informado é inválido." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The CPF number you entered is invalid."
+          }
+        }
+      }
+    },
+    "O documento informado é inválido." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The document number you entered is invalid."
           }
         }
       }
@@ -1375,6 +3520,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Our Service may allow you to delete certain information about yourself directly\nthrough the Service."
+          }
+        }
+      }
+    },
+    "O prazo para concluir o chamado '%@' é hoje." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The request '%@' must be completed today."
           }
         }
       }
@@ -1519,12 +3676,36 @@
         }
       }
     },
+    "Ocorreu um erro inesperado ao salvar seus dados. Tente novamente." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An unexpected error occurred while saving your information. Please try again."
+          }
+        }
+      }
+    },
     "OK" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "OK"
+          }
+        }
+      }
+    },
+    "Ordem alfabética" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alphabetical"
           }
         }
       }
@@ -1549,6 +3730,30 @@
         }
       }
     },
+    "Outras despesas" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other expenses"
+          }
+        }
+      }
+    },
+    "Outro" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        }
+      }
+    },
     "Pago" : {
       "localizations" : {
         "en" : {
@@ -1565,6 +3770,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "To exercise any of these rights, contact us through the channels listed below."
+          }
+        }
+      }
+    },
+    "Para Hoje" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For Today"
           }
         }
       }
@@ -1599,6 +3816,18 @@
         }
       }
     },
+    "Pesquise seus chamados aqui" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search your requests"
+          }
+        }
+      }
+    },
     "Podemos atualizar nossa Política de Privacidade periodicamente. Notificaremos você sobre quaisquer alterações da nova Política de Privacidade." : {
       "localizations" : {
         "en" : {
@@ -1619,12 +3848,84 @@
         }
       }
     },
+    "Política de privacidade" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Privacy Policy"
+          }
+        }
+      }
+    },
     "Política de Privacidade" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Privacy Policy"
+          }
+        }
+      }
+    },
+    "Por preço" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By Price"
+          }
+        }
+      }
+    },
+    "Prazo final do Chamado" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Request Due Today"
+          }
+        }
+      }
+    },
+    "Precisamos de algumas informações para configurar seu perfil. Você poderá revisar essas informações depois nas configurações da conta." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We need a few details to set up your profile. You can review this information later in your account settings."
+          }
+        }
+      }
+    },
+    "Problema na autenticação. Entre em contato com o administrador do sistema" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There was an authentication problem. Contact the system administrator."
+          }
+        }
+      }
+    },
+    "Próx. Pagamento:" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next Payment:"
           }
         }
       }
@@ -1669,6 +3970,18 @@
         }
       }
     },
+    "Registre manutenções e acompanhe o\nandamento de tudo." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create maintenance requests and track\ntheir progress."
+          }
+        }
+      }
+    },
     "Relatório" : {
       "localizations" : {
         "en" : {
@@ -1685,6 +3998,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Remove"
+          }
+        }
+      }
+    },
+    "Resolver até" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Resolve By"
+          }
+        }
+      }
+    },
+    "Resposta inválida. Verifique a sua conexão de internet." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid response. Please check your internet connection."
           }
         }
       }
@@ -1759,12 +4096,96 @@
         }
       }
     },
+    "Selecione" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select"
+          }
+        }
+      }
+    },
     "Selecione um imóvel" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Select a Property"
+          }
+        }
+      }
+    },
+    "Sem descrição." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No description."
+          }
+        }
+      }
+    },
+    "Sem item" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No item"
+          }
+        }
+      }
+    },
+    "Sem prazo" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No deadline"
+          }
+        }
+      }
+    },
+    "Sem propriedade" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Property"
+          }
+        }
+      }
+    },
+    "Sem título" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Untitled"
+          }
+        }
+      }
+    },
+    "Semana" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Week"
           }
         }
       }
@@ -1819,6 +4240,18 @@
         }
       }
     },
+    "Studio" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Studio"
+          }
+        }
+      }
+    },
     "Substituir comprovante" : {
       "localizations" : {
         "en" : {
@@ -1839,12 +4272,48 @@
         }
       }
     },
+    "Telefone" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Phone"
+          }
+        }
+      }
+    },
+    "Telefone inválido" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid phone number"
+          }
+        }
+      }
+    },
     "Tem certeza de que deseja sair do aplicativo?" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Are you sure you want to sign out?"
+          }
+        }
+      }
+    },
+    "Tem certeza que deseja apagar o imóvel '%@'? Todos os dados, contratos e chamados vinculados a ele serão perdidos. Essa ação não pode ser desfeita." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to delete the property '%@'? All associated data, contracts, and requests will be lost. This action cannot be undone."
           }
         }
       }
@@ -1889,12 +4358,36 @@
         }
       }
     },
+    "Tenha uma\n visão do seu negócio" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get a clear view\nof your business"
+          }
+        }
+      }
+    },
     "Tente buscar por outro nome ou mudar\no filtro atual." : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Try searching for a different name or changing\nthe current filter."
+          }
+        }
+      }
+    },
+    "Termos de uso" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terms of Use"
           }
         }
       }
@@ -1959,6 +4452,18 @@
         }
       }
     },
+    "Toque para alterar sua foto de perfil" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap to change your profile photo"
+          }
+        }
+      }
+    },
     "Total" : {
       "localizations" : {
         "en" : {
@@ -1999,6 +4504,42 @@
         }
       }
     },
+    "Últimos pagamentos" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent Payments"
+          }
+        }
+      }
+    },
+    "Últimos Pagamentos" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent Payments"
+          }
+        }
+      }
+    },
+    "Utilizamos seu documento exclusivamente para sua identificação e ele não será compartilhado com outros usuários." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We use your document number only to verify your identity. It will not be shared with other users."
+          }
+        }
+      }
+    },
     "Valor" : {
       "localizations" : {
         "en" : {
@@ -2019,6 +4560,18 @@
         }
       }
     },
+    "Valor total" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Total Amount"
+          }
+        }
+      }
+    },
     "Valores" : {
       "localizations" : {
         "en" : {
@@ -2035,6 +4588,30 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "See how your data is managed..."
+          }
+        }
+      }
+    },
+    "Vence em %@" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Due on %@"
+          }
+        }
+      }
+    },
+    "Vencimento do Aluguel" : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rent Due Today"
           }
         }
       }
@@ -2109,6 +4686,28 @@
         }
       }
     },
+    "Você precisa de um imóvel para\npoder criar um chamado." : {
+      "extractionState" : "manual",
+      "generatesSymbol" : false,
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add a property before\ncreating a request."
+          }
+        }
+      }
+    },
+    "Você realmente deseja excluir o inquilino da propriedade? Essa ação não poderá ser desfeita." : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you really want to remove the tenant from the property? This action cannot be undone."
+          }
+        }
+      }
+    },
     "Você tem o direito de excluir ou solicitar que nós o ajudemos a excluir os Dados Pessoais que coletamos \nsobre Você." : {
       "localizations" : {
         "en" : {
@@ -2128,2574 +4727,6 @@
           }
         }
       }
-    },
-    "Gerencie\nseus imóveis" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Manage\nyour properties"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Cadastre seus imóveis e tenha tudo\norganizado em um só lugar." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add your properties and keep everything\norganized in one place."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Acompanhe\ncada Solicitação" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Track\nevery request"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Registre manutenções e acompanhe o\nandamento de tudo." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Create maintenance requests and track\ntheir progress."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Tenha uma\n visão do seu negócio" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Get a clear view\nof your business"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Acompanhe aluguéis, lucros e despesas\nem um único dashboard." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Track rent, profit, and expenses\nin a single dashboard."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Informações Pessoais" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Personal Information"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Precisamos de algumas informações para configurar seu perfil. Você poderá revisar essas informações depois nas configurações da conta." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "We need a few details to set up your profile. You can review this information later in your account settings."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Utilizamos seu documento exclusivamente para sua identificação e ele não será compartilhado com outros usuários." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "We use your document number only to verify your identity. It will not be shared with other users."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Começar" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Get Started"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Continuar" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continue"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Erro de autenticação. Por favor, faça login novamente." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Authentication failed. Please sign in again."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Informe seu nome para continuar." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter your name to continue."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "O CPF informado é inválido." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The CPF number you entered is invalid."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "O CNPJ informado é inválido." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The CNPJ number you entered is invalid."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Ocorreu um erro inesperado ao salvar seus dados. Tente novamente." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "An unexpected error occurred while saving your information. Please try again."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "CEP inválido. Verifique se o CEP contém apenas números e 8 dígitos." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invalid postal code. Make sure your Brazilian postal code (CEP) contains exactly 8 digits."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Resposta inválida. Verifique a sua conexão de internet." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invalid response. Please check your internet connection."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "CEP não encontrado. Verifique se o CEP é válido." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Postal code not found. Check that your Brazilian postal code (CEP) is valid."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Erro de decodificação. Tente novamente mais tarde." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unable to read the response. Please try again later."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Aluguel próximo ao vencimento" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rent Due Soon"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "O aluguel do imóvel '%@' vence amanhã." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rent for '%@' is due tomorrow."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Vencimento do Aluguel" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rent Due Today"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "O aluguel do imóvel '%@' vence hoje." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rent for '%@' is due today."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Chamado prestes a vencer" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Request Due Soon"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "O chamado '%@' deve ser resolvido em 3 dias." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The request '%@' is due in 3 days."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Prazo final do Chamado" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Request Due Today"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "O prazo para concluir o chamado '%@' é hoje." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The request '%@' must be completed today."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "1 mês" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1 month"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "6 meses" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "6 months"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "1 ano" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1 year"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Lucro" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Profit"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Despesa" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Expenses"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Lucro mensal" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monthly profit"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Lucro semestral" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Six-month profit"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Lucro anual" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Annual profit"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Despesa mensal" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Monthly expenses"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Despesa semestral" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Six-month expenses"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Despesa anual" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Annual expenses"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Lucro Total Mensal" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total Monthly Profit"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Lucro Total Semestral" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total Six-Month Profit"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Lucro Total Anual" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total Annual Profit"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Despesa Total Mensal" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total Monthly Expenses"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Despesa Total Semestral" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total Six-Month Expenses"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Despesa Total Anual" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total Annual Expenses"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Aluguéis Recebidos" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rent Received"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Aluguéis Pendentes" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pending Rent"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Manutenção" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Maintenance"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Outras despesas" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Other expenses"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Semana" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Week"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Para Hoje" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "For Today"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Sem título" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Untitled"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Vence em %@" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Due on %@"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Endereço não informado" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Address not provided"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Nenhum locatário" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No tenant"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Próx. Pagamento:" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Next Payment:"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "CEP não informado" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Postal code not provided"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Nenhum contrato anexado" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No contract attached"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Últimos Pagamentos" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recent Payments"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Apagar imóvel?" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete property?"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Essa ação não pode ser desfeita. Pagamentos, despesas e chamados deste imóvel também serão apagados." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This action cannot be undone. Payments, expenses, and requests associated with this property will also be deleted."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Últimos pagamentos" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Recent Payments"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Nenhum pagamento registrado" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No payments recorded"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Resolver até" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Resolve By"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Nenhuma solicitação" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No requests"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Sem item" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No item"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Sem prazo" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No deadline"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Aluguel pago?" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rent paid?"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Valor total" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Total Amount"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Nenhuma despesa adicionada" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No expenses added"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Corrija os campos destacados em vermelho." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Correct the fields highlighted in red."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Não foi possível carregar a imagem" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unable to load the image"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Insira um título válido." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter a valid title."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Insira uma área válida." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter a valid area."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Insira um número válido." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter a valid number."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Insira um lucro válido." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter a valid profit amount."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Problema na autenticação. Entre em contato com o administrador do sistema" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "There was an authentication problem. Contact the system administrator."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Insira um nome válido." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter a valid name."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Insira um CPF válido." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter a valid CPF number."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Insira um telefone válido." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter a valid phone number."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Insira um valor numérico válido na despesa." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter a valid numeric amount for the expense."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Não foi possível acessar o arquivo selecionado." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unable to access the selected file."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "O arquivo selecionado não é um PDF válido." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The selected file is not a valid PDF."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Não foi possível ler o conteúdo do arquivo." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unable to read the file contents."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Informe o nome do imóvel" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter the property name"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Informe a área" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter the area"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Área inválida" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invalid area"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "O CEP deve ter 8 dígitos" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The postal code (CEP) must contain 8 digits"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "informe o número do imóvel" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter the property number"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Informe o lucro" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter the profit amount"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Informe o nome do inquilino" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter the tenant's name"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Email inválido" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invalid email address"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Informe o CPF do inquilino" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter the tenant's CPF number"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "CPF inválido" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invalid CPF number"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Informe o telefone do inquilino" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter the tenant's phone number"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Telefone inválido" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invalid phone number"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Insira um título para o chamado." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter a title for the request."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Erro ao salvar ticket. Verifique os campos e tente novamente." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unable to save the request. Check the fields and try again."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Erro ao gerar o número do ticket. Tente novamente." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unable to generate the request number. Please try again."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Erro ao editar ticket. Tente novamente." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unable to edit the request. Please try again."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Concluído" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Completed"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Aberto" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Open"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Imóvel não informado" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Property not provided"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Sem descrição." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No description."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Data não informada" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Date not provided"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Nenhum chamado aberto" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No open requests"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Nenhum chamado encontrado" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No requests found"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Você precisa de um imóvel para\npoder criar um chamado." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add a property before\ncreating a request."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Crie seu primeiro chamado de manutenção\npara começar a acompanhar os reparos." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Create your first maintenance request\nto start tracking repairs."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Ir para Imóveis" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Go to Properties"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Adicionar chamado" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add Request"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Alugados" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rented"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Não Alugados" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vacant"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Abertos" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Open"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Concluídos" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Completed"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Por preço" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "By Price"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Ordem alfabética" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Alphabetical"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Mais antigos" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Oldest First"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Mais recentes" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Newest First"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Tem certeza que deseja apagar o imóvel '%@'? Todos os dados, contratos e chamados vinculados a ele serão perdidos. Essa ação não pode ser desfeita." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Are you sure you want to delete the property '%@'? All associated data, contracts, and requests will be lost. This action cannot be undone."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "CEP: %@" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Postal Code (CEP): %@"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Adicionar Imóvel" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add Property"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Adicionar Chamado" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add Request"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Data de registro" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Date Created"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Insira um valor" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enter an amount"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Email" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Email"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "CPF" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "CPF"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Telefone" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Phone"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Área" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Area"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Ex: Casa 1" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "e.g. House 1"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Ex: 32" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "e.g. 32"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Ex: 12345-678" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "e.g. 12345-678"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Ex: Rua Ipê Amarelo" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "e.g. Ipê Amarelo Street"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Ex: 55" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "e.g. 55"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Ex: Santo Amaro" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "e.g. Santo Amaro"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Ex: São Paulo" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "e.g. São Paulo"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Ex: Apartamento 21" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "e.g. Apartment 21"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Ex: Júlio Almeida Santos" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "e.g. Júlio Almeida Santos"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Ex: email@email.com" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "e.g. email@example.com"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Ex: 000.000.000-00" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "e.g. 000.000.000-00"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Ex: (99) 99999-9999" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "e.g. (99) 99999-9999"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Apartamento" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Apartment"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Casa" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "House"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Galpão" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Warehouse"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Kitnet" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Small Studio Apartment"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Loja" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Retail Space"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Loft" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Loft"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Studio" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Studio"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Outro" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Other"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Selecione" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Select"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Contrato.pdf" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Contract.pdf"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Pesquise seus chamados aqui" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Search your requests"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Ex: 00.000.000/0001-00" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "e.g. 00.000.000/0001-00"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Física" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Individual"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Jurídica" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Legal Entity"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Alugado" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rented"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Não alugado" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Not Rented"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Sem propriedade" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No Property"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Em %@" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "On %@"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "O documento informado é inválido." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The document number you entered is invalid."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Não foi possível salvar as alterações. Verifique os dados e tente novamente." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unable to save your changes. Check the information and try again."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Documento Inválido" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invalid Document"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Toque para alterar sua foto de perfil" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap to change your profile photo"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Editar Perfil" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Edit Profile"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Notificar Vencimentos" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rent Due Reminders"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Notificar Chamados" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Request Reminders"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Termos de uso" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Terms of Use"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Política de privacidade" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Privacy Policy"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Fale Conosco" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Contact Us"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "Excluir Conta" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete Account"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "**Por e-mail:** " : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "**By email:** "
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "1. Interpretação e Definições" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1. Interpretation and Definitions"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "1.1 Definições" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1.1 Definitions"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "2. Coleta e Uso de Suas Informações Pessoais" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "2. Collection and Use of Your Personal Information"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "2.1 Dados Pessoais" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "2.1 Personal Data"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "2.2 Uso dos Seus Dados Pessoais" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "2.2 Use of Your Personal Data"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "3 Dados de Terceiros (Inquilinos)" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "3 Third-Party Data (Tenants)"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "4. Armazenamento dos Dados — iCloud e CloudKit" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "4. Data Storage — iCloud and CloudKit"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "5. Retenção dos Seus Dados Pessoais" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "5. Retention of Your Personal Data"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "6. Seus Direitos como Titular de Dados" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "6. Your Rights as a Data Subject"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "7 Transferência dos Seus Dados Pessoais" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "7 Transfer of Your Personal Data"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "8. Exclusão dos Seus Dados Pessoais" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "8. Deletion of Your Personal Data"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "9 Divulgação dos Seus Dados Pessoais" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "9 Disclosure of Your Personal Data"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "9.1 Autoridades Policiais" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "9.1 Law Enforcement"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "9.2 Outras Exigências Legais" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "9.2 Other Legal Requirements"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "10 Segurança dos Seus Dados Pessoais" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "10 Security of Your Personal Data"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "11. Notificação de Incidentes de Segurança" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "11. Notification of Security Incidents"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "12. Privacidade de Crianças e Menores" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "12. Privacy of Children and Minors"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "13. Alterações a esta Política de Privacidade" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "13. Changes to This Privacy Policy"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "14. Fale Conosco" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "14. Contact Us"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "1. Licença de uso do Aplicativo" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "1. License to Use the App"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "2. Propriedade Intelectual" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "2. Intellectual Property"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "3. Rescisão" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "3. Termination"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "4. Inserção de Dados, Documentos e Uso Aceitável" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "4. Entering Data and Documents; Acceptable Use"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "5. Limitação de Responsabilidade" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "5. Limitation of Liability"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "6. Indenização" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "6. Indemnification"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "7. Atualizações do Aplicativo" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "7. App Updates"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "8. Lei Aplicável e Jurisdição" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "8. Governing Law and Jurisdiction"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "9. Conformidade com a App Store e Posição da Apple" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "9. App Store Compliance and Apple's Role"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "10. Regimes de Tratamento de Dados e Privacidade (LGPD)" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "10. Data Processing Roles and Privacy (LGPD)"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "11. Independência das Disposições (Separabilidade)" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "11. Independence of Provisions (Severability)"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "12. Acordo Integral" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "12. Entire Agreement"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "13. Alterações nestes Termos e Condições" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "13. Changes to These Terms and Conditions"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "• **Conta** significa uma conta exclusiva criada para você acessar o Aplicativo.\n• **Aplicativo** refere-se ao Locavio, o programa de software fornecido pela Empresa.\n• **Empresa/Controladora** refere-se ao Locavio, responsável pelas decisões sobre o tratamento dos dados pessoais.\n• **Operador** significa a pessoa (física ou jurídica) que realiza o tratamento de dados pessoais em nome da Controladora — no caso do Locavio, a Apple Inc., por meio dos serviços iCloud e CloudKit.\n• **Titular** significa a pessoa natural a quem se referem os dados pessoais tratados — seja você (usuário/proprietário) ou um inquilino cujos dados sejam inseridos por um proprietário no Aplicativo.\n• **Dados Pessoais** são quaisquer informações relacionadas a uma pessoa natural identificada \nou identificável.\n• **Tratamento** é toda operação realizada com dados pessoais (coleta, uso, armazenamento, compartilhamento, eliminação, etc.).\n• **País**: Brasil.\n• **Dispositivo** significa qualquer iPhone que possa baixar o Aplicativo na AppStore.\n• **Serviço** refere-se ao Aplicativo.\n• **Dados de Uso** referem-se a dados coletados automaticamente, gerados pelo uso do Serviço ou por sua infraestrutura.\n• **Usuário** significa qualquer indivíduo que acesse ou utilize o Serviço.\n• **Você** significa o indivíduo (proprietário) que acessa ou utiliza o Serviço." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "• **Account** means a unique account created for you to access the App.\n• **App** refers to Locavio, the software program provided by the Company.\n• **Company/Data Controller** refers to Locavio, which is responsible for decisions about the processing of Personal Data.\n• **Data Processor** means the individual or legal entity that processes Personal Data on behalf of the Data Controller — in Locavio's case, Apple Inc., through its iCloud and CloudKit services.\n• **Data Subject** means the individual to whom the processed Personal Data relates — either you (the user/property owner) or a tenant whose data is entered into the App by a property owner.\n• **Personal Data** means any information relating to an identified\nor identifiable individual.\n• **Processing** means any operation performed on Personal Data (collection, use, storage, sharing, deletion, etc.).\n• **Country**: Brazil.\n• **Device** means any iPhone that can download the App from the App Store.\n• **Service** refers to the App.\n• **Usage Data** refers to automatically collected data generated by use of the Service or its infrastructure.\n• **User** means any individual who accesses or uses the Service.\n• **You** means the individual (property owner) who accesses or uses the Service."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "• Nome e sobrenome\n• E-mail\n• Endereço, Estado, Província, CEP, Cidade\n• Dados dos imóveis cadastrados (endereço, características, fotos)\n• Dados de contratos de locação e valores de aluguel\n• Solicitações de manutenção e histórico de comunicação sobre os imóveis\n• Dados de calendário/agenda relacionados aos imóveis\n• Documentos e fotos que você anexar ao Aplicativo (ex.: contratos, comprovantes)" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "• First and last name\n• Email address\n• Address, state, province, postal code (CEP), city\n• Registered property data (address, features, photos)\n• Rental agreement details and rent amounts\n• Maintenance requests and communication history relating to properties\n• Calendar/schedule data relating to properties\n• Documents and photos you attach to the App (e.g. contracts, supporting documents)"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "• **Para fornecer e manter o nosso Serviço**, incluindo o monitoramento do uso do nosso Serviço.\n• **Para gerenciar sua Conta:** para gerenciar seu registro como usuário do Serviço. Os Dados Pessoais que você fornece podem lhe dar acesso a diferentes funcionalidades do Serviço disponíveis para você como Usuário registrado.\n• **Para entrar em contato com Você:** para contatá-lo por e-mail ou outras formas equivalentes de comunicação eletrônica, como notificações push de aplicativos móveis, referentes a atualizações ou comunicações informativas relacionadas às funcionalidades, produtos ou serviços contratados, incluindo atualizações de segurança, quando necessário ou razoável para sua implementação.\n• **Para gerenciar suas solicitações:** para atender e gerenciar suas solicitações para nós.\n• **Para outras finalidades:** podemos utilizar suas informações para outras finalidades, como análise de dados, identificação de tendências de uso, determinação da eficácia de nossas campanhas promocionais, e avaliação e aprimoramento do nosso Serviço, produtos, serviços, marketing e da \nsua experiência." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "• **To provide and maintain our Service**, including monitoring the use of our Service.\n• **To manage your Account:** to manage your registration as a user of the Service. The Personal Data you provide may give you access to different features of the Service available to you as a registered User.\n• **To contact You:** to contact you by email or equivalent forms of electronic communication, such as mobile app push notifications, about updates or information relating to the features, products, or services you have purchased, including security updates, when necessary or reasonable for their implementation.\n• **To manage your requests:** to address and manage your requests to us.\n• **For other purposes:** we may use your information for other purposes, such as data analysis, identifying usage trends, determining the effectiveness of our promotional campaigns, and evaluating and improving our Service, products, services, marketing, and\nyour experience."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "• **Com o Seu consentimento:** podemos divulgar seus Dados Pessoais para qualquer outra finalidade com o seu consentimento.\n• **Com Operadores/Prestadores de Serviços:** com a Apple (iCloud/CloudKit), para armazenamento e funcionamento do Aplicativo;\n• **Com autoridades:** quando exigido por lei ou por ordem de autoridade pública competente;" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "• **With Your consent:** we may disclose your Personal Data for any other purpose with your consent.\n• **With Data Processors/Service Providers:** with Apple (iCloud/CloudKit), for storage and operation of the App;\n• **With authorities:** when required by law or by an order from a competent public authority;"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "• Você é responsável por garantir que possui base legal e legitimidade para inserir esses dados no Aplicativo (em regra, a execução do contrato de locação);\n• Você é responsável por informar o inquilino sobre esse tratamento, conforme exigido pela LGPD;\n• A Empresa trata esses dados exclusivamente para viabilizar as funcionalidades do Aplicativo (gestão do contrato, comunicação, histórico de pagamentos), na qualidade de controladora dos sistemas, mas sem relação direta de conta com o inquilino." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "• You are responsible for ensuring that you have a legal basis and lawful authority to enter this data into the App (generally, the performance of the rental agreement);\n• You are responsible for informing the tenant about this processing, as required by Brazil's General Data Protection Law (LGPD);\n• The Company processes this data exclusively to enable the App's features (contract management, communication, payment history), as the controller of the systems, but without a direct account relationship with the tenant."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "• A Apple processa e armazena os dados exclusivamente conforme nossas instruções e para viabilizar o funcionamento do Aplicativo;\n• Os servidores utilizados podem estar localizados fora do Brasil, o que pode envolver transferência internacional de dados;\n• Não temos acesso direto aos servidores da Apple além do que a API do CloudKit disponibiliza para o funcionamento do Aplicativo;\n• A Apple aplica suas próprias medidas de segurança e criptografia sobre os dados armazenados via CloudKit; mais informações estão disponíveis na [Política de Privacidade da Apple](https://www.apple.com/legal/privacy/).\n" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "• Apple processes and stores data exclusively in accordance with our instructions and to enable the App to function;\n• The servers used may be located outside Brazil, which may involve international data transfers;\n• We do not have direct access to Apple's servers beyond what the CloudKit API makes available for the App to function;\n• Apple applies its own security and encryption measures to data stored through CloudKit; more information is available in [Apple's Privacy Policy](https://www.apple.com/legal/privacy/).\n"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "• Confirmação da existência de tratamento de seus dados;\n• Acesso aos seus dados;\n• Correção de dados incompletos, inexatos \nou desatualizados;\n• Anonimização, bloqueio ou eliminação de dados desnecessários ou excessivos;\n• Eliminação dos dados tratados com base no seu consentimento;" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "• Confirmation of whether your data is being processed;\n• Access to your data;\n• Correction of incomplete, inaccurate,\nor outdated data;\n• Anonymization, blocking, or deletion of unnecessary or excessive data;\n• Deletion of data processed on the basis of your consent;"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "• Cumprir uma obrigação legal\n• Proteger e defender os direitos ou a propriedade da Empresa\n• Prevenir ou investigar possível conduta indevida relacionada ao serviço\n• Proteger a segurança pessoal dos usuários do serviço ou do público\n• Proteger contra responsabilidade legal" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "• Comply with a legal obligation\n• Protect and defend the Company's rights or property\n• Prevent or investigate possible misconduct relating to the Service\n• Protect the personal safety of users of the Service or the public\n• Protect against legal liability"
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "-    Sejam ilegais, fraudulentos, falsificados ou violem direitos de propriedade intelectual de terceiros;\n-    Violem a privacidade ou os direitos de dados pessoais de terceiros (como inserir dados sensíveis de inquilinos sem possuir uma base legal válida para tal, conforme a LGPD);\n-    Contenham vírus, malware ou códigos maliciosos que possam comprometer a segurança do seu dispositivo, do Aplicativo ou da infraestrutura em nuvem." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "-    Are illegal, fraudulent, counterfeit, or infringe third parties' intellectual property rights;\n-    Violate third parties' privacy or Personal Data rights (such as entering sensitive tenant data without a valid legal basis, as required by Brazil's General Data Protection Law, or LGPD);\n-    Contain viruses, malware, or malicious code that could compromise the security of your device, the App, or the cloud infrastructure."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "-    Suspender ou encerrar o acesso de contas que utilizem o Aplicativo de forma comprovadamente ilícita (como para fraudes imobiliárias ou lavagem de dinheiro);\n-    Cooperar com autoridades policiais ou judiciais caso seja legalmente exigido." : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "-    Suspend or terminate access to accounts that demonstrably use the App unlawfully (such as for real estate fraud or money laundering);\n-    Cooperate with law enforcement or judicial authorities when legally required."
-          }
-        }
-      },
-      "generatesSymbol" : false
-    },
-    "-    Morte ou lesão corporal causada por negligência\n-    Fraude ou declaração falsa fraudulenta\n-    Qualquer outra responsabilidade que não possa ser excluída ou limitada de acordo com a lei aplicável" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "-    Death or personal injury caused by negligence\n-    Fraud or fraudulent misrepresentation\n-    Any other liability that cannot be excluded or limited under applicable law"
-          }
-        }
-      },
-      "generatesSymbol" : false
     }
   },
   "version" : "1.3"

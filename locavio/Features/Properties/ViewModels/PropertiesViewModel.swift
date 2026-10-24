@@ -268,6 +268,13 @@ final class PropertiesViewModel {
         }
     }
     
+    func deleteTenant() -> Void {
+        propertyDraft.tenantName = ""
+        propertyDraft.tenantCPF = ""
+        propertyDraft.tenantEmail = ""
+        propertyDraft.tenantPhone = ""
+    }
+    
     // função para salvar as despesas em lote (recebe um array de expenses)
     func saveExpensesBatch(context: ModelContext, property: Property, formDataArray: [ExpenseFormData]) throws -> Bool {
         
