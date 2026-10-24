@@ -2,8 +2,8 @@
 
 Locavio is a robust and intuitive mobile application designed exclusively for property owners who prioritize convenience and efficient management. It centralizes the entire lifecycle of property management right in the palm of your hand, offering comprehensive tools to track expenses and profit reports, register tenants, securely archive digital contracts, and store vital property inspection photos—all within a single, streamlined platform. Built with a focus on user privacy and data security, Locavio leverages Apple's ecosystem, including iCloud and CloudKit, to ensure your data is always safe and synchronized, adhering strictly to the Brazilian General Data Protection Law (LGPD).
 
-
 ![Swift](https://img.shields.io/badge/Swift-FA7343?style=for-the-badge&logo=swift&logoColor=white) ![SwiftUI](https://img.shields.io/badge/SwiftUI-007AFF?style=for-the-badge&logo=swift&logoColor=white) ![iOS](https://img.shields.io/badge/iOS-000000?style=for-the-badge&logo=ios&logoColor=white) ![Apple Sign In](https://img.shields.io/badge/Apple_Sign_In-080808?style=for-the-badge&logo=apple&logoColor=white) ![iCloud](https://img.shields.io/badge/iCloud-3694F6?style=for-the-badge&logo=icloud&logoColor=white)
+
 
 ## App Store Screenshots Showcase
 
@@ -12,6 +12,12 @@ Locavio is a robust and intuitive mobile application designed exclusively for pr
   <img src="https://github.com/user-attachments/assets/6d3a388a-9e9c-416d-bd6e-4bd5fafcc39b" width="24%" />
   <img src="https://github.com/user-attachments/assets/053acf4d-768f-4ec6-831f-59a45746ea87" width="24%" />
   <img src="https://github.com/user-attachments/assets/47f10d7f-2a16-42e6-b5d4-e68f5ec3673e" width="24%" />
+
+  <p align="center">
+    <a href="https://apps.apple.com/br/app/locavio/id6813623367?l=en-GB">
+      <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg" alt="Download on the App Store" width="180"/>
+    </a>
+  </p>
 </p>
 
 ## Table of Contents
