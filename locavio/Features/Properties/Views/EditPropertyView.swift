@@ -10,6 +10,7 @@ import SwiftData
 
 struct EditPropertyView: View {
 
+    @Environment(\.colorScheme) private var colorScheme
     @Environment(\.dismiss) private var dismiss
     @Environment(\.modelContext) private var context
     @Environment(PropertiesViewModel.self) private var propertiesViewModel
@@ -36,7 +37,7 @@ struct EditPropertyView: View {
             }
         }
         .scrollContentBackground(.hidden)
-        .background(Color(.appBg).ignoresSafeArea())
+        .background(Color(colorScheme == .dark ? .tertiarySystemBackground : .appBg).ignoresSafeArea())
         .ignoresSafeArea(.keyboard)
         .dismissKeyboardOnTap()
         .scrollDismissesKeyboard(.interactively)
