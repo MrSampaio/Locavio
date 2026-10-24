@@ -47,7 +47,7 @@ struct PropertyLabeledContent: View {
 
             VStack(alignment: .leading) {
                 HStack(spacing: 4) {
-                    Text(textPropertyLabel)
+                    Text(LocalizedStringKey(textPropertyLabel))
                         .font(.subheadline.bold())
 
                     if isRequired && isFieldEmpty{

@@ -21,15 +21,15 @@ struct PropertiesEmptyStateView: View {
                 .padding(.bottom, 8)
             
             // título dinâmico
-            Text(isSearchFilterEmpty ? "Nenhum imóvel encontrado" : "Nenhum imóvel cadastrado")
+            Text(isSearchFilterEmpty ? String(localized: "Nenhum imóvel encontrado") : String(localized: "Nenhum imóvel cadastrado"))
                 .font(.title3)
                 .fontWeight(.bold)
                 .multilineTextAlignment(.center)
             
             // subtítulo dinâmico
             Text(isSearchFilterEmpty
-                 ? "Tente buscar por outro nome ou mudar\no filtro atual."
-                 : "Adicione seu primeiro imóvel para\ncomeçar a gerenciar.")
+                 ? String(localized: "Tente buscar por outro nome ou mudar\no filtro atual.")
+                 : String(localized: "Adicione seu primeiro imóvel para\ncomeçar a gerenciar."))
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)

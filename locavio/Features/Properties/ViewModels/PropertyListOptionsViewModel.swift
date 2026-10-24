@@ -15,6 +15,15 @@ enum PropertySortOption: String, CaseIterable, Identifiable {
     case oldest = "Mais antigos"
     case newest = "Mais recentes"
 
+    var displayTitle: String {
+        switch self {
+        case .price: return String(localized: "Por preço")
+        case .alphabetical: return String(localized: "Ordem alfabética")
+        case .oldest: return String(localized: "Mais antigos")
+        case .newest: return String(localized: "Mais recentes")
+        }
+    }
+
     var id: Self { self }
 }
 
@@ -22,6 +31,14 @@ enum RentFilter: String, CaseIterable, Identifiable {
     case all = "Todos"
     case paid = "Pago"
     case pending = "Pendente"
+
+    var displayTitle: String {
+        switch self {
+        case .all: return String(localized: "Todos")
+        case .paid: return String(localized: "Pago")
+        case .pending: return String(localized: "Pendente")
+        }
+    }
 
     var id: Self { self }
 }

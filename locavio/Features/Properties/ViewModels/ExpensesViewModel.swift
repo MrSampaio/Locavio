@@ -84,13 +84,13 @@ final class ExpensesViewModel {
         }
     }
     
-    var totalLabel: String { "Valor total" }
-    var emptyText: String { "Nenhuma despesa adicionada" }
+    var totalLabel: String { String(localized: "Valor total") }
+    var emptyText: String { String(localized: "Nenhuma despesa adicionada") }
     
     var rows: [ExpenseRow] {
         expenses.map { expense in
             ExpenseRow(
-                title: expense.title?.trimmedOrNil ?? "Sem título",
+                title: expense.title?.trimmedOrNil ?? String(localized: "Sem título"),
                 valueText: Self.format(expense.value ?? 0),
                 expense: expense
             )
@@ -98,7 +98,7 @@ final class ExpensesViewModel {
     }
     
     var profitRow: ExpenseRow {
-        ExpenseRow(title: "Lucro", valueText: Self.format(profit), expense: nil)
+        ExpenseRow(title: String(localized: "Lucro"), valueText: Self.format(profit), expense: nil)
     }
     
     ///Soma de todas as despesas do imóvel

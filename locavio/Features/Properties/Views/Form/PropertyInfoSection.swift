@@ -19,7 +19,7 @@ struct PropertyInfoSection: View {
 
             Picker(selection: $propertyType) {
                 ForEach(PropertyType.allCases) { type in
-                    Text(type.rawValue).tag(type)
+                    Text(type.displayTitle).tag(type)
                 }
             } label: {
                 Label {

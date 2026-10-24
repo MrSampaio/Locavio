@@ -20,7 +20,7 @@ struct AppToolbar: ToolbarContent {
                 Section("Ordenar por") {
                     Picker("Ordenar por", selection: $options.sort) {
                         ForEach(PropertySortOption.allCases) { option in
-                            Text(option.rawValue).tag(option)
+                            Text(option.displayTitle).tag(option)
                         }
                     }
                     .pickerStyle(.inline)
@@ -31,7 +31,7 @@ struct AppToolbar: ToolbarContent {
                         Picker("Tipo de imóvel", selection: $options.typeFilter) {
                             Text("Todos").tag(PropertyType?.none)
                             ForEach(PropertyType.allCases, id: \.self) { type in
-                                Text(type.rawValue).tag(PropertyType?.some(type))
+                                Text(type.displayTitle).tag(PropertyType?.some(type))
                             }
                         }
                         .pickerStyle(.inline)
@@ -40,7 +40,7 @@ struct AppToolbar: ToolbarContent {
                     Menu("Aluguel") {
                         Picker("Aluguel", selection: $options.rentFilter) {
                             ForEach(RentFilter.allCases) { filter in
-                                Text(filter.rawValue).tag(filter)
+                                Text(filter.displayTitle).tag(filter)
                             }
                         }
                         .pickerStyle(.inline)

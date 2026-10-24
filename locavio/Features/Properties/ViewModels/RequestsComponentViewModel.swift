@@ -26,8 +26,8 @@ final class MaintenanceRequestsViewModel {
         self.property = property
     }
 
-    var deadlineLabel: String { "Resolver até" }
-    var emptyText: String { "Nenhuma solicitação" }
+    var deadlineLabel: String { String(localized: "Resolver até") }
+    var emptyText: String { String(localized: "Nenhuma solicitação") }
 
     /// Um card por chamado (Ticket) do imóvel, do prazo mais próximo
     /// para o mais distante. Chamados sem data ficam no fim.
@@ -58,18 +58,18 @@ final class MaintenanceRequestsViewModel {
 
         if !items.isEmpty { return items.joined(separator: ", ") }
 
-        return ticket.title?.trimmedOrNil ?? "Sem item"
+        return ticket.title?.trimmedOrNil ?? String(localized: "Sem item")
     }
 
     private func deadlineText(for ticket: Ticket) -> String {
-        guard let date = ticket.conclusionDate else { return "Sem prazo" }
+        guard let date = ticket.conclusionDate else { return String(localized: "Sem prazo") }
         return Self.dateFormatter.string(from: date)
     }
 
     private static let dateFormatter: DateFormatter = {
         let f = DateFormatter()
-        f.locale = Locale(identifier: "pt_BR")
-        f.dateFormat = "dd/MM/yyyy"
+        f.locale = .current
+        f.setLocalizedDateFormatFromTemplate("yMd")
         return f
     }()
 }

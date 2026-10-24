@@ -17,7 +17,7 @@ struct TicketInformationTextField: View {
 
     @Environment(\.colorScheme) private var colorScheme
 
-    private let locale = Locale(identifier: "pt_BR")
+    @Environment(\.locale) private var locale
 
     private var cardBackground: Color {
         colorScheme == .dark
@@ -49,7 +49,7 @@ struct TicketInformationTextField: View {
                         .tag(nil as Property?)
 
                     ForEach(properties) { property in
-                        Text(property.title ?? "Imóvel")
+                        Text(property.title ?? String(localized: "Imóvel"))
                             .tag(property as Property?)
                     }
                 }

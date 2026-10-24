@@ -30,7 +30,7 @@ struct TicketComponent: View {
 
                 VStack(alignment: .leading, spacing: 6) {
                     HStack(alignment: .top, spacing: 8) {
-                        Text(ticket.title ?? "Sem título")
+                        Text(ticket.title ?? String(localized: "Sem título"))
                             .font(.title3.bold())
                             .foregroundStyle(.primary)
                             .lineLimit(2)
@@ -40,11 +40,11 @@ struct TicketComponent: View {
                     }
 
                     infoRow(icon: "house.fill",
-                            text: ticket.property?.title ?? "Sem propriedade")
+                            text: ticket.property?.title ?? String(localized: "Sem propriedade"))
 
                     if let date = ticket.conclusionDate {
                         infoRow(icon: "calendar",
-                                text: "Em \(date.formatted(date: .numeric, time: .omitted))")
+                                text: String(localized: "Em \(date.formatted(date: .numeric, time: .omitted))"))
                     }
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
