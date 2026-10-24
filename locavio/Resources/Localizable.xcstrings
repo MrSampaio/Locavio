@@ -2279,7 +2279,14 @@
       }
     },
     "Excluir" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        }
+      }
     },
     "Excluir Conta" : {
       "extractionState" : "manual",
@@ -2304,7 +2311,14 @@
       }
     },
     "Excluir Inquilino" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Tenant"
+          }
+        }
+      }
     },
     "Excluir Tudo" : {
       "localizations" : {
@@ -4685,7 +4699,14 @@
       }
     },
     "Você realmente deseja excluir o inquilino da propriedade? Essa ação não poderá ser desfeita." : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Do you really want to remove the tenant from the property? This action cannot be undone."
+          }
+        }
+      }
     },
     "Você tem o direito de excluir ou solicitar que nós o ajudemos a excluir os Dados Pessoais que coletamos \nsobre Você." : {
       "localizations" : {
