@@ -109,7 +109,7 @@ struct CreateTicketSheet: View {
                 Text("Nenhum selecionado").tag(nil as Property?)
                 
                 ForEach(properties) { property in
-                    Text(property.title ?? "Imóvel").tag(property as Property?)
+                    Text(property.title ?? String(localized: "Imóvel")).tag(property as Property?)
                 }
             }
             .pickerStyle(.menu)

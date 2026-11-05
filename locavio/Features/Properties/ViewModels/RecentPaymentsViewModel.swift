@@ -33,8 +33,8 @@ final class RecentPaymentsViewModel {
         self.property = property
     }
 
-    var screenTitle: String { "Últimos pagamentos" }
-    var emptyText: String { "Nenhum pagamento registrado" }
+    var screenTitle: String { String(localized: "Últimos pagamentos") }
+    var emptyText: String { String(localized: "Nenhum pagamento registrado") }
 
     var isEmpty: Bool { (property.payments ?? []).isEmpty }
 
@@ -78,8 +78,8 @@ final class RecentPaymentsViewModel {
 
     private static let monthFormatter: DateFormatter = {
         let f = DateFormatter()
-        f.locale = Locale(identifier: "pt_BR")
-        f.dateFormat = "LLLL, yyyy"
+        f.locale = .current
+        f.setLocalizedDateFormatFromTemplate("yMMMM")
         return f
     }()
 }

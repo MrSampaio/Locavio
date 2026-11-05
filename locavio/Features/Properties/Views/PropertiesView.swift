@@ -104,7 +104,7 @@ struct PropertiesView: View {
     private var filterPicker: some View {
         Picker("Filtro", selection: $viewModel.filter) {
             ForEach(PropertyFilter.allCases) { filter in
-                Text(filter.rawValue).tag(filter)
+                Text(filter.displayTitle).tag(filter)
             }
         }
         .pickerStyle(.segmented)
@@ -185,8 +185,8 @@ struct PropertiesView: View {
     }
     
     private func deleteMessage(for property: Property) -> String {
-        let title = property.title ?? "Sem título"
-        return "Tem certeza que deseja apagar o imóvel '\(title)'? Todos os dados, contratos e chamados vinculados a ele serão perdidos. Essa ação não pode ser desfeita."
+        let title = property.title ?? String(localized: "Sem título")
+        return String(localized: "Tem certeza que deseja apagar o imóvel '\(title)'? Todos os dados, contratos e chamados vinculados a ele serão perdidos. Essa ação não pode ser desfeita.")
     }
 }
 

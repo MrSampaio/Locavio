@@ -43,7 +43,7 @@ struct TicketsView: View {
                     
                     Picker("Filtro", selection: $viewModel.filter) {
                         ForEach(TicketsFilter.allCases) { filter in
-                            Text(filter.rawValue).tag(filter)
+                            Text(filter.displayTitle).tag(filter)
                         }
                     }
                     .pickerStyle(.segmented)

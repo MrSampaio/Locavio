@@ -9,14 +9,9 @@ import Foundation
 
 extension Date {
     
-    /// Formata a data para exibir em padrão pt-br
-    func toTicketFormat() -> String {
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "pt_BR")
-        // Define o visual: Dia/Mês/Ano Hora:Minuto
-        formatter.dateFormat = "dd/MM/yyyy 'às' HH:mm"
-        
-        return formatter.string(from: self)
+    /// Formata a data e o horário conforme o idioma e a região do aplicativo.
+    func toTicketFormat(locale: Locale = .current) -> String {
+        formatted(Date.FormatStyle(date: .numeric, time: .shortened).locale(locale))
     }
 }
 

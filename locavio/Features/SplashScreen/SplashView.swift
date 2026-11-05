@@ -17,7 +17,7 @@ struct SplashView: View {
         ZStack(alignment: .center){
             
             
-            Color(.appBg)
+            Color(.splashBg)
                 .ignoresSafeArea()
             
             VStack(alignment: .center, spacing: 0) {

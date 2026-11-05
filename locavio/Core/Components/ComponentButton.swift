@@ -37,7 +37,7 @@ struct ComponentButton: View {
     
     private var baseButton: some View {
         Button(action: action) {
-            Text(textButton)
+            Text(LocalizedStringKey(textButton))
                 .font(.headline)
                 .fontWeight(.medium)
                 .frame(maxWidth: .infinity)

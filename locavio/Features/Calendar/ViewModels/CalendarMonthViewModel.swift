@@ -22,14 +22,13 @@ final class CalendarViewModel {
     var mode: CalendarModel = .month
     var referenceDate = Date()
     var selectedDate: Date? = Date()
+    var locale: Locale = .current
 
     private var calendar: Calendar {
         var calendar = Calendar.current
-        calendar.locale = Locale(identifier: "pt_BR")
+        calendar.locale = locale
         return calendar
     }
-
-    private let locale = Locale(identifier: "pt_BR")
 
 
     var title: String {
@@ -215,10 +214,10 @@ final class CalendarViewModel {
     }
 
     var listTitle: String {
-        guard let selectedDate else { return "Chamados" }
+        guard let selectedDate else { return String(localized: "Chamados", locale: locale) }
 
         return calendar.isDateInToday(selectedDate)
-            ? "Para Hoje"
+            ? String(localized: "Para Hoje", locale: locale)
             : selectedDate.formatted(
                 .dateTime
                     .locale(locale)

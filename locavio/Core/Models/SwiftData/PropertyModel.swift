@@ -19,6 +19,19 @@ enum PropertyType: String, Codable, CaseIterable, Identifiable {
     case other = "Outro"
     
     var id: Self { self }
+
+    var displayTitle: String {
+        switch self {
+        case .apartment: String(localized: "Apartamento")
+        case .home: String(localized: "Casa")
+        case .warehouse: String(localized: "Galpão")
+        case .kitnet: String(localized: "Kitnet")
+        case .store: String(localized: "Loja")
+        case .loft: String(localized: "Loft")
+        case .studio: String(localized: "Studio")
+        case .other: String(localized: "Outro")
+        }
+    }
 }
 
 enum UF: String, CaseIterable, Identifiable {
@@ -52,6 +65,10 @@ enum UF: String, CaseIterable, Identifiable {
     case to = "TO"
     
     var id: Self { self }
+
+    var displayTitle: String {
+        self == .insert ? String(localized: "Selecione") : rawValue
+    }
 }
 
 @Model

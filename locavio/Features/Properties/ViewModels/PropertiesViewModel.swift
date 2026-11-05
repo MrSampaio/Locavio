@@ -268,6 +268,13 @@ final class PropertiesViewModel {
         }
     }
     
+    func deleteTenant() -> Void {
+        propertyDraft.tenantName = ""
+        propertyDraft.tenantCPF = ""
+        propertyDraft.tenantEmail = ""
+        propertyDraft.tenantPhone = ""
+    }
+    
     // função para salvar as despesas em lote (recebe um array de expenses)
     func saveExpensesBatch(context: ModelContext, property: Property, formDataArray: [ExpenseFormData]) throws -> Bool {
         
@@ -314,14 +321,14 @@ final class PropertiesViewModel {
         
         do {
             guard let imageData = try await item.loadTransferable(type: Data.self) else {
-                errorMessage = "Não foi possível carregar a imagem"
+                errorMessage = String(localized: "Não foi possível carregar a imagem")
                 return nil
             }
             
             propertyDraft.image = imageData
             return imageData
         } catch {
-            errorMessage = "Não foi possível carregar a imagem"
+            errorMessage = String(localized: "Não foi possível carregar a imagem")
             return nil
         }
     }

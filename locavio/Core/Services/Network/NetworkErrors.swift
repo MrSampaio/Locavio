@@ -16,13 +16,13 @@ enum NetworkError: Error, LocalizedError {
     var errorDescription: String? {
         switch self {
             case .invalidURL:
-                return "CEP inválido. Verifique se o CEP contém apenas números e 8 dígitos."
+                return String(localized: "CEP inválido. Verifique se o CEP contém apenas números e 8 dígitos.")
             case .invalidResponse:
-                return "Resposta inválida. Verifique a sua conexão de internet."
+                return String(localized: "Resposta inválida. Verifique a sua conexão de internet.")
             case .notFound:
-                return "CEP não encontrado. Verifique se o CEP é válido."
+                return String(localized: "CEP não encontrado. Verifique se o CEP é válido.")
             case .decodingError:
-                return "Erro de decodificação. Tente novamente mais tarde."
+                return String(localized: "Erro de decodificação. Tente novamente mais tarde.")
         }
     }
 }

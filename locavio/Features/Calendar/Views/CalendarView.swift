@@ -8,6 +8,7 @@ import SwiftUI
 import SwiftData
 
 struct CalendarView: View {
+    @Environment(\.locale) private var locale
     @State private var viewModel = CalendarViewModel()
     @Query(sort: \Ticket.conclusionDate) private var tickets: [Ticket]
     @Query private var properties: [Property]
@@ -30,7 +31,7 @@ struct CalendarView: View {
                 VStack(alignment: .leading, spacing: 16) {
                     Picker("Modo", selection: $viewModel.mode) {
                         ForEach(CalendarModel.allCases) { mode in
-                            Text(mode.rawValue).tag(mode)
+                            Text(mode.displayTitle).tag(mode)
                         }
                     }
                     .pickerStyle(.segmented)
@@ -43,6 +44,9 @@ struct CalendarView: View {
             }
         }
         .navigationTitle("Calendário")
+        .onChange(of: locale, initial: true) { _, locale in
+            viewModel.locale = locale
+        }
     }
 
     private var header: some View {

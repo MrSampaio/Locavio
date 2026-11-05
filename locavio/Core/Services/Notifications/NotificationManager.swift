@@ -66,8 +66,8 @@ final class NotificationManager: Sendable {
             if let oneDayBefore = calendar.date(byAdding: .day, value: -1, to: nextDueDate), oneDayBefore > now {
                 scheduleNotification(
                     id: "rent_before_\(property.persistentModelID)",
-                    title: "Aluguel próximo ao vencimento",
-                    body: "O aluguel do imóvel '\(propertyName)' vence amanhã.",
+                    title: String(localized: "Aluguel próximo ao vencimento"),
+                    body: String(localized: "O aluguel do imóvel '\(propertyName)' vence amanhã."),
                     date: setHour(9, for: oneDayBefore) // 09:00 da manhã
                 )
             }
@@ -76,8 +76,8 @@ final class NotificationManager: Sendable {
             if nextDueDate > now {
                 scheduleNotification(
                     id: "rent_day_\(property.persistentModelID)",
-                    title: "Vencimento do Aluguel",
-                    body: "O aluguel do imóvel '\(propertyName)' vence hoje.",
+                    title: String(localized: "Vencimento do Aluguel"),
+                    body: String(localized: "O aluguel do imóvel '\(propertyName)' vence hoje."),
                     date: setHour(9, for: nextDueDate)
                 )
             }
@@ -99,8 +99,8 @@ final class NotificationManager: Sendable {
             if let threeDaysBefore = calendar.date(byAdding: .day, value: -3, to: conclusionDate), threeDaysBefore > now {
                 scheduleNotification(
                     id: "ticket_before_\(ticket.persistentModelID)",
-                    title: "Chamado prestes a vencer",
-                    body: "O chamado '\(ticketTitle)' deve ser resolvido em 3 dias.",
+                    title: String(localized: "Chamado prestes a vencer"),
+                    body: String(localized: "O chamado '\(ticketTitle)' deve ser resolvido em 3 dias."),
                     date: setHour(10, for: threeDaysBefore) // 10:00 da manhã
                 )
             }
@@ -109,8 +109,8 @@ final class NotificationManager: Sendable {
             if conclusionDate > now {
                 scheduleNotification(
                     id: "ticket_day_\(ticket.persistentModelID)",
-                    title: "Prazo final do Chamado",
-                    body: "O prazo para concluir o chamado '\(ticketTitle)' é hoje.",
+                    title: String(localized: "Prazo final do Chamado"),
+                    body: String(localized: "O prazo para concluir o chamado '\(ticketTitle)' é hoje."),
                     date: setHour(10, for: conclusionDate)
                 )
             }

@@ -14,7 +14,7 @@ struct SearchBarView: View {
             Image(systemName: "magnifyingglass")
                 .foregroundStyle(.secondary)
 
-            TextField(prompt, text: $text)
+            TextField(LocalizedStringKey(prompt), text: $text)
                 .submitLabel(.search)
 
             if !text.isEmpty {

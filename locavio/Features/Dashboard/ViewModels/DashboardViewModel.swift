@@ -29,15 +29,15 @@ class DashboardViewModel {
         switch currentFilter {
         case .profits:
             switch currentDashPeriod {
-            case .oneMonth: "Lucro mensal"
-            case .sixMonths: "Lucro semestral"
-            case .oneYear: "Lucro anual"
+            case .oneMonth: String(localized: "Lucro mensal")
+            case .sixMonths: String(localized: "Lucro semestral")
+            case .oneYear: String(localized: "Lucro anual")
             }
         case .expenses:
             switch currentDashPeriod {
-            case .oneMonth: "Despesa mensal"
-            case .sixMonths: "Despesa semestral"
-            case .oneYear: "Despesa anual"
+            case .oneMonth: String(localized: "Despesa mensal")
+            case .sixMonths: String(localized: "Despesa semestral")
+            case .oneYear: String(localized: "Despesa anual")
             }
         }
     }

@@ -27,7 +27,7 @@ struct PropertyTextField: View {
         
         VStack(alignment: .leading, spacing: 4) {
             HStack(spacing: 5) {
-                TextField(placeholder, text: $textDisplayed)
+                TextField(LocalizedStringKey(placeholder), text: $textDisplayed)
                     .focused($isFocused)
                     .autocorrectionDisabled(true)
                     // todos os campos numéricos usam máscara só com dígitos, então não precisa de vírgula/ponto

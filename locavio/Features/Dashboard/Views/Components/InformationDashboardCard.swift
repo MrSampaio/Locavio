@@ -20,15 +20,15 @@ struct InformationDashboardCard: View {
         switch cardType {
         case .profits:
             switch cardPeriod {
-            case .oneMonth: "Lucro Total Mensal"
-            case .sixMonths: "Lucro Total Semestral"
-            case .oneYear: "Lucro Total Anual"
+            case .oneMonth: String(localized: "Lucro Total Mensal")
+            case .sixMonths: String(localized: "Lucro Total Semestral")
+            case .oneYear: String(localized: "Lucro Total Anual")
             }
         case .expenses:
             switch cardPeriod {
-            case .oneMonth: "Despesa Total Mensal"
-            case .sixMonths: "Despesa Total Semestral"
-            case .oneYear: "Despesa Total Anual"
+            case .oneMonth: String(localized: "Despesa Total Mensal")
+            case .sixMonths: String(localized: "Despesa Total Semestral")
+            case .oneYear: String(localized: "Despesa Total Anual")
             }
         }
     }
@@ -92,7 +92,7 @@ struct InformationDashboardCard: View {
     }
     
     @ViewBuilder
-    private func smallInfo(icon: String, title: String, value: String, iconColor: Color, valueColor: Color) -> some View {
+    private func smallInfo(icon: String, title: LocalizedStringKey, value: String, iconColor: Color, valueColor: Color) -> some View {
         VStack(spacing: 12) {
             HStack {
                 Image(systemName: icon)

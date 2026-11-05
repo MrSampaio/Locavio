@@ -35,7 +35,7 @@ struct DocumentTypePicker: View {
                 } label: {
                     HStack(spacing: 6) {
                         // sigla quando está fechado
-                        Text(selection.rawValue)
+                        Text(selection.description)
                             .font(.body)
                             .foregroundColor(.secondary)
                         

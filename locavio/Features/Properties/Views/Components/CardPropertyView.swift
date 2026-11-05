@@ -75,31 +75,29 @@ struct PropertyCardView: View {
             HStack(alignment: .top, spacing: 12) {
                 VStack(alignment: .leading, spacing: 6) {
                     Text(viewModel.title)
-                        .foregroundStyle(
-                            .primary
-                        )
+                        .foregroundStyle(textColor)
                         .font(.title.bold())
                         .lineLimit(1)
                     
                     Text(viewModel.address)
                         .font(.subheadline)
-                        .foregroundStyle(.primary)
+                        .foregroundStyle(textColor)
                         .lineLimit(1)
                         .truncationMode(.tail)
                     
                     tenantLine
-                        .foregroundStyle(.primary)
+                        .foregroundStyle(textColor)
                 }
                 .frame(maxWidth: .infinity, alignment: .leading)
                 
                 VStack(alignment: .trailing, spacing: 6) {
                     Text(viewModel.rentLabel)
                         .font(.subheadline)
-                        .foregroundStyle(.primary)
+                        .foregroundStyle(textColor)
                     
                     Text(expensesViewModel.totalRentValue, format: .currency(code: "BRL"))
                         .font(.title2.bold())
-                        .foregroundStyle(.primary)
+                        .foregroundStyle(textColor)
                         .lineLimit(1)
                         .minimumScaleFactor(0.7)
                     
@@ -108,14 +106,13 @@ struct PropertyCardView: View {
                         Text(viewModel.nextPaymentText).fontWeight(.semibold)
                     }
                     .font(.footnote)
-                    .foregroundStyle(.primary)
+                    .foregroundStyle(textColor)
                 }
                 .fixedSize(horizontal: true, vertical: false)
             }
             
             badgesRow
         }
-        .foregroundStyle(.primary)
         .padding(20)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background { panelBackground }

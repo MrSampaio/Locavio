@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CalendarDayCell: View {
+    @Environment(\.locale) private var locale
    
     let date: Date
     let isSelected: Bool
@@ -40,7 +41,7 @@ struct CalendarDayCell: View {
                 .frame(width: 40, height: 40)
             }
             .contentShape(Rectangle())
-            .accessibilityLabel(date.formatted(.dateTime.day().month(.wide).year()))
+            .accessibilityLabel(date.formatted(.dateTime.day().month(.wide).year().locale(locale)))
             .accessibilityAddTraits(isSelected ? .isSelected : [])
     }
 }

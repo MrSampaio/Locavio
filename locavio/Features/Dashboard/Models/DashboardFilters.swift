@@ -13,6 +13,14 @@ enum DashboardPeriod: String, CaseIterable, Identifiable {
     case oneYear = "1 ano"
     
     var id: Self { self }
+
+    var displayTitle: String {
+        switch self {
+        case .oneMonth: String(localized: "1 mês")
+        case .sixMonths: String(localized: "6 meses")
+        case .oneYear: String(localized: "1 ano")
+        }
+    }
 }
 
 enum SegmentedDashboard: String, CaseIterable, Identifiable {
@@ -20,6 +28,13 @@ enum SegmentedDashboard: String, CaseIterable, Identifiable {
     case expenses = "Despesa"
     
     var id: Self { self }
+
+    var displayTitle: String {
+        switch self {
+        case .profits: String(localized: "Lucro")
+        case .expenses: String(localized: "Despesa")
+        }
+    }
 }
 
 enum ExpensesValueType: CaseIterable, Identifiable {

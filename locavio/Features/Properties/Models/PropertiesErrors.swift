@@ -17,15 +17,15 @@ enum PropertiesErrors: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .invalidTitle:
-            return "Insira um título válido."
+            return String(localized: "Insira um título válido.")
         case .invalidArea:
-            return "Insira uma área válida."
+            return String(localized: "Insira uma área válida.")
         case .invalidNumber:
-            return "Insira um número válido."
+            return String(localized: "Insira um número válido.")
         case .invalidProfit:
-            return "Insira um lucro válido."
+            return String(localized: "Insira um lucro válido.")
         case .invalidOwner:
-            return "Problema na autenticação. Entre em contato com o administrador do sistema"
+            return String(localized: "Problema na autenticação. Entre em contato com o administrador do sistema")
         }
     }
 }
@@ -38,11 +38,11 @@ enum TenantErrors: LocalizedError {
     var errorDescription: String? {
         switch self {
             case .invalidName:
-                return "Insira um nome válido."
+                return String(localized: "Insira um nome válido.")
             case .invalidCpf:
-                return "Insira um CPF válido."
+                return String(localized: "Insira um CPF válido.")
             case .invalidPhone:
-                return "Insira um telefone válido."
+                return String(localized: "Insira um telefone válido.")
         }
     }
 }
@@ -52,7 +52,7 @@ enum ExpensesErrors: LocalizedError {
     
     var errorDescription: String? {
         switch self {
-            case .invalidValue: return "Insira um valor numérico válido na despesa."
+            case .invalidValue: return String(localized: "Insira um valor numérico válido na despesa.")
         }
     }
 }

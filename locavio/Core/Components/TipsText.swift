@@ -14,7 +14,7 @@ struct TipsText: View {
     var text: String
     
     var body: some View {
-        Text(text)
+        Text(LocalizedStringKey(text))
             .font(.caption)
             .foregroundColor(.secondary)
             .fontWeight(.regular)

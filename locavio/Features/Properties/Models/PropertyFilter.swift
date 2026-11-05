@@ -12,5 +12,13 @@ enum PropertyFilter: String, CaseIterable, Identifiable {
     case alugados = "Alugados"
     case naoAlugados = "Não Alugados"
     
+    var displayTitle: String {
+        switch self {
+        case .todos: return String(localized: "Todos")
+        case .alugados: return String(localized: "Alugados")
+        case .naoAlugados: return String(localized: "Não Alugados")
+        }
+    }
+
     var id: Self { self }
 }

@@ -30,7 +30,7 @@ final class PaymentToggleViewModel {
     }
     
     var title: String {
-        "Aluguel pago?"
+        String(localized: "Aluguel pago?")
     }
     
     /// Pagamento do mês atual.
@@ -52,7 +52,7 @@ final class PaymentToggleViewModel {
     
     /// Nome automático do comprovante.
     var proofName: String {
-        let propertyName = property.title ?? "Imovel"
+        let propertyName = property.title ?? String(localized: "Imóvel")
         
         let formatter = DateFormatter()
         formatter.dateFormat = "dd-MM-yyyy"
@@ -66,7 +66,8 @@ final class PaymentToggleViewModel {
     /// Data formatada para exibição.
     var proofDate: String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.locale = .current
+        formatter.setLocalizedDateFormatFromTemplate("yMd")
         
         let date = currentPayment?.date ?? now
         

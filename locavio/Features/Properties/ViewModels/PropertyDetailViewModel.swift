@@ -37,7 +37,7 @@ final class PropertyDetailViewModel {
     var typeBadge: TagBadgeItem? { property.typeBadge }
 
     var title: String {
-        property.title?.trimmedOrNil ?? "Sem título"
+        property.title?.trimmedOrNil ?? String(localized: "Sem título")
     }
 
     /// Ex.: "32 m²". `nil` quando a área não foi informada.
@@ -57,17 +57,18 @@ final class PropertyDetailViewModel {
 
     /// Ex.: "CEP: 12345-678"
     var cepText: String {
-        guard let raw = property.cep?.trimmedOrNil else { return "CEP não informado" }
+        guard let raw = property.cep?.trimmedOrNil else { return String(localized: "CEP não informado") }
 
         let digits = raw.filter(\.isNumber)
-        guard digits.count == 8 else { return "CEP: \(raw)" }
+        guard digits.count == 8 else { return String(localized: "CEP: \(raw)") }
 
-        return "CEP: \(digits.prefix(5))-\(digits.suffix(3))"
+        let formattedCode = "\(digits.prefix(5))-\(digits.suffix(3))"
+        return String(localized: "CEP: \(formattedCode)")
     }
 
     // Próximo pagamento
 
-    var nextPaymentLabel: String { "Próx. Pagamento:" }
+    var nextPaymentLabel: String { String(localized: "Próx. Pagamento:") }
 
     var nextPaymentText: String {
         guard let date = nextPaymentDate else { return "—" }
@@ -76,11 +77,11 @@ final class PropertyDetailViewModel {
 
     // Inquilino
 
-    var tenantSectionTitle: String { "Inquilino" }
+    var tenantSectionTitle: String { String(localized: "Inquilino") }
 
     var hasTenant: Bool { property.tenant != nil }
 
-    var noTenantText: String { "Nenhum locatário" }
+    var noTenantText: String { String(localized: "Nenhum locatário") }
 
     var tenantName: String? {
         let raw: String? = property.tenant?.name
@@ -134,8 +135,8 @@ final class PropertyDetailViewModel {
 
     private static let dateFormatter: DateFormatter = {
         let f = DateFormatter()
-        f.locale = Locale(identifier: "pt_BR")
-        f.dateFormat = "dd/MM/yyyy"
+        f.locale = .current
+        f.setLocalizedDateFormatFromTemplate("yMd")
         return f
     }()
     
@@ -143,9 +144,9 @@ final class PropertyDetailViewModel {
     //  Contrato
 
     /// Nome para o componente, que não aceita opcional.
-    var contractDisplayName: String { contractName ?? "Nenhum contrato anexado" }
+    var contractDisplayName: String { contractName ?? String(localized: "Nenhum contrato anexado") }
     
-    var contractSectionTitle: String { "Contrato" }
+    var contractSectionTitle: String { String(localized: "Contrato") }
 
     // Nome do arquivo do contrato. `nil` quando não há contrato.
     var contractName: String? {
@@ -162,7 +163,7 @@ final class PropertyDetailViewModel {
         func makeContractPreviewURL() -> URL? {
         guard let data = property.contract?.pdfData else { return nil }
 
-        let name = property.contract?.fileName ?? "Contrato.pdf"
+        let name = property.contract?.fileName ?? String(localized: "Contrato.pdf")
         let fileName = name.lowercased().hasSuffix(".pdf") ? name : name + ".pdf"
         let url = URL.temporaryDirectory.appending(path: fileName)
 
@@ -177,14 +178,14 @@ final class PropertyDetailViewModel {
 
     //Solicitações
 
-    var requestsSectionTitle: String { "Solicitações" }
+    var requestsSectionTitle: String { String(localized: "Solicitações") }
     
     //ações
-    var lastPaymentsButtonTitle: String { "Últimos Pagamentos" }
-    var deleteButtonTitle: String { "Apagar imóvel" }
-    var deleteAlertTitle: String { "Apagar imóvel?" }
+    var lastPaymentsButtonTitle: String { String(localized: "Últimos Pagamentos") }
+    var deleteButtonTitle: String { String(localized: "Apagar imóvel") }
+    var deleteAlertTitle: String { String(localized: "Apagar imóvel?") }
     var deleteAlertMessage: String {
-        "Essa ação não pode ser desfeita. Pagamentos, despesas e chamados deste imóvel também serão apagados."
+        String(localized: "Essa ação não pode ser desfeita. Pagamentos, despesas e chamados deste imóvel também serão apagados.")
     }
 }
 

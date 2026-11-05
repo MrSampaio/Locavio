@@ -141,23 +141,23 @@ struct PrivacyPolicyView: View {
         .ignoresSafeArea(edges: .bottom)
     }
     
-    private func sectionTitle(_ text: String) -> some View {
+    private func sectionTitle(_ text: LocalizedStringKey) -> some View {
         Text(text)
             .font(.headline)
             .padding(.top, 8)
     }
     
-    private func subsectionTitle(_ text: String) -> some View {
+    private func subsectionTitle(_ text: LocalizedStringKey) -> some View {
         Text(text)
             .font(.subheadline.bold())
     }
     
-    private func subsubsectionTitle(_ text: String) -> some View {
+    private func subsubsectionTitle(_ text: LocalizedStringKey) -> some View {
         Text(text)
             .font(.footnote.bold())
     }
     
-    let definitions = """
+    let definitions: LocalizedStringKey = """
     • **Conta** significa uma conta exclusiva criada para você acessar o Aplicativo.
     • **Aplicativo** refere-se ao Locavio, o programa de software fornecido pela Empresa.
     • **Empresa/Controladora** refere-se ao Locavio, responsável pelas decisões sobre o tratamento dos dados pessoais.
@@ -173,7 +173,7 @@ struct PrivacyPolicyView: View {
     • **Você** significa o indivíduo (proprietário) que acessa ou utiliza o Serviço.
     """
     
-    let personalData = """
+    let personalData: LocalizedStringKey = """
     • Nome e sobrenome
     • E-mail
     • Endereço, Estado, Província, CEP, Cidade
@@ -184,7 +184,7 @@ struct PrivacyPolicyView: View {
     • Documentos e fotos que você anexar ao Aplicativo (ex.: contratos, comprovantes)
     """
     
-    let dataUsage = """
+    let dataUsage: LocalizedStringKey = """
     • **Para fornecer e manter o nosso Serviço**, incluindo o monitoramento do uso do nosso Serviço.
     • **Para gerenciar sua Conta:** para gerenciar seu registro como usuário do Serviço. Os Dados Pessoais que você fornece podem lhe dar acesso a diferentes funcionalidades do Serviço disponíveis para você como Usuário registrado.
     • **Para entrar em contato com Você:** para contatá-lo por e-mail ou outras formas equivalentes de comunicação eletrônica, como notificações push de aplicativos móveis, referentes a atualizações ou comunicações informativas relacionadas às funcionalidades, produtos ou serviços contratados, incluindo atualizações de segurança, quando necessário ou razoável para sua implementação.
@@ -192,19 +192,19 @@ struct PrivacyPolicyView: View {
     • **Para outras finalidades:** podemos utilizar suas informações para outras finalidades, como análise de dados, identificação de tendências de uso, determinação da eficácia de nossas campanhas promocionais, e avaliação e aprimoramento do nosso Serviço, produtos, serviços, marketing e da \nsua experiência.
     """
     
-    let dataSharing = """
+    let dataSharing: LocalizedStringKey = """
     • **Com o Seu consentimento:** podemos divulgar seus Dados Pessoais para qualquer outra finalidade com o seu consentimento.
     • **Com Operadores/Prestadores de Serviços:** com a Apple (iCloud/CloudKit), para armazenamento e funcionamento do Aplicativo;
     • **Com autoridades:** quando exigido por lei ou por ordem de autoridade pública competente;
     """
     
-    let thirdPartyData = """
+    let thirdPartyData: LocalizedStringKey = """
     • Você é responsável por garantir que possui base legal e legitimidade para inserir esses dados no Aplicativo (em regra, a execução do contrato de locação);
     • Você é responsável por informar o inquilino sobre esse tratamento, conforme exigido pela LGPD;
     • A Empresa trata esses dados exclusivamente para viabilizar as funcionalidades do Aplicativo (gestão do contrato, comunicação, histórico de pagamentos), na qualidade de controladora dos sistemas, mas sem relação direta de conta com o inquilino.
     """
     
-    let storage = """
+    let storage: LocalizedStringKey = """
     • A Apple processa e armazena os dados exclusivamente conforme nossas instruções e para viabilizar o funcionamento do Aplicativo;
     • Os servidores utilizados podem estar localizados fora do Brasil, o que pode envolver transferência internacional de dados;
     • Não temos acesso direto aos servidores da Apple além do que a API do CloudKit disponibiliza para o funcionamento do Aplicativo;
@@ -212,7 +212,7 @@ struct PrivacyPolicyView: View {
     
     """
     
-    let dataSubjectRights = """
+    let dataSubjectRights: LocalizedStringKey = """
     • Confirmação da existência de tratamento de seus dados;
     • Acesso aos seus dados;
     • Correção de dados incompletos, inexatos \nou desatualizados;
@@ -220,7 +220,7 @@ struct PrivacyPolicyView: View {
     • Eliminação dos dados tratados com base no seu consentimento;
     """
     
-    let legalRequirements = """
+    let legalRequirements: LocalizedStringKey = """
     • Cumprir uma obrigação legal
     • Proteger e defender os direitos ou a propriedade da Empresa
     • Prevenir ou investigar possível conduta indevida relacionada ao serviço

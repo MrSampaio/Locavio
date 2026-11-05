@@ -28,7 +28,7 @@ struct SheetsToolbar: ToolbarContent {
         }
         
         ToolbarItem(placement: .principal) {
-            Text(title ?? "")
+            Text(LocalizedStringKey(title ?? ""))
                 .font(.headline)
                 .fontWeight(.semibold)
                 .foregroundStyle(.primary)

@@ -61,7 +61,7 @@ extension PropertiesViewModel {
         // contrato: o formulário trabalha em cima do contractDraft
         if let data = property.contract?.pdfData {
             var contract = ContractDraft(
-                fileName: property.contract?.fileName ?? "Contrato.pdf",
+                fileName: property.contract?.fileName ?? String(localized: "Contrato.pdf"),
                 pdfData: data
             )
             if let attachedAt = property.contract?.createdAt {
