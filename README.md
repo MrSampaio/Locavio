@@ -200,7 +200,7 @@ This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) f
 
 Locavio were Developed by [Emily Wojtowicz](https://www.linkedin.com/in/emily-wojtowicz-zacatei-nunes/), [MrSampaio](https://github.com/MrSampaio), [snowzinn1](https://github.com/snowzinn1), [AlexeyFrens](https://github.com/AlexeyFrens) and [mirellabransford](https://github.com/mirellabransford).
 
-Reflact about it.
+Reflect about it.
 
 
 
